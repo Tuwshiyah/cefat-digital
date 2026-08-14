@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formations & Diplômes (BTS, Licence, Master, MBA) | Les Universités CEFAT</title>
+  <meta name="description" content="Découvrez l'offre de formation complète des Universités CEFAT : BTS d'État, Licences Professionnelles, Bachelors, Masters et MBA dans 7 domaines d'excellence.">
+  
+  <link rel="icon" type="image/png" href="assets/img/logo/cefat-logo-tight.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Prata&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/animate.min.css">
+  <link rel="stylesheet" href="assets/css/cefat-theme.css">
+  <link rel="stylesheet" href="assets/css/cefat-custom.css">
+</head>
+<body>
+
+  <!-- Top Bar -->
+    <!-- ==================== TOP BAR ==================== -->
+  <div class="header-top d-none d-lg-block">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-7 col-md-6">
+          <div class="header-cta">
+            <ul>
+              <li><i class="fa-solid fa-calendar-days text-danger"></i> <a href="actualites.html" data-i18n="top_calendar">Calendrier Académique</a></li>
+              <li><i class="fa-solid fa-book-open-reader text-danger"></i> <a href="formations.html" data-i18n="top_library">Bibliothèque Numérique</a></li>
+              <li><span class="fdfp-top-badge"><i class="fa-solid fa-award"></i> <span data-i18n="top_fdfp">Agrément Officiel FDFP</span></span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-5 col-md-6 text-end">
+          <div class="header-cta justify-content-end">
+            <ul>
+              <li>
+                <div class="top-phone-stack">
+                  <i class="fa-solid fa-phone text-danger"></i>
+                  <div class="top-phone-numbers">
+                    <a href="tel:+2250712651719">07 126 517 19</a>
+                    <a href="tel:+2250100959518">01 009 595 18</a>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <i class="fa-solid fa-envelope text-danger"></i>
+                <a href="mailto:universitecefat@gmail.com">universitecefat@gmail.com</a>
+              </li>
+              <li>
+                <button type="button" class="lang-switch-btn active" data-lang="fr" onclick="setLanguage('fr')">FR</button>
+                <button type="button" class="lang-switch-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <header id="header-sticky" class="menu-area">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-xl-3 col-lg-3 col-8">
+          <div class="logo py-2">
+            <a href="index.html"><img src="assets/img/logo/cefat-logo-tight.png" alt="CEFAT" class="img-fluid"></a>
+          </div>
+        </div>
+        <div class="col-xl-9 col-lg-9 col-4 text-end">
+          <div class="d-flex align-items-center justify-content-end">
+            <div class="main-menu d-none d-lg-block">
+              <nav>
+                <ul>
+                  <li><a href="index.html" data-i18n="nav_home">Accueil</a></li>
+                  <li><a href="index.html#about" data-i18n="nav_about">À Propos</a></li>
+                  <li class="has-sub">
+                    <a href="entites.html"><span data-i18n="nav_entities">Les 4 Entités</span> <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="submenu">
+                      <li><a href="entites.html#international" data-i18n="sub_international">Université CEFAT International</a></li>
+                      <li><a href="entites.html#ifci" data-i18n="sub_ifci">Institut IFCI (BTS & Métiers)</a></li>
+                      <li><a href="entites.html#business-school" data-i18n="sub_business_school">CEFAT Business School</a></li>
+                      <li><a href="entites.html#accra" data-i18n="sub_accra">Immersion Linguistique Accra</a></li>
+                    </ul>
+                  </li>
+                  <li class="has-sub active">
+                    <a href="formations.html"><span data-i18n="nav_formations">Formations</span> <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="submenu">
+                      <li><a href="formations.html#bts" data-i18n="sub_bts">Cycle BTS (Diplôme d'État)</a></li>
+                      <li><a href="formations.html#licence" data-i18n="sub_licence">Licence Professionnelle</a></li>
+                      <li><a href="formations.html#bachelor" data-i18n="sub_bachelor">Bachelor International</a></li>
+                      <li><a href="formations.html#master" data-i18n="sub_master">Master & Mastère Pro</a></li>
+                      <li><a href="formations.html#mba" data-i18n="sub_mba">Executive MBA</a></li>
+                    </ul>
+                  </li>
+                  <li class="has-sub">
+                    <a href="campus.html"><span data-i18n="nav_campuses">Les 5 Campus</span> <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="submenu">
+                      <li><a href="campus.html#abidjan" data-i18n="sub_abidjan">Campus Abidjan (Cocody)</a></li>
+                      <li><a href="campus.html#abengourou" data-i18n="sub_abengourou">Campus Abengourou</a></li>
+                      <li><a href="campus.html#bondoukou" data-i18n="sub_bondoukou">Campus Bondoukou</a></li>
+                      <li><a href="campus.html#bonoua" data-i18n="sub_bonoua">Campus Bonoua</a></li>
+                      <li><a href="campus.html#accra" data-i18n="sub_accra_campus">Campus Accra (Ghana)</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="actualites.html" data-i18n="nav_news">Actualités</a></li>
+                  <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+                </ul>
+              </nav>
+            </div>
+            <div class="header-btn ms-3 d-none d-sm-inline-block">
+              <a href="candidatures.html" class="btn-cefat-primary"><i class="fa-solid fa-paper-plane me-1"></i> <span data-i18n="btn_apply">Candidater</span></a>
+            </div>
+            <button class="mobile-nav-toggle ms-2 d-lg-none"><i class="fa-solid fa-bars"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Header Subpage -->
+  <section class="hero-slider-area p-relative text-center py-5">
+    <div class="container py-4">
+      <h1 class="hero-title mb-2" data-i18n="formations_page_title">Offre de <span>Formations CEFAT</span></h1>
+      <p class="hero-subtitle mx-auto" data-i18n="formations_page_subtitle">Du BTS d'État à l'Executive MBA, choisissez parmi nos 7 domaines d'enseignement d'excellence.</p>
+    </div>
+  </section>
+
+  <!-- Filter & Catalog Section -->
+  <section class="py-5 bg-light">
+    <div class="container">
+      <!-- Cycle Tabs -->
+      <div class="d-flex flex-wrap justify-content-center gap-2 mb-5">
+        <a href="#bts" class="btn btn-outline-primary px-4 py-2 rounded-pill fw-bold active"><i class="fa-solid fa-graduation-cap me-1"></i> Cycle BTS (Bac+2)</a>
+        <a href="#licence" class="btn btn-outline-primary px-4 py-2 rounded-pill fw-bold"><i class="fa-solid fa-user-graduate me-1"></i> Licence Pro (Bac+3)</a>
+        <a href="#bachelor" class="btn btn-outline-primary px-4 py-2 rounded-pill fw-bold"><i class="fa-solid fa-certificate me-1"></i> Bachelor (Bac+3)</a>
+        <a href="#master" class="btn btn-outline-primary px-4 py-2 rounded-pill fw-bold"><i class="fa-solid fa-award me-1"></i> Master Pro (Bac+5)</a>
+        <a href="#mba" class="btn btn-outline-primary px-4 py-2 rounded-pill fw-bold"><i class="fa-solid fa-crown me-1"></i> Executive MBA</a>
+      </div>
+
+      <!-- BTS Section -->
+      <div id="bts" class="mb-5 pt-4">
+        <div class="d-flex align-items-center gap-3 mb-4">
+          <div class="bg-danger text-white rounded-3 p-3"><i class="fa-solid fa-graduation-cap fs-3"></i></div>
+          <div>
+            <h3 class="mb-0 text-primary fw-bold" data-i18n="bts_section_title">Cycle BTS (Brevet de Technicien Supérieur) — Diplôme d'État</h3>
+            <p class="text-muted mb-0" data-i18n="bts_section_subtitle">Dispensé au sein de l'Institut IFCI sur nos campus d'Abidjan, Abengourou, Bondoukou et Bonoua.</p>
+          </div>
+        </div>
+
+        <div class="row g-4">
+          <!-- BTS FCGE -->
+          <div class="col-lg-4 col-md-6">
+            <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
+              <div class="card-body p-4">
+                <span class="badge bg-danger mb-2">Finance & Comptabilité</span>
+                <h5 class="card-title fw-bold text-primary" data-i18n="bts_fcge_title">BTS Finance Comptabilité & Gestion des Entreprises (FCGE)</h5>
+                <p class="small text-muted" data-i18n="bts_fcge_desc">Formation axée sur la comptabilité générale, la fiscalité ivoirienne, la paie et la gestion financière.</p>
+                <hr>
+                <div class="small text-muted mb-3"><i class="fa-solid fa-clock text-danger me-1"></i> <span data-i18n="duration_2yrs">Durée : 2 ans | Présentiel</span></div>
+                <a href="candidatures.html?degree=BTS&domain=Finance" class="btn-cefat-primary btn-sm w-100 justify-content-center"><span data-i18n="t_postuler_en_bts_fcge">Postuler en BTS FCGE</span></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- BTS IDA -->
+          <div class="col-lg-4 col-md-6">
+            <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
+              <div class="card-body p-4">
+                <span class="badge bg-danger mb-2">Informatique & Tech</span>
+                <h5 class="card-title fw-bold text-primary" data-i18n="bts_ida_title">BTS Informatique Développeur d'Application (IDA)</h5>
+                <p class="small text-muted" data-i18n="bts_ida_desc">Conception de logiciels, développement web et mobile, bases de données relationnelles et sécurité applicative.</p>
+                <hr>
+                <div class="small text-muted mb-3"><i class="fa-solid fa-clock text-danger me-1"></i> <span data-i18n="duration_2yrs_lab"><span data-i18n="duration_2yrs">Durée : 2 ans | Présentiel</span> & Labos</span></div>
+                <a href="candidatures.html?degree=BTS&domain=Informatique" class="btn-cefat-primary btn-sm w-100 justify-content-center"><span data-i18n="t_postuler_en_bts_ida">Postuler en BTS IDA</span></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- BTS RIT -->
+          <div class="col-lg-4 col-md-6">
+            <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
+              <div class="card-body p-4">
+                <span class="badge bg-danger mb-2">Réseaux & Télécoms</span>
+                <h5 class="card-title fw-bold text-primary" data-i18n="bts_rit_title">BTS Réseaux Informatiques & Télécommunications (RIT)</h5>
+                <p class="small text-muted" data-i18n="bts_rit_desc">Administration de réseaux d'entreprise, infrastructures serveurs, sécurité des transmissions et télécoms.</p>
+                <hr>
+                <div class="small text-muted mb-3"><i class="fa-solid fa-clock text-danger me-1"></i> <span data-i18n="duration_2yrs">Durée : 2 ans | Présentiel</span></div>
+                <a href="candidatures.html?degree=BTS&domain=Informatique" class="btn-cefat-primary btn-sm w-100 justify-content-center"><span data-i18n="t_postuler_en_bts_rit">Postuler en BTS RIT</span></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- BTS GC -->
+          <div class="col-lg-4 col-md-6">
+            <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
+              <div class="card-body p-4">
+                <span class="badge bg-danger mb-2">Génie Civil</span>
+                <h5 class="card-title fw-bold text-primary" data-i18n="bts_gc_title">BTS Bâtiment & Génie Civil</h5>
+                <p class="small text-muted" data-i18n="bts_gc_desc">Calculs de structures béton armé, topographie de chantier, dessin DAO/BIM et conduite de chantiers.</p>
+                <hr>
+                <div class="small text-muted mb-3"><i class="fa-solid fa-clock text-danger me-1"></i> <span data-i18n="duration_2yrs_site">Durée : 2 ans | Pratique de chantier</span></div>
+                <a href="candidatures.html?degree=BTS&domain=Génie Civil" class="btn-cefat-primary btn-sm w-100 justify-content-center"><span data-i18n="t_postuler_en_bts_b_timent">Postuler en BTS Bâtiment</span></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- BTS GEC -->
+          <div class="col-lg-4 col-md-6">
+            <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
+              <div class="card-body p-4">
+                <span class="badge bg-danger mb-2">Marketing & Vente</span>
+                <h5 class="card-title fw-bold text-primary" data-i18n="bts_gec_title">BTS Gestion Commerciale (GEC)</h5>
+                <p class="small text-muted" data-i18n="bts_gec_desc">Négociation commerciale, stratégie marketing, commerce international et fidélisation clientèle.</p>
+                <hr>
+                <div class="small text-muted mb-3"><i class="fa-solid fa-clock text-danger me-1"></i> <span data-i18n="duration_2yrs">Durée : 2 ans | Présentiel</span></div>
+                <a href="candidatures.html?degree=BTS&domain=Marketing" class="btn-cefat-primary btn-sm w-100 justify-content-center"><span data-i18n="t_postuler_en_bts_gec">Postuler en BTS GEC</span></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- BTS RHCOM -->
+          <div class="col-lg-4 col-md-6">
+            <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
+              <div class="card-body p-4">
+                <span class="badge bg-danger mb-2">Ressources Humaines</span>
+                <h5 class="card-title fw-bold text-primary" data-i18n="bts_rhcom_title">BTS Ressources Humaines & Communication (RHCOM)</h5>
+                <p class="small text-muted" data-i18n="bts_rhcom_desc">Gestion du personnel, droit du travail, communication institutionnelle et relations sociales.</p>
+                <hr>
+                <div class="small text-muted mb-3"><i class="fa-solid fa-clock text-danger me-1"></i> <span data-i18n="duration_2yrs">Durée : 2 ans | Présentiel</span></div>
+                <a href="candidatures.html?degree=BTS&domain=Gestion" class="btn-cefat-primary btn-sm w-100 justify-content-center"><span data-i18n="t_postuler_en_bts_rhcom">Postuler en BTS RHCOM</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Licences & Masters Section -->
+      <div id="licence" class="mb-5 pt-4">
+        <div class="d-flex align-items-center gap-3 mb-4">
+          <div class="bg-primary text-white rounded-3 p-3"><i class="fa-solid fa-user-graduate fs-3"></i></div>
+          <div>
+            <h3 class="mb-0 text-primary fw-bold"><span data-i18n="t_licences_masters_professionn">Licences & Masters Professionnels (LMD)</span></h3>
+            <p class="text-muted mb-0"><span data-i18n="t_dispens_s_l_universit_cefat">Dispensés à l'Université CEFAT International et CEFAT Business School.</span></p>
+          </div>
+        </div>
+
+        <div class="row g-4">
+          <!-- Licence Droit -->
+          <div class="col-lg-4 col-md-6">
+            <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
+              <div class="card-body p-4">
+                <span class="badge bg-primary mb-2">Sciences Juridiques</span>
+                <h5 class="card-title fw-bold text-primary"><span data-i18n="t_licence_en_droit_priv_des_a">Licence en Droit Privé & des Affaires</span></h5>
+                <p class="small text-muted"><span data-i18n="t_droit_commercial_droit_des_co">Droit commercial, droit des contrats, contentieux des affaires et carrières judiciaires.</span></p>
+                <hr>
+                <a href="candidatures.html?degree=Licence&domain=Droit" class="btn-cefat-secondary btn-sm w-100 justify-content-center"><span data-i18n="t_postuler_en_licence_droit">Postuler en Licence Droit</span></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Licence Informatique -->
+          <div class="col-lg-4 col-md-6">
+            <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
+              <div class="card-body p-4">
+                <span class="badge bg-primary mb-2">Génie Logiciel</span>
+                <h5 class="card-title fw-bold text-primary"><span data-i18n="t_licence_g_nie_logiciel_cyber">Licence Génie Logiciel & Cybersécurité</span></h5>
+                <p class="small text-muted"><span data-i18n="t_architecture_applicative_d_ve">Architecture applicative, développement Fullstack, cloud computing et sécurisation des données.</span></p>
+                <hr>
+                <a href="candidatures.html?degree=Licence&domain=Informatique" class="btn-cefat-secondary btn-sm w-100 justify-content-center"><span data-i18n="t_postuler_en_licence_info">Postuler en Licence Info</span></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Master MBA -->
+          <div class="col-lg-4 col-md-6" id="mba">
+            <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden border-start border-4 border-danger">
+              <div class="card-body p-4">
+                <span class="badge bg-dark mb-2" data-i18n="opt_deg_mba">Cadres & Dirigeants</span>
+                <h5 class="card-title fw-bold text-danger"><span data-i18n="t_executive_mba_management_str">Executive MBA Management & Stratégie</span></h5>
+                <p class="small text-muted"><span data-i18n="t_programme_d_excellence_cefat_b">Programme d'excellence CEFAT Business School pour managers, directeurs et entrepreneurs.</span></p>
+                <hr>
+                <a href="candidatures.html?degree=MBA&domain=Gestion" class="btn-cefat-primary btn-sm w-100 justify-content-center"><span data-i18n="t_candidater_l_executive_mba">Candidater à l'Executive MBA</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer-top">
+    <div class="container text-center py-4">
+      <img src="assets/img/logo/cefat-logo-tight.png" alt="CEFAT" style="max-height: 45px; filter: brightness(0) invert(1);" class="mb-3">
+      <p class="small text-white-50 mb-0"><span data-i18n="t_copy_2026_les_universit_s_ce">&copy; 2026 Les Universités CEFAT — Fondateur : M. AMAN HONORE. Tous droits réservés.</span></p>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float -->
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/cefat-i18n.js"></script>
+  <script src="assets/js/cefat-app.js"></script>
+</body>
+</html>

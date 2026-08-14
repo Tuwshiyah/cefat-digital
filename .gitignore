@@ -1,0 +1,19 @@
+# Reference files and raw template captures
+reference_site.html
+Eudaimonia*
+WhatsApp Image*
+
+# OS metadata
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+.Spotlight-V100
+.Trashes
+
+# Editor directories
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace

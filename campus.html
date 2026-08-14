@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Les 5 Campus (Abidjan, Abengourou, Bondoukou, Bonoua, Accra) | Les Universités CEFAT</title>
+  <meta name="description" content="Découvrez les 5 campus modernes des Universités CEFAT en Côte d'Ivoire et au Ghana : infrastructures, bibliothèques, laboratoires et immersion bilingue.">
+  
+  <link rel="icon" type="image/png" href="assets/img/logo/cefat-logo-tight.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Prata&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/animate.min.css">
+  <link rel="stylesheet" href="assets/css/cefat-theme.css">
+  <link rel="stylesheet" href="assets/css/cefat-custom.css">
+</head>
+<body>
+
+  <!-- Top Bar -->
+    <!-- ==================== TOP BAR ==================== -->
+  <div class="header-top d-none d-lg-block">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-7 col-md-6">
+          <div class="header-cta">
+            <ul>
+              <li><i class="fa-solid fa-calendar-days text-danger"></i> <a href="actualites.html" data-i18n="top_calendar">Calendrier Académique</a></li>
+              <li><i class="fa-solid fa-book-open-reader text-danger"></i> <a href="formations.html" data-i18n="top_library">Bibliothèque Numérique</a></li>
+              <li><span class="fdfp-top-badge"><i class="fa-solid fa-award"></i> <span data-i18n="top_fdfp">Agrément Officiel FDFP</span></span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-5 col-md-6 text-end">
+          <div class="header-cta justify-content-end">
+            <ul>
+              <li>
+                <div class="top-phone-stack">
+                  <i class="fa-solid fa-phone text-danger"></i>
+                  <div class="top-phone-numbers">
+                    <a href="tel:+2250712651719">07 126 517 19</a>
+                    <a href="tel:+2250100959518">01 009 595 18</a>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <i class="fa-solid fa-envelope text-danger"></i>
+                <a href="mailto:universitecefat@gmail.com">universitecefat@gmail.com</a>
+              </li>
+              <li>
+                <button type="button" class="lang-switch-btn active" data-lang="fr" onclick="setLanguage('fr')">FR</button>
+                <button type="button" class="lang-switch-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <header id="header-sticky" class="menu-area">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-xl-3 col-lg-3 col-8">
+          <div class="logo py-2">
+            <a href="index.html"><img src="assets/img/logo/cefat-logo-tight.png" alt="CEFAT" class="img-fluid"></a>
+          </div>
+        </div>
+        <div class="col-xl-9 col-lg-9 col-4 text-end">
+          <div class="d-flex align-items-center justify-content-end">
+            <div class="main-menu d-none d-lg-block">
+              <nav>
+                <ul>
+                  <li><a href="index.html" data-i18n="nav_home">Accueil</a></li>
+                  <li><a href="index.html#about" data-i18n="nav_about">À Propos</a></li>
+                  <li class="has-sub">
+                    <a href="entites.html"><span data-i18n="nav_entities">Les 4 Entités</span> <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="submenu">
+                      <li><a href="entites.html#international" data-i18n="sub_international">Université CEFAT International</a></li>
+                      <li><a href="entites.html#ifci" data-i18n="sub_ifci">Institut IFCI (BTS & Métiers)</a></li>
+                      <li><a href="entites.html#business-school" data-i18n="sub_business_school">CEFAT Business School</a></li>
+                      <li><a href="entites.html#accra" data-i18n="sub_accra">Immersion Linguistique Accra</a></li>
+                    </ul>
+                  </li>
+                  <li class="has-sub">
+                    <a href="formations.html"><span data-i18n="nav_formations">Formations</span> <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="submenu">
+                      <li><a href="formations.html#bts" data-i18n="sub_bts">Cycle BTS (Diplôme d'État)</a></li>
+                      <li><a href="formations.html#licence" data-i18n="sub_licence">Licence Professionnelle</a></li>
+                      <li><a href="formations.html#bachelor" data-i18n="sub_bachelor">Bachelor International</a></li>
+                      <li><a href="formations.html#master" data-i18n="sub_master">Master & Mastère Pro</a></li>
+                      <li><a href="formations.html#mba" data-i18n="sub_mba">Executive MBA</a></li>
+                    </ul>
+                  </li>
+                  <li class="has-sub active">
+                    <a href="campus.html"><span data-i18n="nav_campuses">Les 5 Campus</span> <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="submenu">
+                      <li><a href="campus.html#abidjan" data-i18n="sub_abidjan">Campus Abidjan (Cocody)</a></li>
+                      <li><a href="campus.html#abengourou" data-i18n="sub_abengourou">Campus Abengourou</a></li>
+                      <li><a href="campus.html#bondoukou" data-i18n="sub_bondoukou">Campus Bondoukou</a></li>
+                      <li><a href="campus.html#bonoua" data-i18n="sub_bonoua">Campus Bonoua</a></li>
+                      <li><a href="campus.html#accra" data-i18n="sub_accra_campus">Campus Accra (Ghana)</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="actualites.html" data-i18n="nav_news">Actualités</a></li>
+                  <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+                </ul>
+              </nav>
+            </div>
+            <div class="header-btn ms-3 d-none d-sm-inline-block">
+              <a href="candidatures.html" class="btn-cefat-primary"><i class="fa-solid fa-paper-plane me-1"></i> <span data-i18n="btn_apply">Candidater</span></a>
+            </div>
+            <button class="mobile-nav-toggle ms-2 d-lg-none"><i class="fa-solid fa-bars"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="hero-slider-area p-relative text-center py-5">
+    <div class="container py-4">
+      <h1 class="hero-title mb-2" data-i18n="campuses_title">Les 5 Campus <span>CEFAT</span></h1>
+      <p class="hero-subtitle mx-auto" data-i18n="campuses_page_subtitle">Un maillage stratégique en Côte d'Ivoire (Abidjan, Abengourou, Bondoukou, Bonoua) et un centre d'immersion bilingue à Accra (Ghana).</p>
+    </div>
+  </section>
+
+  <!-- Campuses Detail Grid -->
+  <section class="py-5 bg-light">
+    <div class="container">
+      
+      <!-- 1. Campus Abidjan -->
+      <div id="abidjan" class="card shadow-sm border-0 rounded-4 overflow-hidden mb-5">
+        <div class="row g-0 align-items-center">
+          <div class="col-lg-5">
+            <img src="assets/img/campus/campus-abidjan.jpg" alt="Campus Abidjan" class="img-fluid w-100 h-100" style="object-fit: cover; min-height: 280px;">
+          </div>
+          <div class="col-lg-7 p-4 p-lg-5">
+            <span class="badge bg-danger mb-2" data-i18n="cam_abidjan_badge">Siège Principal & Pôle Universitaire</span>
+            <h3 class="fw-bold text-primary" data-i18n="cam_abidjan_title">Campus Abidjan (Cocody Angré 8ème Tranche)</h3>
+            <p class="text-muted" data-i18n="cam_abidjan_text">Situé au cœur du quartier résidentiel de Cocody Angré 8ème Tranche, le campus principal d'Abidjan offre un environnement d'études ultra-moderne : amphithéâtres climatisés, laboratoires informatiques dernière génération, bibliothèque connectée et espaces de coworking.</p>
+            <div class="row g-2 mb-3 small text-secondary">
+              <div class="col-sm-6"><i class="fa-solid fa-graduation-cap text-danger me-1"></i> <span data-i18n="cam_abidjan_feat_1">Formations : BTS, Licence, Master, MBA</span></div>
+              <div class="col-sm-6"><i class="fa-solid fa-phone text-danger me-1"></i> 27 22 285 991 / 07 126 517 19</div>
+              <div class="col-sm-6"><i class="fa-solid fa-location-dot text-danger me-1"></i> <span data-i18n="cam_abidjan_feat_2">Angré 8ème Tranche, Abidjan</span></div>
+              <div class="col-sm-6"><i class="fa-solid fa-wifi text-danger me-1"></i> <span data-i18n="cam_abidjan_feat_3">Wi-Fi Campus Haut Débit</span></div>
+            </div>
+            <a href="candidatures.html?campus=Abidjan" class="btn-cefat-primary btn-sm"><span data-i18n="t_candidater_sur_le_campus_d_abi">Candidater sur le Campus d'Abidjan</span></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Campus Accra (Ghana) -->
+      <div id="accra" class="card shadow-sm border-0 rounded-4 overflow-hidden mb-5 border-start border-4 border-success">
+        <div class="row g-0 align-items-center">
+          <div class="col-lg-5">
+            <img src="assets/img/campus/campus-accra.jpg" alt="Campus Accra Ghana" class="img-fluid w-100 h-100" style="object-fit: cover; min-height: 280px;">
+          </div>
+          <div class="col-lg-7 p-4 p-lg-5">
+            <span class="badge bg-success mb-2" data-i18n="cam_accra_badge">Centre d'Immersion Linguistique — Ghana</span>
+            <h3 class="fw-bold text-success" data-i18n="cam_accra_title">Campus Accra (Ghana) — 100% Bilinguisme</h3>
+            <p class="text-muted" data-i18n="cam_accra_text">Le Centre d'Immersion Linguistique CEFAT à Accra permet aux étudiants de vivre une expérience internationale unique au Ghana. Cours intensifs dispensés par des formateurs anglophones natifs, hébergement sécurisé et programmes d'anglais professionnel.</p>
+            <div class="row g-2 mb-3 small text-secondary">
+              <div class="col-sm-6"><i class="fa-solid fa-language text-success me-1"></i> <span data-i18n="cam_accra_feat_1">Immersion Totale & Anglais des Affaires</span></div>
+              <div class="col-sm-6"><i class="fa-solid fa-hotel text-success me-1"></i> <span data-i18n="cam_accra_feat_2">Résidences Étudiantes Sécurisées</span></div>
+              <div class="col-sm-6"><i class="fa-solid fa-location-dot text-success me-1"></i> <span data-i18n="cam_accra_feat_3">Airport Residential / East Legon, Accra</span></div>
+              <div class="col-sm-6"><i class="fa-solid fa-passport text-success me-1"></i> <span data-i18n="cam_accra_feat_4">Accompagnement Visa & Accueil</span></div>
+            </div>
+            <a href="candidatures.html?campus=Accra" class="btn btn-success rounded-pill px-4 fw-bold"><span data-i18n="t_postuler_pour_l_immersion_ac">Postuler pour l'Immersion à Accra</span></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Abengourou, Bondoukou, Bonoua -->
+      <div class="row g-4">
+        <!-- Abengourou -->
+        <div class="col-lg-4 col-md-6" id="abengourou">
+          <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
+            <img src="assets/img/campus/campus-abengourou.jpg" alt="Campus Abengourou" class="card-img-top" style="height: 200px; object-fit: cover;">
+            <div class="card-body p-4">
+              <span class="badge bg-primary mb-2" data-i18n="cam_abengourou_badge">Région de l'Indénié-Djuablin</span>
+              <h5 class="card-title fw-bold text-primary" data-i18n="cam_abengourou_title">Campus Abengourou</h5>
+              <p class="small text-muted" data-i18n="cam_abengourou_text">Centre universitaire de référence formant les étudiants du Moyen-Comoé aux filières BTS et Licences professionnelles.</p>
+              <ul class="list-unstyled small text-muted mb-3">
+                <li><i class="fa-solid fa-phone text-danger me-1"></i> +225 01 009 595 18</li>
+                <li><i class="fa-solid fa-graduation-cap text-danger me-1"></i> <span data-i18n="cam_abengourou_feat">BTS FCGE, IDA, GEC, RHCOM</span></li>
+              </ul>
+              <a href="candidatures.html?campus=Abengourou" class="btn-cefat-secondary btn-sm w-100 justify-content-center"><span data-i18n="t_postuler_abengourou">Postuler à Abengourou</span></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bondoukou -->
+        <div class="col-lg-4 col-md-6" id="bondoukou">
+          <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
+            <img src="assets/img/campus/campus-bondoukou.jpg" alt="Campus Bondoukou" class="card-img-top" style="height: 200px; object-fit: cover;">
+            <div class="card-body p-4">
+              <span class="badge bg-primary mb-2">Région du Gontougo</span>
+              <h5 class="card-title fw-bold text-primary">Campus Bondoukou</h5>
+              <p class="small text-muted"><span data-i18n="t_tablissement_moderne_au_c_ur">Établissement moderne au cœur de la ville aux mille mosquées, dédié aux formations tertiaires et technologiques.</span></p>
+              <ul class="list-unstyled small text-muted mb-3">
+                <li><i class="fa-solid fa-phone text-danger me-1"></i> +225 07 126 517 19</li>
+                <li><i class="fa-solid fa-graduation-cap text-danger me-1"></i> <span data-i18n="cam_bondoukou_feat">BTS Tertiaire & Bâtiment</span></li>
+              </ul>
+              <a href="candidatures.html?campus=Bondoukou" class="btn-cefat-secondary btn-sm w-100 justify-content-center"><span data-i18n="t_postuler_bondoukou">Postuler à Bondoukou</span></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bonoua -->
+        <div class="col-lg-4 col-md-6" id="bonoua">
+          <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
+            <img src="assets/img/campus/campus-bonoua.jpg" alt="Campus Bonoua" class="card-img-top" style="height: 200px; object-fit: cover;">
+            <div class="card-body p-4">
+              <span class="badge bg-primary mb-2">Région du Sud-Comoé</span>
+              <h5 class="card-title fw-bold text-primary">Campus Bonoua</h5>
+              <p class="small text-muted"><span data-i18n="t_campus_d_excellence_situ_sur">Campus d'excellence situé sur l'axe international Abidjan-Grand-Bassam-Bonoua, spécialisé dans les carrières de gestion.</span></p>
+              <ul class="list-unstyled small text-muted mb-3">
+                <li><i class="fa-solid fa-phone text-danger me-1"></i> +225 01 009 595 18</li>
+                <li><i class="fa-solid fa-graduation-cap text-danger me-1"></i> <span data-i18n="cam_bonoua_feat">BTS & Certifications Professionnelles</span></li>
+              </ul>
+              <a href="candidatures.html?campus=Bonoua" class="btn-cefat-secondary btn-sm w-100 justify-content-center"><span data-i18n="t_postuler_bonoua">Postuler à Bonoua</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer-top">
+    <div class="container text-center py-4">
+      <img src="assets/img/logo/cefat-logo-tight.png" alt="CEFAT" style="max-height: 45px; filter: brightness(0) invert(1);" class="mb-3">
+      <p class="small text-white-50 mb-0"><span data-i18n="t_copy_2026_les_universit_s_ce">&copy; 2026 Les Universités CEFAT — Fondateur : M. AMAN HONORE. Tous droits réservés.</span></p>
+    </div>
+  </footer>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/cefat-i18n.js"></script>
+  <script src="assets/js/cefat-app.js"></script>
+</body>
+</html>
