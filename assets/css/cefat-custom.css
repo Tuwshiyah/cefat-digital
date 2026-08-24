@@ -1538,7 +1538,7 @@ section { position: relative; }
   flex-wrap: wrap;
   margin: 0 0 0.25rem;
   padding-bottom: 0.9rem;
-  border-bottom: 2px solid var(--carmine);
+  border-bottom: 1px solid var(--ink-3);
   font-family: var(--font-alt);
   font-size: 1.125rem;
   font-weight: 700;
@@ -1715,7 +1715,7 @@ section { position: relative; }
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(1.75rem, 3.5vw, 3rem);
 }
-.study-mode { padding-top: 1.25rem; border-top: 2px solid var(--carmine); }
+.study-mode { padding-top: 1.25rem; border-top: 1px solid var(--ink-3); }
 .study-mode__title {
   margin: 0 0 0.25rem;
   font-family: var(--font-alt);
@@ -2061,7 +2061,7 @@ section { position: relative; }
   gap: clamp(1.25rem, 3vw, 2.5rem);
   margin-top: clamp(2rem, 4vw, 3rem);
   padding: clamp(1.5rem, 3vw, 2.25rem) 0 0;
-  border-top: 2px solid var(--carmine);
+  border-top: 1px solid var(--ink-3);
 }
 .mba-highlight__body { flex: 1 1 22rem; min-width: 0; }
 .mba-highlight__eyebrow {
@@ -3386,7 +3386,37 @@ section { position: relative; }
   color: rgba(255, 255, 255, 0.7);
   padding: clamp(3.5rem, 8vw, 6.5rem) 0;
   position: relative;
+  isolation: isolate;
   overflow: hidden;
+}
+
+/* Photo de bandeau. Une balise <img> plutôt qu'une url() dans une variable
+   CSS : dans une variable, le chemin relatif est résolu depuis la feuille
+   de style (assets/css/) et non depuis la page — l'image ne se chargeait
+   pas. Une balise résout depuis le document. */
+.page-head__media {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  display: block;
+  overflow: hidden;
+}
+.page-head__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  display: block;
+}
+
+.page-head:has(.page-head__media)::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(180deg, rgba(10, 24, 48, 0.45) 0%, rgba(10, 24, 48, 0.25) 45%, rgba(10, 24, 48, 0.65) 100%),
+    linear-gradient(100deg, rgba(10, 24, 48, 0.88) 0%, rgba(10, 24, 48, 0.70) 45%, rgba(10, 24, 48, 0.34) 100%);
 }
 
 .page-head__eyebrow {
