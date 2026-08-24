@@ -2095,6 +2095,120 @@ section { position: relative; }
 }
 
 /* ==========================================================================
+   FICHE D'ENTITÉ
+   ==========================================================================
+   Le bandeau porte déjà le nom et la présentation : le contenu les répétait
+   mot pour mot. Il donne maintenant ce qui n'y figure pas — diplômes, durée,
+   reconnaissance, campus — et le formulaire de candidature sur place. */
+
+.entity-page { background: var(--paper); }
+
+.entity-page__h2 {
+  margin: 0 0 1.1rem;
+  font-family: var(--font-alt);
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid var(--ink-3);
+}
+
+/* Les faits : deux colonnes de couples clé/valeur, filetées. */
+.entity-facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 clamp(2rem, 4vw, 3.5rem);
+  border-top: 1px solid var(--ink-3);
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+.entity-facts__item {
+  display: grid;
+  grid-template-columns: minmax(0, 11rem) minmax(0, 1fr);
+  gap: 0 1.25rem;
+  align-items: baseline;
+  padding: 0.95rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+.entity-facts__k {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--carmine);
+}
+.entity-facts__v {
+  font-family: var(--font-alt);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--ink);
+}
+.entity-facts__v strong {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.25rem;
+  color: var(--carmine);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Filières à gauche, formulaire à droite. */
+.entity-split {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: start;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.entity-fields__list { list-style: none; margin: 0 0 1.5rem; padding: 0; }
+.entity-fields__list li {
+  position: relative;
+  padding: 0.7rem 0 0.7rem 1.4rem;
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--font-alt);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--ink);
+}
+.entity-fields__list li::before {
+  content: "";
+  position: absolute; left: 0; top: 1.3em;
+  width: 10px; height: 1px; background: var(--carmine);
+}
+.entity-fields__link {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--navy); text-decoration: none;
+  border-bottom: 1px solid transparent; padding-bottom: 2px;
+}
+.entity-fields__link:hover { color: var(--carmine); border-bottom-color: var(--carmine); }
+
+/* Le formulaire est repris de l'accueil, où il vit sur fond navy : ici le
+   fond est clair, il faut donc repasser les libellés en encre. */
+.entity-apply .admission-card {
+  background: var(--paper-warm);
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+}
+.entity-apply .admission-card h3 { display: none; }
+.entity-apply .admission-card > p {
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+  color: var(--ink-3);
+}
+.entity-apply .form-label { color: var(--ink-2) !important; }
+
+@media (max-width: 991.98px) {
+  .entity-facts { grid-template-columns: minmax(0, 1fr); }
+  .entity-split { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 575.98px) {
+  .entity-facts__item { grid-template-columns: minmax(0, 1fr); gap: 0.3rem; }
+}
+
+/* ==========================================================================
    12. LES 4 ENTITÉS
    ========================================================================== */
 

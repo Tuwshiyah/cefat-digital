@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/css/animate.min.css">
   <link rel="stylesheet" href="assets/css/cefat-theme.css">
-  <link rel="stylesheet" href="assets/css/cefat-custom.css?v=83e10e9b">
+  <link rel="stylesheet" href="assets/css/cefat-custom.css?v=3b220500">
 </head>
 <body>
 
@@ -218,33 +218,145 @@
     </div>
   </section>
 
-  <section class="py-5 bg-light">
+  <!-- Le bandeau porte déjà le nom et la présentation : le contenu donne
+       ce qui n'y figure pas, et le formulaire sur place. -->
+  <section class="py-5 entity-page">
     <div class="container">
-      <div class="card shadow-sm border-0 rounded-4 overflow-hidden mb-5">
-        <div class="row g-0 align-items-center">
-          <div class="col-lg-5">
-            <img src="assets/img/entities/entity-langues-accra.jpg?v=2254be2d" alt="Centre d'Immersion Linguistique — Accra" class="img-fluid w-100 h-100" style="object-fit:cover; min-height:340px;">
-          </div>
-          <div class="col-lg-7 p-4 p-lg-5">
-            <div class="d-flex align-items-center gap-2 mb-2">
-              <span class="badge bg-success"><span data-i18n="ent4_badge">Ghana · 100% Anglais</span></span>
-              <span class="badge bg-secondary" data-i18n="ent4_cycles">Immersion Bilingue</span>
-            </div>
-            <h2 class="fw-bold text-primary" data-i18n="ent4_name">Centre d'Immersion Linguistique — Accra</h2>
-            <p class="text-muted" data-i18n="ent4_desc">Le Centre d'Immersion Linguistique offre une opportunité rare aux étudiants ivoiriens et francophones : maîtriser l'anglais courant et professionnel en immersion complète au sein de la capitale anglophone d'Afrique de l'Ouest.</p>
-            <h6 class="fw-bold text-dark mb-2"><span data-i18n="t_fili_res_phares">Filières Phares :</span></h6>
-            <ul class="list-unstyled small text-muted mb-4">
-              <li><i class="fa-solid fa-check text-danger me-2"></i> <span data-i18n="ent_4_f1">Anglais Général &amp; Anglais des Affaires</span></li>
-              <li><i class="fa-solid fa-check text-danger me-2"></i> <span data-i18n="ent_4_f2">Préparation TOEFL / IELTS</span></li>
-              <li><i class="fa-solid fa-check text-danger me-2"></i> <span data-i18n="ent_4_f3">Résidences étudiantes sécurisées &amp; accompagnement visa</span></li>
-            </ul>
-            <a href="candidatures.html?entity=Centre+Linguistique+Accra" class="btn-cefat-primary btn-sm"><span data-i18n="t_postuler_pour_le_centre_d_ac">Postuler pour le Centre d'Accra</span></a>
-          </div>
+
+      <div class="entity-facts">
+        <div class="entity-facts__item">
+          <span class="entity-facts__k" data-i18n="ef_a_objet_k">—</span>
+          <span class="entity-facts__v" data-i18n="ef_a_objet">Immersion linguistique totale en anglais</span>
+        </div>
+        <div class="entity-facts__item">
+          <span class="entity-facts__k" data-i18n="ef_duree">—</span>
+          <span class="entity-facts__v" data-i18n="ef_a_duree">Séjours modulables, selon le niveau visé</span>
+        </div>
+        <div class="entity-facts__item">
+          <span class="entity-facts__k" data-i18n="ef_a_certif_k">—</span>
+          <span class="entity-facts__v" data-i18n="ef_a_certif">Préparation TOEFL et IELTS</span>
+        </div>
+        <div class="entity-facts__item">
+          <span class="entity-facts__k" data-i18n="ef_campus">—</span>
+          <span class="entity-facts__v" data-i18n="ef_a_campus">Accra, Ghana — East Legon / Airport Residential</span>
+        </div>
+        <div class="entity-facts__item">
+          <span class="entity-facts__k" data-i18n="ef_a_loge_k">—</span>
+          <span class="entity-facts__v" data-i18n="ef_a_loge">Résidences étudiantes sécurisées sur place</span>
+        </div>
+        <div class="entity-facts__item">
+          <span class="entity-facts__k" data-i18n="ef_a_visa_k">—</span>
+          <span class="entity-facts__v" data-i18n="ef_a_visa">Accompagnement visa et accueil à l'arrivée</span>
+        </div>
+        <div class="entity-facts__item">
+          <span class="entity-facts__k" data-i18n="ef_a_ouvert_k">—</span>
+          <span class="entity-facts__v" data-i18n="ef_a_ouvert">Ouvert à tous les inscrits du réseau CEFAT</span>
+        </div>
+        <div class="entity-facts__item">
+          <span class="entity-facts__k" data-i18n="ef_a_depuis_k">—</span>
+          <span class="entity-facts__v" data-i18n="ef_a_depuis">Ouvert en 2022</span>
         </div>
       </div>
 
-      <!-- Passage direct d'une entité à l'autre, sans repasser par la liste. -->
+      <div class="entity-split">
+        <section class="entity-fields">
+          <h2 class="entity-page__h2" data-i18n="ef_filieres">Filières phares</h2>
+          <ul class="entity-fields__list">
+            <li data-i18n="ent_4_f1">Anglais général &amp; anglais des affaires</li>
+            <li data-i18n="ent_4_f2">Préparation TOEFL / IELTS</li>
+            <li data-i18n="ent_4_f3">Résidences étudiantes sécurisées &amp; accompagnement visa</li>
+          </ul>
+          <a class="entity-fields__link" href="campus.html#accra">
+            <span data-i18n="ef_voir_campus_accra">Voir le campus d'Accra</span> <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </section>
+
+        <section class="entity-apply" id="candidater">
+          <h2 class="entity-page__h2" data-i18n="ef_cand_a">Postuler pour le Centre d'Accra</h2>
+<div class="admission-card">
+            <h3 data-i18n="form_preinscr_title">Formulaire de Pré-Inscription</h3>
+            <p data-i18n="form_preinscr_note">Tous les champs marqués d'une astérisque (*) sont obligatoires pour valider votre dossier.</p>
+
+            <div id="app-form-feedback"></div>
+
+            <form id="cefat-application-form">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="app-nom" class="form-label small fw-bold" data-i18n="lbl_nom">Nom *</label>
+                  <input type="text" id="app-nom" class="form-control" placeholder="Votre nom de famille" data-i18n-placeholder="ph_lastname" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="app-prenoms" class="form-label small fw-bold" data-i18n="lbl_prenoms">Prénoms *</label>
+                  <input type="text" id="app-prenoms" class="form-control" placeholder="Vos prénoms" data-i18n-placeholder="ph_firstname" required>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="app-telephone" class="form-label small fw-bold" data-i18n="lbl_tel">Téléphone / WhatsApp *</label>
+                  <input type="tel" id="app-telephone" class="form-control" placeholder="Ex: 07 12 65 17 19" data-i18n-placeholder="ph_phone" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="app-email" class="form-label small fw-bold" data-i18n="lbl_email">Email</label>
+                  <input type="email" id="app-email" class="form-control" placeholder="exemple@gmail.com" data-i18n-placeholder="ph_email">
+                </div>
+
+                <div class="col-md-6">
+                  <label for="app-entity" class="form-label small fw-bold" data-i18n="lbl_entity">Entité CEFAT *</label>
+                  <select id="app-entity" class="form-select" required>
+                    <option value="Université CEFAT International">Université CEFAT International</option>
+                    <option value="Institut de Formation CEFAT-Inter (IFCI)" data-i18n="sub_ifci">Institut IFCI (BTS & Certifications)</option>
+                    <option value="CEFAT Business School">CEFAT Business School</option>
+                    <option value="Centre Linguistique Accra" selected data-i18n="sub_accra">Centre d'Immersion Linguistique Accra</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label for="app-campus" class="form-label small fw-bold" data-i18n="lbl_campus">Campus de Choix *</label>
+                  <select id="app-campus" class="form-select" required>
+                    <option value="Abidjan">Campus Abidjan (Cocody Angré 8e Tranche)</option>
+                    <option value="Abengourou" data-i18n="opt_cam_abengourou">Campus Abengourou</option>
+                    <option value="Bondoukou" data-i18n="opt_cam_bondoukou">Campus Bondoukou</option>
+                    <option value="Bonoua" data-i18n="opt_cam_bonoua">Campus Bonoua</option>
+                    <option value="Accra">Campus Accra (Ghana)</option>
+                  </select>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="app-degree" class="form-label small fw-bold" data-i18n="lbl_diploma">Diplôme Visé *</label>
+                  <select id="app-degree" class="form-select" required>
+                    <option value="BTS">BTS (Bac+2)</option>
+                    <option value="Licence" data-i18n="opt_deg_licence">Licence Professionnelle (Bac+3)</option>
+                    <option value="Bachelor" data-i18n="opt_deg_bachelor">Bachelor International (Bac+3)</option>
+                    <option value="Master" data-i18n="opt_deg_master">Master Professionnel (Bac+5)</option>
+                    <option value="MBA">Executive MBA (Bac+5 / Professionnels)</option>
+                    <option value="Immersion" data-i18n="opt_deg_immersion">Immersion Anglais (Accra)</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label for="app-domain" class="form-label small fw-bold" data-i18n="lbl_domain">Filière / Domaine *</label>
+                  <select id="app-domain" class="form-select" required>
+                    <option value="Gestion">Gestion & Administration</option>
+                    <option value="Informatique">Informatique & Génie Logiciel</option>
+                    <option value="Génie Civil">Génie Civil & Bâtiment</option>
+                    <option value="Droit">Sciences Juridiques & Droit</option>
+                    <option value="Lettres" data-i18n="opt_dom_lettres">Lettres Modernes & Communication</option>
+                    <option value="Marketing">Marketing & Communication Digitale</option>
+                    <option value="Finance" data-i18n="opt_dom_finance">Finance, Comptabilité & Audit</option>
+                    <option value="Anglais"><span data-i18n="t_anglais_intensif_bilinguisme">Anglais Intensif / Bilinguisme</span></option>
+                  </select>
+                </div>
+
+                <div class="col-12 mt-4">
+                  <button type="submit" class="btn-cefat-primary w-100 justify-content-center py-3 fs-16">
+                    <i class="fa-solid fa-paper-plane me-2"></i> <span data-i18n="btn_submit_app">Soumettre ma Candidature</span>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </section>
+      </div>
+
       <nav class="entity-nav" aria-label="Les autres entités">
+
           <a class="entity-nav__item" href="entite-universite.html">
             <span class="entity-nav__label" data-i18n="nav_ent_label">Autre entité</span>
             <span class="entity-nav__name" data-i18n="ent1_name">Université CEFAT International</span>
@@ -257,7 +369,7 @@
             <span class="entity-nav__label" data-i18n="nav_ent_label">Autre entité</span>
             <span class="entity-nav__name" data-i18n="ent3_name">CEFAT Business School</span>
           </a>
-      </nav>
+            </nav>
     </div>
   </section>
 
@@ -349,7 +461,7 @@
     </div>
   </footer>
 <script src="assets/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/cefat-i18n.js?v=67c1e1cf"></script>
+  <script src="assets/js/cefat-i18n.js?v=42f1d8c4"></script>
   <script src="assets/js/cefat-app.js?v=6411b341"></script>
 </body>
 </html>
