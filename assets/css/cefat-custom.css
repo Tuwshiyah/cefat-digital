@@ -1883,6 +1883,217 @@ section { position: relative; }
   .frise { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
+/* Chiffres clés : cadence resserrée ------------------------------------
+   136px de marge haut et bas plus 72px sous le titre, pour quatre nombres
+   sur une ligne : la section faisait 756px de haut pour 90px de contenu
+   utile. Scopé, le rythme des autres sections est intact. */
+#chiffres,
+.counter-area2 {
+  padding-top: clamp(3.25rem, 5.5vw, 5rem) !important;
+  padding-bottom: clamp(3.25rem, 5.5vw, 5rem) !important;
+}
+.counter-area2 .section-title2 {
+  margin-bottom: clamp(1.75rem, 3vw, 2.5rem) !important;
+}
+/* Le titre tient sur une ligne : la mesure de 22ch le cassait en trois. */
+.counter-area2 .section-title2 h2 { max-width: none; }
+
+/* Candidature en ligne : cadence resserrée -----------------------------
+   136px de marge haut et bas, et la colonne de gauche flottait 61px plus
+   haut que le formulaire alors qu'elle se termine 61px plus tôt. Les deux
+   colonnes partent maintenant du même bord haut. */
+#candidature-section {
+  padding-top: clamp(3.25rem, 5.5vw, 5rem) !important;
+  padding-bottom: clamp(3.25rem, 5.5vw, 5rem) !important;
+}
+#candidature-section > .container > .row { align-items: flex-start !important; }
+
+/* Le pavé « Parcours Express » : un encadré dans une section déjà encadrée
+   faisait boîte dans la boîte. Filet simple à gauche, comme les repères. */
+#candidature-section .express-track {
+  border: none !important;
+  border-left: 2px solid var(--carmine) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  padding: 0.15rem 0 0.15rem 1.25rem !important;
+}
+
+/* Pastilles numérotées : le badge Bootstrap arrondi n'a rien à faire ici,
+   le reste du site numérote en chiffres nus. */
+#candidature-section .express-track .badge {
+  background: transparent !important;
+  color: var(--red-on-dark) !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  min-width: 1.4rem;
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ==========================================================================
+   PARTENARIATS & AMBASSADEURS
+   ==========================================================================
+   Quatre tuiles à icônes mettaient sur le même plan un ministère et un
+   ambassadeur, avec deux étoiles jaunes identiques pour les deux personnes.
+   Trois groupes nommés, en listes filetées : on voit ce qui relève de
+   l'agrément, du réseau professionnel, et des personnes. */
+
+.partners { background: var(--paper); }
+
+.partners__head { margin-bottom: clamp(1.75rem, 3vw, 2.5rem); }
+.partners__eyebrow {
+  display: flex; align-items: center; gap: 0.75rem;
+  margin: 0 0 0.9rem;
+  font-family: var(--font-sans);
+  font-size: var(--fs-eyebrow);
+  font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--carmine);
+}
+.partners__eyebrow::before {
+  content: ""; flex: none; width: 28px; height: 1px; background: currentColor;
+}
+.partners h2 {
+  margin: 0;
+  font-size: var(--fs-h2);
+  line-height: 0.95;
+  max-width: none;
+}
+.partners h2 span { color: var(--carmine); }
+
+.partners__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.75rem, 3.5vw, 3.25rem);
+}
+
+.partners__group-title {
+  margin: 0 0 0.25rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 2px solid var(--carmine);
+  font-family: var(--font-alt);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.partners__list { list-style: none; margin: 0; padding: 0; }
+.partners__list li {
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.partners__name {
+  font-family: var(--font-alt);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--ink);
+}
+/* Le seul chiffre de la section mérite d'être lu comme un chiffre. */
+.partners__name strong {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.25rem;
+  color: var(--carmine);
+  font-variant-numeric: tabular-nums;
+}
+.partners__meta {
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: var(--ink-3);
+}
+
+@media (max-width: 991.98px) {
+  .partners__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 575.98px) {
+  .partners__grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ==========================================================================
+   PAGE FORMATIONS
+   ==========================================================================
+   La page mélangeait trois grammaires : pilules Bootstrap, cartes à ombre
+   et coins arrondis, et la liste filetée du catalogue LMD. Tout passe à
+   cette dernière — c'est celle du reste du site. */
+
+.cycle-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: clamp(2rem, 4vw, 3.25rem);
+}
+.cycle-tab {
+  padding: 0.85rem 1.15rem;
+  margin-bottom: -1px;
+  border-bottom: 2px solid transparent;
+  font-family: var(--font-alt);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--ink-3);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+.cycle-tab i { margin-right: 0.4rem; font-size: 0.75rem; }
+.cycle-tab:hover { color: var(--ink); }
+.cycle-tab.is-active { color: var(--carmine); border-bottom-color: var(--carmine); }
+
+/* Le BTS n'a qu'un seul groupe : il occupe toute la largeur au lieu de
+   laisser une colonne vide à droite. */
+.prog-catalogue--large { grid-template-columns: minmax(0, 1fr); }
+.prog-catalogue--large .prog-item a { grid-template-columns: 4rem minmax(0, 1fr) auto; }
+
+/* Executive MBA : le seul programme mis en avant. Bande pleine largeur
+   plutôt qu'une carte esseulée dans une grille de trois. */
+.mba-highlight {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  margin-top: clamp(2rem, 4vw, 3rem);
+  padding: clamp(1.5rem, 3vw, 2.25rem) 0 0;
+  border-top: 2px solid var(--carmine);
+}
+.mba-highlight__body { flex: 1 1 22rem; min-width: 0; }
+.mba-highlight__eyebrow {
+  margin: 0 0 0.5rem;
+  font-size: 0.6875rem; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--carmine);
+}
+.mba-highlight__title {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-alt);
+  font-size: clamp(1.125rem, 1.6vw, 1.375rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.mba-highlight__desc {
+  margin: 0;
+  max-width: 60ch;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--ink-3);
+}
+
+/* Intitulés de section de la page : le h3 du thème est en serif ; ici ce
+   sont des repères de navigation, pas des titres éditoriaux. */
+#bts h3, #licence h3, .study-modes ~ * h3 {
+  font-family: var(--font-alt);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
 /* ==========================================================================
    12. LES 4 ENTITÉS
    ========================================================================== */
