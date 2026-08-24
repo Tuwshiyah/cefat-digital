@@ -14,16 +14,16 @@
   <!-- Open Graph / Social Media -->
   <meta property="og:title" content="Les Universités CEFAT | Réseau d'Enseignement Supérieur d'Excellence">
   <meta property="og:description" content="4 Écoles complémentaires, 5 Campus modernes en Côte d'Ivoire et au Ghana. Formations du BTS au MBA.">
-  <meta property="og:image" content="assets/img/logo/cefat-logo-tight.png">
+  <meta property="og:image" content="assets/img/logo/cefat-logo-tight.png?v=6cc4050b">
   <meta property="og:type" content="website">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="assets/img/logo/cefat-logo-tight.png">
+  <link rel="icon" type="image/png" href="assets/img/logo/cefat-logo-tight.png?v=6cc4050b">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Prata&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
   <!-- FontAwesome 6 Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -32,7 +32,7 @@
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/css/animate.min.css">
   <link rel="stylesheet" href="assets/css/cefat-theme.css">
-  <link rel="stylesheet" href="assets/css/cefat-custom.css">
+  <link rel="stylesheet" href="assets/css/cefat-custom.css?v=c1607ede">
 </head>
 <body>
 
@@ -43,8 +43,6 @@
         <div class="col-lg-7 col-md-6">
           <div class="header-cta">
             <ul>
-              <li><i class="fa-solid fa-calendar-days text-danger"></i> <a href="actualites.html" data-i18n="top_calendar">Calendrier Académique</a></li>
-              <li><i class="fa-solid fa-book-open-reader text-danger"></i> <a href="formations.html" data-i18n="top_library">Bibliothèque Numérique</a></li>
               <li><span class="fdfp-top-badge"><i class="fa-solid fa-award"></i> <span data-i18n="top_fdfp">Agrément Officiel FDFP</span></span></li>
             </ul>
           </div>
@@ -55,15 +53,16 @@
               <li>
                 <div class="top-phone-stack">
                   <i class="fa-solid fa-phone text-danger"></i>
-                  <div class="top-phone-numbers">
-                    <a href="tel:+2250712651719">07 126 517 19</a>
-                    <a href="tel:+2250100959518">01 009 595 18</a>
-                  </div>
+                  <span class="top-phone-numbers">
+                    <a href="tel:+2250712651719">07 12 65 17 19</a>
+                    <span class="top-phone-sep" aria-hidden="true">·</span>
+                    <a href="tel:+2250100959518">01 00 95 95 18</a>
+                  </span>
                 </div>
               </li>
               <li>
                 <i class="fa-solid fa-envelope text-danger"></i>
-                <a href="mailto:universitecefat@gmail.com">universitecefat@gmail.com</a>
+                <a href="mailto:contact@universitecefat.ci">contact@universitecefat.ci</a>
               </li>
               <li>
                 <button type="button" class="lang-switch-btn active" data-lang="fr" onclick="setLanguage('fr')">FR</button>
@@ -84,7 +83,7 @@
         <div class="col-xl-3 col-lg-3 col-8">
           <div class="logo py-2">
             <a href="index.html" aria-label="Accueil Les Universités CEFAT">
-              <img src="assets/img/logo/cefat-logo-tight.png" alt="Logo Les Universités CEFAT" class="img-fluid">
+              <img src="assets/img/logo/cefat-logo-tight.png?v=6cc4050b" alt="Logo Les Universités CEFAT" class="img-fluid">
             </a>
           </div>
         </div>
@@ -97,34 +96,118 @@
                 <ul>
                   <li class="active"><a href="index.html" data-i18n="nav_home">Accueil</a></li>
                   <li><a href="#about" data-i18n="nav_about">À Propos</a></li>
-                  <li class="has-sub">
-                    <a href="entites.html"><span data-i18n="nav_entities">Les 4 Entités</span> <i class="fa-solid fa-chevron-down"></i></a>
-                    <ul class="submenu">
-                      <li><a href="entites.html#international" data-i18n="sub_international">Université CEFAT International</a></li>
-                      <li><a href="entites.html#ifci" data-i18n="sub_ifci">Institut IFCI (BTS & Métiers)</a></li>
-                      <li><a href="entites.html#business-school" data-i18n="sub_business_school">CEFAT Business School</a></li>
-                      <li><a href="entites.html#accra" data-i18n="sub_accra">Immersion Linguistique Accra</a></li>
-                    </ul>
+                  <li class="has-sub has-mega">
+                    <a aria-expanded="false" href="entites.html"><span data-i18n="nav_entities">Les 4 Entités</span> <i class="fa-solid fa-chevron-down"></i></a>
+                    <div class="megamenu megamenu--cards">
+                      <div class="megamenu__inner">
+                        <div class="mm-grid">
+                          <a class="mm-card" href="entite-universite.html">
+                            <span class="mm-card__img"><img src="assets/img/entities/entity-international.jpg?v=f1bd2b62" alt="" loading="lazy"></span>
+                            <span class="mm-card__name" data-i18n="sub_international">Université CEFAT International</span>
+                            <span class="mm-card__desc" data-i18n="mm_ent_int">Cursus LMD tournés vers l'international et la recherche.</span>
+                            <span class="mm-card__lvl" data-i18n="mm_lvl_int">Licence · Master</span>
+                          </a>
+                          <a class="mm-card" href="entite-ifci.html">
+                            <span class="mm-card__img"><img src="assets/img/entities/entity-ifci.jpg?v=cb2b2399" alt="" loading="lazy"></span>
+                            <span class="mm-card__name" data-i18n="sub_ifci">Institut IFCI (BTS & Métiers)</span>
+                            <span class="mm-card__desc" data-i18n="mm_ent_ifci">Diplômes d'État et certifications métiers reconnues.</span>
+                            <span class="mm-card__lvl" data-i18n="mm_lvl_ifci">BTS d'État</span>
+                          </a>
+                          <a class="mm-card" href="entite-business-school.html">
+                            <span class="mm-card__img"><img src="assets/img/entities/entity-business-school.jpg?v=d16a9f87" alt="" loading="lazy"></span>
+                            <span class="mm-card__name" data-i18n="sub_business_school">CEFAT Business School</span>
+                            <span class="mm-card__desc" data-i18n="mm_ent_bs">Management, finance et stratégie, du Bachelor au MBA.</span>
+                            <span class="mm-card__lvl" data-i18n="mm_lvl_bs">Bachelor · MBA</span>
+                          </a>
+                          <a class="mm-card" href="entite-accra.html">
+                            <span class="mm-card__img"><img src="assets/img/entities/entity-langues-accra.jpg?v=2254be2d" alt="" loading="lazy"></span>
+                            <span class="mm-card__name" data-i18n="sub_accra">Immersion Linguistique Accra</span>
+                            <span class="mm-card__desc" data-i18n="mm_ent_accra">Immersion totale en anglais, au Ghana.</span>
+                            <span class="mm-card__lvl" data-i18n="mm_lvl_accra">100% anglais</span>
+                          </a>
+                        </div>
+                        <div class="megamenu__foot">
+                          <a class="mm-foot__link" href="entites.html"><span data-i18n="mm_foot_ent">Voir les 4 entités</span> <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                      </div>
+                    </div>
                   </li>
-                  <li class="has-sub">
-                    <a href="formations.html"><span data-i18n="nav_formations">Formations</span> <i class="fa-solid fa-chevron-down"></i></a>
-                    <ul class="submenu">
-                      <li><a href="formations.html#bts" data-i18n="sub_bts">Cycle BTS (Diplôme d'État)</a></li>
-                      <li><a href="formations.html#licence" data-i18n="sub_licence">Licence Professionnelle</a></li>
-                      <li><a href="formations.html#bachelor" data-i18n="sub_bachelor">Bachelor International</a></li>
-                      <li><a href="formations.html#master" data-i18n="sub_master">Master & Mastère Pro</a></li>
-                      <li><a href="formations.html#mba" data-i18n="sub_mba">Executive MBA</a></li>
-                    </ul>
+                  <li class="has-sub has-mega">
+                    <a aria-expanded="false" href="formations.html"><span data-i18n="nav_formations">Formations</span> <i class="fa-solid fa-chevron-down"></i></a>
+                    <div class="megamenu megamenu--ladder">
+                      <div class="megamenu__inner">
+                        <p class="megamenu__lede" data-i18n="mm_for_lede">Du diplôme d'État au MBA, cinq niveaux qui s'enchaînent.</p>
+                        <div class="mm-ladder">
+                          <a class="mm-step" href="formations.html#bts">
+                            <span class="mm-step__lvl" data-i18n="mm_bac2">Bac+2</span>
+                            <span class="mm-step__name" data-i18n="sub_bts">Cycle BTS (Diplôme d'État)</span>
+                            <span class="mm-step__desc" data-i18n="mm_for_bts">Deux ans, entrée directe sur le marché.</span>
+                          </a>
+                          <a class="mm-step" href="formations.html#licence">
+                            <span class="mm-step__lvl" data-i18n="mm_bac3">Bac+3</span>
+                            <span class="mm-step__name" data-i18n="sub_licence">Licence Professionnelle</span>
+                            <span class="mm-step__desc" data-i18n="mm_for_licence">Spécialisation métier après le BTS.</span>
+                          </a>
+                          <a class="mm-step" href="formations.html#bachelor">
+                            <span class="mm-step__lvl" data-i18n="mm_bac3">Bac+3</span>
+                            <span class="mm-step__name" data-i18n="sub_bachelor">Bachelor International</span>
+                            <span class="mm-step__desc" data-i18n="mm_for_bachelor">Cursus anglophone, mobilité Accra.</span>
+                          </a>
+                          <a class="mm-step" href="formations.html#master">
+                            <span class="mm-step__lvl" data-i18n="mm_bac5">Bac+5</span>
+                            <span class="mm-step__name" data-i18n="sub_master">Master & Mastère Pro</span>
+                            <span class="mm-step__desc" data-i18n="mm_for_master">Expertise et encadrement d'équipe.</span>
+                          </a>
+                          <a class="mm-step" href="formations.html#mba">
+                            <span class="mm-step__lvl" data-i18n="mm_bac5">Bac+5</span>
+                            <span class="mm-step__name" data-i18n="sub_mba">Executive MBA</span>
+                            <span class="mm-step__desc" data-i18n="mm_for_mba">Format aménagé pour cadres en poste.</span>
+                          </a>
+                        </div>
+                        <div class="megamenu__foot">
+                          <a class="mm-foot__link" href="formations.html"><span data-i18n="mm_foot_for">Voir toutes les formations</span> <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                      </div>
+                    </div>
                   </li>
-                  <li class="has-sub">
-                    <a href="campus.html"><span data-i18n="nav_campuses">Les 5 Campus</span> <i class="fa-solid fa-chevron-down"></i></a>
-                    <ul class="submenu">
-                      <li><a href="campus.html#abidjan" data-i18n="sub_abidjan">Campus Abidjan (Cocody)</a></li>
-                      <li><a href="campus.html#abengourou" data-i18n="sub_abengourou">Campus Abengourou</a></li>
-                      <li><a href="campus.html#bondoukou" data-i18n="sub_bondoukou">Campus Bondoukou</a></li>
-                      <li><a href="campus.html#bonoua" data-i18n="sub_bonoua">Campus Bonoua</a></li>
-                      <li><a href="campus.html#accra" data-i18n="sub_accra_campus">Campus Accra (Ghana)</a></li>
-                    </ul>
+                  <li class="has-sub has-mega">
+                    <a aria-expanded="false" href="campus.html"><span data-i18n="nav_campuses">Les 5 Campus</span> <i class="fa-solid fa-chevron-down"></i></a>
+                    <div class="megamenu megamenu--corridor">
+                      <div class="megamenu__inner">
+                        <p class="megamenu__lede" data-i18n="mm_cam_lede">Quatre campus en Côte d'Ivoire, un cinquième à Accra.</p>
+                        <div class="mm-corridor">
+                            <a class="mm-stop" href="campus.html#abidjan">
+                              <span class="mm-stop__img"><img src="assets/img/campus/campus-abidjan.jpg?v=6d09f9f4" alt="" loading="lazy"></span>
+                              <span class="mm-stop__name" data-i18n="cor_abidjan">Abidjan</span>
+                              <span class="mm-stop__meta" data-i18n="cor_abidjan_meta">Siège · Cocody Angré</span>
+                            </a>
+                            <a class="mm-stop" href="campus.html#bonoua">
+                              <span class="mm-stop__img"><img src="assets/img/campus/campus-bonoua.jpg?v=00622c4d" alt="" loading="lazy"></span>
+                              <span class="mm-stop__name" data-i18n="cor_bonoua">Bonoua</span>
+                              <span class="mm-stop__meta" data-i18n="cor_bonoua_meta">Sud-Comoé</span>
+                            </a>
+                            <a class="mm-stop" href="campus.html#abengourou">
+                              <span class="mm-stop__img"><img src="assets/img/campus/campus-abengourou.jpg?v=fa16507b" alt="" loading="lazy"></span>
+                              <span class="mm-stop__name" data-i18n="cor_abengourou">Abengourou</span>
+                              <span class="mm-stop__meta" data-i18n="cor_abengourou_meta">Moyen-Comoé</span>
+                            </a>
+                            <a class="mm-stop" href="campus.html#bondoukou">
+                              <span class="mm-stop__img"><img src="assets/img/campus/campus-bondoukou.jpg?v=4efad6e6" alt="" loading="lazy"></span>
+                              <span class="mm-stop__name" data-i18n="cor_bondoukou">Bondoukou</span>
+                              <span class="mm-stop__meta" data-i18n="cor_bondoukou_meta">Gontougo</span>
+                            </a>
+                            <span class="mm-border"><span data-i18n="corridor_border">Frontière CI · GH</span></span>
+                            <a class="mm-stop mm-stop--gh" href="campus.html#accra">
+                              <span class="mm-stop__img"><img src="assets/img/campus/campus-accra.jpg?v=b84d32ed" alt="" loading="lazy"></span>
+                              <span class="mm-stop__name" data-i18n="cor_accra">Accra</span>
+                              <span class="mm-stop__meta" data-i18n="cor_accra_meta">Ghana · 100% anglais</span>
+                            </a>
+                        </div>
+                        <div class="megamenu__foot">
+                          <a class="mm-foot__link" href="campus.html"><span data-i18n="mm_foot_cam">Voir les 5 campus</span> <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                      </div>
+                    </div>
                   </li>
                   <li><a href="actualites.html" data-i18n="nav_news">Actualités</a></li>
                   <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
@@ -153,7 +236,7 @@
   <div class="mobile-drawer-overlay"></div>
   <aside class="mobile-drawer">
     <div class="d-flex justify-content-between align-items-center mb-3">
-      <img src="assets/img/logo/cefat-logo-tight.png" alt="CEFAT" style="max-height: 45px;">
+      <img src="assets/img/logo/cefat-logo-tight.png?v=6cc4050b" alt="CEFAT" style="max-height: 45px;">
       <button class="close-drawer" aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button>
     </div>
     
@@ -168,10 +251,10 @@
       <li class="has-sub">
         <a href="javascript:void(0)"><span data-i18n="nav_entities">Les 4 Entités</span> <i class="fa-solid fa-chevron-down"></i></a>
         <ul class="mobile-submenu">
-          <li><a href="entites.html#international" data-i18n="sub_international">Université CEFAT International</a></li>
-          <li><a href="entites.html#ifci" data-i18n="sub_ifci">Institut IFCI (BTS & Métiers)</a></li>
-          <li><a href="entites.html#business-school" data-i18n="sub_business_school">CEFAT Business School</a></li>
-          <li><a href="entites.html#accra" data-i18n="sub_accra">Immersion Linguistique Accra</a></li>
+          <li><a href="entite-universite.html" data-i18n="sub_international">Université CEFAT International</a></li>
+          <li><a href="entite-ifci.html" data-i18n="sub_ifci">Institut IFCI (BTS & Métiers)</a></li>
+          <li><a href="entite-business-school.html" data-i18n="sub_business_school">CEFAT Business School</a></li>
+          <li><a href="entite-accra.html" data-i18n="sub_accra">Immersion Linguistique Accra</a></li>
         </ul>
       </li>
       <li class="has-sub">
@@ -203,133 +286,183 @@
         <i class="fa-solid fa-paper-plane"></i> <span data-i18n="mobile_btn_apply">Candidater en ligne</span>
       </a>
       <div class="text-center mt-3 text-muted small">
-        <i class="fa-solid fa-phone text-danger me-1"></i> 07 126 517 19
+        <i class="fa-solid fa-phone text-danger me-1"></i> 07 12 65 17 19
       </div>
     </div>
   </aside>
 
-  <!-- ==================== SECTION 1 : HERO SLIDER ==================== -->
+  <!-- ==================== SECTION 1 : HERO ==================== -->
+  <!-- Emplacement photo : assets/img/hero/hero-bg.jpg — cadrage 16:9, sujet centré -->
   <section class="hero-slider-area p-relative">
-    <div class="container">
-      <div class="row align-items-center">
-        <!-- Hero Text Content (perfectly aligned under logo without any frame) -->
-        <div class="col-xl-7 col-lg-8">
-          <div class="hero-content">
-            <div class="hero-badge">
-              <i class="fa-solid fa-certificate"></i> <span data-i18n="hero_badge">Réseau Universitaire d'Excellence</span>
-            </div>
-            <h1 class="hero-title" data-i18n="hero_title">
-              Les Universités <span>CEFAT</span>
-            </h1>
-            <p class="hero-subtitle" data-i18n="hero_subtitle">
-              4 Grandes Écoles complémentaires, 5 Campus modernes en Côte d'Ivoire & au Ghana. Formations d'excellence du BTS au MBA pour bâtir votre avenir professionnel.
-            </p>
-            <!-- CTA Buttons with spacious gap -->
-            <div class="hero-actions d-flex flex-wrap align-items-center gap-3 gap-md-4 mb-4 pb-1">
-              <a href="#formations" class="btn-cefat-primary" data-i18n="btn_explore_courses">
-                <i class="fa-solid fa-graduation-cap me-2"></i> <span data-i18n="btn_explore_formations">Découvrir les formations</span>
-              </a>
-              <a href="#campus" class="btn-cefat-secondary">
-                <i class="fa-solid fa-map-location-dot me-2"></i> <span data-i18n="btn_visit_campuses">Explorer les 5 campus</span>
-              </a>
-            </div>
+    <div class="hero__media">
+      <img src="assets/img/hero/hero-bg.jpg?v=f6516620" alt="">
+    </div>
+    <div class="hero__scrim"></div>
 
-            <!-- Quick Trust Badges with spacious distinct pills -->
-            <div class="hero-trust-badges d-flex align-items-center flex-wrap gap-3 gap-md-4 pt-3 border-top">
-              <div class="hero-trust-item d-flex align-items-center gap-2">
-                <span class="trust-icon"><i class="fa-solid fa-graduation-cap"></i></span>
-                <span class="trust-text" data-i18n="hero_feat_diplomas">Diplômes Reconnus par l'État</span>
-              </div>
-              <div class="hero-trust-item d-flex align-items-center gap-2">
-                <span class="trust-icon"><i class="fa-solid fa-earth-africa"></i></span>
-                <span class="trust-text" data-i18n="hero_feat_bilingual">Bilinguisme à Accra</span>
-              </div>
-              <div class="hero-trust-item d-flex align-items-center gap-2">
-                <span class="trust-icon"><i class="fa-solid fa-laptop-code"></i></span>
-                <span class="trust-text" data-i18n="hero_feat_modes">Cours Présentiel & En Ligne</span>
-              </div>
+    <div class="container">
+      <div class="hero__grid">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <i class="fa-solid fa-certificate"></i> <span data-i18n="hero_badge">Réseau Universitaire d'Excellence</span>
+          </div>
+          <h1 class="hero-title" data-i18n="hero_title">
+            Les Universités <span>CEFAT</span>
+          </h1>
+          <p class="hero-subtitle" data-i18n="hero_subtitle">
+            4 Grandes Écoles complémentaires, 5 Campus modernes en Côte d'Ivoire & au Ghana. Formations d'excellence du BTS au MBA pour bâtir votre avenir professionnel.
+          </p>
+
+          <div class="hero-actions d-flex flex-wrap align-items-center gap-3 gap-md-4">
+            <a href="#formations" class="btn-cefat-primary">
+              <i class="fa-solid fa-graduation-cap"></i> <span data-i18n="btn_explore_formations">Découvrir les formations</span>
+            </a>
+            <a href="#campus" class="btn-cefat-secondary">
+              <i class="fa-solid fa-map-location-dot"></i> <span data-i18n="btn_visit_campuses">Explorer les 5 campus</span>
+            </a>
+          </div>
+
+          <div class="hero-trust-badges d-flex align-items-center flex-wrap">
+            <div class="hero-trust-item d-flex align-items-center">
+              <span class="trust-icon"><i class="fa-solid fa-graduation-cap"></i></span>
+              <span class="trust-text" data-i18n="hero_feat_diplomas">Diplômes Reconnus par l'État</span>
+            </div>
+            <div class="hero-trust-item d-flex align-items-center">
+              <span class="trust-icon"><i class="fa-solid fa-earth-africa"></i></span>
+              <span class="trust-text" data-i18n="hero_feat_bilingual">Bilinguisme à Accra</span>
+            </div>
+            <div class="hero-trust-item d-flex align-items-center">
+              <span class="trust-icon"><i class="fa-solid fa-laptop-code"></i></span>
+              <span class="trust-text" data-i18n="hero_feat_modes">Cours Présentiel & En Ligne</span>
             </div>
           </div>
+        </div>
+
+        <!-- Rail d'entrée : le visiteur arrive en cherchant un niveau d'études -->
+        <nav class="hero__rail d-none d-lg-block" aria-label="Cycles d'études">
+          <p class="hero__rail-title" data-i18n="rail_title">Choisissez votre cycle</p>
+          <ul>
+            <li>
+              <a href="formations.html#bts">
+                <span class="hero__rail-label" data-i18n="rail_bts">BTS</span>
+                <span class="hero__rail-note" data-i18n="rail_bts_note">Diplôme d'État, Bac+2</span>
+              </a>
+            </li>
+            <li>
+              <a href="formations.html#licence">
+                <span class="hero__rail-label" data-i18n="rail_licence">Licence</span>
+                <span class="hero__rail-note" data-i18n="rail_licence_note">Bac+3, professionnalisante</span>
+              </a>
+            </li>
+            <li>
+              <a href="formations.html#master">
+                <span class="hero__rail-label" data-i18n="rail_master">Master</span>
+                <span class="hero__rail-note" data-i18n="rail_master_note">Bac+5, spécialisation</span>
+              </a>
+            </li>
+            <li>
+              <a href="formations.html#mba">
+                <span class="hero__rail-label" data-i18n="rail_mba">Executive MBA</span>
+                <span class="hero__rail-note" data-i18n="rail_mba_note">Pour cadres en poste</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== BARRE DE CHIFFRES ==================== -->
+  <section class="factbar">
+    <div class="container">
+      <div class="factbar__grid">
+        <div class="factbar__item">
+          <div class="factbar__num">4</div>
+          <div class="factbar__label" data-i18n="bar_entities">Entités</div>
+        </div>
+        <div class="factbar__item">
+          <div class="factbar__num">5</div>
+          <div class="factbar__label" data-i18n="bar_campuses">Campus</div>
+        </div>
+        <div class="factbar__item">
+          <div class="factbar__num">2</div>
+          <div class="factbar__label" data-i18n="bar_countries">Pays</div>
+        </div>
+        <div class="factbar__item">
+          <div class="factbar__num">7</div>
+          <div class="factbar__label" data-i18n="bar_domains">Domaines</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ==================== SECTION 2 : MOT DU FONDATEUR / ABOUT ==================== -->
-  <section id="about" class="about-area about-p pt-120 pb-120 p-relative fix">
+  <!-- ==================== SECTION 2 : NOTRE HISTOIRE ==================== -->
+  <!-- Même charpente que le mot du fondateur : titre pleine largeur, photo
+       face au bloc de parole, jalons en pied. Seul le propos change — les
+       dates viennent du site historique universitecefat.ci. -->
+  <section id="about" class="about-area p-relative fix">
     <div class="container">
-      <div class="row align-items-center">
-        <!-- Visual & Badge -->
-        <div class="col-lg-6 col-md-12 mb-4 mb-lg-0">
-          <div class="about-p-img p-relative">
-            <img src="assets/img/hero/founder-about.jpg" alt="Étudiants Les Universités CEFAT" class="img-fluid rounded-4 shadow-lg">
-            <div class="position-absolute bottom-0 start-0 bg-white p-3 rounded-3 shadow m-3 border-start border-4 border-danger d-none d-sm-block">
-              <div class="d-flex align-items-center gap-3">
-                <div class="bg-danger text-white rounded-circle p-3 d-flex align-items-center justify-content-center" style="width:50px; height:50px;">
-                  <i class="fa-solid fa-graduation-cap fs-4"></i>
-                </div>
-                <div>
-                  <h6 class="mb-0 fw-bold text-dark"><span data-i18n="t_excellence_acad_mique">Excellence Académique</span></h6>
-                  <small class="text-muted"><span data-i18n="t_dipl_mes_d_tat_reconnus_l">Diplômes d'État & Reconnus à l'International</span></small>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <!-- Text Content -->
-        <div class="col-lg-6 col-md-12">
-          <div class="section-title2 mb-4">
-            <h5 data-i18n="founder_sub">Message du Fondateur</h5>
-            <h2 data-i18n="founder_title">
-              Bâtir des leaders compétents et <span>prêts pour le marché mondial</span>
-            </h2>
-          </div>
-          <blockquote class="p-3 bg-light border-start border-4 border-primary rounded-2 fst-italic mb-4 text-secondary"><span data-i18n="t_notre_ambition_avec_les_univ">« Notre ambition avec Les Universités CEFAT est d'offrir une formation d'élite accessible, couplée à une maîtrise parfaite de l'anglais à Accra, pour garantir une insertion professionnelle immédiate. »</span></blockquote>
-          <p class="text-muted mb-3" data-i18n="founder_text">
-            Depuis sa création sous l'impulsion de <strong><span data-i18n="t_m_aman_honore">M. AMAN HONORE</span></strong>, le réseau Les Universités CEFAT s'est donné pour mission d'offrir une formation académique et professionnelle d'excellence. Grâce à nos 4 entités spécialisées et nos 5 campus stratégiques en Côte d'Ivoire et au Ghana, nous formons une nouvelle génération de cadres bilingues, rigoureux et immédiatement opérationnels.
+      <header class="founder-head">
+        <p class="founder-head__eyebrow" data-i18n="hist_sub">Notre Histoire</p>
+        <h2 data-i18n="hist_title">
+          De 2006 à aujourd'hui, un réseau bâti <span>entité par entité</span>
+        </h2>
+      </header>
+
+      <div class="founder-lead">
+        <figure class="founder-media">
+          <img src="assets/img/hero/histoire-campus.jpg?v=a4b01819" alt="Bâtiment universitaire historique" loading="lazy">
+          <figcaption data-i18n="hist_caption">Les Universités CEFAT — Depuis 2006</figcaption>
+        </figure>
+
+        <div class="founder-say">
+          <figure class="founder-quote">
+            <blockquote data-i18n="hist_quote">Contribuer durablement au développement du capital humain, à travers la formation et le renforcement des compétences.</blockquote>
+            <figcaption class="founder-sign">
+              <span class="founder-sign__name" data-i18n="hist_sign_name">M. Aman Essé Honoré</span>
+              <span class="founder-sign__role" data-i18n="hist_sign_role">Fondateur du groupe — Abidjan, mai 2006</span>
+            </figcaption>
+          </figure>
+
+          <p class="founder-note" data-i18n="hist_text">
+            Fondée en mai 2006 à Abidjan, <strong>CEFAT INTERNATIONAL HOLDING</strong> se consacre d'abord à la formation professionnelle et au renforcement des compétences. Le groupe se structure ensuite entité par entité : l'Institut IFCI en 2019, le Centre d'Immersion Linguistique d'Accra en 2022, l'Université CEFAT International en 2024, puis CEFAT Business School en 2025. Dix-neuf ans plus tard, le réseau compte quatre établissements complémentaires et cinq campus en Côte d'Ivoire et au Ghana.
           </p>
-
-          <div class="row g-3 mt-2 mb-4">
-            <div class="col-sm-6">
-              <div class="d-flex align-items-center gap-2">
-                <i class="fa-solid fa-circle-check text-danger fs-5"></i>
-                <span class="fw-semibold text-dark" data-i18n="founder_feat_1">4 Écoles Complémentaires</span>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="d-flex align-items-center gap-2">
-                <i class="fa-solid fa-circle-check text-danger fs-5"></i>
-                <span class="fw-semibold text-dark" data-i18n="founder_feat_2">5 Campus de Proximité</span>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="d-flex align-items-center gap-2">
-                <i class="fa-solid fa-circle-check text-danger fs-5"></i>
-                <span class="fw-semibold text-dark" data-i18n="founder_feat_3">Immersion Bilingue au Ghana</span>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="d-flex align-items-center gap-2">
-                <i class="fa-solid fa-circle-check text-danger fs-5"></i>
-                <span class="fw-semibold text-dark" data-i18n="founder_feat_4">Présentiel & E-Learning</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="d-flex align-items-center gap-3 pt-2">
-            <div>
-              <h5 class="mb-0 text-dark fw-bold" data-i18n="founder_name">M. AMAN HONORE</h5>
-              <small class="text-danger fw-semibold" data-i18n="founder_role">Fondateur & Président du Réseau CEFAT</small>
-            </div>
-          </div>
         </div>
       </div>
+
+      <ol class="frise" aria-label="Étapes de la création du réseau">
+        <li class="frise__jalon">
+          <span class="frise__annee">2006</span>
+          <span class="frise__rail" aria-hidden="true"></span>
+          <span class="frise__nom" data-i18n="hist_step_1">Création du groupe CEFAT</span>
+        </li>
+        <li class="frise__jalon">
+          <span class="frise__annee">2019</span>
+          <span class="frise__rail" aria-hidden="true"></span>
+          <span class="frise__nom" data-i18n="hist_step_2">Institut de formation IFCI</span>
+        </li>
+        <li class="frise__jalon">
+          <span class="frise__annee">2022</span>
+          <span class="frise__rail" aria-hidden="true"></span>
+          <span class="frise__nom" data-i18n="hist_step_3">Centre d'immersion d'Accra</span>
+        </li>
+        <li class="frise__jalon">
+          <span class="frise__annee">2024</span>
+          <span class="frise__rail" aria-hidden="true"></span>
+          <span class="frise__nom" data-i18n="hist_step_4">Université CEFAT International</span>
+        </li>
+        <li class="frise__jalon">
+          <span class="frise__annee">2025</span>
+          <span class="frise__rail" aria-hidden="true"></span>
+          <span class="frise__nom" data-i18n="hist_step_5">CEFAT Business School</span>
+        </li>
+      </ol>
+
     </div>
   </section>
 
   <!-- ==================== SECTION 3 : LES 4 ENTITÉS DU RÉSEAU ==================== -->
-  <section id="entites" class="service-details-four p-relative fix pt-120 pb-90 bg-light">
+  <section id="entites" class="service-details-four p-relative fix pt-120 pb-120 band-warm">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-8 text-center">
@@ -343,395 +476,431 @@
         </div>
       </div>
 
-      <div class="row g-4">
-        <!-- Entity 1: Université CEFAT International -->
-        <div class="col-xl-3 col-lg-6 col-md-6">
-          <div class="entity-card">
-            <div class="entity-card-img">
-              <img src="assets/img/entities/entity-international.jpg" alt="Université CEFAT International">
-              <span class="entity-badge">Université</span>
-            </div>
-            <div class="entity-card-body">
-              <h4 data-i18n="entity_1_title">Université CEFAT International</h4>
-              <p data-i18n="entity_1_desc">Programmes universitaires d'élite (Licences & Masters) tournés vers l'international, la recherche et l'innovation.</p>
-            </div>
-            <div class="entity-card-footer">
-              <span class="badge bg-danger" data-i18n="entity_1_cycles">Licence • Master</span>
-              <a href="entites.html#international"><span data-i18n="btn_learn_more">En savoir plus</span> <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
-          </div>
+      <!-- Trois entités visibles, la quatrième atteinte à la flèche.
+           Défilement natif (scroll-snap) : le glissement tactile marche seul. -->
+      <div class="entity-carousel" data-entity-carousel>
+        <div class="entity-carousel__nav">
+          <button type="button" class="ec-arrow" data-dir="prev"
+                  aria-label="Entités précédentes" data-i18n-label="ec_prev" disabled>
+            <i class="fa-solid fa-arrow-left"></i>
+          </button>
+          <button type="button" class="ec-arrow" data-dir="next"
+                  aria-label="Entité suivante" data-i18n-label="ec_next">
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
         </div>
 
-        <!-- Entity 2: IFCI -->
-        <div class="col-xl-3 col-lg-6 col-md-6">
-          <div class="entity-card">
-            <div class="entity-card-img">
-              <img src="assets/img/entities/entity-ifci.jpg" alt="Institut de Formation CEFAT-Inter">
-              <span class="entity-badge">Institut</span>
-            </div>
-            <div class="entity-card-body">
-              <h4 data-i18n="entity_2_title">Institut IFCI</h4>
-              <p data-i18n="entity_2_desc">Pôle d'excellence technique et professionnel préparant aux diplômes d'État (BTS) et aux certifications métiers reconnues.</p>
-            </div>
-            <div class="entity-card-footer">
-              <span class="badge bg-primary" data-i18n="entity_2_cycles">BTS d'État</span>
-              <a href="entites.html#ifci"><span data-i18n="btn_learn_more">En savoir plus</span> <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
+        <div class="entity-carousel__viewport" tabindex="0" role="group"
+             aria-roledescription="carrousel" aria-label="Les 4 entités du réseau">
+          <div class="entity-slide">
+            <a class="entity-card" href="entite-universite.html">
+              <div class="entity-card-img">
+                <img src="assets/img/entities/entity-international.jpg?v=f1bd2b62" alt="Université CEFAT International">
+              </div>
+              <div class="entity-card-body">
+                <h4 data-i18n="entity_1_title">Université CEFAT International</h4>
+                <p data-i18n="entity_1_desc">Programmes universitaires d'élite (Licences & Masters) tournés vers l'international, la recherche et l'innovation.</p>
+              </div>
+              <div class="entity-card-footer">
+                <span class="entity-card-tags">
+                  <span class="entity-badge" data-i18n="ent_type_univ">Université</span>
+                  <span class="badge bg-danger" data-i18n="entity_1_cycles">Licence • Master</span>
+                </span>
+              </div>
+            </a>
           </div>
-        </div>
-
-        <!-- Entity 3: CEFAT Business School -->
-        <div class="col-xl-3 col-lg-6 col-md-6">
-          <div class="entity-card">
-            <div class="entity-card-img">
-              <img src="assets/img/entities/entity-business-school.jpg" alt="CEFAT Business School">
-              <span class="entity-badge">Business School</span>
-            </div>
-            <div class="entity-card-body">
-              <h4 data-i18n="entity_3_title">CEFAT Business School</h4>
-              <p data-i18n="entity_3_desc">École de management délivrant des Bachelors, Masters et MBA en Management, Finance et Stratégie d'entreprise.</p>
-            </div>
-            <div class="entity-card-footer">
-              <span class="badge bg-dark" data-i18n="entity_3_cycles">Bachelor • MBA</span>
-              <a href="entites.html#business-school"><span data-i18n="btn_learn_more">En savoir plus</span> <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
+          <div class="entity-slide">
+            <a class="entity-card" href="entite-ifci.html">
+              <div class="entity-card-img">
+                <img src="assets/img/entities/entity-ifci.jpg?v=cb2b2399" alt="Institut de Formation CEFAT-Inter (IFCI)">
+              </div>
+              <div class="entity-card-body">
+                <h4 data-i18n="entity_2_title">Institut de Formation CEFAT-Inter (IFCI)</h4>
+                <p data-i18n="entity_2_desc">Pôle d'excellence technique et professionnel préparant aux diplômes d'État (BTS) et aux certifications métiers reconnues.</p>
+              </div>
+              <div class="entity-card-footer">
+                <span class="entity-card-tags">
+                  <span class="entity-badge" data-i18n="ent_type_institut">Institut</span>
+                  <span class="badge bg-primary" data-i18n="entity_2_cycles">BTS d'État</span>
+                </span>
+              </div>
+            </a>
           </div>
-        </div>
-
-        <!-- Entity 4: Centre Linguistique Accra -->
-        <div class="col-xl-3 col-lg-6 col-md-6">
-          <div class="entity-card">
-            <div class="entity-card-img">
-              <img src="assets/img/entities/entity-langues-accra.jpg" alt="Centre d'Immersion Linguistique Accra">
-              <span class="entity-badge">Ghana - Accra</span>
-            </div>
-            <div class="entity-card-body">
-              <h4 data-i18n="entity_4_title">Centre Linguistique Accra</h4>
-              <p data-i18n="entity_4_desc">Immersion totale en anglais au Ghana pour acquérir un bilinguisme parfait, un atout décisif pour l'emploi.</p>
-            </div>
-            <div class="entity-card-footer">
-              <span class="badge bg-success" data-i18n="entity_4_cycles">100% Anglais</span>
-              <a href="entites.html#accra"><span data-i18n="btn_learn_more">En savoir plus</span> <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
+          <div class="entity-slide">
+            <a class="entity-card" href="entite-business-school.html">
+              <div class="entity-card-img">
+                <img src="assets/img/entities/entity-business-school.jpg?v=d16a9f87" alt="CEFAT Business School">
+              </div>
+              <div class="entity-card-body">
+                <h4 data-i18n="entity_3_title">CEFAT Business School</h4>
+                <p data-i18n="entity_3_desc">École de management de haut niveau délivrant des Bachelors, Masters et MBA en Management, Finance et Stratégie d'entreprise.</p>
+              </div>
+              <div class="entity-card-footer">
+                <span class="entity-card-tags">
+                  <span class="entity-badge" data-i18n="ent_type_bs">Business School</span>
+                  <span class="badge bg-dark" data-i18n="entity_3_cycles">Bachelor à MBA</span>
+                </span>
+              </div>
+            </a>
+          </div>
+          <div class="entity-slide">
+            <a class="entity-card" href="entite-accra.html">
+              <div class="entity-card-img">
+                <img src="assets/img/entities/entity-langues-accra.jpg?v=2254be2d" alt="Centre d'Immersion Linguistique — Accra">
+              </div>
+              <div class="entity-card-body">
+                <h4 data-i18n="entity_4_title">Centre d'Immersion Linguistique — Accra</h4>
+                <p data-i18n="entity_4_desc">Immersion totale en anglais au Ghana pour acquérir un bilinguisme parfait, un atout décisif sur le marché du travail.</p>
+              </div>
+              <div class="entity-card-footer">
+                <span class="entity-card-tags">
+                  <span class="entity-badge" data-i18n="ent_type_accra">Ghana · Accra</span>
+                  <span class="badge bg-success" data-i18n="entity_4_cycles">100% Anglais</span>
+                </span>
+              </div>
+            </a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ==================== SECTION 4 : FORMATIONS & DOMAINES (STYLE THÈME MODÈLE) ==================== -->
-  <section id="formations" class="departments-area p-relative pt-120 pb-90">
-    <div class="container">
-      <div class="row justify-content-center align-items-center">
-        <div class="col-lg-8 text-center">
-          <div class="section-title2 mb-80">
-            <h5><span data-i18n="t_fili_res_domaines">Filières & Domaines</span></h5>
-            <h2 data-i18n="formations_title">Expertise Académique & <span>Formations d'Avenir</span></h2>
-            <p class="text-muted"><span data-i18n="t_7_grands_domaines_d_enseigneme">7 grands domaines d'enseignement supérieur dispensés par un corps professoral hautement qualifié.</span></p>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-12">
-          <ul class="departments-post">
-            <!-- 01. Gestion -->
-            <li>
-              <div class="row align-items-center departments-post-hover active">
-                <div class="col-lg-2 col-md-3">
-                  <div class="departments-number">
-                    <strong>01.</strong>
-                  </div>
-                </div>
-                <div class="col-lg-7 col-md-6">
-                  <div class="departments-content">
-                    <h4><a href="formations.html#gestion"><span data-i18n="dom_1_title">Sciences de Gestion & Administration</span></a></h4>
-                    <p data-i18n="p_management_des_pme_gesti">Management des PME, Gestion Commerciale, Ressources Humaines, Logistique & Transport (BTS, Licence, Master).</p>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-3 text-end">
-                  <a href="candidatures.html?domain=Gestion" class="btn-cefat-primary btn-sm"><span data-i18n="btn_postuler">Postuler</span> <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
-              </div>
-            </li>
-
-            <!-- 02. Informatique -->
-            <li>
-              <div class="row align-items-center departments-post-hover">
-                <div class="col-lg-2 col-md-3">
-                  <div class="departments-number">
-                    <strong>02.</strong>
-                  </div>
-                </div>
-                <div class="col-lg-7 col-md-6">
-                  <div class="departments-content">
-                    <h4><a href="formations.html#informatique"><span data-i18n="dom_2_title">Informatique & Technologies du Numérique</span></a></h4>
-                    <p data-i18n="p_d_veloppement_d_applicati">Développement d'Applications, Systèmes Réseaux & Cloud, Cybersécurité, Intelligence Artificielle (BTS IDA, Licence, Master).</p>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-3 text-end">
-                  <a href="candidatures.html?domain=Informatique" class="btn-cefat-primary btn-sm"><span data-i18n="btn_postuler">Postuler</span> <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
-              </div>
-            </li>
-
-            <!-- 03. Génie Civil -->
-            <li>
-              <div class="row align-items-center departments-post-hover">
-                <div class="col-lg-2 col-md-3">
-                  <div class="departments-number">
-                    <strong>03.</strong>
-                  </div>
-                </div>
-                <div class="col-lg-7 col-md-6">
-                  <div class="departments-content">
-                    <h4><a href="formations.html#geniecivil"><span data-i18n="t_g_nie_civil_b_timent_travau">Génie Civil, Bâtiment & Travaux Publics</span></a></h4>
-                    <p data-i18n="p_conception_d_ouvrages_d_a">Conception d'ouvrages d'art, Conduite de chantiers, Topographie, Énergies renouvelables (BTS Bâtiment/TP, Licence Pro).</p>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-3 text-end">
-                  <a href="candidatures.html?domain=Génie Civil" class="btn-cefat-primary btn-sm"><span data-i18n="btn_postuler">Postuler</span> <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
-              </div>
-            </li>
-
-            <!-- 04. Droit -->
-            <li>
-              <div class="row align-items-center departments-post-hover">
-                <div class="col-lg-2 col-md-3">
-                  <div class="departments-number">
-                    <strong>04.</strong>
-                  </div>
-                </div>
-                <div class="col-lg-7 col-md-6">
-                  <div class="departments-content">
-                    <h4><a href="formations.html#droit"><span data-i18n="t_sciences_juridiques_droit_de">Sciences Juridiques & Droit des Affaires</span></a></h4>
-                    <p data-i18n="p_droit_priv_droit_fiscal">Droit Privé, Droit Fiscal & Douanier, Carrières Judiciaires, Juriste d'Entreprise (Licence, Master Professionnel).</p>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-3 text-end">
-                  <a href="candidatures.html?domain=Droit" class="btn-cefat-primary btn-sm"><span data-i18n="btn_postuler">Postuler</span> <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
-              </div>
-            </li>
-
-            <!-- 05. Marketing & Communication -->
-            <li>
-              <div class="row align-items-center departments-post-hover">
-                <div class="col-lg-2 col-md-3">
-                  <div class="departments-number">
-                    <strong>05.</strong>
-                  </div>
-                </div>
-                <div class="col-lg-7 col-md-6">
-                  <div class="departments-content">
-                    <h4><a href="formations.html#marketing"><span data-i18n="dom_5_title">Marketing Digital & Communication d'Entreprise</span></a></h4>
-                    <p data-i18n="p_marketing_strat_gique_co">Marketing Stratégique, Communication Digitale, Publicité, Relations Publiques & Événementiel (BTS, Bachelor, Master).</p>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-3 text-end">
-                  <a href="candidatures.html?domain=Marketing" class="btn-cefat-primary btn-sm"><span data-i18n="btn_postuler">Postuler</span> <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
-              </div>
-            </li>
-
-            <!-- 06. Finance & Comptabilité -->
-            <li>
-              <div class="row align-items-center departments-post-hover">
-                <div class="col-lg-2 col-md-3">
-                  <div class="departments-number">
-                    <strong>06.</strong>
-                  </div>
-                </div>
-                <div class="col-lg-7 col-md-6">
-                  <div class="departments-content">
-                    <h4><a href="formations.html#finance"><span data-i18n="dom_6_title">Finance, Comptabilité & Audit</span></a></h4>
-                    <p data-i18n="p_comptabilit_gestion_aud">Comptabilité Gestion, Audit & Contrôle de Gestion, Banque, Assurance & Ingénierie Financière (BTS FCGE, Licence, Master, MBA).</p>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-3 text-end">
-                  <a href="candidatures.html?domain=Finance" class="btn-cefat-primary btn-sm"><span data-i18n="btn_postuler">Postuler</span> <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== SECTION 5 : LES 5 CAMPUS & CARTE INTERACTIVE ==================== -->
-  <section id="campus" class="event-area p-relative fix pt-120 pb-90 bg-light">
+  <!-- ==================== SECTION 4 : FILIÈRES & DOMAINES ==================== -->
+  <section id="formations" class="services-area p-relative fix">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-8 text-center">
           <div class="section-title2 mb-60">
-            <h5 data-i18n="campuses_sub">Notre Maillage Géographique</h5>
-            <h2 data-i18n="campuses_title">
-              5 Campus Modernes en <span>Côte d'Ivoire & Ghana</span>
+            <h5 data-i18n="dom_sub">Filières &amp; Domaines</h5>
+            <h2 data-i18n="dom_title">
+              Expertise Académique &amp; <span>Formations d'Avenir</span>
             </h2>
-            <p class="text-muted"><span data-i18n="t_des_infrastructures_modernes_d">Des infrastructures modernes dotées de salles informatiques, bibliothèques, espaces étudiants et connexion haut débit.</span></p>
           </div>
         </div>
       </div>
 
-      <div class="row g-4">
-        <!-- Interactive Map / SVG Overview Column -->
-        <div class="col-lg-5 mb-4">
-          <div class="interactive-map-container h-100">
-            <h4 class="mb-3 text-primary"><i class="fa-solid fa-map-location-dot text-danger me-2"></i> Carte Interactive des 5 Campus</h4>
-            <p class="small text-muted mb-4"><span data-i18n="t_cliquez_sur_un_rep_re_g_ograph">Cliquez sur un repère géographique pour visualiser les détails du campus.</span></p>
-
-            <div class="map-svg-wrapper">
-              <!-- SVG Country Silhouette + Campus Pins -->
-              <svg viewBox="0 0 400 400" width="100%" height="340" style="background:#E2E8F0; border-radius:12px;">
-                <!-- CI & Ghana Land simplified paths -->
-                <path d="M 60,60 L 220,50 L 250,150 L 260,330 L 100,340 L 40,240 Z" fill="#CBD5E1" stroke="#94A3B8" stroke-width="2"/>
-                <path d="M 260,120 L 360,110 L 380,290 L 260,310 Z" fill="#CBD5E1" stroke="#94A3B8" stroke-width="2"/>
-                <text x="110" y="160" font-family="Inter" font-size="14" font-weight="bold" fill="#64748B">CÔTE D'IVOIRE</text>
-                <text x="290" y="180" font-family="Inter" font-size="14" font-weight="bold" fill="#64748B">GHANA</text>
-              </svg>
-
-              <!-- Pin 1: Abidjan -->
-              <div class="campus-pin active" style="top: 75%; left: 35%;" data-campus="abidjan">
-                <div class="campus-pin-icon"><i class="fa-solid fa-building-columns"></i></div>
-                <div class="campus-pin-label" data-i18n="cam_pin_abidjan">Abidjan (Angré)</div>
+      <ul class="departments-post">
+            <li>
+              <div class="dept-row">
+                <div class="dept-row__main">
+                  <span class="dept-row__num" aria-hidden="true">01</span>
+                  <span class="dept-row__text">
+                    <h3 class="dept-row__title"><a href="formations.html?domain=Gestion" data-i18n="dom_1_title">Sciences de Gestion &amp; Administration</a></h3>
+                    <p class="dept-row__desc" data-i18n="dom_1_desc">Management des PME, Gestion Commerciale, Ressources Humaines, Logistique &amp; Transport.</p>
+                  </span>
+                </div>
+                <div class="dept-row__levels">
+                  <span class="dept-level">BTS</span>
+                  <span class="dept-level">Licence</span>
+                  <span class="dept-level">Master</span>
+                </div>
+                <a class="dept-row__cta" href="candidatures.html?domain=Gestion">
+                  <span data-i18n="btn_postuler">Postuler</span> <i class="fa-solid fa-arrow-right"></i>
+                </a>
               </div>
-
-              <!-- Pin 2: Abengourou -->
-              <div class="campus-pin" style="top: 50%; left: 52%;" data-campus="abengourou">
-                <div class="campus-pin-icon"><i class="fa-solid fa-location-dot"></i></div>
-                <div class="campus-pin-label" data-i18n="cam_pin_abengourou">Abengourou</div>
+            </li>
+            <li>
+              <div class="dept-row">
+                <div class="dept-row__main">
+                  <span class="dept-row__num" aria-hidden="true">02</span>
+                  <span class="dept-row__text">
+                    <h3 class="dept-row__title"><a href="formations.html?domain=Informatique" data-i18n="dom_2_title">Informatique &amp; Technologies du Numérique</a></h3>
+                    <p class="dept-row__desc" data-i18n="dom_2_desc">Développement d'Applications, Systèmes Réseaux &amp; Cloud, Cybersécurité, Intelligence Artificielle.</p>
+                  </span>
+                </div>
+                <div class="dept-row__levels">
+                  <span class="dept-level">BTS</span>
+                  <span class="dept-level">Licence</span>
+                  <span class="dept-level">Master</span>
+                </div>
+                <a class="dept-row__cta" href="candidatures.html?domain=Informatique">
+                  <span data-i18n="btn_postuler">Postuler</span> <i class="fa-solid fa-arrow-right"></i>
+                </a>
               </div>
-
-              <!-- Pin 3: Bondoukou -->
-              <div class="campus-pin" style="top: 32%; left: 55%;" data-campus="bondoukou">
-                <div class="campus-pin-icon"><i class="fa-solid fa-location-dot"></i></div>
-                <div class="campus-pin-label" data-i18n="cam_pin_bondoukou">Bondoukou</div>
+            </li>
+            <li>
+              <div class="dept-row">
+                <div class="dept-row__main">
+                  <span class="dept-row__num" aria-hidden="true">03</span>
+                  <span class="dept-row__text">
+                    <h3 class="dept-row__title"><a href="formations.html?domain=Génie+Civil" data-i18n="dom_3_title">Génie Civil, Bâtiment &amp; Travaux Publics</a></h3>
+                    <p class="dept-row__desc" data-i18n="dom_3_desc">Conception d'ouvrages d'art, Conduite de chantiers, Topographie, Énergies renouvelables.</p>
+                  </span>
+                </div>
+                <div class="dept-row__levels">
+                  <span class="dept-level">BTS</span>
+                  <span class="dept-level">Licence</span>
+                </div>
+                <a class="dept-row__cta" href="candidatures.html?domain=Génie+Civil">
+                  <span data-i18n="btn_postuler">Postuler</span> <i class="fa-solid fa-arrow-right"></i>
+                </a>
               </div>
-
-              <!-- Pin 4: Bonoua -->
-              <div class="campus-pin" style="top: 80%; left: 45%;" data-campus="bonoua">
-                <div class="campus-pin-icon"><i class="fa-solid fa-location-dot"></i></div>
-                <div class="campus-pin-label" data-i18n="cam_pin_bonoua">Bonoua</div>
+            </li>
+            <li>
+              <div class="dept-row">
+                <div class="dept-row__main">
+                  <span class="dept-row__num" aria-hidden="true">04</span>
+                  <span class="dept-row__text">
+                    <h3 class="dept-row__title"><a href="formations.html?domain=Droit" data-i18n="dom_4_title">Sciences Juridiques &amp; Droit des Affaires</a></h3>
+                    <p class="dept-row__desc" data-i18n="dom_4_desc">Droit Privé, Droit Fiscal &amp; Douanier, Carrières Judiciaires, Juriste d'Entreprise.</p>
+                  </span>
+                </div>
+                <div class="dept-row__levels">
+                  <span class="dept-level">Licence</span>
+                  <span class="dept-level">Master</span>
+                </div>
+                <a class="dept-row__cta" href="candidatures.html?domain=Droit">
+                  <span data-i18n="btn_postuler">Postuler</span> <i class="fa-solid fa-arrow-right"></i>
+                </a>
               </div>
-
-              <!-- Pin 5: Accra Ghana -->
-              <div class="campus-pin" style="top: 75%; left: 82%;" data-campus="accra">
-                <div class="campus-pin-icon" style="background:#2B8A3E;"><i class="fa-solid fa-language"></i></div>
-                <div class="campus-pin-label" data-i18n="cam_pin_accra">Accra (Ghana)</div>
+            </li>
+            <li>
+              <div class="dept-row">
+                <div class="dept-row__main">
+                  <span class="dept-row__num" aria-hidden="true">05</span>
+                  <span class="dept-row__text">
+                    <h3 class="dept-row__title"><a href="formations.html?domain=Marketing" data-i18n="dom_5_title">Marketing Digital &amp; Communication d'Entreprise</a></h3>
+                    <p class="dept-row__desc" data-i18n="dom_5_desc">Marketing Stratégique, Communication Digitale, Publicité, Relations Publiques &amp; Événementiel.</p>
+                  </span>
+                </div>
+                <div class="dept-row__levels">
+                  <span class="dept-level">BTS</span>
+                  <span class="dept-level">Licence</span>
+                  <span class="dept-level">Master</span>
+                </div>
+                <a class="dept-row__cta" href="candidatures.html?domain=Marketing">
+                  <span data-i18n="btn_postuler">Postuler</span> <i class="fa-solid fa-arrow-right"></i>
+                </a>
               </div>
-            </div>
+            </li>
+            <li>
+              <div class="dept-row">
+                <div class="dept-row__main">
+                  <span class="dept-row__num" aria-hidden="true">06</span>
+                  <span class="dept-row__text">
+                    <h3 class="dept-row__title"><a href="formations.html?domain=Finance" data-i18n="dom_6_title">Finance, Comptabilité &amp; Audit</a></h3>
+                    <p class="dept-row__desc" data-i18n="dom_6_desc">Comptabilité Gestion, Audit &amp; Contrôle de Gestion, Banque, Assurance &amp; Ingénierie Financière.</p>
+                  </span>
+                </div>
+                <div class="dept-row__levels">
+                  <span class="dept-level">BTS</span>
+                  <span class="dept-level">Licence</span>
+                  <span class="dept-level">Master</span>
+                  <span class="dept-level">MBA</span>
+                </div>
+                <a class="dept-row__cta" href="candidatures.html?domain=Finance">
+                  <span data-i18n="btn_postuler">Postuler</span> <i class="fa-solid fa-arrow-right"></i>
+                </a>
+              </div>
+            </li>
+      </ul>
+
+      <div class="text-center" style="margin-top: var(--stack-lg);">
+        <a href="formations.html" class="btn-cefat-secondary">
+          <span data-i18n="btn_all_courses">Consulter l'Ensemble de Notre Catalogue</span> <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SECTION 5 : LES 5 CAMPUS ==================== -->
+  <section id="campus" class="campus-band p-relative fix pt-120 pb-120">
+    <div class="container" data-campus-switch>
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+          <div class="section-title2 text-center">
+            <h5 data-i18n="campus_sub">Notre Maillage Territorial</h5>
+            <h2 data-i18n="campus_title">
+              5 Campus Modernes en <span>Côte d'Ivoire &amp; Ghana</span>
+            </h2>
+          </div>
+        </div>
+      </div>
+
+      <!-- Le rail : quatre villes ivoiriennes, la frontière, puis Accra. -->
+      <div class="corridor">
+        <div class="corridor__track" role="tablist" aria-label="Choisir un campus">
+          <button type="button" role="tab" id="tab-abidjan" class="corridor__stop is-active"
+                  aria-selected="true" aria-controls="panel-abidjan" tabindex="0">
+            <span class="corridor__name" data-i18n="cor_abidjan">Abidjan</span>
+            <span class="corridor__meta" data-i18n="cor_abidjan_meta">Siège · Cocody Angré</span>
+          </button>
+          <button type="button" role="tab" id="tab-bonoua" class="corridor__stop"
+                  aria-selected="false" aria-controls="panel-bonoua" tabindex="-1">
+            <span class="corridor__name" data-i18n="cor_bonoua">Bonoua</span>
+            <span class="corridor__meta" data-i18n="cor_bonoua_meta">Sud-Comoé</span>
+          </button>
+          <button type="button" role="tab" id="tab-abengourou" class="corridor__stop"
+                  aria-selected="false" aria-controls="panel-abengourou" tabindex="-1">
+            <span class="corridor__name" data-i18n="cor_abengourou">Abengourou</span>
+            <span class="corridor__meta" data-i18n="cor_abengourou_meta">Moyen-Comoé</span>
+          </button>
+          <button type="button" role="tab" id="tab-bondoukou" class="corridor__stop"
+                  aria-selected="false" aria-controls="panel-bondoukou" tabindex="-1">
+            <span class="corridor__name" data-i18n="cor_bondoukou">Bondoukou</span>
+            <span class="corridor__meta" data-i18n="cor_bondoukou_meta">Gontougo</span>
+          </button>
+          <div class="corridor__border" aria-hidden="true">
+            <span data-i18n="cor_border">Frontière</span>
+          </div>
+          <button type="button" role="tab" id="tab-accra" class="corridor__stop corridor__stop--gh"
+                  aria-selected="false" aria-controls="panel-accra" tabindex="-1">
+            <span class="corridor__name" data-i18n="cor_accra">Accra</span>
+            <span class="corridor__meta" data-i18n="cor_accra_meta">Ghana · 100% anglais</span>
+          </button>
           </div>
         </div>
 
-        <!-- Campus Detail Cards -->
-        <div class="col-lg-7">
-          <div class="row g-3">
-            <!-- 1. Abidjan -->
-            <div class="col-md-6">
-              <div class="campus-card campus-info-card active" data-campus="abidjan">
-                <div class="campus-card-img">
-                  <img src="assets/img/campus/campus-abidjan.jpg" alt="Campus Abidjan Angré">
-                  <span class="campus-flag" data-i18n="cam_badge_hq">Siège Principal</span>
-                </div>
-                <div class="campus-card-content">
-                  <h4 data-i18n="cam_card_abidjan_title">Campus Abidjan</h4>
-                  <p class="small text-muted mb-2" data-i18n="cam_card_abidjan_addr">Cocody Angré 8ème Tranche, Abidjan</p>
-                  <ul class="campus-meta">
-                    <li><i class="fa-solid fa-phone"></i> +225 27 22 285 991 / 07 126 517 19</li>
-                    <li><i class="fa-solid fa-graduation-cap"></i> <span data-i18n="cam_card_abidjan_prog">BTS, Licence, Master, MBA</span></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <!-- 2. Abengourou -->
-            <div class="col-md-6">
-              <div class="campus-card campus-info-card" data-campus="abengourou">
-                <div class="campus-card-img">
-                  <img src="assets/img/campus/campus-abengourou.jpg" alt="Campus Abengourou">
-                  <span class="campus-flag" data-i18n="cam_badge_moyen_comoe">Moyen-Comoé</span>
-                </div>
-                <div class="campus-card-content">
-                  <h4 data-i18n="cam_card_abengourou_title">Campus Abengourou</h4>
-                  <p class="small text-muted mb-2" data-i18n="cam_card_abengourou_addr">Centre-ville universitaire, Abengourou</p>
-                  <ul class="campus-meta">
-                    <li><i class="fa-solid fa-phone"></i> +225 01 009 595 18</li>
-                    <li><i class="fa-solid fa-graduation-cap"></i> <span data-i18n="cam_card_abengourou_prog">BTS, Licence Professionnelle</span></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <!-- 3. Bondoukou -->
-            <div class="col-md-6">
-              <div class="campus-card campus-info-card" data-campus="bondoukou">
-                <div class="campus-card-img">
-                  <img src="assets/img/campus/campus-bondoukou.jpg" alt="Campus Bondoukou">
-                  <span class="campus-flag" data-i18n="cam_badge_gontougo">Région du Gontougo</span>
-                </div>
-                <div class="campus-card-content">
-                  <h4 data-i18n="cam_card_bondoukou_title">Campus Bondoukou</h4>
-                  <p class="small text-muted mb-2" data-i18n="cam_card_bondoukou_addr">Quartier Administratif, Bondoukou</p>
-                  <ul class="campus-meta">
-                    <li><i class="fa-solid fa-phone"></i> +225 07 126 517 19</li>
-                    <li><i class="fa-solid fa-graduation-cap"></i> <span data-i18n="cam_card_bondoukou_prog">BTS Tertiaire & Industriel</span></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <!-- 4. Bonoua -->
-            <div class="col-md-6">
-              <div class="campus-card campus-info-card" data-campus="bonoua">
-                <div class="campus-card-img">
-                  <img src="assets/img/campus/campus-bonoua.jpg" alt="Campus Bonoua">
-                  <span class="campus-flag" data-i18n="cam_badge_sud_comoe">Région du Sud-Comoé</span>
-                </div>
-                <div class="campus-card-content">
-                  <h4 data-i18n="cam_card_bonoua_title">Campus Bonoua</h4>
-                  <p class="small text-muted mb-2" data-i18n="cam_card_bonoua_addr">Route Internationale, Bonoua</p>
-                  <ul class="campus-meta">
-                    <li><i class="fa-solid fa-phone"></i> +225 01 009 595 18</li>
-                    <li><i class="fa-solid fa-graduation-cap"></i> <span data-i18n="cam_card_bonoua_prog">BTS & Certifications</span></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <!-- 5. Accra Ghana -->
-            <div class="col-12">
-              <div class="campus-card campus-info-card" data-campus="accra">
-                <div class="campus-card-content bg-light border-start border-4 border-success">
-                  <div class="d-flex flex-wrap justify-content-between align-items-center">
-                    <div>
-                      <h4 class="text-success"><i class="fa-solid fa-earth-africa me-2"></i> <span data-i18n="cam_card_accra_title">Campus Accra (Ghana) — Immersion Linguistique</span></h4>
-                      <p class="small text-muted mb-0" data-i18n="cam_card_accra_addr">East Legon / Airport Residential Area, Accra, Ghana</p>
-                    </div>
-                    <span class="badge bg-success py-2 px-3" data-i18n="cam_card_accra_prog">Centre d'Immersion 100% Bilingue</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+        <div class="campus-panel is-active" id="panel-abidjan" role="tabpanel"
+             aria-labelledby="tab-abidjan">
+          <div class="campus-panel__media">
+            <img src="assets/img/campus/campus-abidjan.jpg?v=6d09f9f4" alt="" loading="lazy">
+          </div>
+          <div class="campus-panel__body">
+            <p class="campus-panel__eyebrow" data-i18n="cam_badge_hq">Siège Principal</p>
+            <h3 class="campus-panel__title" data-i18n="cam_card_abidjan_title">Campus Abidjan</h3>
+            <p class="campus-panel__addr"><i class="fa-solid fa-location-dot"></i> <span data-i18n="cam_card_abidjan_addr">Cocody Angré 8ème Tranche, Abidjan</span></p>
+            <p class="campus-panel__prog"><i class="fa-solid fa-graduation-cap"></i> <span data-i18n="cam_card_abidjan_prog">BTS, Licence, Master, MBA</span></p>
+            <a class="btn-cefat-primary" href="campus.html#abidjan">
+              <span data-i18n="btn_see_campus">Voir ce campus</span> <i class="fa-solid fa-arrow-right"></i>
+            </a>
           </div>
         </div>
+        <div class="campus-panel" id="panel-bonoua" role="tabpanel"
+             aria-labelledby="tab-bonoua" hidden>
+          <div class="campus-panel__media">
+            <img src="assets/img/campus/campus-bonoua.jpg?v=00622c4d" alt="" loading="lazy">
+          </div>
+          <div class="campus-panel__body">
+            <p class="campus-panel__eyebrow" data-i18n="cam_badge_sud_comoe">Région du Sud-Comoé</p>
+            <h3 class="campus-panel__title" data-i18n="cam_card_bonoua_title">Campus Bonoua</h3>
+            <p class="campus-panel__addr"><i class="fa-solid fa-location-dot"></i> <span data-i18n="cam_card_bonoua_addr">Route Internationale, Bonoua</span></p>
+            <p class="campus-panel__prog"><i class="fa-solid fa-graduation-cap"></i> <span data-i18n="cam_card_bonoua_prog">BTS &amp; Certifications</span></p>
+            <a class="btn-cefat-primary" href="campus.html#bonoua">
+              <span data-i18n="btn_see_campus">Voir ce campus</span> <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+        <div class="campus-panel" id="panel-abengourou" role="tabpanel"
+             aria-labelledby="tab-abengourou" hidden>
+          <div class="campus-panel__media">
+            <img src="assets/img/campus/campus-abengourou.jpg?v=fa16507b" alt="" loading="lazy">
+          </div>
+          <div class="campus-panel__body">
+            <p class="campus-panel__eyebrow" data-i18n="cam_badge_moyen_comoe">Moyen-Comoé</p>
+            <h3 class="campus-panel__title" data-i18n="cam_card_abengourou_title">Campus Abengourou</h3>
+            <p class="campus-panel__addr"><i class="fa-solid fa-location-dot"></i> <span data-i18n="cam_card_abengourou_addr">Centre-ville universitaire, Abengourou</span></p>
+            <p class="campus-panel__prog"><i class="fa-solid fa-graduation-cap"></i> <span data-i18n="cam_card_abengourou_prog">BTS, Licence Professionnelle</span></p>
+            <a class="btn-cefat-primary" href="campus.html#abengourou">
+              <span data-i18n="btn_see_campus">Voir ce campus</span> <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+        <div class="campus-panel" id="panel-bondoukou" role="tabpanel"
+             aria-labelledby="tab-bondoukou" hidden>
+          <div class="campus-panel__media">
+            <img src="assets/img/campus/campus-bondoukou.jpg?v=4efad6e6" alt="" loading="lazy">
+          </div>
+          <div class="campus-panel__body">
+            <p class="campus-panel__eyebrow" data-i18n="cam_badge_gontougo">Région du Gontougo</p>
+            <h3 class="campus-panel__title" data-i18n="cam_card_bondoukou_title">Campus Bondoukou</h3>
+            <p class="campus-panel__addr"><i class="fa-solid fa-location-dot"></i> <span data-i18n="cam_card_bondoukou_addr">Quartier Administratif, Bondoukou</span></p>
+            <p class="campus-panel__prog"><i class="fa-solid fa-graduation-cap"></i> <span data-i18n="cam_card_bondoukou_prog">BTS Tertiaire &amp; Industriel</span></p>
+            <a class="btn-cefat-primary" href="campus.html#bondoukou">
+              <span data-i18n="btn_see_campus">Voir ce campus</span> <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+        <div class="campus-panel" id="panel-accra" role="tabpanel"
+             aria-labelledby="tab-accra" hidden>
+          <div class="campus-panel__media">
+            <img src="assets/img/campus/campus-accra.jpg?v=b84d32ed" alt="" loading="lazy">
+          </div>
+          <div class="campus-panel__body">
+            <p class="campus-panel__eyebrow" data-i18n="cam_badge_ghana">Ghana</p>
+            <h3 class="campus-panel__title" data-i18n="cam_card_accra_short">Campus Accra</h3>
+            <p class="campus-panel__addr"><i class="fa-solid fa-location-dot"></i> <span data-i18n="cam_card_accra_addr">East Legon / Airport Residential Area, Accra, Ghana</span></p>
+            <p class="campus-panel__prog"><i class="fa-solid fa-language"></i> <span data-i18n="cam_card_accra_prog">Centre d'Immersion 100% Bilingue</span></p>
+            <a class="btn-cefat-primary" href="campus.html#accra">
+              <span data-i18n="btn_see_campus">Voir ce campus</span> <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center" style="margin-top: var(--stack-lg);">
+        <a href="campus.html" class="btn-cefat-secondary">
+          <span data-i18n="btn_all_campuses">Voir la carte des campus</span> <i class="fa-solid fa-arrow-right"></i>
+        </a>
       </div>
     </div>
   </section>
 
   <!-- ==================== SECTION 6 : VIDÉO IMMERSION CAMPUS ==================== -->
+  <!-- Une seule affiche : la vidéo principale à gauche, la galerie des
+       4 entités posée dans le même cadre, sur la droite.
+       Emplacements vidéo : remplacer data-video par l'ID YouTube réel. -->
   <section class="video-area2 fix">
     <div class="container">
-      <div class="row align-items-center justify-content-center text-center">
-        <div class="col-lg-10">
-          <div class="s-video-content">
-            <a href="https://www.youtube.com/watch?v=BOB2f_tKlhc" class="play-video-btn popup-video mb-4" aria-label="Lire la vidéo">
-              <i class="fa-solid fa-play"></i>
-            </a>
-            <h5 class="text-uppercase text-danger fw-bold letter-spacing-2 mb-2" data-i18n="video_badge">Visite Virtuelle & Immersion</h5>
-            <h2 class="text-white mb-4" data-i18n="video_title">Découvrez la Vie Étudiante au sein des <span>Universités CEFAT</span></h2>
-            <p class="text-white-50 mx-auto max-w-700"><span data-i18n="t_plongez_au_c_ur_de_nos_campus">Plongez au cœur de nos campus, découvrez nos laboratoires, nos cours interactifs et l'ambiance unique de notre Centre d'Immersion Linguistique à Accra.</span></p>
+      <div class="video-card">
+        <img class="video-card__still" src="assets/img/entities/entity-international.jpg?v=f1bd2b62" alt="" loading="lazy">
+        <span class="video-card__scrim" aria-hidden="true"></span>
+
+        <div class="video-card__inner">
+          <a class="video-card__main popup-video" href="https://www.youtube.com/watch?v=BOB2f_tKlhc"
+             data-video="BOB2f_tKlhc" aria-label="Lire la visite virtuelle des campus CEFAT">
+            <span class="video-card__play" aria-hidden="true"><i class="fa-solid fa-play"></i></span>
+            <span class="video-card__caption">
+              <span class="video-card__title" data-i18n="sub_international">Université CEFAT International</span>
+              <span class="video-card__desc" data-i18n="entity_1_desc">Programmes universitaires d'élite (Licences &amp; Masters) tournés vers l'international, la recherche et l'innovation.</span>
+            </span>
+          </a>
+
+          <div class="video-list">
+            <button type="button" class="video-thumb is-active" data-video="BOB2f_tKlhc"
+                    data-still="assets/img/entities/entity-international.jpg?v=f1bd2b62" data-title-key="sub_international" data-desc-key="entity_1_desc">
+              <span class="video-thumb__still">
+                <img src="assets/img/entities/entity-international.jpg?v=f1bd2b62" alt="" loading="lazy">
+                <span class="video-thumb__play" aria-hidden="true"><i class="fa-solid fa-play"></i></span>
+              </span>
+              <span class="video-thumb__body">
+                <span class="video-thumb__title" data-i18n="sub_international">Université CEFAT International</span>
+                <span class="video-thumb__meta">3:12</span>
+              </span>
+            </button>
+            <button type="button" class="video-thumb" data-video="BOB2f_tKlhc"
+                    data-still="assets/img/entities/entity-ifci.jpg?v=cb2b2399" data-title-key="sub_ifci" data-desc-key="entity_2_desc">
+              <span class="video-thumb__still">
+                <img src="assets/img/entities/entity-ifci.jpg?v=cb2b2399" alt="" loading="lazy">
+                <span class="video-thumb__play" aria-hidden="true"><i class="fa-solid fa-play"></i></span>
+              </span>
+              <span class="video-thumb__body">
+                <span class="video-thumb__title" data-i18n="sub_ifci">Institut IFCI (BTS &amp; Métiers)</span>
+                <span class="video-thumb__meta">2:48</span>
+              </span>
+            </button>
+            <button type="button" class="video-thumb" data-video="BOB2f_tKlhc"
+                    data-still="assets/img/entities/entity-business-school.jpg?v=d16a9f87" data-title-key="sub_business_school" data-desc-key="entity_3_desc">
+              <span class="video-thumb__still">
+                <img src="assets/img/entities/entity-business-school.jpg?v=d16a9f87" alt="" loading="lazy">
+                <span class="video-thumb__play" aria-hidden="true"><i class="fa-solid fa-play"></i></span>
+              </span>
+              <span class="video-thumb__body">
+                <span class="video-thumb__title" data-i18n="sub_business_school">CEFAT Business School</span>
+                <span class="video-thumb__meta">4:05</span>
+              </span>
+            </button>
+            <button type="button" class="video-thumb" data-video="BOB2f_tKlhc"
+                    data-still="assets/img/entities/entity-langues-accra.jpg?v=2254be2d" data-title-key="sub_accra" data-desc-key="entity_4_desc">
+              <span class="video-thumb__still">
+                <img src="assets/img/entities/entity-langues-accra.jpg?v=2254be2d" alt="" loading="lazy">
+                <span class="video-thumb__play" aria-hidden="true"><i class="fa-solid fa-play"></i></span>
+              </span>
+              <span class="video-thumb__body">
+                <span class="video-thumb__title" data-i18n="sub_accra">Immersion Linguistique Accra</span>
+                <span class="video-thumb__meta">3:37</span>
+              </span>
+            </button>
           </div>
         </div>
       </div>
@@ -739,6 +908,9 @@
   </section>
 
   <!-- ==================== SECTION 7 : CHIFFRES CLÉS & STATISTIQUES ==================== -->
+  <!-- Hiérarchie plutôt que quatre boîtes égales : le taux d'insertion porte
+       la section (c'est la seule proportion, donc la seule à mériter une
+       jauge), les trois dénombrements l'accompagnent en liste. -->
   <section class="counter-area2 pt-120 pb-120 p-relative fix">
     <div class="container">
       <div class="row justify-content-center align-items-center">
@@ -749,53 +921,34 @@
         </div>
       </div>
 
-      <div class="row g-4 justify-content-center">
-        <!-- 5 Campus -->
-        <div class="col-lg-3 col-md-6 col-sm-6">
-          <div class="about-box text-center">
-            <h4 data-i18n="stat_campuses">Campus Modernes</h4>
-            <div class="counter number">
-              <h3 class="count" data-count="5">5</h3>
-              <span>+</span>
-            </div>
-            <small class="text-muted" data-i18n="stat_1_sub">CI (4) & Ghana (1)</small>
-          </div>
+      <div class="stats" data-stats>
+        <div class="stat-cell">
+          <p class="stat-cell__num counter">
+            <span class="count" data-count="95">0</span><span class="stat-cell__unit">%</span>
+          </p>
+          <p class="stat-cell__label" data-i18n="stat_insertion">Taux d'Insertion</p>
+          <p class="stat-cell__sub" data-i18n="stat_4_sub">Stages &amp; Emplois Garantis</p>
         </div>
-
-        <!-- 4 Entities -->
-        <div class="col-lg-3 col-md-6 col-sm-6">
-          <div class="about-box text-center">
-            <h4 data-i18n="stat_entities">Établissements</h4>
-            <div class="counter number">
-              <h3 class="count" data-count="4">4</h3>
-              <span data-i18n="stat_2_sub">Écoles</span>
-            </div>
-            <small class="text-muted" data-i18n="stat_2_sub">Pôles Complémentaires</small>
-          </div>
+        <div class="stat-cell">
+          <p class="stat-cell__num counter">
+            <span class="count" data-count="5">0</span>
+          </p>
+          <p class="stat-cell__label" data-i18n="stat_campuses">Campus Modernes</p>
+          <p class="stat-cell__sub" data-i18n="stat_1_sub">CI (4) &amp; Ghana (1)</p>
         </div>
-
-        <!-- 7 Domaines -->
-        <div class="col-lg-3 col-md-6 col-sm-6">
-          <div class="about-box text-center">
-            <h4 data-i18n="stat_domains">Domaines de Formation</h4>
-            <div class="counter number">
-              <h3 class="count" data-count="7">7</h3>
-              <span data-i18n="stat_3_sub">Filières</span>
-            </div>
-            <small class="text-muted" data-i18n="stat_3_sub">BTS, Licence, Master, MBA</small>
-          </div>
+        <div class="stat-cell">
+          <p class="stat-cell__num counter">
+            <span class="count" data-count="4">0</span>
+          </p>
+          <p class="stat-cell__label" data-i18n="stat_entities">Établissements</p>
+          <p class="stat-cell__sub" data-i18n="stat_2_sub">Pôles Complémentaires</p>
         </div>
-
-        <!-- 95% Insertion Pro -->
-        <div class="col-lg-3 col-md-6 col-sm-6">
-          <div class="about-box text-center">
-            <h4 data-i18n="stat_insertion">Taux d'Insertion</h4>
-            <div class="counter number">
-              <h3 class="count" data-count="95">95</h3>
-              <span>%</span>
-            </div>
-            <small class="text-muted" data-i18n="stat_4_sub">Stages & Emplois Garantis</small>
-          </div>
+        <div class="stat-cell">
+          <p class="stat-cell__num counter">
+            <span class="count" data-count="7">0</span>
+          </p>
+          <p class="stat-cell__label" data-i18n="stat_domains">Domaines de Formation</p>
+          <p class="stat-cell__sub" data-i18n="stat_3_sub">BTS, Licence, Master, MBA</p>
         </div>
       </div>
     </div>
@@ -817,7 +970,7 @@
             </p>
           </div>
 
-          <div class="bg-white bg-opacity-10 p-4 rounded-3 text-white mb-4">
+          <div class="express-track text-white mb-4">
             <h6 class="fw-bold mb-3"><i class="fa-solid fa-clock-rotate-left text-danger me-2"></i> <span data-i18n="express_track_title">Parcours Express Étudiant :</span></h6>
             <div class="d-flex align-items-center gap-3 mb-2">
               <div class="badge bg-danger rounded-circle p-2">1</div>
@@ -837,7 +990,7 @@
             <i class="fa-brands fa-whatsapp text-success fs-2"></i>
             <div>
               <small class="d-block text-white-50" data-i18n="whatsapp_help_title">Besoin d'une assistance directe ?</small>
-              <a href="https://wa.me/2250712651719" target="_blank" class="text-white fw-bold text-decoration-none">+225 07 126 517 19 (WhatsApp)</a>
+              <a href="https://wa.me/2250712651719" target="_blank" class="text-white fw-bold text-decoration-none">+225 07 12 65 17 19 (WhatsApp)</a>
             </div>
           </div>
         </div>
@@ -938,22 +1091,22 @@
         </div>
         <div class="col-lg-8">
           <div class="d-flex flex-wrap align-items-center justify-content-around gap-4">
-            <div class="p-2 border rounded-3 bg-light text-center" style="min-width: 160px;">
+            <div class="partner-tile">
               <i class="fa-solid fa-briefcase text-danger fs-3 mb-1"></i>
               <div class="fw-bold small text-dark">Réseau d'Entreprises</div>
               <div class="text-muted small" data-i18n="partner_1_desc">+150 Partenaires Métiers</div>
             </div>
-            <div class="p-2 border rounded-3 bg-light text-center" style="min-width: 160px;">
+            <div class="partner-tile">
               <i class="fa-solid fa-building-columns text-primary fs-3 mb-1"></i>
               <div class="fw-bold small text-dark">Ministère MESRS</div>
               <div class="text-muted small">Enseignement Supérieur</div>
             </div>
-            <div class="p-2 border rounded-3 bg-light text-center" style="min-width: 160px;">
+            <div class="partner-tile">
               <i class="fa-solid fa-star text-warning fs-3 mb-1"></i>
               <div class="fw-bold small text-dark">Arthur Longville</div>
               <div class="text-muted small">Ambassadeur CEFAT</div>
             </div>
-            <div class="p-2 border rounded-3 bg-light text-center" style="min-width: 160px;">
+            <div class="partner-tile">
               <i class="fa-solid fa-star text-warning fs-3 mb-1"></i>
               <div class="fw-bold small text-dark">Roxane</div>
               <div class="text-muted small">Ambassadrice CEFAT</div>
@@ -972,11 +1125,11 @@
         <div class="col-xl-3 col-lg-3 col-md-6">
           <div class="footer-widget mb-30">
             <div class="mb-4">
-              <img src="assets/img/logo/cefat-logo-tight.png" alt="Les Universités CEFAT" style="max-height: 55px; filter: brightness(0) invert(1);">
+              <img src="assets/img/logo/cefat-logo-transparent.png?v=b9e22ffe" alt="Les Universités CEFAT" style="max-height: 62px;">
             </div>
             <div class="f-contact">
               <p class="small text-white-50" data-i18n="footer_about_text">
-                Les Universités CEFAT est un réseau d'établissements privés d'enseignement supérieur agréé, engagé dans la formation des futurs leaders de Côte d'Ivoire et d'Afrique.
+                Réseau d'établissements privés d'enseignement supérieur agréé, filiale de CEFAT INTERNATIONAL HOLDING. Diplômes homologués, reconnus par l'État et certifiés CAMES.
               </p>
             </div>
             <div class="footer-social mt-4">
@@ -992,14 +1145,14 @@
         <div class="col-xl-3 col-lg-3 col-md-6">
           <div class="footer-widget mb-30">
             <div class="f-widget-title">
-              <h2>Les 4 Entités</h2>
+              <h2 data-i18n="footer_col_entities">Les 4 Entités</h2>
             </div>
             <div class="footer-link">
               <ul>
-                <li><a href="entites.html#international"><i class="fa-solid fa-angle-right"></i> Université CEFAT International</a></li>
-                <li><a href="entites.html#ifci"><i class="fa-solid fa-angle-right"></i> Institut IFCI (BTS)</a></li>
-                <li><a href="entites.html#business-school"><i class="fa-solid fa-angle-right"></i> CEFAT Business School</a></li>
-                <li><a href="entites.html#accra"><i class="fa-solid fa-angle-right"></i> <span data-i18n="sub_accra">Immersion Linguistique Accra</span></a></li>
+                <li><a href="entite-universite.html"><i class="fa-solid fa-angle-right"></i> Université CEFAT International</a></li>
+                <li><a href="entite-ifci.html"><i class="fa-solid fa-angle-right"></i> Institut IFCI (BTS)</a></li>
+                <li><a href="entite-business-school.html"><i class="fa-solid fa-angle-right"></i> CEFAT Business School</a></li>
+                <li><a href="entite-accra.html"><i class="fa-solid fa-angle-right"></i> <span data-i18n="sub_accra">Immersion Linguistique Accra</span></a></li>
               </ul>
             </div>
           </div>
@@ -1009,7 +1162,7 @@
         <div class="col-xl-3 col-lg-3 col-md-6">
           <div class="footer-widget mb-30">
             <div class="f-widget-title">
-              <h2>Les 5 Campus</h2>
+              <h2 data-i18n="footer_col_campus">Les 5 Campus</h2>
             </div>
             <div class="footer-link">
               <ul>
@@ -1027,14 +1180,16 @@
         <div class="col-xl-3 col-lg-3 col-md-6">
           <div class="footer-widget mb-30">
             <div class="f-widget-title">
-              <h2>Contact CEFAT</h2>
+              <h2 data-i18n="footer_col_contact">Contact CEFAT</h2>
             </div>
             <div class="f-contact text-white-50 small">
-              <p class="mb-2"><i class="fa-solid fa-location-dot text-danger me-2"></i> Cocody Angré 8ème Tranche, Abidjan, Côte d'Ivoire</p>
-              <p class="mb-2"><i class="fa-solid fa-envelope text-danger me-2"></i> <a href="mailto:universitecefat@gmail.com" class="text-white text-decoration-none">universitecefat@gmail.com</a></p>
-              <p class="mb-2"><i class="fa-solid fa-phone text-danger me-2"></i> <a href="tel:+2250712651719" class="text-white text-decoration-none">07 126 517 19</a></p>
-              <p class="mb-2"><i class="fa-solid fa-phone text-danger me-2"></i> <a href="tel:+2250100959518" class="text-white text-decoration-none">01 009 595 18</a></p>
-              <p class="mb-2"><i class="fa-solid fa-phone text-danger me-2"></i> <a href="tel:+2252722285991" class="text-white text-decoration-none">27 22 285 991</a></p>
+              <p class="mb-2"><i class="fa-solid fa-location-dot text-danger me-2"></i> Cocody Angré, Carrefour Prière<br>Abidjan, Côte d'Ivoire</p>
+              <p class="mb-2"><i class="fa-solid fa-envelope text-danger me-2"></i> <a href="mailto:contact@universitecefat.ci" class="text-white text-decoration-none">contact@universitecefat.ci</a></p>
+              <p class="mb-2"><i class="fa-solid fa-phone text-danger me-2"></i> <a href="tel:+2250712651719" class="text-white text-decoration-none">07 12 65 17 19</a></p>
+              <p class="mb-2"><i class="fa-solid fa-phone text-danger me-2"></i> <a href="tel:+2250100959518" class="text-white text-decoration-none">01 00 95 95 18</a></p>
+              <p class="mb-2"><i class="fa-solid fa-phone text-danger me-2"></i> <a href="tel:+2252722285991" class="text-white text-decoration-none">27 22 28 59 91</a></p>
+              <p class="mb-1 mt-3"><i class="fa-solid fa-clock text-danger me-2"></i> <span data-i18n="footer_hours_week">Lundi au Vendredi : 08h00 – 17h00</span></p>
+              <p class="mb-0 ps-4"><span data-i18n="footer_hours_sat">Samedi : 09h00 – 14h00</span></p>
             </div>
           </div>
         </div>
@@ -1062,7 +1217,7 @@
 
   <!-- Scripts -->
   <script src="assets/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/cefat-i18n.js"></script>
-  <script src="assets/js/cefat-app.js"></script>
+  <script src="assets/js/cefat-i18n.js?v=d8f41448"></script>
+  <script src="assets/js/cefat-app.js?v=6411b341"></script>
 </body>
 </html>

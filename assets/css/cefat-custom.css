@@ -1,71 +1,98 @@
 /* ==========================================================================
-   LES UNIVERSITÉS CEFAT — SYSTÈME DE DESIGN, TYPOGRAPHIE & ESPACEMENTS
-   Charte Officielle :
-   - Rouge CEFAT : #E03131
-   - Bleu Marine CEFAT : #1A3A6B
+   LES UNIVERSITÉS CEFAT — SYSTÈME DE DESIGN
+   --------------------------------------------------------------------------
+   Direction : institutionnel, éditorial, sans arrondi ni ombre.
+   Le bleu marine porte la page, le carmin ne sert qu'aux points focaux.
+   Chargé après cefat-theme.css : cette feuille fait autorité.
+   ========================================================================== */
+
+/* ==========================================================================
+   1. JETONS
    ========================================================================== */
 
 :root {
-  /* Couleurs Principales */
-  --cefat-red: #E03131;
-  --cefat-red-hover: #C92A2A;
-  --cefat-red-light: rgba(224, 49, 49, 0.08);
-  --cefat-blue: #1A3A6B;
-  --cefat-blue-dark: #0F2444;
-  --cefat-blue-light: #244F8E;
-  --cefat-blue-soft: #F0F4F8;
-  
-  /* Couleurs Neutres & Textes */
-  --cefat-text-dark: #0F172A;
-  --cefat-text-body: #334155;
-  --cefat-text-muted: #64748B;
-  --cefat-text-light: #94A3B8;
-  --cefat-bg-light: #F8FAFC;
-  --cefat-bg-white: #FFFFFF;
-  --cefat-border: #E2E8F0;
-  --cefat-border-light: #F1F5F9;
+  /* Couleurs — charte CEFAT approfondie */
+  --navy:        #142C55;
+  --navy-deep:   #0A1830;
+  --navy-mid:    #1E3D6E;
+  --navy-line:   rgba(255, 255, 255, 0.16);
 
-  /* Espacements Globaux */
-  --spacing-xs: 0.25rem;   /* 4px */
-  --spacing-sm: 0.5rem;    /* 8px */
-  --spacing-md: 1rem;      /* 16px */
-  --spacing-lg: 1.5rem;    /* 24px */
-  --spacing-xl: 2rem;      /* 32px */
-  --spacing-2xl: 3rem;     /* 48px */
-  --spacing-3xl: 4.5rem;   /* 72px */
-  --spacing-section: 6rem; /* 96px */
-  --spacing-section-mobile: 3.5rem; /* 56px */
+  --carmine:     #B21F2A;
+  --carmine-dark:#8E1821;
+  --red-bright:  #E03131;  /* continuité du logo, micro-accents sur fond clair */
+  /* Sur navy, le carmin tombe à 2.05:1 et le rouge vif à 3.06:1 — sous le
+     seuil AA. Version éclaircie du même rouge : 5.03:1 sur navy, 6.45:1
+     sur navy profond. Réservée au texte posé sur fond sombre. */
+  --red-on-dark: #F97362;
+
+  --forest:      #1F5D3A;  /* Accra / Ghana */
+
+  --paper:       #FFFFFF;
+  --paper-warm:  #F4F3F0;
+  --paper-warm-2:#EDEBE6;
+  --rule:        #DEDCD6;
+  --rule-strong: #C4C1B9;
+
+  --ink:         #121417;
+  --ink-2:       #4A4F57;
+  --ink-3:       #696F79;  /* 5.06:1 sur blanc, 4.56:1 sur la bande chaude — AA */
 
   /* Typographie */
-  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-serif: 'Prata', Georgia, 'Times New Roman', serif;
-  
-  --line-height-tight: 1.25;
-  --line-height-normal: 1.5;
-  --line-height-relaxed: 1.7;
+  --font-display: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+  --font-alt: 'Raleway', 'Instrument Sans', system-ui, sans-serif;
+  --font-sans: 'Instrument Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  /* Instrument Serif n'existe qu'en une graisse (400) et n'a aucun axe
+     variable : plus de paliers optiques à piloter. Son contraste est
+     bien plus faible que celui de Fraunces, elle tient donc en petit. */
+
+  --fs-display: clamp(2.75rem, 6.4vw, 5.25rem);
+  --fs-h1:      clamp(2.25rem, 4.6vw, 3.75rem);
+  --fs-h2:      clamp(1.875rem, 3.2vw, 2.75rem);
+  --fs-h3:      clamp(1.25rem, 1.9vw, 1.625rem);
+  --fs-h4:      clamp(1.0625rem, 1.4vw, 1.25rem);
+  --fs-eyebrow: 0.75rem;
+
+  --lh-tight:   1.08;
+  --lh-title:   1.18;
+  --lh-body:    1.6;
+
+  /* Rythme */
+  --section-y:  clamp(4.5rem, 9vw, 8.5rem);
+  --gutter:     clamp(1.25rem, 4vw, 3rem);
+  --stack-lg:   clamp(2.5rem, 5vw, 4.5rem);
+  --stack-md:   clamp(1.5rem, 3vw, 2.5rem);
+
+  /* Espacements hérités (conservés pour compatibilité) */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+
+  /* Alias historiques : d'anciennes règles y font encore référence */
+  --cefat-red: var(--carmine);
+  --cefat-red-hover: var(--carmine-dark);
+  --cefat-red-light: rgba(178, 31, 42, 0.07);
+  --cefat-blue: var(--navy);
+  --cefat-blue-dark: var(--navy-deep);
+  --cefat-blue-light: var(--navy-mid);
+  --cefat-blue-soft: var(--paper-warm);
+  --cefat-text-dark: var(--ink);
+  --cefat-text-body: var(--ink-2);
+  --cefat-text-muted: var(--ink-3);
+  --cefat-bg-light: var(--paper-warm);
+  --cefat-bg-white: var(--paper);
+  --cefat-border: var(--rule);
+
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
 }
-
-/* Utilitaires Spécifiques */
-.max-w-700 { max-width: 700px; }
-.max-w-600 { max-width: 600px; }
-.max-w-800 { max-width: 800px; }
-.letter-spacing-1 { letter-spacing: 0.05em; }
-.letter-spacing-2 { letter-spacing: 0.1em; }
-.fs-11 { font-size: 0.6875rem !important; }
-.fs-12 { font-size: 0.75rem !important; }
-.fs-13 { font-size: 0.8125rem !important; }
-.fs-14 { font-size: 0.875rem !important; }
-.fs-15 { font-size: 0.9375rem !important; }
-.fs-16 { font-size: 1rem !important; }
-
 
 /* ==========================================================================
-   RESET & TYPOGRAPHIE GLOBALE
+   2. BASE
    ========================================================================== */
 
-*, *::before, *::after {
-  box-sizing: border-box;
-}
+*, *::before, *::after { box-sizing: border-box; }
 
 html {
   font-size: 16px;
@@ -74,238 +101,305 @@ html {
 }
 
 body {
+  margin: 0;
   font-family: var(--font-sans);
   font-size: 1rem;
-  line-height: var(--line-height-relaxed);
-  color: var(--cefat-text-body);
-  background-color: var(--cefat-bg-white);
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
+  line-height: var(--lh-body);
+  letter-spacing: 0.2px;
+  color: var(--ink-2);
+  background: var(--paper);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
-/* Hiérarchie des Titres */
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-serif);
-  color: var(--cefat-blue);
+  font-family: var(--font-display);
+
+  color: var(--ink);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: var(--lh-title);
+  margin: 0 0 0.5em;
+}
+
+h1 { font-size: var(--fs-h1); line-height: var(--lh-tight); }
+h2 { font-size: var(--fs-h2); }
+h3 { font-size: var(--fs-h3); }
+h4 { font-size: var(--fs-h4); letter-spacing: 0.012em; }
+h5, h6 { font-size: 1rem; letter-spacing: 0.012em; }
+
+p { margin: 0 0 1.15em; }
+p:last-child { margin-bottom: 0; }
+
+a { color: var(--navy); text-decoration: none; transition: color 0.2s var(--ease); }
+a:hover { color: var(--carmine); }
+
+img { max-width: 100%; height: auto; }
+
+strong, b { font-weight: 600; color: var(--ink); }
+
+::selection { background: var(--navy); color: #fff; }
+
+/* Focus clavier visible partout */
+:focus-visible {
+  outline: 2px solid var(--carmine);
+  outline-offset: 3px;
+}
+.hero__rail a:focus-visible,
+.footer-link a:focus-visible,
+.corridor__stop:focus-visible {
+  outline-color: #fff;
+}
+
+/* ==========================================================================
+   3. NEUTRALISATION BOOTSTRAP
+   La bibliothèque arrondit et ombre par défaut ; la direction ne le veut pas.
+   ========================================================================== */
+
+.rounded, .rounded-1, .rounded-2, .rounded-3, .rounded-4, .rounded-5,
+.rounded-circle, .rounded-pill, .rounded-top, .rounded-end,
+.rounded-bottom, .rounded-start,
+.card, .form-control, .form-select, .badge, .btn, .alert, .modal-content,
+.list-group, .list-group-item, .input-group-text, .accordion-item {
+  border-radius: 0 !important;
+}
+
+/* Exception : les pastilles vraiment circulaires restent circulaires */
+.rounded-circle.p-2, .rounded-circle.p-3,
+.footer-social a, .campus-pin-icon, .play-video-btn, .whatsapp-float {
+  border-radius: 50% !important;
+}
+
+.shadow, .shadow-sm, .shadow-lg, .card, .form-control, .form-select, .btn {
+  box-shadow: none !important;
+}
+
+/* Remappage des couleurs utilitaires sur la charte */
+.text-danger { color: var(--carmine) !important; }
+.text-primary { color: var(--navy) !important; }
+.text-success { color: var(--forest) !important; }
+.text-dark { color: var(--ink) !important; }
+.text-muted { color: var(--ink-3) !important; }
+.text-secondary { color: var(--ink-2) !important; }
+.text-white-50 { color: rgba(255, 255, 255, 0.62) !important; }
+.text-warning { color: #8A6412 !important; }  /* 3.85:1 → 5.4:1 sur blanc */
+
+.bg-danger { background-color: var(--carmine) !important; }
+.bg-primary { background-color: var(--navy) !important; }
+.bg-success { background-color: var(--forest) !important; }
+.bg-dark { background-color: var(--navy-deep) !important; }
+.bg-light { background-color: var(--paper-warm) !important; }
+
+.border-danger { border-color: var(--carmine) !important; }
+.border-primary { border-color: var(--navy) !important; }
+.border-success { border-color: var(--forest) !important; }
+.border, .border-top, .border-bottom, .border-start, .border-end {
+  border-color: var(--rule) !important;
+}
+
+.card {
+  border: 1px solid var(--rule);
+  background: var(--paper);
+}
+
+.badge {
+  font-family: var(--font-sans);
   font-weight: 600;
-  margin-top: 0;
-  text-wrap: balance;
-}
-
-h1 {
-  font-size: clamp(2rem, 4.5vw, 3.25rem);
-  line-height: var(--line-height-tight);
-  letter-spacing: -0.02em;
-  margin-bottom: 1.25rem;
-}
-
-h2 {
-  font-size: clamp(1.65rem, 3.2vw, 2.35rem);
-  line-height: 1.28;
-  letter-spacing: -0.015em;
-  margin-bottom: 1rem;
-}
-
-h3 {
-  font-size: clamp(1.35rem, 2.5vw, 1.65rem);
-  line-height: 1.35;
-  margin-bottom: 0.75rem;
-}
-
-h4 {
-  font-family: var(--font-sans);
-  font-size: clamp(1.1rem, 2vw, 1.25rem);
-  font-weight: 700;
-  line-height: 1.4;
-  margin-bottom: 0.5rem;
-}
-
-h5 {
-  font-family: var(--font-sans);
-  font-size: 0.85rem;
-  font-weight: 700;
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--cefat-red);
-  margin-bottom: 0.75rem;
+  padding: 0.4em 0.75em;
 }
 
-h6 {
-  font-family: var(--font-sans);
-  font-size: 0.95rem;
-  font-weight: 600;
-  line-height: 1.4;
-  margin-bottom: 0.5rem;
-}
-
-/* Paragraphes & Textes */
-p {
-  margin-top: 0;
-  margin-bottom: 1.15rem;
-  line-height: var(--line-height-relaxed);
-  color: var(--cefat-text-body);
-}
-
-p:last-child {
-  margin-bottom: 0;
-}
-
-.lead, .hero-subtitle {
-  font-size: clamp(1rem, 2vw, 1.125rem);
-  line-height: 1.65;
-  color: rgba(255, 255, 255, 0.9);
-}
-
-/* Liens */
-a {
-  color: var(--cefat-red);
-  text-decoration: none;
-  transition: color 0.25s ease, background-color 0.25s ease, transform 0.25s ease;
-}
-
-a:hover {
-  color: var(--cefat-red-hover);
+blockquote {
+  margin: 0 0 var(--stack-md);
+  padding: 1.25rem 0 1.25rem 1.5rem;
+  border-left: 3px solid var(--carmine);
+  background: none !important;
+  font-family: var(--font-display);
+  font-size: 1.1875rem;
+  line-height: 1.5;
+  font-style: normal !important;
+  color: var(--ink);
 }
 
 /* ==========================================================================
-   BADGE AGRÉMENT FDFP FIXE & STATIQUE (AUCUNE ROTATION)
+   4. RYTHME VERTICAL
+   Les utilitaires du thème sont réécrits pour une cadence unique.
    ========================================================================== */
 
-.badge,
-.badge *,
-.fdfp-top-badge,
-.fdfp-top-badge * {
-  animation: none !important;
-  -webkit-animation: none !important;
-  -moz-animation: none !important;
-  transform: none !important;
-  -webkit-transform: none !important;
-  -moz-transform: none !important;
+.pt-120, .pt-200 { padding-top: var(--section-y) !important; }
+.pb-120, .pb-90, .pb-200 { padding-bottom: var(--section-y) !important; }
+.pt-90 { padding-top: var(--section-y) !important; }
+.mb-80, .mb-60 { margin-bottom: var(--stack-lg) !important; }
+.mb-30 { margin-bottom: var(--stack-md) !important; }
+.mt-120 { margin-top: var(--section-y) !important; }
+
+section { position: relative; }
+
+.container {
+  max-width: 1340px;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
 }
 
-.fdfp-top-badge {
-  background-color: #F59E0B !important;
-  color: #0F172A !important;
-  font-family: var(--font-sans) !important;
-  font-weight: 700 !important;
-  font-size: 0.775rem !important;
-  padding: 0.32rem 0.9rem !important;
-  border-radius: 50px !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 0.45rem !important;
-  line-height: 1.2 !important;
-  letter-spacing: 0.02em !important;
-  text-transform: none !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
-  border: 1px solid rgba(255, 255, 255, 0.3) !important;
-  vertical-align: middle !important;
-  white-space: nowrap !important;
-}
+/* En-tête, barre haute et panneaux du mega menu partagent la grille du site :
+   le logo doit s'aligner verticalement sur le titre du hero, pas déborder
+   à gauche. (Une largeur d'en-tête plus généreuse n'est plus nécessaire
+   depuis la neutralisation des marges parasites du thème sur le menu.) */
 
-.fdfp-top-badge i {
-  color: #78350F !important;
-  font-size: 0.85rem !important;
-}
+/* Le thème d'origine forçait certains titres en blanc parce que ces sections
+   étaient sombres chez lui (`.service-details-four h2 { color:#fff }`). Nos
+   bandes sont claires : on ré-affirme l'encre, avec la spécificité qu'il faut.
+   Les intitulés en carmin (.section-title2 h5/span) restent prioritaires. */
+.band-warm h2, .band-warm h3, .band-warm h4,
+.service-details-four h2, .service-details-four h3,
+.counter-area2 h2, .counter-area2 h3 { color: var(--ink); }
+
+/* Bandes alternées : c'est ce qui structure la lecture au défilement */
+.band-warm { background: var(--paper-warm); }
+.band-navy { background: var(--navy); color: rgba(255, 255, 255, 0.78); }
+.band-navy h1, .band-navy h2, .band-navy h3,
+.band-navy h4, .band-navy h5 { color: #fff; }
+.band-navy h1, .band-navy h2, .campus-band h2,
+.band-navy h3, .band-navy h4, .campus-band h3, .campus-band h4,
+.newslater-area2 h3, .newslater-area2 h4, .page-head h3, .page-head h4,
+
+/* Utilitaires conservés */
+.max-w-600 { max-width: 600px; }
+.max-w-700 { max-width: 700px; }
+.max-w-800 { max-width: 800px; }
+.letter-spacing-1 { letter-spacing: 0.05em; }
+.letter-spacing-2 { letter-spacing: 0.14em; }
+.fs-11 { font-size: 0.6875rem !important; }
+.fs-12 { font-size: 0.75rem !important; }
+.fs-13 { font-size: 0.8125rem !important; }
+.fs-14 { font-size: 0.875rem !important; }
+.fs-15 { font-size: 0.9375rem !important; }
+.fs-16 { font-size: 1rem !important; }
+.lead, .hero-subtitle { font-size: 1.0625rem; line-height: var(--lh-body); }
 
 /* ==========================================================================
-   EN-TÊTE & NAVIGATION
+   5. BARRE HAUTE
    ========================================================================== */
 
-/* Top Bar */
 .header-top {
-  background-color: var(--cefat-blue);
-  color: #FFFFFF;
-  padding: 0.55rem 0;
-  font-size: 0.825rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--navy-deep);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.8125rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.header-top a {
-  color: rgba(255, 255, 255, 0.88);
-}
-
-.header-top a:hover {
-  color: #FF8787;
-}
+.header-top a { color: rgba(255, 255, 255, 0.7); }
+.header-top a:hover { color: #fff; }
+.header-top i { color: var(--red-bright); }
 
 .header-cta ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: flex;
   align-items: center;
+  gap: 1.75rem;
+  flex-wrap: wrap;
+}
+.header-cta.justify-content-end ul { justify-content: flex-end; }
+.header-cta li { display: flex; align-items: center; gap: 0.5rem; }
+
+.fdfp-top-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--carmine);
+  color: #fff;
+  padding: 0.25rem 0.7rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.fdfp-top-badge i { color: #fff; }
+
+.top-phone-stack { display: flex; align-items: center; gap: 0.5rem; }
+.top-phone-numbers {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  white-space: nowrap;
+}
+.top-phone-numbers a { font-size: 0.8125rem; }
+.top-phone-sep { color: rgba(255, 255, 255, 0.35); }
+
+/* Chaque colonne colle à son bord : la gauche au bord gauche du conteneur,
+   la droite au bord droit. Les listes du thème sont centrées par défaut. */
+.header-top .col-lg-7 .header-cta ul { justify-content: flex-start; }
+.header-top .col-lg-5 .header-cta ul { justify-content: flex-end; }
+.header-top .header-cta ul {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: clamp(1rem, 1.8vw, 1.75rem);
   margin: 0;
   padding: 0;
   list-style: none;
-  gap: 1.25rem;
 }
+.header-top .header-cta ul li { margin: 0 !important; }
 
-.header-cta li {
-  display: inline-flex;
+.header-top .row {
+  display: flex;
+  flex-wrap: nowrap;
   align-items: center;
-  gap: 0.5rem;
+  justify-content: space-between;
 }
-
-/* Superposition propre des numéros de téléphone en haut de page */
-.top-phone-stack {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  vertical-align: middle;
-  text-align: left;
+.header-top [class*="col-lg-"] {
+  flex: 0 1 auto;
+  width: auto;
+  max-width: none;
 }
-
-.top-phone-stack i {
-  font-size: 0.95rem;
-  color: var(--cefat-red);
-}
-
-.top-phone-numbers {
-  display: inline-flex;
-  flex-direction: column;
-  line-height: 1.25;
-  font-size: 0.785rem;
-}
-
-.top-phone-numbers a {
-  color: #FFFFFF !important;
-  font-weight: 600;
-  white-space: nowrap;
-  letter-spacing: 0.02em;
-  transition: color 0.2s ease;
-}
-
-.top-phone-numbers a:hover {
-  color: #FFA8A8 !important;
-}
+/* Aucune des deux colonnes ne se casse en deux lignes. */
+.header-top .header-cta ul { flex-wrap: nowrap; }
 
 .lang-switch-btn {
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: #FFFFFF;
-  padding: 0.2rem 0.65rem;
-  border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: 700;
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  color: rgba(255, 255, 255, 0.7);
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  padding: 0.3rem 0.7rem;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.2s var(--ease);
 }
-
-.lang-switch-btn:hover,
+.lang-switch-btn + .lang-switch-btn { margin-left: -1px; }
+.lang-switch-btn:hover { color: #fff; border-color: rgba(255, 255, 255, 0.6); }
 .lang-switch-btn.active {
-  background: var(--cefat-red);
-  border-color: var(--cefat-red);
-  color: #FFFFFF;
+  background: var(--carmine);
+  border-color: var(--carmine);
+  color: #fff;
 }
 
-/* Main Navbar */
+/* Le sélecteur de langue du tiroir mobile est sur fond clair */
+.mobile-drawer .lang-switch-btn {
+  border-color: var(--rule);
+  color: var(--ink-2);
+  padding: 0.6rem;
+  font-size: 0.75rem;
+}
+.mobile-drawer .lang-switch-btn.active { color: #fff; }
+
+/* ==========================================================================
+   6. EN-TÊTE ET NAVIGATION
+   ========================================================================== */
+
 .menu-area {
-  background: #FFFFFF;
-  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+  background: var(--paper);
+  border-bottom: 1px solid var(--rule);
   position: relative;
-  z-index: 999;
-  transition: padding 0.3s ease, box-shadow 0.3s ease;
+  z-index: 200;
+  transition: box-shadow 0.25s var(--ease);
 }
 
 .menu-area.sticky {
@@ -313,245 +407,490 @@ a:hover {
   top: 0;
   left: 0;
   right: 0;
-  box-shadow: 0 6px 25px rgba(26, 58, 107, 0.12);
-  animation: slideDownNav 0.3s ease-out;
+  box-shadow: 0 1px 0 var(--rule), 0 8px 24px rgba(10, 24, 48, 0.06) !important;
+  animation: slide-down 0.35s var(--ease);
 }
 
-@keyframes slideDownNav {
+@keyframes slide-down {
   from { transform: translateY(-100%); }
   to { transform: translateY(0); }
 }
 
-.logo img {
-  max-height: 58px;
-  width: auto;
-  object-fit: contain;
-  display: block;
+.logo img { max-height: 54px; width: auto; }
+
+/* La grille Bootstrap fige le logo à 3/12 : trop étroit une fois le bouton
+   « Candidater » présent, et le menu débordait sous le logo. On passe la
+   rangée en flex non-cassable et on laisse le menu absorber le reste. */
+@media (min-width: 992px) {
+  .menu-area > .container > .row {
+    flex-wrap: nowrap;
+    --bs-gutter-x: 1rem;
+  }
+  .menu-area > .container > .row > [class*="col-"]:first-child {
+    flex: 0 0 auto;
+    width: auto;
+  }
+  .menu-area > .container > .row > [class*="col-"]:last-child {
+    flex: 1 1 auto;
+    width: auto;
+    min-width: 0;
+  }
 }
 
-.main-menu {
-  display: inline-block;
-}
+/* Le thème tirait le menu de -40px et espaçait les <li> de 40px de marge :
+   avec le bouton « Candidater » présent, ça le faisait chevaucher « Contact ». */
+.main-menu { margin: 0 !important; position: static !important; }
 
 .main-menu ul {
-  margin: 0 !important;
-  padding: 0 !important;
-  list-style: none !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: flex-end !important;
-  gap: 0.35rem !important;
-  flex-wrap: nowrap !important;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0;
 }
 
-.main-menu ul li {
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-  position: relative !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  white-space: nowrap !important;
+.main-menu ul li { position: relative; margin: 0 !important; display: block; }
+
+.main-menu > nav > ul > li > a {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 1.9rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--ink-2);
+  position: relative;
+  white-space: nowrap;   /* « Les 4 Entités » ne doit jamais passer à la ligne */
 }
 
-.main-menu ul li a {
-  display: inline-flex !important;
-  align-items: center !important;
-  padding: 1.75rem 0.85rem !important;
-  font-size: 0.935rem !important;
-  font-weight: 600 !important;
-  color: var(--cefat-blue) !important;
-  white-space: nowrap !important;
-  line-height: 1.2 !important;
-  text-decoration: none !important;
-  transition: color 0.2s ease !important;
+.main-menu > nav > ul > li > a::after {
+  content: "";
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1.35rem;
+  height: 1px;
+  background: var(--carmine);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.28s var(--ease);
 }
 
-.main-menu ul li a:hover,
-.main-menu ul li.active > a {
-  color: var(--cefat-red) !important;
-}
-
-/* ==========================================================================
-   DROPDOWN SUBMENU — EXACT MODÈLE DE RÉFÉRENCE
-   ========================================================================== */
-
-.main-menu .has-sub > a {
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 0.3rem !important;
-}
+.main-menu > nav > ul > li:hover > a,
+.main-menu > nav > ul > li.active > a { color: var(--navy); }
+.main-menu > nav > ul > li:hover > a::after,
+.main-menu > nav > ul > li.active > a::after { transform: scaleX(1); }
+.main-menu > nav > ul > li.active > a { color: var(--carmine); }
 
 .main-menu .has-sub > a i.fa-chevron-down {
-  font-size: 0.68rem !important;
-  margin-left: 0.15rem !important;
-  transition: transform 0.25s ease !important;
-  display: inline-block !important;
-  opacity: 0.85 !important;
+  font-size: 0.5625rem;
+  opacity: 0.5;
+  transition: transform 0.25s var(--ease);
+}
+.main-menu .has-sub:hover > a i.fa-chevron-down { transform: rotate(180deg); }
+
+/* --------------------------------------------------------------------------
+   MEGA MENU
+   Trois contenus de nature différente, donc trois formes : les entités sont
+   un choix (vignettes), les formations une progression (rail gradué), les
+   campus un parcours qui franchit une frontière (le corridor de l'accueil).
+   Fond blanc, comme la section « Mot du Fondateur » : le panneau prolonge
+   l'en-tête clair au lieu d'ouvrir un trou sombre au-dessus du hero.
+   -------------------------------------------------------------------------- */
+
+/* Le panneau se cale sur l'en-tête, pas sur l'onglet : bord à bord. */
+.menu-area { position: relative; }
+.main-menu ul li.has-mega { position: static; }
+
+/* Le thème pose `.main-menu ul li a { padding:20px 0 }` — spécificité (0,1,3),
+   supérieure à une classe seule. Les racines de composants sont donc
+   préfixées par `.megamenu` (0,2,0), ce qui l'emporte sur le comptage
+   d'éléments. Sans ça : paddings écrasés et pastilles remplacées par le
+   `content:"+"` du thème. */
+.megamenu a { color: inherit; text-decoration: none; }
+
+/* Le panneau reprend la boîte du conteneur d'en-tête (1340px) plutôt que
+   toute la largeur de l'écran : ses bords tombent exactement sous ceux de
+   la barre de navigation. */
+.megamenu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  right: auto;
+  width: min(1340px, 100%);
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-top: 2px solid var(--carmine);
+  box-shadow: 0 24px 44px rgba(10, 24, 48, 0.13);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-50%) translateY(-6px);
+  transition: opacity 0.18s var(--ease), transform 0.18s var(--ease), visibility 0.18s;
+  z-index: 400;
+  text-align: left;
 }
 
-.main-menu .has-sub:hover > a i.fa-chevron-down {
-  transform: rotate(180deg) !important;
-  color: var(--cefat-red) !important;
+.has-mega:hover > .megamenu,
+.has-mega.is-open > .megamenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
 }
 
-.main-menu .has-sub > ul,
-.main-menu ul li ul.submenu {
-  position: absolute !important;
-  top: 100% !important;
-  left: 0 !important;
-  background-color: #FFFFFF !important;
-  min-width: 260px !important;
-  z-index: 9999 !important;
-  border: 1px solid #E5E7EB !important;
-  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08) !important;
-  border-radius: 0px !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  list-style: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  transform: translateY(12px) !important;
-  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s !important;
-  display: block !important;
-  text-align: left !important;
+/* Le panneau porte déjà la largeur : l'intérieur ne fait que reproduire
+   la gouttière, pour que son contenu s'aligne sur le logo. */
+.megamenu__inner {
+  padding: clamp(2.25rem, 3vw, 3rem) var(--gutter) 0;
 }
 
-.main-menu .has-sub:hover > ul,
-.main-menu ul li:hover > ul.submenu {
-  visibility: visible !important;
-  opacity: 1 !important;
-  transform: translateY(0px) !important;
+.megamenu__lede {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin: 0 0 2.5rem;
 }
 
-.main-menu .has-sub li,
-.main-menu ul li ul.submenu li {
-  margin: 0 !important;
-  padding: 0 !important;
-  display: block !important;
-  width: 100% !important;
-  border-bottom: 1px solid #E5E7EB !important;
-  text-align: left !important;
+/* Pied commun : chaque panneau se termine sur une sortie explicite */
+.megamenu__foot {
+  border-top: 1px solid var(--rule);
+  margin-top: clamp(2rem, 3vw, 2.75rem);
+  padding: 1.1rem 0;
 }
 
-.main-menu .has-sub li:last-child,
-.main-menu ul li ul.submenu li:last-child {
-  border-bottom: none !important;
+.megamenu .mm-foot__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--navy);
+}
+.megamenu .mm-foot__link i { font-size: 0.6875rem; transition: transform 0.25s var(--ease); }
+.megamenu .mm-foot__link:hover { color: var(--carmine); }
+.megamenu .mm-foot__link:hover i { transform: translateX(4px); }
+
+/* --- Variante 1 : les 4 entités, en vignettes --- */
+
+.mm-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
 }
 
-.main-menu .has-sub li a,
-.main-menu ul li ul.submenu li a {
-  display: block !important;
-  width: 100% !important;
-  padding: 13px 20px !important;
-  font-family: var(--font-sans) !important;
-  font-size: 0.815rem !important;
-  font-weight: 700 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.04em !important;
-  color: #334155 !important;
-  background: #FFFFFF !important;
-  border: none !important;
-  border-radius: 0 !important;
-  text-decoration: none !important;
-  transition: color 0.2s ease, padding-left 0.2s ease, background-color 0.2s ease !important;
-  white-space: nowrap !important;
-  line-height: 1.3 !important;
+/* Colonnes flex : le cycle est poussé en bas, donc les quatre pastilles
+   s'alignent même quand les descriptions font une ou deux lignes. */
+.megamenu .mm-card {
+  display: flex;
+  flex-direction: column;
+  padding: 0 clamp(1.25rem, 1.8vw, 2rem);
+  border-left: 1px solid var(--rule);
+  transition: opacity 0.22s var(--ease);
+}
+.megamenu .mm-card:first-child { border-left: none; }
+
+/* Au survol d'une carte, les autres s'estompent : le choix se détache */
+.mm-grid:hover .mm-card { opacity: 0.38; }
+.mm-grid:hover .mm-card:hover { opacity: 1; }
+
+.mm-card__img {
+  display: block;
+  height: 128px;
+  overflow: hidden;
+  margin-bottom: 1.2rem;
+}
+.mm-card__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s var(--ease);
+}
+.megamenu .mm-card:hover .mm-card__img img { transform: scale(1.06); }
+
+.mm-card__name {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  line-height: 1.25;
+  color: var(--ink);
+  margin-bottom: 0.45rem;
+}
+.megamenu .mm-card:hover .mm-card__name { color: var(--carmine); }
+
+.mm-card__desc {
+  display: block;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: var(--ink-3);
+  margin-bottom: 1.1rem;
 }
 
-.main-menu .has-sub li a:hover,
-.main-menu ul li ul.submenu li a:hover {
-  background-color: #F8FAFC !important;
-  color: var(--cefat-red) !important;
-  padding-left: 24px !important;
+.mm-card__lvl {
+  display: inline-block;
+  align-self: flex-start;
+  margin-top: auto;          /* aligne les pastilles sur une même ligne */
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--carmine);
+  border: 1px solid var(--rule);
+  padding: 0.35rem 0.65rem;
+  transition: border-color 0.22s var(--ease);
+}
+.megamenu .mm-card:hover .mm-card__lvl { border-color: var(--carmine); }
+
+/* --- Variantes 2 et 3 : un rail continu, gradué de gauche à droite --- */
+
+/* L'espace au-dessus du rail se prend en marge, pas en padding : un padding
+   décalerait les colonnes vers le bas sans emmener le rail, et les pastilles
+   se retrouveraient détachées de la ligne. */
+.mm-ladder,
+.mm-corridor {
+  position: relative;
+  display: grid;
+  align-items: start;
+  margin-top: 0.5rem;
+}
+.mm-ladder { grid-template-columns: repeat(5, 1fr); }
+.mm-corridor { grid-template-columns: repeat(4, 1fr) auto 1fr; }
+
+/* Une seule ligne traverse toute la rangée — plus de segments flottants.
+   Sur les formations elle se teinte vers le carmin : la progression se lit
+   sans décaler les colonnes. */
+.mm-ladder::before,
+.mm-corridor::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--rule);
+}
+.mm-ladder::before {
+  background: linear-gradient(90deg, var(--rule) 0%, var(--rule-strong) 55%, var(--carmine) 100%);
 }
 
-/* Mobile Toggle & Drawer */
+.megamenu .mm-step,
+.megamenu .mm-stop {
+  display: block;
+  position: relative;
+  padding-top: 1.5rem;
+}
+.megamenu .mm-step { padding-right: 1.5rem; }
+.megamenu .mm-stop { padding-inline: 0.75rem; text-align: center; }
+
+/* Vignette de campus : le rail ne disait que des noms de villes, difficile
+   de se projeter. Format paysage court — la vignette doit informer sans
+   faire du méga-menu une galerie. */
+.mm-stop__img {
+  display: block;
+  height: 84px;
+  overflow: hidden;
+  margin-bottom: 0.85rem;
+  background: var(--paper-warm);
+}
+.mm-stop__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s var(--ease);
+}
+.megamenu .mm-stop:hover .mm-stop__img img { transform: scale(1.06); }
+
+/* La colonne « Frontière » n'a pas de vignette : on la décale pour que son
+   intitulé reste à la hauteur des noms de villes. */
+.megamenu .mm-border { padding-top: calc(84px + 0.85rem); }
+
+/* Pastille posée sur le rail */
+.megamenu .mm-step::before,
+.megamenu .mm-stop::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  width: 9px;
+  height: 9px;
+  background: var(--paper);
+  border: 1px solid var(--rule-strong);
+  transition: background-color 0.22s var(--ease), border-color 0.22s var(--ease);
+}
+.megamenu .mm-step::before { left: 0; }
+.megamenu .mm-stop::before { left: 50%; transform: translateX(-50%); }
+
+.megamenu .mm-step:hover::before,
+.megamenu .mm-stop:hover::before {
+  background: var(--carmine);
+  border-color: var(--carmine);
+}
+.megamenu .mm-stop--gh::before { border-color: var(--carmine); }
+
+.mm-step__lvl {
+  display: block;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--carmine);
+  margin-bottom: 0.6rem;
+}
+
+.mm-step__name,
+.mm-stop__name {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  line-height: 1.25;
+  color: var(--ink);
+  margin-bottom: 0.35rem;
+}
+.megamenu .mm-step:hover .mm-step__name,
+.megamenu .mm-stop:hover .mm-stop__name { color: var(--carmine); }
+
+.mm-step__desc {
+  display: block;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: var(--ink-3);
+}
+
+.mm-stop__meta {
+  display: block;
+  font-size: 0.625rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+/* La frontière : une rupture nette dans le rail, pas un simple libellé */
+.mm-border {
+  position: relative;
+  padding: 1.5rem 1.75rem 0;
+  text-align: center;
+}
+.mm-border::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  width: 1px;
+  height: 13px;
+  background: var(--carmine);
+}
+.mm-border::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--paper);   /* masque le rail sous le marqueur */
+}
+.mm-border span {
+  display: block;
+  font-size: 0.5625rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--carmine);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* L'onglet ouvert garde son filet, comme s'il tenait le panneau */
+.has-mega:hover > a,
+.has-mega.is-open > a { color: var(--navy); }
+.has-mega:hover > a::after,
+.has-mega.is-open > a::after { transform: scaleX(1); }
+
+
+.header-btn .btn-cefat-primary { padding: 0.8rem 1.4rem; }
+
 .mobile-nav-toggle {
-  display: none;
-  background: none;
+  background: var(--navy);
   border: none;
-  font-size: 1.5rem;
-  color: var(--cefat-blue);
-  padding: 0.5rem;
+  color: #fff;
+  width: 44px;
+  height: 44px;
+  font-size: 1.0625rem;
   cursor: pointer;
 }
 
+/* Tiroir mobile */
 .mobile-drawer {
   position: fixed;
   top: 0;
-  right: -320px;
-  width: 300px;
-  height: 100vh;
-  background: #FFFFFF;
-  z-index: 10000;
-  box-shadow: -6px 0 35px rgba(0, 0, 0, 0.2);
-  transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  overflow-y: auto;
-  padding: 1.5rem 1.25rem;
-}
-
-.mobile-drawer.open {
   right: 0;
+  width: min(360px, 88vw);
+  height: 100%;
+  background: var(--paper);
+  border-left: 1px solid var(--rule);
+  padding: 1.5rem;
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform 0.35s var(--ease);
+  z-index: 1200;
 }
+.mobile-drawer.open { transform: translateX(0); }
 
 .mobile-drawer-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(15, 23, 42, 0.6);
-  z-index: 9999;
+  inset: 0;
+  background: rgba(10, 24, 48, 0.55);
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s;
+  transition: all 0.3s var(--ease);
+  z-index: 1100;
+}
+.mobile-drawer-overlay.open { opacity: 1; visibility: visible; }
+
+.close-drawer {
+  background: none;
+  border: 1px solid var(--rule);
+  width: 38px;
+  height: 38px;
+  cursor: pointer;
+  color: var(--ink);
 }
 
-.mobile-drawer-overlay.open {
-  opacity: 1;
-  visibility: visible;
-}
-
-.mobile-menu-links {
-  list-style: none;
-  padding: 0;
-  margin: 1.25rem 0 0 0;
-}
-
-.mobile-menu-links li {
-  border-bottom: 1px solid var(--cefat-border-light);
-}
-
+.mobile-menu-links { list-style: none; margin: 0; padding: 0; }
+.mobile-menu-links li { border-bottom: 1px solid var(--rule); }
 .mobile-menu-links li a {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 0.95rem 0.25rem;
-  color: var(--cefat-blue);
-  font-weight: 600;
-  font-size: 0.95rem;
+  justify-content: space-between;
+  padding: 0.95rem 0;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--ink);
 }
-
+.mobile-menu-links li a i { color: var(--ink-3); font-size: 0.75rem; }
 .mobile-menu-links li ul.mobile-submenu {
   list-style: none;
-  padding: 0 0 0.75rem 1rem;
   margin: 0;
-  display: none;
+  padding: 0 0 0.5rem 0.9rem;
+  max-height: 0;
+  overflow: hidden;
+  border-left: 2px solid var(--rule);
+  transition: max-height 0.3s var(--ease);
 }
-
-.mobile-menu-links li.open ul.mobile-submenu {
-  display: block;
-}
-
+.mobile-menu-links li.open ul.mobile-submenu { max-height: 420px; }
+.mobile-menu-links li ul.mobile-submenu li { border: none; }
 .mobile-menu-links li ul.mobile-submenu li a {
-  padding: 0.5rem 0.25rem;
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: var(--cefat-text-muted);
+  padding: 0.5rem 0;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  color: var(--ink-2);
 }
 
 /* ==========================================================================
-   BOUTONS & CALLS TO ACTION
+   7. BOUTONS
    ========================================================================== */
 
 .btn-cefat-primary,
@@ -559,971 +898,2425 @@ a:hover {
 .btn-cefat-outline {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
+  gap: 0.55rem;
+  padding: 1rem 1.75rem;
   font-family: var(--font-sans);
-  font-size: 0.925rem;
+  font-size: 0.8125rem;
   font-weight: 600;
-  padding: 0.75rem 1.75rem;
-  border-radius: 50px;
-  border: 2px solid transparent;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  border-radius: 0 !important;
   cursor: pointer;
-  text-decoration: none;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
-  line-height: 1.4;
-  white-space: nowrap;
+  transition: background-color 0.22s var(--ease), color 0.22s var(--ease), border-color 0.22s var(--ease);
 }
 
 .btn-cefat-primary {
-  background-color: var(--cefat-red);
-  border-color: var(--cefat-red);
-  color: #FFFFFF !important;
-  box-shadow: 0 4px 14px rgba(224, 49, 49, 0.28);
+  background: var(--carmine);
+  color: #fff;
+  border-color: var(--carmine);
 }
-
 .btn-cefat-primary:hover {
-  background-color: var(--cefat-red-hover);
-  border-color: var(--cefat-red-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(224, 49, 49, 0.38);
+  background: var(--carmine-dark);
+  border-color: var(--carmine-dark);
+  color: #fff;
 }
 
 .btn-cefat-secondary {
-  background-color: var(--cefat-blue);
-  border-color: var(--cefat-blue);
-  color: #FFFFFF !important;
+  background: var(--navy);
+  color: #fff;
+  border-color: var(--navy);
 }
-
 .btn-cefat-secondary:hover {
-  background-color: var(--cefat-blue-dark);
-  border-color: var(--cefat-blue-dark);
-  transform: translateY(-2px);
+  background: var(--navy-deep);
+  border-color: var(--navy-deep);
+  color: #fff;
 }
 
 .btn-cefat-outline {
-  background-color: transparent;
-  border-color: #FFFFFF;
-  color: #FFFFFF !important;
+  background: transparent;
+  color: var(--navy);
+  border-color: var(--navy);
 }
-
 .btn-cefat-outline:hover {
-  background-color: #FFFFFF;
-  color: var(--cefat-blue) !important;
-  transform: translateY(-2px);
+  background: var(--navy);
+  color: #fff;
 }
 
-.btn-sm {
-  padding: 0.5rem 1.15rem;
-  font-size: 0.825rem;
+.btn-sm { padding: 0.7rem 1.15rem; font-size: 0.75rem; }
+
+/* Le bouton secondaire est navy : invisible sur une bande navy. Sur fond
+   sombre il repasse en contour blanc, comme dans le hero. */
+.campus-band .btn-cefat-secondary,
+.band-navy .btn-cefat-secondary,
+.newslater-area2 .btn-cefat-secondary,
+.video-area2 .btn-cefat-secondary,
+.page-head .btn-cefat-secondary {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.45);
+  color: #fff;
 }
+.campus-band .btn-cefat-secondary:hover,
+.band-navy .btn-cefat-secondary:hover,
+.newslater-area2 .btn-cefat-secondary:hover,
+.video-area2 .btn-cefat-secondary:hover,
+.page-head .btn-cefat-secondary:hover {
+  background: #fff;
+  border-color: #fff;
+  color: var(--navy-deep);
+}
+
+/* Les flèches avancent au survol : un seul geste, répété partout */
+.btn-cefat-primary i.fa-arrow-right,
+.btn-cefat-secondary i.fa-arrow-right,
+.dept-row__cta i {
+  transition: transform 0.25s var(--ease);
+}
+.btn-cefat-primary:hover i.fa-arrow-right,
+.btn-cefat-secondary:hover i.fa-arrow-right,
+.dept-row__cta:hover i { transform: translateX(4px); }
+
+.btn-outline-primary {
+  border: 1px solid var(--navy);
+  color: var(--navy);
+  background: transparent;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  padding: 0.75rem 1.25rem;
+}
+.btn-outline-primary:hover { background: var(--navy); color: #fff; }
 
 /* ==========================================================================
-   ESPACEMENT DES SECTIONS & TITRES
+   8. TITRES DE SECTION
    ========================================================================== */
 
-section {
-  position: relative;
-}
-
-.pt-120 {
-  padding-top: var(--spacing-section);
-}
-
-.pb-120 {
-  padding-bottom: var(--spacing-section);
-}
-
-.pt-90 {
-  padding-top: 4.5rem;
-}
-
-.pb-90 {
-  padding-bottom: 4.5rem;
-}
-
-.mb-80 {
-  margin-bottom: 3.5rem;
-}
-
-.mb-60 {
-  margin-bottom: 2.75rem;
-}
-
-.mb-30 {
-  margin-bottom: 1.5rem;
-}
-
-/* Section Titles */
-.section-title2 {
-  margin-bottom: 2.5rem;
-}
-
-.section-title2.text-center {
-  max-width: 780px;
-  margin-left: auto;
-  margin-right: auto;
-}
+.section-title2 { margin-bottom: var(--stack-md); }
 
 .section-title2 h5 {
-  margin-bottom: 0.65rem;
+  font-family: var(--font-sans);
+  font-size: var(--fs-eyebrow);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;   /* le thème soulignait cet intitulé */
+  color: var(--carmine);
+  margin-bottom: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Le centrage vient souvent d'un .text-center posé sur la colonne parente,
+   pas sur .section-title2 : les deux cas doivent être couverts. */
+.section-title2.text-center h5,
+.text-center .section-title2 h5 { justify-content: center; }
+
+/* Filet d'accroche : remplace l'ancien soulignement */
+.section-title2 h5::before {
+  content: "";
+  width: 28px;
+  height: 1px;
+  background: currentColor;
+  flex: none;
 }
 
 .section-title2 h2 {
-  margin-bottom: 1rem;
+  font-size: var(--fs-h2);
+  margin-bottom: 0.6rem;
+  max-width: 22ch;
 }
+.section-title2.text-center h2,
+.text-center .section-title2 h2 { max-width: none; }
 
+/* Plus d'italique souligné : le contraste se fait par la couleur seule */
 .section-title2 h2 span {
-  color: var(--cefat-red);
-  font-style: italic;
+  color: var(--carmine);
+  font-style: normal;
+  text-decoration: none;
+  border: none;
 }
 
 .section-title2 p {
-  font-size: 1.05rem;
-  line-height: 1.65;
-  color: var(--cefat-text-muted);
-  margin-bottom: 0;
+  color: var(--ink-3);
+  max-width: 62ch;
+  margin: 0;
 }
+.section-title2.text-center p,
+.text-center .section-title2 p { margin-inline: auto; }
+
+.band-navy .section-title2 h5,
+.campus-band .section-title2 h5,
+.newslater-area2 .section-title2 h5,
+.video-area2 .section-title2 h5 { color: var(--red-bright); }
+.band-navy .section-title2 p,
+.campus-band .section-title2 p,
+.newslater-area2 .section-title2 p { color: rgba(255, 255, 255, 0.68); }
+
+/* --------------------------------------------------------------------------
+   ROUGE SUR FOND SOMBRE
+   Toutes les zones navy reprennent --red-on-dark ; le carmin et le rouge vif
+   n'y sont pas lisibles. Regroupé ici pour rester vérifiable d'un coup d'œil.
+   -------------------------------------------------------------------------- */
+.band-navy .section-title2 h5,
+.campus-band .section-title2 h5,
+.newslater-area2 .section-title2 h5,
+.video-area2 .section-title2 h5,
+.video-area2 h5,
+.page-head__eyebrow,
+.campus-band .section-title2 h2 span,
+.newslater-area2 .section-title2 h2 span,
+.video-area2 h2 span,
+.corridor__border span,
+.corridor__stop--gh .corridor__meta,
+.band-navy .text-danger,
+.campus-band .text-danger,
+.newslater-area2 .text-danger,
+.video-area2 .text-danger,
+.page-head .text-danger,
+.footer-top .text-danger,
+.header-top .text-danger,
+.header-top i,
+.hero-slider-area .text-danger,
+.trust-icon,
+.footer-link ul li a i,
+.campus-meta li i { color: var(--red-on-dark) !important; }
+
+.page-head__eyebrow::before,
+.band-navy .section-title2 h5::before,
+.campus-band .section-title2 h5::before,
+.newslater-area2 .section-title2 h5::before,
+.video-area2 .section-title2 h5::before { background: var(--red-on-dark); }
+
+.corridor__border::before,
+.corridor__stop--gh::after,
+.corridor__stop:hover::after { background: var(--red-on-dark); border-color: var(--red-on-dark); }
 
 /* ==========================================================================
-   HERO FULL-BLEED GRAND PHOTO (NATURAL COLOR & TRANSPARENT FADE)
+   9. HERO
    ========================================================================== */
 
 .hero-slider-area {
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0.42) 45%, rgba(255, 255, 255, 0.05) 75%, rgba(255, 255, 255, 0.0) 100%), url('../img/hero/hero-bg.jpg') center center / cover no-repeat;
-  color: var(--cefat-text-dark);
-  padding: 8.5rem 0 8rem 0;
   position: relative;
-  min-height: 640px;
-  display: flex;
-  align-items: center;
+  background: var(--navy-deep);
+  color: #fff;
+  overflow: hidden;
+  isolation: isolate;
 }
 
-.hero-content {
-  max-width: 640px;
+.hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
 }
+.hero__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+}
+
+/* Voile dégradé : le texte reste lisible quelle que soit la photo déposée.
+   Deux couches — l'horizontale porte le titre, la verticale porte le rail. */
+.hero__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(180deg, rgba(10, 24, 48, 0.55) 0%, rgba(10, 24, 48, 0.25) 45%, rgba(10, 24, 48, 0.75) 100%),
+    linear-gradient(100deg, rgba(10, 24, 48, 0.95) 0%, rgba(10, 24, 48, 0.88) 42%, rgba(10, 24, 48, 0.62) 100%);
+}
+
+.hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.65fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+  min-height: clamp(560px, 78vh, 780px);
+  padding-top: var(--stack-lg);
+  padding-bottom: var(--stack-lg);
+}
+
+.hero-content { max-width: 46rem; }
 
 .hero-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  background: var(--cefat-red);
-  color: #FFFFFF;
-  padding: 0.45rem 1.2rem;
-  border-radius: 30px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 1.25rem;
-  box-shadow: 0 4px 14px rgba(224, 49, 49, 0.35);
-}
-
-.hero-title {
-  color: #0B1E38;
-  font-family: 'Prata', serif;
-  font-size: 3.5rem;
-  font-weight: 800;
-  line-height: 1.12;
-  margin-bottom: 1.25rem;
-  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9);
-}
-
-.hero-title span {
-  color: var(--cefat-red);
-}
-
-.hero-subtitle {
-  color: #1E293B;
-  font-size: 1.15rem;
-  line-height: 1.7;
-  margin-bottom: 2rem;
+  gap: 0.6rem;
+  font-family: var(--font-sans);
+  font-size: var(--fs-eyebrow);
   font-weight: 600;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.85);
-}
-
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 1.25rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--carmine);
+  padding: 0.5rem 1rem;
   margin-bottom: 1.75rem;
 }
 
-.hero-actions .btn-cefat-primary,
-.hero-actions .btn-cefat-secondary {
-  padding: 0.9rem 1.85rem;
-  font-size: 0.98rem;
-  font-weight: 700;
-  border-radius: 50px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 15px rgba(15, 36, 68, 0.12);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.hero-actions .btn-cefat-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(224, 49, 49, 0.35);
-}
-
-.hero-actions .btn-cefat-secondary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(15, 36, 68, 0.25);
-}
-
-.hero-trust-badges {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 1.25rem !important;
-  padding-top: 1.5rem !important;
-  border-top: 1px solid rgba(15, 36, 68, 0.15) !important;
-}
-
-.hero-trust-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.65rem;
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  padding: 0.45rem 1rem;
-  border-radius: 30px;
-  border: 1px solid rgba(15, 36, 68, 0.08);
-  box-shadow: 0 4px 12px rgba(15, 36, 68, 0.04);
-}
-
-.trust-icon {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: rgba(224, 49, 49, 0.12);
-  color: var(--cefat-red);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.88rem;
-  flex-shrink: 0;
-}
-
-.trust-text {
-  color: #0F172A;
-  font-weight: 700;
-  font-size: 0.88rem;
-  white-space: nowrap;
-}
-
-/* Fast Finder Box */
-.fast-finder-box {
-  background: #FFFFFF;
-  border-radius: 18px;
-  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.2);
-  padding: 2rem 2.25rem;
-  border-top: 4px solid var(--cefat-red);
-  color: var(--cefat-text-dark);
-}
-
-.fast-finder-box h3 {
-  font-size: 1.35rem;
-  color: var(--cefat-blue);
-  margin-bottom: 0.35rem;
-}
-
-.fast-finder-box p {
-  font-size: 0.875rem;
-  color: var(--cefat-text-muted);
+.hero-title {
+  font-size: var(--fs-display);
+  line-height: var(--lh-tight);
+  letter-spacing: 0.008em;
+  color: #fff;
   margin-bottom: 1.5rem;
 }
-
-.finder-form .form-label {
-  font-size: 0.8rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--cefat-blue);
-  margin-bottom: 0.4rem;
+.hero-title span {
+  color: #fff;
   display: block;
 }
 
-.finder-form .form-select,
-.form-control,
-.form-select {
-  width: 100%;
-  padding: 0.75rem 1rem;
-  border-radius: 8px;
-  border: 1px solid var(--cefat-border);
-  font-size: 0.925rem;
-  line-height: 1.5;
-  color: var(--cefat-text-dark);
-  background-color: #FFFFFF;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+.hero-subtitle {
+  color: rgba(255, 255, 255, 0.76);
+  max-width: 48ch;
+  margin-bottom: var(--stack-md);
 }
 
-.form-control:focus,
-.form-select:focus {
-  border-color: var(--cefat-red);
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(224, 49, 49, 0.15);
+.hero-actions { margin-bottom: var(--stack-md); }
+.hero-actions .btn-cefat-secondary {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.42);
+  color: #fff;
+}
+.hero-actions .btn-cefat-secondary:hover {
+  background: #fff;
+  border-color: #fff;
+  color: var(--navy-deep);
+}
+
+.hero-trust-badges {
+  border-top: 1px solid rgba(255, 255, 255, 0.18) !important;
+  padding-top: 1.5rem !important;
+  gap: 1.75rem !important;
+}
+.hero-trust-item { gap: 0.6rem !important; }
+.trust-icon { color: var(--red-bright); font-size: 0.9375rem; }
+.trust-text {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.82);
+  letter-spacing: 0.01em;
+}
+
+/* --- Rail d'entrée : quatre cycles, séparés par des filets --- */
+
+.hero__rail { align-self: center; }
+
+.hero__rail-title {
+  font-family: var(--font-sans);
+  font-size: var(--fs-eyebrow);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 0.5rem;
+}
+
+.hero__rail ul { list-style: none; margin: 0; padding: 0; }
+
+.hero__rail li { border-bottom: 1px solid rgba(255, 255, 255, 0.2); }
+.hero__rail li:first-child { border-top: 1px solid rgba(255, 255, 255, 0.2); }
+
+.hero__rail a {
+  display: block;
+  padding: 1.15rem 0;
+  color: #fff;
+  position: relative;
+}
+
+.hero__rail-label {
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  letter-spacing: 0.012em;
+  display: block;
+  transition: transform 0.25s var(--ease);
+}
+
+.hero__rail-note {
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.6);
+  display: block;
+  margin-top: 0.15rem;
+}
+
+.hero__rail a::after {
+  content: "\f061"; /* flèche FontAwesome */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  position: absolute;
+  right: 0;
+  top: 1.35rem;
+  font-size: 0.75rem;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: all 0.25s var(--ease);
+}
+.hero__rail a:hover::after { opacity: 1; transform: translateX(0); }
+.hero__rail a:hover .hero__rail-label { transform: translateX(6px); }
+
+/* Le seul moment orchestré de la page : le rail se révèle en séquence */
+.hero__rail li {
+  animation: rail-in 0.6s var(--ease) backwards;
+}
+.hero__rail li:nth-child(1) { animation-delay: 0.15s; }
+.hero__rail li:nth-child(2) { animation-delay: 0.25s; }
+.hero__rail li:nth-child(3) { animation-delay: 0.35s; }
+.hero__rail li:nth-child(4) { animation-delay: 0.45s; }
+
+@keyframes rail-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* ==========================================================================
-   CARTES D'ENTITÉS & DE FORMATIONS
+   10. BARRE DE CHIFFRES
    ========================================================================== */
 
-.entity-card {
-  background: #FFFFFF;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.06);
-  border: 1px solid var(--cefat-border-light);
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+.factbar { background: var(--navy); }
+
+.factbar__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
 }
 
-.entity-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 16px 40px rgba(26, 58, 107, 0.12);
-  border-color: rgba(224, 49, 49, 0.3);
+.factbar__item {
+  padding: clamp(2rem, 4vw, 3rem) clamp(1rem, 2.5vw, 2rem);
+  border-left: 1px solid var(--navy-line);
+  text-align: center;
+}
+.factbar__item:first-child { border-left: none; }
+
+.factbar__num {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+  line-height: 1;
+  color: #fff;
+  letter-spacing: 0.008em;
+  margin-bottom: 0.6rem;
+}
+
+.factbar__label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ==========================================================================
+   11. MOT DU FONDATEUR
+   ========================================================================== */
+
+/* Titre pleine largeur, puis la photo face au bloc de parole. La section
+   reste large et basse : rien ne dépasse le pli sur un portable. */
+
+.about-area { background: var(--paper); }
+
+#about {
+  padding-top: clamp(3.5rem, 6vw, 6rem) !important;
+  padding-bottom: clamp(1.75rem, 2.6vw, 2.75rem) !important;
+}
+
+/* ---- Bandeau de titre ---- */
+.founder-head { margin-bottom: clamp(1rem, 1.7vw, 1.5rem); }
+
+.founder-head__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0 0 0.9rem;
+  font-family: var(--font-sans);
+  font-size: var(--fs-eyebrow);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--carmine);
+}
+.founder-head__eyebrow::before {
+  content: "";
+  flex: none;
+  width: 28px;
+  height: 1px;
+  background: currentColor;
+}
+
+/* Le titre porte la section : plus grand qu'un h2 courant, tenu sur deux
+   lignes par la mesure, et l'interligne resserré — à cette taille, 1.18
+   creusait un couloir blanc entre les deux lignes. */
+.founder-head h2 {
+  margin: 0;
+  max-width: none;
+  font-size: var(--fs-h2);
+  line-height: 0.95;
+  text-wrap: balance;
+}
+.founder-head h2 span { color: var(--carmine); }
+
+/* ---- Photo + parole, côte à côte ---- */
+.founder-lead {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
+  gap: clamp(2rem, 3.5vw, 3.5rem);
+  align-items: stretch;
+  padding-top: clamp(1.5rem, 2.4vw, 2rem);
+  /* Filet fin gris clair, comme les autres séparateurs du site (légende de
+     photo, contexte, repères) : le trait carmin de 2px pesait plus lourd que
+     le titre qu'il devait souligner. */
+  border-top: 1px solid var(--rule);
+  --legende: 2.65rem;               /* hauteur de la légende, hors flux */
+  margin-bottom: calc(clamp(2rem, 3.5vw, 3rem) + var(--legende));
+}
+
+.founder-media { margin: 0; position: relative; display: flex; flex-direction: column; }
+
+/* La photo se règle sur la colonne de parole au lieu d'imposer sa hauteur :
+   un cadrage 4/5 donnait 720px, plus qu'un écran d'ordinateur portable pour
+   une image d'accompagnement. Base flex à 0 — sans cela elle apporte sa
+   hauteur intrinsèque au calcul de la rangée et c'est elle qui décide. */
+.founder-media img {
+  display: block;
+  width: 100%;
+  flex: 1 1 0;
+  min-height: 220px;
+  max-height: 520px;                /* la photo va jusqu'au bas du contexte */
+  object-fit: cover;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Légende de presse : elle dit ce que la photo montre — des étudiants, pas
+   le fondateur — et évite que l'image passe pour un portrait signé. */
+.founder-media figcaption {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 0.8rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1.4;
+  color: var(--ink-3);
+}
+
+/* Citation, signature et contexte forment un seul bloc face à la photo.
+   Empilés en trois bandes, ils laissaient un trou sous la signature et une
+   seconde colonne de texte à moitié vide. */
+.founder-say { display: flex; flex-direction: column; }
+.founder-quote { margin: 0; }
+
+/* Les guillemets sont dans le paragraphe, pas au-dessus : ponctuation
+   ouvrante et fermante, en carmin et une taille au-dessus du texte. Ils sont
+   posés en pseudo-éléments plutôt que dans la chaîne traduite pour rester
+   stylables sans toucher aux traductions. line-height nul : ils ne creusent
+   pas la boîte de ligne. */
+.founder-quote blockquote::before,
+.founder-quote blockquote::after {
+  color: var(--carmine);
+  font-size: 1.3em;
+  line-height: 0;
+  vertical-align: -0.04em;
+}
+.founder-quote blockquote::before { content: "\201C"; }
+.founder-quote blockquote::after  { content: "\201D"; }
+
+/* Guillemets courbes en français aussi : le chevron double partait dans une
+   autre direction graphique. Un seul jeu de glyphes, un seul calage. */
+
+.founder-quote blockquote {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none !important;
+  font-family: var(--font-alt);
+  font-size: clamp(1.0625rem, 1.85vw, 1.45rem);
+  font-weight: 500;
+  line-height: 1.22;
+  letter-spacing: -0.012em;
+  font-style: normal !important;
+  color: var(--ink);
+  text-indent: 0;
+}
+
+.founder-sign {
+  margin-top: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+.founder-sign__name {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  line-height: 1.15;
+  color: var(--ink);
+}
+.founder-sign__role {
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--carmine);
+}
+
+/* ---- Le contexte, au second plan, ferme la colonne ----
+   Il tient sous la signature au lieu d'occuper sa propre bande : la colonne
+   de droite atteint la hauteur de la photo, les deux se terminent ensemble. */
+.founder-note {
+  margin: 1.5rem 0 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--ink-3);
+}
+.founder-note strong { color: var(--ink-2); }
+
+/* ---- Les quatre repères : une seule rangée filetée ----
+   La grille 2×2 empilait quatre lignes et rouvrait le vide que la section
+   venait de perdre. Un filet court au-dessus de chaque repère reprend le
+   signe du chapeau, sans pastille ni coche. */
+.founder-facts {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(1.25rem, 2.5vw, 2.5rem);
+}
+.founder-facts li {
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--rule-strong);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--ink);
+}
+
+/* ---- Repli ---- */
+.founder-facts.founder-facts--5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+
+@media (max-width: 991.98px) {
+  .founder-facts.founder-facts--5 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .founder-lead { grid-template-columns: minmax(0, 1fr); gap: 1.75rem; }
+  .founder-media img { flex: none; height: clamp(200px, 38vw, 300px); }
+  .founder-media figcaption { position: static; }
+  .founder-lead { margin-bottom: clamp(2rem, 3.5vw, 3rem); }
+  .founder-quote blockquote { max-width: 42ch; }
+  .founder-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 575.98px) {
+  .founder-facts,
+  .founder-facts.founder-facts--5 { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .founder-facts li { padding-block: 0.75rem; }
+  .founder-facts li:last-child { border-bottom: 1px solid var(--rule-strong); }
+}
+
+/* ==========================================================================
+   11 bis. CATALOGUE DES PROGRAMMES (LMD)
+   ==========================================================================
+   27 filières : en cartes, la page devenait un mur de 27 blocs. Une liste
+   filetée à deux colonnes tient le même contenu sur un tiers de la hauteur et
+   se parcourt en diagonale, comme un catalogue d'université. */
+
+.prog-catalogue {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(2rem, 4vw, 3.5rem);
+}
+
+.prog-group__title {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin: 0 0 0.25rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 2px solid var(--carmine);
+  font-family: var(--font-alt);
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.prog-group__count {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.prog-list { list-style: none; margin: 0; padding: 0; }
+
+.prog-item a {
+  display: grid;
+  grid-template-columns: 3.25rem minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 0.9rem;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid var(--rule);
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 0.18s ease, padding-left 0.18s ease;
+}
+.prog-item a:hover,
+.prog-item a:focus-visible {
+  background: var(--paper-warm);
+  padding-left: 0.6rem;
+}
+
+/* Le code de filière sert de repère de balayage : chasse fixe pour que les
+   trois lettres s'alignent d'une ligne à l'autre. */
+.prog-code {
+  font-family: var(--font-alt);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  font-variant-numeric: tabular-nums;
+  color: var(--carmine);
+}
+.prog-name {
+  font-family: var(--font-alt);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--ink);
+}
+.prog-meta {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+
+@media (max-width: 767.98px) {
+  .prog-catalogue { grid-template-columns: minmax(0, 1fr); }
+  .prog-item a { grid-template-columns: 3rem minmax(0, 1fr); }
+  /* La durée passe sous l'intitulé : sur trois colonnes à cette largeur,
+     les noms longs se cassaient en quatre lignes. */
+  .prog-meta { grid-column: 2; padding-top: 0.15rem; }
+}
+
+/* ==========================================================================
+   11 ter. HISTORIQUE DU GROUPE
+   ==========================================================================
+   Frise horizontale : cinq dates sur une ligne se lisent d'un coup d'œil,
+   là où une frise verticale aurait ajouté cinq écrans de défilement. */
+
+.group-story { background: var(--paper); }
+
+.group-story__head { margin-bottom: clamp(2.25rem, 4vw, 3.25rem); }
+.group-story__eyebrow {
+  display: flex; align-items: center; gap: 0.75rem;
+  margin: 0 0 0.9rem;
+  font-family: var(--font-sans);
+  font-size: var(--fs-eyebrow);
+  font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--carmine);
+}
+.group-story__eyebrow::before {
+  content: ""; flex: none; width: 28px; height: 1px; background: currentColor;
+}
+.group-story h2 {
+  margin: 0 0 1.25rem;
+  font-size: var(--fs-h2);
+  line-height: 0.95;
+  max-width: none;
+}
+.group-story__lede {
+  margin: 0;
+  max-width: 62ch;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--ink-3);
+}
+
+.timeline {
+  list-style: none; margin: 0 0 clamp(2.25rem, 4vw, 3.25rem); padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 2rem);
+}
+.timeline__step {
+  position: relative;
+  padding-top: 1.6rem;
+  border-top: 1px solid var(--rule-strong);
+}
+/* Le point marque la date sur la ligne, comme un repère de règle. */
+.timeline__step::before {
+  content: "";
+  position: absolute; top: -4px; left: 0;
+  width: 7px; height: 7px;
+  background: var(--carmine);
+}
+.timeline__year {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  color: var(--carmine);
+  margin-bottom: 0.5rem;
+}
+.timeline__label {
+  display: block;
+  font-family: var(--font-alt);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--ink);
+}
+
+.group-facts {
+  list-style: none; margin: 0; padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 2rem);
+  border-top: 2px solid var(--carmine);
+  padding-top: 1.5rem;
+}
+.group-facts li { display: flex; flex-direction: column; gap: 0.35rem; }
+.group-facts strong {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.4vw, 2.75rem);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+.group-facts span {
+  font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  line-height: 1.4; color: var(--ink-3);
+}
+
+@media (max-width: 991.98px) {
+  .timeline { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 2rem; }
+  .group-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 1.75rem; }
+}
+@media (max-width: 479.98px) {
+  .timeline { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ==========================================================================
+   11 quater. RÉGIMES D'ÉTUDES
+   ========================================================================== */
+
+.study-modes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.75rem, 3.5vw, 3rem);
+}
+.study-mode { padding-top: 1.25rem; border-top: 2px solid var(--carmine); }
+.study-mode__title {
+  margin: 0 0 0.25rem;
+  font-family: var(--font-alt);
+  font-size: 1.125rem; font-weight: 700;
+  letter-spacing: -0.01em; color: var(--ink);
+}
+.study-mode__who {
+  margin: 0 0 1.1rem;
+  font-size: 0.6875rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--carmine);
+}
+.study-mode__list { list-style: none; margin: 0; padding: 0; }
+.study-mode__list li {
+  position: relative;
+  padding: 0.65rem 0 0.65rem 1.4rem;
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--font-alt);
+  font-size: 0.9375rem; font-weight: 500; line-height: 1.4;
+  color: var(--ink);
+}
+/* Filet court plutôt qu'une coche : ce sont des modalités, pas des étapes
+   franchies — même règle que les repères du mot du fondateur. */
+.study-mode__list li::before {
+  content: "";
+  position: absolute; left: 0; top: 1.25em;
+  width: 10px; height: 1px; background: var(--carmine);
+}
+.study-modes__note {
+  margin: clamp(1.5rem, 3vw, 2.25rem) 0 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.875rem; line-height: 1.55; color: var(--ink-3);
+}
+.study-modes__note strong { color: var(--ink-2); }
+
+@media (max-width: 767.98px) {
+  .study-modes { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* Cible d'ancre : l'en-tête collant fait 84px, on réserve la place pour que
+   le titre visé ne se retrouve pas dessous. */
+[id]:target { scroll-margin-top: 108px; }
+
+/* ==========================================================================
+   NAVIGATION ENTRE FICHES D'ENTITÉ
+   Depuis une fiche, on passe aux trois autres sans repasser par la liste.
+   ========================================================================== */
+.entity-nav {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.75rem);
+}
+.entity-nav__item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding-top: 0.9rem;
+  border-top: 2px solid var(--carmine);
+  text-decoration: none;
+  transition: opacity 0.25s var(--ease);
+}
+.entity-nav__item:hover { opacity: 0.62; }
+.entity-nav__label {
+  font-size: 0.625rem; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ink-3);
+}
+.entity-nav__name {
+  font-family: var(--font-alt);
+  font-size: 0.9375rem; font-weight: 600;
+  line-height: 1.35; color: var(--ink);
+}
+@media (max-width: 767.98px) {
+  .entity-nav { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ==========================================================================
+   FRISE CHRONOLOGIQUE DU RÉSEAU
+   ==========================================================================
+   Cinq étiquettes alignées ne disaient pas la durée : elles se lisaient
+   comme une liste de faits sans lien. Ici la ligne traverse les cinq dates,
+   l'année passe au-dessus en gros chiffres, l'intitulé en dessous. Le regard
+   suit le temps de gauche à droite. */
+
+.frise {
+  --frise-ecart: clamp(0.75rem, 1.6vw, 1.5rem);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--frise-ecart);
+  counter-reset: none;
+}
+
+/* Trois rangées : l'année, la ligne, l'intitulé. La rangée centrale a une
+   hauteur fixe pour que la ligne reste rectiligne d'une colonne à l'autre,
+   quelle que soit la longueur des intitulés. */
+.frise__jalon {
+  display: grid;
+  grid-template-rows: auto 1.5rem auto;
+  align-content: start;
+}
+
+.frise__annee {
+  font-family: var(--font-display);
+  font-size: clamp(1.875rem, 3.2vw, 2.75rem);
+  line-height: 1;
+  font-variant-numeric: tabular-nums lining-nums;
+  color: var(--ink-2);
+}
+
+.frise__rail {
+  position: relative;
+  align-self: center;
+}
+/* Le segment déborde dans la gouttière pour que la ligne soit continue. */
+.frise__rail::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: calc(100% + var(--frise-ecart));
+  height: 1px;
+  background: var(--rule-strong);
+}
+/* Le dernier jalon arrête la ligne au lieu de la laisser filer dans le vide. */
+.frise__jalon:last-child .frise__rail::before { width: 100%; }
+
+/* Repère carré, comme les autres marqueurs de la page. */
+.frise__rail::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 7px;
+  height: 7px;
+  background: var(--carmine);
+}
+/* L'étape la plus récente : un anneau la désigne comme le point où en est
+   le réseau aujourd'hui. */
+.frise__jalon:last-child .frise__rail::after {
+  box-shadow: 0 0 0 4px var(--paper), 0 0 0 5px var(--carmine);
+}
+
+.frise__nom {
+  font-family: var(--font-alt);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--ink);
+}
+
+@media (max-width: 991.98px) {
+  .frise { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 2rem; }
+  /* Sur deux rangées, une ligne qui traverse le retour à la ligne serait
+     fausse : chaque jalon reprend un filet court au-dessus de son année. */
+  .frise__jalon { grid-template-rows: auto 1.25rem auto; }
+  .frise__rail::before { width: 100%; }
+}
+
+@media (max-width: 575.98px) {
+  .frise { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* ==========================================================================
+   12. LES 4 ENTITÉS
+   ========================================================================== */
+
+/* Toute la carte est le lien : la cible ne se limite plus au « En savoir
+   plus » de 120px de large. */
+.entity-card {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--paper);
+  border: none;
+  border-radius: 0 !important;
+  box-shadow: none !important;
 }
 
 .entity-card-img {
-  height: 210px;
   position: relative;
   overflow: hidden;
+  aspect-ratio: 3 / 2;
 }
-
 .entity-card-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: transform 0.6s var(--ease);
 }
+.entity-card:hover .entity-card-img img { transform: scale(1.05); }
 
-.entity-card:hover .entity-card-img img {
-  transform: scale(1.06);
-}
-
+/* Le badge de type d'établissement rejoint la pastille de cycle sur une
+   même ligne, en pied de carte : aplat navy face au contour carmin. */
 .entity-badge {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: var(--cefat-blue);
-  color: #FFFFFF;
-  font-size: 0.725rem;
-  font-weight: 700;
-  padding: 0.3rem 0.85rem;
-  border-radius: 20px;
+  display: inline-block;
+  background: var(--navy);
+  color: #fff;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  padding: 0.35rem 0.5rem;
+  line-height: 1.45;
+  white-space: nowrap;
 }
+.entity-card--focus .entity-badge { background: var(--navy-deep); }
+
+.entity-card-tags {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0.3rem;
+  min-width: 0;
+}
+/* Si la place venait à manquer, c'est la pastille de cycle qui se resserre,
+   pas la ligne qui se casse en deux. */
+.entity-card-tags > * { min-width: 0; }
 
 .entity-card-body {
-  padding: 1.75rem;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
+  padding: 1.4rem 1.25rem 1.1rem;
+  flex: 1 1 auto;
 }
-
+/* min-height: 2.5em réservait deux lignes et demie même pour un titre sur
+   une ligne — c'est ce qui creusait le vide avant la description. Inutile
+   ici : c'est .entity-card-footer (margin-top:auto) qui aligne les cartes. */
+/* Raleway 600, comme les intitulés de filières : le filet synthétique
+   (-webkit-text-stroke) n'a plus lieu d'être, la graisse est réelle. */
 .entity-card-body h4 {
-  font-size: 1.2rem;
-  color: var(--cefat-blue);
-  margin-bottom: 0.75rem;
-  line-height: 1.35;
-}
-
-.entity-card-body p {
-  color: var(--cefat-text-muted);
-  font-size: 0.9rem;
-  line-height: 1.65;
-  flex-grow: 1;
-  margin-bottom: 0;
-}
-
-.entity-card-footer {
-  padding: 1rem 1.75rem;
-  background: var(--cefat-bg-light);
-  border-top: 1px solid var(--cefat-border-light);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.entity-card-footer a {
+  font-family: var(--font-alt);
   font-weight: 600;
-  font-size: 0.85rem;
+  font-size: clamp(1rem, 1.15vw, 1.0625rem);
+  letter-spacing: -0.02em;
+  word-spacing: -0.03em;
+  line-height: 1.3;
+  color: #0A0C0F;
+  margin-bottom: 0.45rem;
+  text-wrap: balance;
+}
+/* --ink-2 (8.2:1) plutôt que --ink-3 (5.1:1) : ces descriptions portent
+   l'argument de chaque école, elles doivent se lire sans effort. */
+.entity-card-body p {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+  margin: 0;
+}
+
+/* Le pied de carte empile désormais le cycle au-dessus du lien :
+   c'est ce chevauchement qui cassait la mise en page. */
+.entity-card-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.25rem 1.15rem;
+  margin-top: auto;
+}
+
+.entity-card-footer .badge {
+  background: transparent !important;
+  color: var(--carmine) !important;
+  border: 1px solid transparent;
+  /* le contour ajoute 2px de haut : on les reprend sur le padding pour que
+     les deux pastilles fassent exactement la même hauteur */
+  padding: calc(0.35rem - 1px) 0.5rem;
+  font-size: 0.625rem;
+  letter-spacing: 0.07em;
+  line-height: 1.45;
+}
+
+/* Le focus se dessine sur la carte entière, pas sur un mot du pied. */
+.entity-card:focus-visible {
+  outline: 2px solid var(--carmine);
+  outline-offset: 3px;
+}
+
+/* --------------------------------------------------------------------------
+   CARROUSEL DES ENTITÉS
+   Trois cartes visibles, la quatrième au bout de la flèche. Le défilement
+   est natif (scroll-snap) plutôt que piloté par transform : on hérite du
+   glissement tactile, de la molette horizontale et du focus clavier.
+   -------------------------------------------------------------------------- */
+
+.entity-carousel { position: relative; --ec-gap: clamp(1rem, 1.5vw, 1.375rem); }
+
+.entity-carousel__viewport {
+  display: flex;
+  gap: var(--ec-gap);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.entity-carousel__viewport::-webkit-scrollbar { display: none; }
+.entity-carousel__viewport:focus-visible { outline: 2px solid var(--carmine); outline-offset: 4px; }
+
+/* L'espacement passe par `gap` et non par un padding porté par les cartes :
+   avec un padding, la 3e carte s'arrêtait 24px avant le bord du conteneur
+   et ne tombait donc pas sous la flèche de droite. Le gap ne compte que
+   entre les cartes, les bords extérieurs restent alignés sur la grille. */
+.entity-slide {
+  flex: 0 0 calc((100% - 3 * var(--ec-gap)) / 4);
+  min-width: 0;
+  scroll-snap-align: start;
+}
+.entity-slide > .entity-card { height: 100%; }
+
+/* La barre de flèches appartient visuellement au carrousel, pas au titre :
+   elle se colle aux cartes plutôt que de flotter au milieu du vide. */
+.entity-carousel__nav {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Le bloc titre porte .mb-60 (72px) : trop, dès lors qu'une barre de
+   commandes de 48px s'intercale ensuite. Resserré pour cette section. */
+#entites .section-title2.mb-60 {
+  margin-bottom: clamp(0.75rem, 1.5vw, 1.25rem) !important;
+}
+
+.ec-arrow {
+  width: 44px;
+  height: 44px;
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-}
-
-.entity-card-footer a:hover {
-  gap: 0.6rem;
-}
-
-/* Departments Post Hover (Exact Reference Style) */
-.departments-post {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.departments-post-hover {
-  background: #FFFFFF;
-  border: 1px solid var(--cefat-border-light);
-  padding: 1.75rem 2rem;
-  margin-bottom: 1rem;
-  border-radius: 14px;
-  transition: all 0.25s ease;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--rule-strong);
+  color: var(--navy);
+  font-size: 0.875rem;
   cursor: pointer;
+  transition: background-color 0.22s var(--ease), border-color 0.22s var(--ease), color 0.22s var(--ease);
+}
+.ec-arrow:hover:not(:disabled) { background: var(--navy); border-color: var(--navy); color: #fff; }
+.ec-arrow:disabled { opacity: 0.3; cursor: default; }
+
+@media (prefers-reduced-motion: reduce) {
+  .entity-carousel__viewport { scroll-behavior: auto; }
 }
 
-.departments-post-hover:hover,
-.departments-post-hover.active {
-  background: var(--cefat-blue);
-  border-color: var(--cefat-blue);
-  color: #FFFFFF;
-  transform: translateX(6px);
-  box-shadow: 0 10px 30px rgba(26, 58, 107, 0.16);
+/* Les quatre cartes tiennent de front au-delà de 1200px : la barre de
+   flèches ne commanderait plus rien, on la retire. Elle revient dès qu'une
+   carte sort du cadre. */
+@media (min-width: 1200px) {
+  .entity-carousel__nav { display: none; }
 }
 
-.departments-number strong {
-  font-size: 1.75rem;
-  color: var(--cefat-red);
-  font-family: var(--font-serif);
+@media (max-width: 1199.98px) {
+  .entity-slide { flex-basis: calc((100% - 2 * var(--ec-gap)) / 3); }
+}
+@media (max-width: 991.98px) {
+  .entity-slide { flex-basis: calc((100% - var(--ec-gap)) / 2); }
+}
+@media (max-width: 575.98px) {
+  .entity-carousel { --ec-gap: 1rem; }
+  .entity-slide { flex-basis: 86%; }
+  .entity-carousel__nav { justify-content: center; }
 }
 
-.departments-post-hover:hover .departments-number strong,
-.departments-post-hover.active .departments-number strong {
-  color: #FFA8A8;
+/* Colonne focale : la deuxième entité s'inverse en carmin */
+.entity-card--focus {
+  background: var(--carmine);
+  border-color: var(--carmine);
 }
-
-.departments-content h4 {
-  margin: 0 0 0.4rem 0;
-  font-size: 1.15rem;
+.entity-card--focus:hover { border-color: var(--carmine-dark); background: var(--carmine-dark); }
+.entity-card--focus .entity-badge { background: var(--navy-deep); }
+.entity-card--focus .entity-card-body h4 { color: #fff; }
+.entity-card--focus .entity-card-body p { color: rgba(255, 255, 255, 0.92); }
+.entity-card--focus .entity-card-footer { border-top-color: rgba(255, 255, 255, 0.25); }
+.entity-card--focus .entity-card-footer .badge {
+  color: #fff !important;
+  border-color: rgba(255, 255, 255, 0.4);
 }
-
-.departments-content h4 a {
-  color: inherit;
-}
-
-.departments-content p {
-  margin: 0;
-  font-size: 0.9rem;
-  color: var(--cefat-text-muted);
-  line-height: 1.6;
-}
-
-.departments-post-hover:hover .departments-content p,
-.departments-post-hover.active .departments-content p {
-  color: rgba(255, 255, 255, 0.85);
-}
+.entity-card--focus .entity-card-footer a { color: #fff; }
+.entity-card--focus .entity-card-footer a:hover { color: rgba(255, 255, 255, 0.75); }
 
 /* ==========================================================================
-   CAMPUS & CARTE INTERACTIVE
+   13. DOMAINES DE FORMATION
+   L'échelle de diplômes remplace la numérotation : sept domaines ne sont
+   pas une séquence, mais les cycles proposés sont une vraie information.
    ========================================================================== */
 
-.campus-card {
-  background: #FFFFFF;
-  border-radius: 14px;
-  overflow: hidden;
-  border: 1px solid var(--cefat-border-light);
-  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.05);
-  margin-bottom: 1.5rem;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+.departments-post { list-style: none; margin: 0; padding: 0; }
+
+.departments-post > li { border-top: 1px solid var(--rule); margin-bottom: 0 !important; }
+.departments-post > li:last-child { border-bottom: 1px solid var(--rule); }
+
+.dept-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 0.85fr) auto;
+  gap: clamp(1.25rem, 3vw, 3rem);
+  align-items: center;
+  padding: clamp(1.15rem, 1.8vw, 1.5rem) clamp(0rem, 2vw, 1.75rem);
+  transition: background-color 0.25s var(--ease);
+}
+.dept-row:hover { background: var(--paper-warm); }
+
+/* Six lignes courtes ne justifient pas la pleine cadence verticale :
+   scopé à cette section pour ne pas toucher au rythme du reste du site. */
+#formations { padding-top: clamp(3.5rem, 6vw, 6rem) !important; padding-bottom: clamp(3.5rem, 6vw, 6rem) !important; }
+#formations .section-title2 { margin-bottom: clamp(1.75rem, 3vw, 2.5rem) !important; }
+
+/* Vignette à gauche du couple titre + description. Format carré et taille
+   calée sur la hauteur utile de la ligne, pour ne pas la faire grandir. */
+.dept-row__main {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(1rem, 1.4vw, 1.5rem);
+  min-width: 0;
 }
 
-.campus-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.09);
+/* Numéro d'ordre : largeur fixe pour que tous les titres s'alignent sur
+   la même verticale, chiffres tabulaires pour que 01 et 10 aient la même
+   chasse. aria-hidden : c'est le titre qui porte le sens, pas le numéro. */
+.dept-row__num {
+  flex: 0 0 auto;
+  width: 3.25rem;
+  font-family: var(--font-display);
+  font-size: 1.875rem;
+  font-variant-numeric: tabular-nums lining-nums;
+  line-height: 1;
+  color: var(--rule-strong);
+  padding-top: 0.12em;
+  transition: color 0.25s var(--ease);
+  user-select: none;
+}
+.dept-row:hover .dept-row__num { color: var(--carmine); }
+
+.dept-row__text { display: block; min-width: 0; }
+
+@media (max-width: 575.98px) {
+  .dept-row__num { width: 2.5rem; font-size: 1.5rem; }
+}
+
+/* Ces intitulés sont du contenu fonctionnel qu'on parcourt des yeux, pas
+   un titre éditorial : Instrument Sans en 600 leur donne le poids qu'un
+   serif à graisse unique ne peut pas fournir. C'est le traitement que la
+   page de référence réserve à son plus petit niveau de titre. */
+.dept-row__title {
+  font-family: var(--font-alt);
+  font-weight: 600;
+  font-size: clamp(1.125rem, 1.2vw, 1.3125rem);
+  /* Raleway a une chasse large et un crénage aéré : sans resserrage, ces
+     intitulés s'étirent sur toute la colonne. */
+  letter-spacing: -0.022em;
+  word-spacing: -0.04em;
+  line-height: 1.3;
+  margin-bottom: 0.45rem;
+}
+.dept-row__title a { color: var(--ink); }
+.dept-row:hover .dept-row__title a { color: var(--carmine); }
+
+.dept-row__desc {
+  font-size: 0.875rem;
+  color: var(--ink-3);
+  margin: 0;
+  max-width: 56ch;
+}
+
+.dept-row__levels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.dept-level {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--navy);
+  border: 1px solid var(--rule);
+  padding: 0.35rem 0.65rem;
+  white-space: nowrap;
+}
+.dept-row:hover .dept-level { border-color: var(--rule-strong); }
+
+.dept-row__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--navy);
+  white-space: nowrap;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+}
+.dept-row__cta:hover { color: var(--carmine); border-bottom-color: var(--carmine); }
+
+/* ==========================================================================
+   14. LES 5 CAMPUS — LE CORRIDOR
+   Signature de la page : le réseau franchit une frontière, et c'est là que
+   la langue d'enseignement change. Le rail le dit littéralement.
+   ========================================================================== */
+
+.campus-band { background: var(--navy); color: rgba(255, 255, 255, 0.75); }
+.campus-band h2, .campus-band h3, .campus-band h4 { color: #fff; }
+
+/* Le rail est dessiné par .corridor__track : pas de second filet ici. */
+.corridor {
+  margin: clamp(2rem, 3vw, 2.5rem) 0 0;
+}
+
+/* Le rail est une commande, pas une section : il se rapproche de son
+   intitulé plutôt que de flotter au milieu de la bande. */
+#campus .section-title2 { margin-bottom: clamp(1.25rem, 2.5vw, 2rem); }
+
+/* Le bouton clôt la section : 136px sous lui creusaient un vide inutile
+   avant la bande suivante. Scopé à #campus, la cadence globale est intacte. */
+#campus { padding-bottom: clamp(2.5rem, 4.5vw, 4rem) !important; }
+
+.corridor__track {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr) auto 1fr;
+  align-items: start;
+  gap: 0;
+}
+
+.corridor__stop {
+  display: block;
+  position: relative;
+  width: 100%;
+  background: none;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  padding: 1.5rem 0.75rem 0;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+/* La ligne continue traverse toutes les étapes */
+.corridor__stop::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--navy-line);
+}
+
+.corridor__stop::after {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 9px;
+  height: 9px;
+  background: var(--navy);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  transition: background-color 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+
+.corridor__stop:hover { color: #fff; }
+.corridor__stop:hover::after { background: var(--red-bright); border-color: var(--red-bright); }
+
+/* Noms de villes du rail : Raleway 600, comme les autres intitulés de
+   contenu. Crénage négatif — Raleway a une chasse plus large que le serif. */
+.corridor__name {
+  display: block;
+  font-family: var(--font-alt);
+  font-weight: 600;
+  font-size: clamp(1.0625rem, 1.02vw, 1.1875rem);
+  color: #fff;
+  letter-spacing: -0.015em;
+}
+
+.corridor__meta {
+  display: block;
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 0.35rem;
+}
+
+/* La frontière : rupture verticale explicite entre les deux pays */
+.corridor__border {
+  position: relative;
+  padding: 1.75rem 1.25rem 0;
+  text-align: center;
+}
+.corridor__border::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  width: 1px;
+  height: 30px;
+  background: var(--red-bright);
+}
+.corridor__border span {
+  display: block;
+  font-size: 0.625rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--red-bright);
+  font-weight: 600;
+}
+
+.corridor__stop--gh::after { border-color: var(--red-bright); }
+.corridor__stop--gh .corridor__meta { color: rgba(255, 255, 255, 0.75); }
+
+/* --------------------------------------------------------------------------
+   PANNEAU CAMPUS
+   Le corridor pilote un panneau unique et large : une seule photo bien
+   cadrée plutôt que cinq vignettes serrées, et le rail devient utile.
+   -------------------------------------------------------------------------- */
+
+.corridor__stop.is-active { color: #fff; }
+.corridor__stop.is-active::after {
+  background: var(--red-on-dark);
+  border-color: var(--red-on-dark);
+  transform: translateX(-50%) scale(1.25);
+}
+.corridor__stop.is-active .corridor__name { color: var(--red-on-dark); }
+.corridor__stop:focus-visible { outline: 2px solid var(--red-on-dark); outline-offset: 4px; }
+
+/* La photo occupe tout le panneau et le texte se pose dessus, au lieu de se
+   partager la largeur en deux. Le voile dégradé assombrit la moitié droite
+   pour que le texte reste lisible quelle que soit la photo. */
+.campus-panel {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: clamp(320px, 33vw, 440px);
+  margin-top: clamp(2rem, 3.5vw, 3rem);
+  border: 1px solid var(--navy-line);
+  animation: campus-in 0.35s var(--ease);
+}
+.campus-panel[hidden] { display: none; }
+
+@keyframes campus-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.campus-panel__media {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+}
+.campus-panel__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Voile : transparent à gauche pour laisser voir le bâtiment, opaque à
+   droite pour porter le texte. Navy plutôt que noir, comme la bande. */
+.campus-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(90deg,
+    rgba(10, 24, 48, 0.20) 0%,
+    rgba(10, 24, 48, 0.42) 32%,
+    rgba(10, 24, 48, 0.93) 56%,
+    rgba(10, 24, 48, 0.96) 100%);
+}
+
+.campus-panel__body {
+  position: relative;
+  background: transparent;
+  padding: clamp(1.75rem, 3vw, 3rem);
+  margin-left: auto;
+  width: min(52%, 34rem);
+  min-height: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.campus-panel__eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--red-on-dark);
+  margin: 0 0 0.9rem;
+}
+
+/* Le texte passe sur la photo : il repasse en blanc. */
+.campus-panel .campus-panel__title {
+  font-family: var(--font-alt);
+  font-weight: 600;
+  font-size: clamp(1.5rem, 2vw, 1.875rem);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: #fff;
+  margin: 0 0 1.1rem;
+}
+
+.campus-panel__addr,
+.campus-panel__prog {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 0.6rem;
+}
+.campus-panel__addr i,
+.campus-panel__prog i {
+  color: var(--red-on-dark);
+  font-size: 0.8125rem;
+  margin-top: 0.32em;
+  flex: none;
+}
+.campus-panel__prog { margin-bottom: var(--stack-md); }
+
+@media (max-width: 767.98px) {
+  /* Sur mobile, la colonne fait toute la largeur : le dégradé horizontal
+     ne protégerait plus le texte, on le bascule à la verticale. */
+  .campus-panel__body { width: 100%; }
+  .campus-panel::before {
+    background: linear-gradient(180deg,
+      rgba(10, 24, 48, 0.35) 0%,
+      rgba(10, 24, 48, 0.88) 45%,
+      rgba(10, 24, 48, 0.94) 100%);
+  }
+}
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .campus-panel { animation: none; }
+}
+
+/* Tuiles campus */
+.campus-card {
+  display: block;
+  background: transparent;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  height: 100%;
 }
 
 .campus-card-img {
-  height: 190px;
   position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  margin-bottom: 1rem;
 }
-
 .campus-card-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.6s var(--ease);
 }
+.campus-card:hover .campus-card-img img { transform: scale(1.05); }
 
 .campus-flag {
   position: absolute;
-  top: 0.85rem;
-  left: 0.85rem;
-  background: rgba(255, 255, 255, 0.95);
-  padding: 0.3rem 0.75rem;
-  border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--cefat-blue);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  bottom: 0;
+  left: 0;
+  background: var(--navy-deep);
+  color: #fff;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.75rem;
 }
 
-.campus-card-content {
-  padding: 1.5rem;
-}
-
+.campus-card-content { padding: 0; }
 .campus-card-content h4 {
-  font-size: 1.15rem;
-  color: var(--cefat-blue);
-  margin-bottom: 0.5rem;
-}
-
-.campus-meta {
-  list-style: none;
-  padding: 0;
-  margin: 0.85rem 0 0 0;
-  font-size: 0.85rem;
-  color: var(--cefat-text-muted);
-}
-
-.campus-meta li {
-  margin-bottom: 0.45rem;
+  font-size: 1.1875rem;
+  color: #fff;
+  margin-bottom: 0.35rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
+.campus-card-content p { color: rgba(255, 255, 255, 0.62); }
 
-.campus-meta li:last-child {
-  margin-bottom: 0;
-}
-
-/* Carte Interactive */
-.interactive-map-container {
-  background: #FFFFFF;
-  border-radius: 16px;
-  padding: 1.75rem;
-  box-shadow: 0 10px 35px rgba(15, 23, 42, 0.08);
-  border: 1px solid var(--cefat-border);
-}
-
-.map-svg-wrapper {
-  position: relative;
-  width: 100%;
-  min-height: 380px;
-  background: #F1F5F9;
-  border-radius: 12px;
-  overflow: hidden;
+.campus-meta { list-style: none; margin: 0.75rem 0 0; padding: 0; }
+.campus-meta li {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.62);
+  padding: 0.3rem 0;
 }
+.campus-meta li i { color: var(--red-bright); font-size: 0.75rem; margin-top: 0.35em; }
+
+/* Sur fond clair (page campus.html) les tuiles s'inversent */
+.band-light .campus-card-content h4 { color: var(--ink); }
+.band-light .campus-card-content p,
+.band-light .campus-meta li { color: var(--ink-3); }
+
+/* Carte schématique des 5 campus (campus.html) */
+.map-svg-wrapper { position: relative; }
+.map-svg-wrapper svg { display: block; background: none !important; border-radius: 0 !important; }
 
 .campus-pin {
   position: absolute;
+  transform: translate(-50%, -50%);
   cursor: pointer;
-  transform: translate(-50%, -100%);
-  transition: transform 0.25s ease;
-  z-index: 10;
+  display: block;
 }
-
-.campus-pin:hover, .campus-pin.active {
-  transform: translate(-50%, -115%) scale(1.15);
-  z-index: 20;
-}
-
 .campus-pin-icon {
-  background: var(--cefat-red);
-  color: #FFFFFF;
-  width: 36px;
-  height: 36px;
-  border-radius: 50% 50% 50% 0;
-  transform: rotate(-45deg);
+  width: 32px;
+  height: 32px;
+  background: var(--navy-mid);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 10px rgba(224, 49, 49, 0.4);
-  border: 2px solid #FFFFFF;
+  font-size: 0.75rem;
+  margin-inline: auto;
+  transition: background-color 0.25s var(--ease), transform 0.25s var(--ease);
 }
-
-.campus-pin-icon i {
-  transform: rotate(45deg);
-  font-size: 0.875rem;
+.campus-pin:hover .campus-pin-icon,
+.campus-pin.active .campus-pin-icon {
+  background: var(--carmine);
+  border-color: var(--carmine);
+  transform: scale(1.12);
 }
+.campus-pin--gh .campus-pin-icon { border-color: var(--red-bright); }
 
 .campus-pin-label {
   position: absolute;
-  top: 100%;
+  top: 118%;
   left: 50%;
   transform: translateX(-50%);
-  background: var(--cefat-blue);
-  color: #FFFFFF;
-  font-size: 0.75rem;
-  font-weight: 700;
-  padding: 0.2rem 0.6rem;
-  border-radius: 4px;
   white-space: nowrap;
-  margin-top: 0.35rem;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-}
-
-/* ==========================================================================
-   STATISTIQUES & COMPTEURS
-   ========================================================================== */
-
-.counter-area2 {
-  background: var(--cefat-bg-light);
-}
-
-.about-box {
-  padding: 2rem 1.5rem;
-  background: #FFFFFF;
-  border-radius: 14px;
-  box-shadow: 0 6px 22px rgba(15, 23, 42, 0.05);
-  border-bottom: 3px solid var(--cefat-red);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.about-box:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.09);
-}
-
-.about-box h4 {
-  font-size: 0.95rem;
+  font-size: 0.625rem;
   font-weight: 600;
-  color: var(--cefat-text-muted);
-  margin-bottom: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
 }
-
-.about-box .count {
-  font-size: clamp(2rem, 3.5vw, 2.75rem);
-  font-weight: 800;
-  color: var(--cefat-blue);
-  display: inline-block;
-  margin-bottom: 0.25rem;
-  font-family: var(--font-sans);
-}
-
-.about-box .counter span {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--cefat-red);
-}
+.campus-pin:hover .campus-pin-label { color: #fff; }
 
 /* ==========================================================================
-   CANDIDATURE & FORMULAIRES
+   15. VIDÉO
    ========================================================================== */
 
-.newslater-area2 {
-  background: linear-gradient(135deg, var(--cefat-blue) 0%, var(--cefat-blue-dark) 100%);
-  color: #FFFFFF;
-  padding: var(--spacing-section) 0;
-}
+/* --------------------------------------------------------------------------
+   AFFICHE VIDÉO
+   Emplacement photo : assets/img/hero/video-bg.jpg — cadrage 16:9.
+   L'ancienne version noyait la photo sous un voile à 82% sur toute la
+   largeur : autant ne pas en mettre. Ici l'image est une affiche cadrée,
+   le dégradé n'assombrit que la zone de texte.
+   -------------------------------------------------------------------------- */
 
-.newslater-area2 .section-title2 h2 {
-  color: #FFFFFF;
-}
-
-.admission-card {
-  background: #FFFFFF;
-  border-radius: 18px;
-  padding: 2.25rem 2.5rem;
-  color: var(--cefat-text-dark);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
-}
-
-.admission-card h3 {
-  font-size: 1.45rem;
-  color: var(--cefat-blue);
-  margin-bottom: 0.35rem;
-}
-
-.admission-card p {
-  color: var(--cefat-text-muted);
-  font-size: 0.875rem;
-  margin-bottom: 1.5rem;
-}
-
-/* Video Presentation */
 .video-area2 {
-  background: linear-gradient(135deg, rgba(26, 58, 107, 0.88), rgba(15, 36, 68, 0.92)), url('../img/hero/video-bg.jpg') center center/cover no-repeat;
-  padding: 8rem 0;
-  text-align: center;
-  color: #FFFFFF;
+  background: var(--navy-deep);
+  padding: var(--section-y) 0;
 }
 
-.play-video-btn {
-  width: 80px;
-  height: 80px;
-  background: var(--cefat-red);
-  color: #FFFFFF;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  box-shadow: 0 0 0 10px rgba(224, 49, 49, 0.25);
-  animation: pulseCefat 2s infinite;
-  transition: transform 0.25s ease;
+/* --------------------------------------------------------------------------
+   AFFICHE VIDÉO
+   Emplacement photo : assets/img/hero/video-bg.jpg — cadrage 16:9.
+   Un seul cadre : la vidéo principale à gauche, la galerie des 4 entités
+   posée dessus à droite sur un voile. Le dégradé n'assombrit que les zones
+   de texte — la photo reste visible, contrairement au voile à 82% d'avant.
+   -------------------------------------------------------------------------- */
+
+.video-area2 {
+  background: var(--navy-deep);
+  padding: var(--section-y) 0;
 }
 
-.play-video-btn:hover {
-  transform: scale(1.08);
-  color: #FFFFFF;
-  background-color: var(--cefat-red-hover);
-}
-
-@keyframes pulseCefat {
-  0% { box-shadow: 0 0 0 0 rgba(224, 49, 49, 0.5); }
-  70% { box-shadow: 0 0 0 20px rgba(224, 49, 49, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(224, 49, 49, 0); }
-}
-
-/* ==========================================================================
-   FOOTER
-   ========================================================================== */
-
-.footer-top {
-  background: var(--cefat-blue-dark);
-  color: var(--cefat-text-light);
-  padding: 5rem 0 2.5rem 0;
-}
-
-.f-widget-title h2 {
-  font-family: var(--font-sans);
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: #FFFFFF;
-  margin-bottom: 1.35rem;
+.video-card {
   position: relative;
-  padding-bottom: 0.65rem;
+  width: 100%;
+  height: clamp(440px, 46vw, 620px);
+  overflow: hidden;
+  border: 1px solid var(--navy-line);
+  isolation: isolate;
 }
 
-.f-widget-title h2::after {
-  content: "";
+.video-card__still {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 32px;
-  height: 2px;
-  background: var(--cefat-red);
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s var(--ease);
+}
+.video-card:hover .video-card__still { transform: scale(1.03); }
+
+.video-card__scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to left, rgba(10, 24, 48, 0.86) 0%, rgba(10, 24, 48, 0.30) 42%, rgba(10, 24, 48, 0) 62%),
+    linear-gradient(to top, rgba(10, 24, 48, 0.92) 0%, rgba(10, 24, 48, 0.55) 34%, rgba(10, 24, 48, 0.10) 66%, rgba(10, 24, 48, 0.30) 100%);
 }
 
-.footer-link ul {
-  list-style: none;
+.video-card__inner {
+  position: relative;
+  height: 100%;
+  display: grid;
+  /* Largeur fixe pour la galerie : mêler minmax() et fr rendait la
+     répartition imprévisible (la colonne s'élargissait au lieu de réduire). */
+  grid-template-columns: minmax(0, 1fr) clamp(240px, 21vw, 290px);
+  gap: 0;
+  /* Le padding passe sur chaque volet : la galerie doit toucher les bords
+     haut, bas et droit du cadre, pas flotter à l'intérieur d'une marge. */
   padding: 0;
-  margin: 0;
 }
 
-.footer-link ul li {
-  margin-bottom: 0.65rem;
-}
+/* --- Volet gauche : lecture de la vidéo principale --- */
 
-.footer-link ul li a {
-  color: var(--cefat-text-light);
-  font-size: 0.9rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  transition: color 0.2s ease, padding-left 0.2s ease;
+.video-card__main {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-width: 0;
+  padding: clamp(1.25rem, 2.4vw, 2.25rem);
 }
+.video-card__main:focus-visible { outline: 2px solid var(--red-on-dark); outline-offset: 4px; }
 
-.footer-link ul li a:hover {
-  color: #FFA8A8;
-  padding-left: 0.35rem;
-}
-
-.footer-social {
+/* Cercle au trait et centré, avec une onde qui signale qu'il est actif.
+   Un disque plein masquait la photo au milieu du cadre. */
+.video-card__play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(64px, 5.5vw, 80px);
+  height: clamp(64px, 5.5vw, 80px);
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-}
-
-.footer-social a {
-  width: 36px;
-  height: 36px;
-  background: rgba(255, 255, 255, 0.1);
-  color: #FFFFFF;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
   justify-content: center;
-  font-size: 0.875rem;
-  transition: background-color 0.25s ease, transform 0.25s ease;
+  background: rgba(255, 255, 255, 0.08);
+  border: 2px solid rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(2px);
+  color: #fff;
+  font-size: 1rem;
+  padding-left: 4px;              /* le triangle penche à droite */
+  border-radius: 50%;             /* seule rondeur admise : elle dit « lecture » */
+  transition: transform 0.3s var(--ease), background-color 0.25s var(--ease);
 }
 
-.footer-social a:hover {
-  background-color: var(--cefat-red);
-  transform: translateY(-3px);
-}
-
-.copyright-wrap {
-  background: #091526;
-  padding: 1.25rem 0;
-  color: #64748B;
-  font-size: 0.825rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-/* ==========================================================================
-   WIDGET WHATSAPP FLOTTANT & MODAL VIDÉO
-   ========================================================================== */
-
-.whatsapp-float { display: none !important; }
-
-.whatsapp-float:hover {
-  background-color: #20BA5A;
-  color: #FFFFFF;
-  transform: scale(1.08) translateY(-2px);
-  box-shadow: 0 10px 28px rgba(37, 211, 102, 0.55);
-}
-
-.whatsapp-tooltip {
+/* Onde concentrique : une seule, lente, elle attire sans clignoter */
+.video-card__play::after {
+  content: "";
   position: absolute;
-  right: 70px;
-  background: #FFFFFF;
-  color: var(--cefat-text-dark);
-  padding: 0.45rem 1rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  white-space: nowrap;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.25s ease, right 0.25s ease, visibility 0.25s;
+  inset: -2px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  animation: play-pulse 2.6s cubic-bezier(0.22, 0.61, 0.36, 1) infinite;
   pointer-events: none;
 }
 
-.whatsapp-float:hover .whatsapp-tooltip {
-  opacity: 1;
-  visibility: visible;
-  right: 74px;
+@keyframes play-pulse {
+  0%   { transform: scale(1);    opacity: 0.75; }
+  70%  { transform: scale(1.45); opacity: 0; }
+  100% { transform: scale(1.45); opacity: 0; }
 }
 
-.video-modal-backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(15, 23, 42, 0.85);
-  z-index: 100000;
-  display: none;
+.video-card__main:hover .video-card__play {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translate(-50%, -50%) scale(1.06);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .video-card__play::after { animation: none; opacity: 0; }
+}
+
+.video-card__caption { display: block; max-width: 34rem; }
+
+.video-card__title {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(1.375rem, 2.3vw, 2.125rem);
+  line-height: 1.14;
+  letter-spacing: 0.01em;
+  color: #fff;
+  margin-bottom: 0.6rem;
+}
+.video-card__title span { color: var(--red-on-dark); }
+
+.video-card__desc {
+  display: block;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+/* --- Volet droit : la galerie, dans le même cadre --- */
+
+/* Panneau pleine hauteur, collé au bord droit du cadre. */
+.video-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  height: 100%;
+  padding: clamp(1.1rem, 1.8vw, 1.6rem);
+  background: rgba(10, 24, 48, 0.5);
+  border-left: 1px solid var(--navy-line);
+  scrollbar-width: none;
+}
+.video-list::-webkit-scrollbar { display: none; }
+
+/* flex: 1 → les quatre vignettes se répartissent sur toute la hauteur.
+   Un filet sépare chaque vidéo, plutôt qu'un contour complet par carte. */
+.video-thumb {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  gap: 0.8rem;
+  align-items: center;
+  padding: 0.65rem 0.5rem;
+  flex: 1 1 0;
+  min-height: 0;
+  transition: background-color 0.22s var(--ease);
+}
+.video-thumb + .video-thumb { border-top: 1px solid rgba(255, 255, 255, 0.16); }
+.video-thumb:hover { background: rgba(255, 255, 255, 0.09); }
+
+/* Neutralise l'apparence native du bouton : la vignette reste une vignette */
+.video-thumb {
+  background: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* Vidéo actuellement chargée dans le lecteur */
+.video-thumb.is-active { background: rgba(255, 255, 255, 0.13); }
+.video-thumb.is-active .video-thumb__title { color: var(--red-on-dark); }
+.video-thumb.is-active .video-thumb__play i { border-color: #fff; background: rgba(255, 255, 255, 0.2); }
+.video-thumb:focus-visible { outline: 2px solid var(--red-on-dark); outline-offset: 2px; }
+
+.video-thumb__still {
+  position: relative;
+  display: block;
+  width: 72px;
+  aspect-ratio: 1 / 1;   /* carré */
+  overflow: hidden;
+}
+.video-thumb__still img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.video-thumb__play {
+  position: absolute;
+  inset: 0;
+  display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem;
+  background: rgba(10, 24, 48, 0.35);
+  color: #fff;
+  transition: background-color 0.22s var(--ease);
 }
 
-.video-modal-backdrop.open {
+/* Cercle au trait, pas un disque plein : l'aperçu reste visible dessous. */
+.video-thumb__play i {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  font-size: 0.5rem;
+  padding-left: 2px;              /* le triangle penche à droite */
+  transition: border-color 0.22s var(--ease), background-color 0.22s var(--ease);
+}
+.video-thumb:hover .video-thumb__play i { border-color: #fff; background: rgba(255, 255, 255, 0.16); }
+/* Voile neutre : le rouge sur la photo salissait l'image. */
+.video-thumb:hover .video-thumb__play { background: rgba(10, 24, 48, 0.62); }
+
+.video-thumb__body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
 }
 
-.video-modal-content {
-  position: relative;
-  width: 100%;
-  max-width: 800px;
-  background: #000000;
-  border-radius: 14px;
-  overflow: hidden;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
-}
-
-.video-modal-content iframe {
-  width: 100%;
-  height: 450px;
-  border: none;
+.video-thumb__title {
   display: block;
+  font-family: var(--font-alt);
+  font-weight: 600;
+  font-size: 0.8125rem;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: #fff;
+  margin-bottom: 0.2rem;
 }
+.video-thumb:hover .video-thumb__title { color: var(--red-on-dark); }
 
-.video-modal-close {
-  position: absolute;
-  top: -40px;
-  right: 0;
-  color: #FFFFFF;
-  font-size: 2rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  line-height: 1;
-}
-
-/* ==========================================================================
-   RESPONSIVE & ADAPTATION MOBILE / TABLETTE
-   ========================================================================== */
-
-@media (max-width: 1199.98px) {
-  .hero-title {
-    font-size: 2.75rem;
-  }
+.video-thumb__meta {
+  display: block;
+  font-size: 0.625rem;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.6);
+  font-variant-numeric: tabular-nums;
 }
 
 @media (max-width: 991.98px) {
-  .mobile-nav-toggle {
-    display: block;
-  }
-  .main-menu {
-    display: none;
-  }
-  
-  .pt-120 {
-    padding-top: var(--spacing-section-mobile);
-  }
-  .pb-120 {
-    padding-bottom: var(--spacing-section-mobile);
-  }
-  .pt-90 {
-    padding-top: 3rem;
-  }
-  .pb-90 {
-    padding-bottom: 3rem;
-  }
-  .mb-80 {
-    margin-bottom: 2.25rem;
-  }
-  .mb-60 {
-    margin-bottom: 1.75rem;
-  }
+  .video-card { height: auto; }
+  .video-card__inner { grid-template-columns: 1fr; }
+  .video-card__main { min-height: 300px; }
+  .video-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
+}
+@media (max-width: 575.98px) {
+  .video-list { grid-template-columns: 1fr; }
+  .video-card__desc { display: none; }
+}
 
-  .hero-slider-area {
-    padding: 5rem 0 4.5rem 0;
-  }
-  .hero-title {
-    font-size: 2.25rem;
-  }
-  .hero-subtitle {
-    font-size: 1rem;
-    margin-bottom: 1.5rem;
-  }
-  
-  .fast-finder-box {
-    margin-top: 2rem;
-    padding: 1.75rem;
-  }
-  
-  .admission-card {
-    padding: 1.75rem;
-  }
+/* ==========================================================================
+   16. CHIFFRES CLÉS
+   Quatre boîtes égales ne hiérarchisent rien, et la barre de chiffres du
+   haut de page occupe déjà ce registre. Ici, le taux d'insertion prend la
+   parole — c'est la seule proportion, donc la seule à porter une jauge —
+   et les trois dénombrements l'accompagnent en liste.
+   ========================================================================== */
 
-  .whatsapp-float { display: none !important; }
+.counter-area2 { background: var(--paper-warm); }
+
+/* Le thème impose trois choses sur `.count` : un remplissage transparent
+   avec contour, `color:#fff` et `font-size:48px`. Sur fond clair et à cette
+   échelle, les trois sont à neutraliser — le span hérite de son parent. */
+.counter-area2 .count {
+  -webkit-text-fill-color: currentColor;
+  -webkit-text-stroke: 0;
+  color: inherit;
+  font: inherit;
+  line-height: inherit;
+  margin: 0;
+  display: inline;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+  border-top: 1px solid var(--rule-strong);
+  padding-top: clamp(2rem, 4vw, 3.5rem);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--rule-strong);
+}
+
+.stat-cell {
+  padding: clamp(2rem, 4vw, 3.25rem) clamp(1rem, 2vw, 2rem);
+  text-align: center;
+  border-left: 1px solid var(--rule);
+}
+.stat-cell:first-child { border-left: none; }
+
+.stat-cell__num {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 5.5vw, 4.75rem);
+  line-height: 1;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin: 0 0 1rem;
+  font-variant-numeric: tabular-nums;   /* la largeur ne saute pas pendant le décompte */
+}
+.stat-cell__unit {
+  font-size: 0.36em;
+  color: var(--carmine);
+  margin-left: 0.08em;
+}
+
+.stat-cell__label {
+  font-family: var(--font-alt);
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin: 0 0 0.3rem;
+}
+
+.stat-cell__sub {
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+  margin: 0;
+}
+
+@media (max-width: 767.98px) {
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .stat-cell:nth-child(odd) { border-left: none; }
+  .stat-cell:nth-child(n+3) { border-top: 1px solid var(--rule); }
+}
+@media (max-width: 419.98px) {
+  .stats { grid-template-columns: 1fr; }
+  .stat-cell { border-left: none; }
+  .stat-cell + .stat-cell { border-top: 1px solid var(--rule); }
+}
+
+/* ==========================================================================
+   17. CANDIDATURE
+   ========================================================================== */
+
+/* Le thème dessine ici une carte blanche (`.newslater-area2 .container`
+   avec background:#fff et bordure) prévue pour un bloc newsletter clair.
+   Notre section est navy pleine largeur : le texte blanc y devenait
+   invisible. On rend le conteneur à son rôle de simple gouttière. */
+.newslater-area2 > .container {
+  background: transparent;
+  border: none;
+  padding: 0 var(--gutter);
+}
+
+.newslater-area2 {
+  background: var(--navy-deep);
+  padding: var(--section-y) 0;
+  color: rgba(255, 255, 255, 0.75);
+}
+.newslater-area2 .section-title2 h2 { color: #fff; }
+.newslater-area2 .section-title2 h2 span { color: var(--red-bright); }
+
+.express-track {
+  border: 1px solid var(--navy-line);
+  background: rgba(255, 255, 255, 0.04) !important;
+  padding: 1.75rem !important;
+  border-radius: 0 !important;
+}
+.express-track h6 {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 1.25rem;
+}
+.express-track .badge {
+  background: var(--carmine) !important;
+  width: 26px;
+  height: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 0.8125rem;
+  padding: 0;
+  flex: none;
+}
+
+.admission-card {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  padding: clamp(1.75rem, 4vw, 2.75rem);
+}
+.admission-card h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+.admission-card p { font-size: 0.875rem; color: var(--ink-3); margin-bottom: var(--stack-md); }
+
+.form-label {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  margin-bottom: 0.4rem;
+}
+
+.form-control, .form-select {
+  border: 1px solid var(--rule);
+  padding: 0.85rem 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  color: var(--ink);
+  background-color: var(--paper);
+  transition: border-color 0.2s var(--ease);
+}
+.form-control::placeholder { color: var(--ink-3); }
+.form-control:focus, .form-select:focus {
+  border-color: var(--navy);
+  box-shadow: none !important;
+  outline: none;
+}
+
+/* ==========================================================================
+   18. PARTENAIRES
+   ========================================================================== */
+
+.partner-tile {
+  border: 1px solid var(--rule);
+  background: var(--paper) !important;
+  padding: 1.25rem 1rem !important;
+  text-align: center;
+  min-width: 170px;
+  transition: border-color 0.25s var(--ease);
+}
+.partner-tile:hover { border-color: var(--navy); }
+
+/* ==========================================================================
+   19. PIED DE PAGE
+   ========================================================================== */
+
+.footer-top {
+  background: var(--navy-deep);
+  color: rgba(255, 255, 255, 0.6);
+  padding: var(--section-y) 0 0;
+  font-size: 0.875rem;
+}
+
+.footer-top img { max-height: 62px; }
+
+.f-widget-title h2 {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+.f-widget-title h2::after { display: none; }
+
+.footer-link ul { list-style: none; margin: 0; padding: 0; }
+.footer-link ul li { margin-bottom: 0.7rem; }
+.footer-link ul li a {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.875rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+.footer-link ul li a i { font-size: 0.625rem; color: var(--red-bright); }
+.footer-link ul li a:hover { color: #fff; }
+
+/* Le thème met .f-contact en flex : les lignes d'adresse, d'e-mail et de
+   téléphone se retrouvaient côte à côte, chacune écrasée sur trois lettres. */
+.f-contact { display: block !important; }
+.f-contact p { margin-bottom: 0.6rem; line-height: 1.6; }
+.f-contact a { color: rgba(255, 255, 255, 0.85); }
+.f-contact a:hover { color: #fff; }
+
+/* En fond sombre, le gras doit s'éclaircir et non passer à l'encre foncée */
+.footer-top strong, .footer-top b,
+.copyright-wrap strong, .copyright-wrap b,
+.band-navy strong, .campus-band strong,
+.newslater-area2 strong, .page-head strong { color: #fff; }
+
+.footer-social { display: flex; gap: 0.6rem; }
+.footer-social a {
+  width: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.875rem;
+  transition: all 0.22s var(--ease);
+}
+.footer-social a:hover { background: var(--carmine); border-color: var(--carmine); color: #fff; }
+
+.copyright-wrap {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 1.5rem 0;
+  margin-top: var(--stack-lg) !important;
+  font-size: 0.8125rem;
+}
+
+/* ==========================================================================
+   20. FLOTTANTS ET MODALE
+   ========================================================================== */
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 26px;
+  right: 26px;
+  width: 54px;
+  height: 54px;
+  background: #1F8A4C;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  z-index: 900;
+  transition: transform 0.25s var(--ease);
+}
+.whatsapp-float:hover { transform: scale(1.08); color: #fff; }
+
+.whatsapp-tooltip {
+  position: absolute;
+  right: 68px;
+  background: var(--navy-deep);
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 0.5rem 0.85rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.22s var(--ease);
+}
+.whatsapp-float:hover .whatsapp-tooltip { opacity: 1; }
+
+.video-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 24, 48, 0.92);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1500;
+  padding: var(--gutter);
+}
+.video-modal-backdrop.open { display: flex; }
+.video-modal-content { width: min(960px, 100%); aspect-ratio: 16 / 9; position: relative; }
+.video-modal-content iframe { width: 100%; height: 100%; border: 0; }
+.video-modal-close {
+  position: absolute;
+  top: -46px;
+  right: 0;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   21. EN-TÊTE DE PAGE INTÉRIEURE
+   ========================================================================== */
+
+.page-head {
+  background: var(--navy);
+  color: rgba(255, 255, 255, 0.7);
+  padding: clamp(3.5rem, 8vw, 6.5rem) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-head__eyebrow {
+  font-size: var(--fs-eyebrow);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--red-bright);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.1rem;
+}
+.page-head__eyebrow::before {
+  content: "";
+  width: 28px;
+  height: 1px;
+  background: var(--red-bright);
+  flex: none;
+}
+
+.page-head h1 {
+  color: #fff;
+  font-size: var(--fs-h1);
+  margin-bottom: 0.75rem;
+  max-width: 18ch;
+}
+
+.page-head p {
+  color: rgba(255, 255, 255, 0.68);
+  max-width: 62ch;
+  margin: 0;
+}
+
+.page-head__crumbs {
+  margin-top: var(--stack-md);
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--navy-line);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+.page-head__crumbs a { color: rgba(255, 255, 255, 0.5); }
+.page-head__crumbs a:hover { color: #fff; }
+
+/* ==========================================================================
+   22. RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 1399.98px) {
+  /* Premier niveau uniquement : sinon ce padding retomberait sur les liens
+     des panneaux du mega menu. */
+  .main-menu > nav > ul > li > a { padding: 1.75rem 0.7rem; font-size: 0.8125rem; }
+  .main-menu > nav > ul > li > a::after { left: 0.7rem; right: 0.7rem; }
+  .header-btn .btn-cefat-primary { padding: 0.75rem 1rem; font-size: 0.75rem; }
+  .logo img { max-height: 48px; }
+
+  /* La barre haute passait sur deux lignes : on resserre plutôt que de laisser
+     le badge FDFP tomber seul sous les autres entrées. */
+  .header-cta ul { gap: 1.1rem; flex-wrap: nowrap; }
+  .header-top { font-size: 0.75rem; }
+  .top-phone-numbers a { font-size: 0.75rem; }
+}
+
+/* Mesuré : logo + 7 entrées + bouton réclament ~1000px une fois les marges
+   parasites du thème neutralisées. Sous 1200px on bascule sur le tiroir
+   plutôt que de tasser jusqu'à la casse. */
+@media (max-width: 1199.98px) {
+  .hero__grid { grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); }
+  .main-menu { display: none !important; }
+  .header-btn { display: none !important; }
+  .mobile-nav-toggle { display: inline-flex !important; align-items: center; justify-content: center; }
+}
+
+@media (max-width: 991.98px) {
+  .hero__grid {
+    grid-template-columns: 1fr;
+    gap: var(--stack-lg);
+    min-height: 0;
+    padding-top: var(--section-y);
+    padding-bottom: var(--section-y);
+  }
+  .hero__rail { max-width: 30rem; }
+  .hero-content { max-width: none; }
+
+  .dept-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    align-items: start;
+  }
+  .dept-row__cta { justify-self: start; }
+
+  .factbar__grid { grid-template-columns: repeat(2, 1fr); }
+  .factbar__item:nth-child(3) { border-left: none; }
+  .factbar__item:nth-child(n+3) { border-top: 1px solid var(--navy-line); }
+
+  .corridor__track {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.75rem 0;
+  }
+  .corridor__border {
+    grid-column: 1 / -1;
+    padding: 0.5rem 0 0;
+  }
+  .corridor__border::before { display: none; }
 }
 
 @media (max-width: 575.98px) {
-  .hero-title {
-    font-size: 1.85rem;
-  }
-  .section-title2 h2 {
-    font-size: 1.5rem;
-  }
+  .factbar__grid { grid-template-columns: 1fr; }
+  .factbar__item { border-left: none; border-top: 1px solid var(--navy-line); }
+  .factbar__item:first-child { border-top: none; }
+
+  .corridor__track { grid-template-columns: 1fr; }
+
   .btn-cefat-primary,
   .btn-cefat-secondary,
-  .btn-cefat-outline {
-    width: 100%;
-    margin-bottom: 0.5rem;
+  .btn-cefat-outline { width: 100%; justify-content: center; }
+  .hero-actions { flex-direction: column; align-items: stretch; }
+}
+
+/* ==========================================================================
+   23. MOUVEMENT RÉDUIT
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
-  .fast-finder-box {
-    padding: 1.25rem;
-  }
-  .admission-card {
-    padding: 1.25rem;
-  }
-  .departments-post-hover {
-    padding: 1.25rem 1rem;
-  }
+  .hero__rail li { animation: none; }
+}
+
+/* ==========================================================================
+   24. IMPRESSION
+   ========================================================================== */
+
+@media print {
+  .header-top, .menu-area, .mobile-drawer, .whatsapp-float,
+  .video-modal-backdrop, .footer-social { display: none !important; }
+  body { color: #000; }
 }
