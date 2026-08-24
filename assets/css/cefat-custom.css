@@ -2114,23 +2114,27 @@ section { position: relative; }
   border-bottom: 1px solid var(--ink-3);
 }
 
-/* Les faits : deux colonnes de couples clé/valeur, filetées. */
+/* Les faits : quatre colonnes, deux rangées.
+   En deux colonnes de couples clé/valeur, chaque colonne avait ses propres
+   filets : dès qu'une valeur passait sur deux lignes, les séparateurs de
+   gauche et de droite cessaient d'être alignés. Ici les cellules d'une même
+   rangée partagent leur hauteur, les filets restent donc alignés. */
 .entity-facts {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0 clamp(2rem, 4vw, 3.5rem);
-  border-top: 1px solid var(--ink-3);
-  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(1.5rem, 2.6vw, 2.25rem);
+  margin: 0 0 clamp(2.5rem, 5vw, 4rem);
 }
 .entity-facts__item {
-  display: grid;
-  grid-template-columns: minmax(0, 11rem) minmax(0, 1fr);
-  gap: 0 1.25rem;
-  align-items: baseline;
-  padding: 0.95rem 0;
-  border-bottom: 1px solid var(--rule);
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--ink-3);
+  min-width: 0;
 }
 .entity-facts__k {
+  margin: 0;
   font-size: 0.6875rem;
   font-weight: 600;
   letter-spacing: 0.1em;
@@ -2138,6 +2142,7 @@ section { position: relative; }
   color: var(--carmine);
 }
 .entity-facts__v {
+  margin: 0;                       /* <dd> porte une marge gauche par défaut */
   font-family: var(--font-alt);
   font-size: 0.9375rem;
   font-weight: 500;
@@ -2200,12 +2205,15 @@ section { position: relative; }
 }
 .entity-apply .form-label { color: var(--ink-2) !important; }
 
+@media (max-width: 1199.98px) {
+  .entity-facts { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
 @media (max-width: 991.98px) {
-  .entity-facts { grid-template-columns: minmax(0, 1fr); }
+  .entity-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .entity-split { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-width: 575.98px) {
-  .entity-facts__item { grid-template-columns: minmax(0, 1fr); gap: 0.3rem; }
+  .entity-facts { grid-template-columns: minmax(0, 1fr); }
 }
 
 /* ==========================================================================
