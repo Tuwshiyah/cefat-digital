@@ -71,84 +71,88 @@
         <div class="col-xl-9 col-lg-9 col-4 text-end">
           <div class="d-flex align-items-center justify-content-end">
             <div class="main-menu d-none d-lg-block">
-              <nav>
+              <nav id="mobile-menu">
                 <ul>
                   <li><a href="index.html" data-i18n="nav_home">Accueil</a></li>
-                  <li><a href="index.html#about" data-i18n="nav_about">À Propos</a></li>
-                  <li class="has-sub active has-mega">
-                    <a aria-expanded="false" href="entites.html"><span data-i18n="nav_entities">Les 4 Entités</span> <i class="fa-solid fa-chevron-down"></i></a>
+
+                  <li class="has-sub has-mega">
+                    <a aria-expanded="false" href="entites.html"><span data-i18n="nav_about">À Propos</span> <i class="fa-solid fa-chevron-down"></i></a>
                     <div class="megamenu megamenu--cards">
                       <div class="megamenu__inner">
-                        <div class="mm-grid">
+                        <p class="megamenu__lede" data-i18n="mm_apropos_lede">Un groupe fondé en 2006, structuré en quatre établissements complémentaires.</p>
+                        <div class="mm-links">
+                          <a class="mm-link" href="index.html#about">
+                            <span class="mm-link__name" data-i18n="mm_histoire">Notre histoire</span>
+                            <span class="mm-link__desc" data-i18n="mm_histoire_d">De 2006 à aujourd'hui, entité par entité.</span>
+                          </a>
+                          <a class="mm-link" href="index.html#partenariats">
+                            <span class="mm-link__name" data-i18n="mm_agrements">Reconnaissance &amp; agréments</span>
+                            <span class="mm-link__desc" data-i18n="mm_agrements_d">MESRS, CAMES, FDFP et réseau partenaire.</span>
+                          </a>
+                          <a class="mm-link" href="entites.html">
+                            <span class="mm-link__name" data-i18n="mm_reseau">Le réseau : les 4 entités</span>
+                            <span class="mm-link__desc" data-i18n="mm_reseau_d">Vue d'ensemble des quatre établissements.</span>
+                          </a>
+                        </div>
+                        <div class="mm-grid mm-grid--compact">
                           <a class="mm-card" href="entite-universite.html">
                             <span class="mm-card__img"><img src="assets/img/entities/entity-international.jpg?v=f1bd2b62" alt="" loading="lazy"></span>
                             <span class="mm-card__name" data-i18n="sub_international">Université CEFAT International</span>
-                            <span class="mm-card__desc" data-i18n="mm_ent_int">Cursus LMD tournés vers l'international et la recherche.</span>
                             <span class="mm-card__lvl" data-i18n="mm_lvl_int">Licence · Master</span>
                           </a>
                           <a class="mm-card" href="entite-ifci.html">
                             <span class="mm-card__img"><img src="assets/img/entities/entity-ifci.jpg?v=cb2b2399" alt="" loading="lazy"></span>
-                            <span class="mm-card__name" data-i18n="sub_ifci">Institut IFCI (BTS & Métiers)</span>
-                            <span class="mm-card__desc" data-i18n="mm_ent_ifci">Diplômes d'État et certifications métiers reconnues.</span>
+                            <span class="mm-card__name" data-i18n="sub_ifci">Institut IFCI (BTS &amp; Métiers)</span>
                             <span class="mm-card__lvl" data-i18n="mm_lvl_ifci">BTS d'État</span>
                           </a>
                           <a class="mm-card" href="entite-business-school.html">
                             <span class="mm-card__img"><img src="assets/img/entities/entity-business-school.jpg?v=d16a9f87" alt="" loading="lazy"></span>
                             <span class="mm-card__name" data-i18n="sub_business_school">CEFAT Business School</span>
-                            <span class="mm-card__desc" data-i18n="mm_ent_bs">Management, finance et stratégie, du Bachelor au MBA.</span>
                             <span class="mm-card__lvl" data-i18n="mm_lvl_bs">Bachelor · MBA</span>
                           </a>
                           <a class="mm-card" href="entite-accra.html">
                             <span class="mm-card__img"><img src="assets/img/entities/entity-langues-accra.jpg?v=2254be2d" alt="" loading="lazy"></span>
                             <span class="mm-card__name" data-i18n="sub_accra">Immersion Linguistique Accra</span>
-                            <span class="mm-card__desc" data-i18n="mm_ent_accra">Immersion totale en anglais, au Ghana.</span>
                             <span class="mm-card__lvl" data-i18n="mm_lvl_accra">100% anglais</span>
                           </a>
-                        </div>
-                        <div class="megamenu__foot">
-                          <a class="mm-foot__link" href="entites.html"><span data-i18n="mm_foot_ent">Voir les 4 entités</span> <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                       </div>
                     </div>
                   </li>
+
                   <li class="has-sub has-mega">
                     <a aria-expanded="false" href="formations.html"><span data-i18n="nav_formations">Formations</span> <i class="fa-solid fa-chevron-down"></i></a>
                     <div class="megamenu megamenu--ladder">
                       <div class="megamenu__inner">
-                        <p class="megamenu__lede" data-i18n="mm_for_lede">Du diplôme d'État au MBA, cinq niveaux qui s'enchaînent.</p>
-                        <div class="mm-ladder">
+                        <p class="megamenu__lede" data-i18n="mm_for_lede2">Du diplôme d'État au MBA — 33 programmes au catalogue.</p>
+                        <div class="mm-ladder mm-ladder--4">
                           <a class="mm-step" href="formations.html#bts">
                             <span class="mm-step__lvl" data-i18n="mm_bac2">Bac+2</span>
                             <span class="mm-step__name" data-i18n="sub_bts">Cycle BTS (Diplôme d'État)</span>
-                            <span class="mm-step__desc" data-i18n="mm_for_bts">Deux ans, entrée directe sur le marché.</span>
+                            <span class="mm-step__desc" data-i18n="mm_for_bts2">6 spécialités, deux ans, entrée directe sur le marché.</span>
                           </a>
                           <a class="mm-step" href="formations.html#licence">
-                            <span class="mm-step__lvl" data-i18n="mm_bac3">Bac+3</span>
-                            <span class="mm-step__name" data-i18n="sub_licence">Licence Professionnelle</span>
-                            <span class="mm-step__desc" data-i18n="mm_for_licence">Spécialisation métier après le BTS.</span>
-                          </a>
-                          <a class="mm-step" href="formations.html#bachelor">
-                            <span class="mm-step__lvl" data-i18n="mm_bac3">Bac+3</span>
-                            <span class="mm-step__name" data-i18n="sub_bachelor">Bachelor International</span>
-                            <span class="mm-step__desc" data-i18n="mm_for_bachelor">Cursus anglophone, mobilité Accra.</span>
-                          </a>
-                          <a class="mm-step" href="formations.html#master">
-                            <span class="mm-step__lvl" data-i18n="mm_bac5">Bac+5</span>
-                            <span class="mm-step__name" data-i18n="sub_master">Master & Mastère Pro</span>
-                            <span class="mm-step__desc" data-i18n="mm_for_master">Expertise et encadrement d'équipe.</span>
+                            <span class="mm-step__lvl" data-i18n="mm_bac35">Bac+3 à Bac+5</span>
+                            <span class="mm-step__name" data-i18n="mm_lmd">Licences &amp; Masters</span>
+                            <span class="mm-step__desc" data-i18n="mm_lmd_d">27 programmes LMD — 14 Licences, 13 Masters.</span>
                           </a>
                           <a class="mm-step" href="formations.html#mba">
                             <span class="mm-step__lvl" data-i18n="mm_bac5">Bac+5</span>
                             <span class="mm-step__name" data-i18n="sub_mba">Executive MBA</span>
                             <span class="mm-step__desc" data-i18n="mm_for_mba">Format aménagé pour cadres en poste.</span>
                           </a>
-                        </div>
-                        <div class="megamenu__foot">
-                          <a class="mm-foot__link" href="formations.html"><span data-i18n="mm_foot_for">Voir toutes les formations</span> <i class="fa-solid fa-arrow-right"></i></a>
+                          <a class="mm-step" href="formations.html#regimes">
+                            <span class="mm-step__lvl" data-i18n="mm_organisation">Organisation</span>
+                            <span class="mm-step__name" data-i18n="mm_regimes">Régimes d'études</span>
+                            <span class="mm-step__desc" data-i18n="mm_regimes_d">Formation initiale ou continue, en ligne et en alternance.</span>
+                          </a>
                         </div>
                       </div>
                     </div>
                   </li>
+
+                  <li><a href="candidatures.html" data-i18n="nav_admissions">Admissions</a></li>
+
                   <li class="has-sub has-mega">
                     <a aria-expanded="false" href="campus.html"><span data-i18n="nav_campuses">Les 5 Campus</span> <i class="fa-solid fa-chevron-down"></i></a>
                     <div class="megamenu megamenu--corridor">
@@ -182,12 +186,10 @@
                               <span class="mm-stop__meta" data-i18n="cor_accra_meta">Ghana · 100% anglais</span>
                             </a>
                         </div>
-                        <div class="megamenu__foot">
-                          <a class="mm-foot__link" href="campus.html"><span data-i18n="mm_foot_cam">Voir les 5 campus</span> <i class="fa-solid fa-arrow-right"></i></a>
-                        </div>
                       </div>
                     </div>
                   </li>
+
                   <li><a href="actualites.html" data-i18n="nav_news">Actualités</a></li>
                   <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
                 </ul>
@@ -202,6 +204,67 @@
       </div>
     </div>
   </header>
+
+  <div class="mobile-drawer-overlay"></div>
+  <aside class="mobile-drawer">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <img src="assets/img/logo/cefat-logo-tight.png?v=6cc4050b" alt="CEFAT" style="max-height: 45px;">
+      <button class="close-drawer" aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    
+    <div class="d-flex gap-2 mb-3">
+      <button type="button" class="lang-switch-btn w-50 justify-content-center active" data-lang="fr" onclick="setLanguage('fr')">Français</button>
+      <button type="button" class="lang-switch-btn w-50 justify-content-center" data-lang="en" onclick="setLanguage('en')">English</button>
+    </div>
+
+    <ul class="mobile-menu-links">
+      <li><a href="index.html"><span data-i18n="nav_home">Accueil</span> <i class="fa-solid fa-house"></i></a></li>
+      <li class="has-sub">
+        <a href="javascript:void(0)"><span data-i18n="nav_about">À Propos</span> <i class="fa-solid fa-chevron-down"></i></a>
+        <ul class="mobile-submenu">
+          <li><a href="index.html#about" data-i18n="mm_histoire">Notre histoire</a></li>
+          <li><a href="index.html#partenariats" data-i18n="mm_agrements">Reconnaissance &amp; agréments</a></li>
+          <li><a href="entites.html" data-i18n="mm_reseau">Le réseau : les 4 entités</a></li>
+          <li><a href="entite-universite.html" data-i18n="sub_international">Université CEFAT International</a></li>
+          <li><a href="entite-ifci.html" data-i18n="sub_ifci">Institut IFCI (BTS &amp; Métiers)</a></li>
+          <li><a href="entite-business-school.html" data-i18n="sub_business_school">CEFAT Business School</a></li>
+          <li><a href="entite-accra.html" data-i18n="sub_accra">Immersion Linguistique Accra</a></li>
+        </ul>
+      </li>
+      <li class="has-sub">
+        <a href="javascript:void(0)"><span data-i18n="nav_formations">Formations</span> <i class="fa-solid fa-chevron-down"></i></a>
+        <ul class="mobile-submenu">
+          <li><a href="formations.html#bts" data-i18n="sub_bts">Cycle BTS (Diplôme d'État)</a></li>
+          <li><a href="formations.html#licence" data-i18n="mm_lmd">Licences &amp; Masters</a></li>
+          <li><a href="formations.html#mba" data-i18n="sub_mba">Executive MBA</a></li>
+          <li><a href="formations.html#regimes" data-i18n="mm_regimes">Régimes d'études</a></li>
+        </ul>
+      </li>
+      <li><a href="candidatures.html"><span data-i18n="nav_admissions">Admissions</span> <i class="fa-solid fa-paper-plane"></i></a></li>
+      <li class="has-sub">
+        <a href="javascript:void(0)"><span data-i18n="nav_campuses">Les 5 Campus</span> <i class="fa-solid fa-chevron-down"></i></a>
+        <ul class="mobile-submenu">
+          <li><a href="campus.html#abidjan" data-i18n="cor_abidjan">Abidjan</a></li>
+          <li><a href="campus.html#bonoua" data-i18n="cor_bonoua">Bonoua</a></li>
+          <li><a href="campus.html#abengourou" data-i18n="cor_abengourou">Abengourou</a></li>
+          <li><a href="campus.html#bondoukou" data-i18n="cor_bondoukou">Bondoukou</a></li>
+          <li><a href="campus.html#accra" data-i18n="cor_accra">Accra (Ghana)</a></li>
+        </ul>
+      </li>
+      <li><a href="actualites.html"><span data-i18n="nav_news">Actualités</span> <i class="fa-solid fa-newspaper"></i></a></li>
+      <li><a href="contact.html"><span data-i18n="nav_contact">Contact</span> <i class="fa-solid fa-envelope"></i></a></li>
+    </ul>
+
+    <div class="mt-4 pt-3 border-top">
+      <a href="#candidature-section" class="btn-cefat-primary w-100 justify-content-center" data-i18n="btn_apply">
+        <i class="fa-solid fa-paper-plane"></i> <span data-i18n="mobile_btn_apply">Candidater en ligne</span>
+      </a>
+      <div class="text-center mt-3 text-muted small">
+        <i class="fa-solid fa-phone text-danger me-1"></i> 07 12 65 17 19
+      </div>
+    </div>
+  </aside>
+
 
   <!-- Hero Header -->
   <section class="page-head">
@@ -461,7 +524,7 @@
     </div>
   </footer>
 <script src="assets/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/cefat-i18n.js?v=42f1d8c4"></script>
+  <script src="assets/js/cefat-i18n.js?v=66dba25e"></script>
   <script src="assets/js/cefat-app.js?v=6411b341"></script>
 </body>
 </html>
