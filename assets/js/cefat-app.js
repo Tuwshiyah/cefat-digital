@@ -3,17 +3,7 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Sticky Navigation
-  const headerMenu = document.getElementById('header-sticky');
-  if (headerMenu) {
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 120) {
-        headerMenu.classList.add('sticky');
-      } else {
-        headerMenu.classList.remove('sticky');
-      }
-    });
-  }
+  // 1. La barre de menu défile avec la page : plus de bascule collante.
 
   // 2. Mobile Drawer Navigation
   const mobileToggle = document.querySelector('.mobile-nav-toggle');
@@ -112,50 +102,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // 5. Video Modal Popup
-  const videoTriggers = document.querySelectorAll('.popup-video, .play-video-btn');
-  const videoModal = document.getElementById('cefat-video-modal');
-  const videoIframe = document.getElementById('cefat-video-iframe');
-  const videoCloseBtn = document.getElementById('video-modal-close');
-
-  const defaultVideoUrl = "https://www.youtube.com/embed/BOB2f_tKlhc?autoplay=1";
-
-  if (videoTriggers && videoModal && videoIframe) {
-    videoTriggers.forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        // Chaque vignette porte son propre identifiant via data-video ;
-        // à défaut on retombe sur la vidéo de présentation.
-        const id = btn.getAttribute('data-video');
-        videoIframe.src = id
-          ? `https://www.youtube.com/embed/${id}?autoplay=1`
-          : defaultVideoUrl;
-        videoModal.classList.add('open');
-      });
-    });
-
-    if (videoCloseBtn) {
-      videoCloseBtn.addEventListener('click', () => {
-        videoModal.classList.remove('open');
-        videoIframe.src = "";
-      });
-    }
-
-    videoModal.addEventListener('click', (e) => {
-      if (e.target === videoModal) {
-        videoModal.classList.remove('open');
-        videoIframe.src = "";
-      }
-    });
-
-    // Échap ferme la modale : sans ça, seul le clic permettait d'en sortir.
-    document.addEventListener('keydown', (e) => {
-      if (e.key !== 'Escape' || !videoModal.classList.contains('open')) return;
-      videoModal.classList.remove('open');
-      videoIframe.src = "";
-    });
-  }
-
   // 6. "Trouver ma formation en 3 clics" (3-Click Course Finder)
   const finderForm = document.getElementById('quick-finder-form');
   if (finderForm) {
@@ -212,6 +158,40 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   });
+
+  // 7 bis. Formulaire de contact
+  // Le gabarit posait un `alert()` en attribut onsubmit : une modale
+  // bloquante là où le formulaire de candidature affiche déjà sa réponse
+  // dans la page. Même traitement ici.
+  const ctForm = document.getElementById('contact-inquiry-form');
+  const ctRetour = document.getElementById('contact-form-feedback');
+  if (ctForm) {
+    ctForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const nom = document.getElementById('contact-nom')?.value.trim();
+      const tel = document.getElementById('contact-tel')?.value.trim();
+      const msg = document.getElementById('contact-msg')?.value.trim();
+      const en  = document.documentElement.lang === 'en';
+
+      if (!nom || !tel || !msg) {
+        if (ctRetour) {
+          ctRetour.className = 'ct-retour ct-retour--erreur';
+          ctRetour.textContent = en
+            ? 'Please fill in your name, phone number and message.'
+            : 'Merci de renseigner votre nom, votre téléphone et votre message.';
+        }
+        return;
+      }
+
+      if (ctRetour) {
+        ctRetour.className = 'ct-retour ct-retour--succes';
+        ctRetour.textContent = en
+          ? 'Thank you. Our team will reply within 24 hours.'
+          : 'Merci pour votre message. Notre équipe vous répond sous 24h.';
+      }
+      ctForm.reset();
+    });
+  }
 
   // 8. Pre-Registration Form Submission & Validation
   const appForm = document.getElementById('cefat-application-form');
@@ -528,7 +508,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // pas dessous. Sur les pages où il défile avec le contenu, marge minimale.
   const hauteurEntete = () => {
     const entete = document.querySelector('#header-sticky, .header-sticky, header');
-    return entete ? entete.getBoundingClientRect().height : 0;
+    if (!entete) return 0;
+    // Seul un en-tête fixe recouvre la cible. Le nôtre défile avec la page.
+    return getComputedStyle(entete).position === 'fixed'
+      ? entete.getBoundingClientRect().height : 0;
   };
 
   // Dernière position qu'on a imposée : sert à détecter que l'utilisateur a
@@ -572,4 +555,296 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     window.addEventListener('load', rejouer, { once: true });
   }
+})();
+
+
+/* ==========================================================================
+   FILTRE PAR DOMAINE — PAGE FORMATIONS
+   ==========================================================================
+   Le méga-menu propose sept familles de domaines. Sans ce filtre, ces
+   entrées mèneraient toutes au même catalogue de 33 programmes et
+   l'utilisateur devrait chercher lui-même : autant ne pas les proposer.
+   Le paramètre ?domaine= masque les programmes des autres familles et
+   affiche un bandeau de retour. */
+(function filtreDomaine() {
+  const onglets = document.querySelector('.cycle-tabs');
+  if (!onglets) return;
+
+  const NOMS = {
+    gestion:   'Gestion & Administration',
+    numerique: 'Informatique & Numérique',
+    btp:       'Génie Civil & BTP',
+    droit:     'Droit & Sciences Politiques',
+    marketing: 'Marketing & Communication',
+    finance:   'Finance, Comptabilité & Audit',
+    humanites: 'Lettres & Sciences Humaines',
+  };
+
+  const famille = new URLSearchParams(window.location.search).get('domaine');
+  if (!famille || !NOMS[famille]) return;
+
+  let gardes = 0;
+  document.querySelectorAll('.prog-item').forEach(li => {
+    const garde = li.dataset.famille === famille;
+    li.hidden = !garde;
+    if (garde) gardes++;
+  });
+
+  // Un groupe vidé de ses programmes disparaît, sinon son intitulé flotte
+  // au-dessus de rien.
+  document.querySelectorAll('.prog-group').forEach(g => {
+    g.hidden = ![...g.querySelectorAll('.prog-item')].some(li => !li.hidden);
+  });
+
+  // Et la section entière avec son titre, si tous ses groupes sont vides.
+  ['bts', 'licence'].forEach(id => {
+    const bloc = document.getElementById(id);
+    if (!bloc) return;
+    const reste = [...bloc.querySelectorAll('.prog-item')].some(li => !li.hidden);
+    bloc.hidden = !reste;
+  });
+
+  const banniere = document.createElement('div');
+  banniere.className = 'filtre-actif';
+  banniere.innerHTML =
+    '<span class="filtre-actif__label">Filtre</span>' +
+    '<strong class="filtre-actif__nom"></strong>' +
+    '<span class="filtre-actif__n"></span>' +
+    '<a class="filtre-actif__reset" href="formations.html">Voir les 33 programmes</a>';
+  banniere.querySelector('.filtre-actif__nom').textContent = NOMS[famille];
+  banniere.querySelector('.filtre-actif__n').textContent =
+    gardes + (gardes > 1 ? ' programmes' : ' programme');
+  // Juste sous les onglets de cycle : le bandeau annonce le filtre avant
+  // que le visiteur ne parcoure les sections.
+  onglets.parentNode.insertBefore(banniere, onglets.nextSibling);
+
+  // Le visiteur arrive sur le bandeau, pas en haut de page.
+  const racine = document.documentElement;
+  const anime = racine.style.scrollBehavior;
+  racine.style.scrollBehavior = 'auto';
+  window.addEventListener('load', () => {
+    const entete = document.querySelector('#header-sticky');
+    const fixe = entete && getComputedStyle(entete).position === 'fixed';
+    const marge = (fixe ? entete.getBoundingClientRect().height : 0) + 24;
+    window.scrollTo(0, banniere.getBoundingClientRect().top + window.scrollY - marge);
+    racine.style.scrollBehavior = anime;
+  }, { once: true });
+})();
+
+
+/* ==========================================================================
+   SLIDER DU HERO
+   ==========================================================================
+   Trois messages se relaient sur trois photos. La navigation se fait par
+   vignettes : on voit où l'on va, au lieu de cliquer trois points
+   anonymes. La rotation continue sous la souris ; seul le focus clavier la
+   suspend, pour ne pas escamoter le message à qui navigue au clavier. */
+(function heroSlider() {
+  const pile = document.querySelector('[data-hero-slider]');
+  if (!pile) return;
+
+  const diapos = [...pile.querySelectorAll('.hero__slide')];
+  const textes = [...document.querySelectorAll('.hero__say')];
+  const vignettes = [...document.querySelectorAll('.hero__thumb')];
+  if (diapos.length < 2 || textes.length !== diapos.length) return;
+
+  const DUREE = 6000;
+  let courante = 0;
+  let minuteur = null;
+  const zone = document.querySelector('.hero-slider-area');
+
+  const montre = (k) => {
+    courante = (k + diapos.length) % diapos.length;
+    diapos.forEach((d, i) => {
+      d.classList.toggle('is-active', i === courante);
+      d.toggleAttribute('aria-hidden', i !== courante);
+    });
+    textes.forEach((t, i) => {
+      t.hidden = i !== courante;
+      t.classList.toggle('is-active', i === courante);
+    });
+    vignettes.forEach((v, i) => {
+      // On retire puis remet la classe : sans cela l'animation de la jauge
+      // ne repart pas quand on revient sur la même vignette.
+      v.classList.remove('is-active');
+      if (i === courante) { void v.offsetWidth; v.classList.add('is-active'); }
+      v.setAttribute('aria-current', i === courante ? 'true' : 'false');
+    });
+  };
+
+  const relanceJauge = () => {
+    const v = vignettes[courante];
+    if (!v) return;
+    v.classList.remove('is-active');
+    void v.offsetWidth;
+    v.classList.add('is-active');
+  };
+
+  const lance = () => {
+    arrete();
+    zone && zone.classList.remove('est-en-pause');
+    relanceJauge();
+    minuteur = setInterval(() => montre(courante + 1), DUREE);
+  };
+  const arrete = () => {
+    zone && zone.classList.add('est-en-pause');
+    if (minuteur) { clearInterval(minuteur); minuteur = null; }
+  };
+
+  vignettes.forEach((v, i) => {
+    v.addEventListener('click', () => { montre(i); lance(); });
+  });
+
+  const prec = document.querySelector('[data-hero-prev]');
+  const suiv = document.querySelector('[data-hero-next]');
+  if (prec) prec.addEventListener('click', () => { montre(courante - 1); lance(); });
+  if (suiv) suiv.addEventListener('click', () => { montre(courante + 1); lance(); });
+
+  if (zone) {
+    // Flèches du clavier dès que le focus est quelque part dans le hero.
+    zone.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft')  { montre(courante - 1); lance(); }
+      if (e.key === 'ArrowRight') { montre(courante + 1); lance(); }
+    });
+    // Le survol n'interrompt plus la rotation : elle continue sous la souris.
+    // Seul le focus clavier la suspend, pour laisser le temps de lire à qui
+    // navigue au clavier (WCAG 2.2.2).
+    zone.addEventListener('focusin', arrete);
+    zone.addEventListener('focusout', lance);
+  }
+
+  // Onglet en arrière-plan : inutile de faire tourner.
+  document.addEventListener('visibilitychange', () => {
+    document.hidden ? arrete() : lance();
+  });
+
+  const sobre = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (!sobre.matches) lance();
+  sobre.addEventListener('change', e => e.matches ? arrete() : lance());
+})();
+
+
+/* ==========================================================================
+   HAUTEUR DE L'EN-TÊTE
+   ==========================================================================
+   Seule la barre de menu est hors flux, posée sur la photo. La section
+   d'ouverture doit dégager sa hauteur (--menu-h), et la barre de menu se cale
+   sous le bandeau utilitaire (--topbar-h), qui disparaît sous 992px. On relève
+   ces hauteurs plutôt que de les coder en dur. */
+(function hauteurEntete() {
+  const haut = document.querySelector('.header-top');
+  const menu = document.querySelector('.menu-area');
+  if (!menu) return;
+
+  const maj = () => {
+    const hh = haut && getComputedStyle(haut).display !== 'none' ? haut.offsetHeight : 0;
+    const r = document.documentElement.style;
+    r.setProperty('--topbar-h', hh + 'px');
+    r.setProperty('--menu-h', menu.offsetHeight + 'px');
+    r.setProperty('--header-h', (hh + menu.offsetHeight) + 'px');
+  };
+
+  maj();
+  addEventListener('resize', maj);
+  // Les polices arrivent après le premier calcul et changent la hauteur.
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(maj);
+})();
+
+
+/* ==========================================================================
+   ONGLETS DU CATALOGUE
+   ==========================================================================
+   Les quatre entrées n'étaient que des ancres : les quatre cycles défilaient
+   d'un bloc et l'onglet ne servait qu'à sauter dedans. Chacun ouvre désormais
+   son seul panneau.
+
+   Deux précautions :
+   — sans JavaScript, aucun panneau n'est masqué : la page reste entière ;
+   — quand un filtre ?domaine= est actif, on n'active pas les onglets, sinon
+     le filtre porterait sur un panneau caché et l'utilisateur croirait le
+     catalogue vide. */
+(function ongletsCycles() {
+  const barre = document.querySelector('.cycle-tabs');
+  const panneaux = [...document.querySelectorAll('[data-panneau]')];
+  if (!barre || panneaux.length < 2) return;
+
+  if (new URLSearchParams(location.search).get('domaine')) return;
+
+  const onglets = [...barre.querySelectorAll('.cycle-tab')];
+  const cible = (a) => (a.getAttribute('href') || '').replace('#', '');
+
+  const ouvre = (id, deplacer) => {
+    const existe = panneaux.some(p => p.id === id);
+    if (!existe) id = panneaux[0].id;
+
+    panneaux.forEach(p => p.classList.toggle('est-actif', p.id === id));
+    onglets.forEach(a => {
+      const actif = cible(a) === id;
+      a.classList.toggle('is-active', actif);
+      a.setAttribute('aria-selected', actif ? 'true' : 'false');
+    });
+    if (deplacer && location.hash !== '#' + id) {
+      history.replaceState(null, '', '#' + id);
+    }
+  };
+
+  onglets.forEach(a => {
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      ouvre(cible(a), true);
+      // On ramène la barre d'onglets sous les yeux, pas le haut du panneau :
+      // le titre du cycle doit rester visible juste en dessous.
+      barre.scrollIntoView({ block: 'start', behavior: 'smooth' });
+    });
+  });
+
+  // Les liens entrants (méga-menu, page d'accueil) ciblent un cycle précis.
+  ouvre((location.hash || '').replace('#', '') || panneaux[0].id, false);
+  addEventListener('hashchange', () => ouvre(location.hash.replace('#', ''), false));
+
+  barre.classList.add('est-pilote');
+})();
+
+
+
+
+/* ==========================================================================
+   ONGLETS DES PARTENARIATS
+   ==========================================================================
+   Une forme de reconnaissance à la fois : ses entrées à gauche, sa photo à
+   droite. Le masquage n'entre en vigueur qu'une fois le script en place —
+   sans lui, les trois panneaux restent lisibles à la suite. */
+(function ongletsPartenaires() {
+  const barre = document.querySelector('.partners__onglets');
+  const cadre = document.querySelector('.partners__panneaux');
+  if (!barre || !cadre) return;
+
+  const onglets = [...barre.querySelectorAll('.partners__onglet')];
+  const panneaux = [...cadre.querySelectorAll('.partners__panneau')];
+  if (onglets.length !== panneaux.length || onglets.length < 2) return;
+
+  const ouvre = (id) => {
+    panneaux.forEach(p => p.classList.toggle('est-actif', p.id === id));
+    onglets.forEach(b => {
+      const actif = b.getAttribute('aria-controls') === id;
+      b.classList.toggle('est-actif', actif);
+      b.setAttribute('aria-selected', actif ? 'true' : 'false');
+    });
+  };
+
+  onglets.forEach(b => b.addEventListener('click', () => ouvre(b.getAttribute('aria-controls'))));
+
+  // Flèches gauche/droite entre onglets, comme l'attend un jeu d'onglets.
+  barre.addEventListener('keydown', (e) => {
+    const i = onglets.indexOf(document.activeElement);
+    if (i < 0) return;
+    const pas = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+    if (!pas) return;
+    e.preventDefault();
+    const suivant = onglets[(i + pas + onglets.length) % onglets.length];
+    suivant.focus();
+    ouvre(suivant.getAttribute('aria-controls'));
+  });
+
+  cadre.classList.add('est-pilote');
 })();

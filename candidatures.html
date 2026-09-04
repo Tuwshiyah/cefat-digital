@@ -6,7 +6,7 @@
   <title>Portail de Candidature & Pré-Inscription en Ligne | Les Universités CEFAT</title>
   <meta name="description" content="Inscrivez-vous en ligne aux Universités CEFAT en moins de 3 minutes : BTS, Licence, Bachelor, Master, MBA et Immersion à Accra.">
   
-  <link rel="icon" type="image/png" href="assets/img/logo/cefat-logo-tight.png?v=6cc4050b">
+  <link rel="icon" type="image/jpeg" href="assets/img/logo/cefat-favicon.jpeg?v=cfe467fc">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/css/animate.min.css">
   <link rel="stylesheet" href="assets/css/cefat-theme.css">
-  <link rel="stylesheet" href="assets/css/cefat-custom.css?v=64e1acaa">
+  <link rel="stylesheet" href="assets/css/cefat-custom.css?v=3f3eee40">
 </head>
 <body class="bg-light">
 
@@ -23,49 +23,32 @@
     <!-- ==================== TOP BAR ==================== -->
   <div class="header-top d-none d-lg-block">
     <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-7 col-md-6">
-          <div class="header-cta">
+      <div class="header-top__inner">
+
+        <ul class="header-top__contact">
+          <li><a href="mailto:contact@universitecefat.ci"><i class="fa-solid fa-envelope" aria-hidden="true"></i> contact@universitecefat.ci</a></li>
+        </ul>
+
+        <div class="header-cta justify-content-end">
             <ul>
-              <li><span class="fdfp-top-badge"><i class="fa-solid fa-award"></i> <span data-i18n="top_fdfp">Agrément Officiel FDFP</span></span></li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-lg-5 col-md-6 text-end">
-          <div class="header-cta justify-content-end">
-            <ul>
-              <li>
-                <div class="top-phone-stack">
-                  <i class="fa-solid fa-phone text-danger"></i>
-                  <span class="top-phone-numbers">
-                    <a href="tel:+2250712651719">07 12 65 17 19</a>
-                    <span class="top-phone-sep" aria-hidden="true">·</span>
-                    <a href="tel:+2250100959518">01 00 95 95 18</a>
-                  </span>
-                </div>
-              </li>
-              <li>
-                <i class="fa-solid fa-envelope text-danger"></i>
-                <a href="mailto:contact@universitecefat.ci">contact@universitecefat.ci</a>
-              </li>
+              <li><span class="fdfp-top-badge"><img class="fdfp-top-badge__logo" src="assets/img/logo/fdfp.webp?v=ffc0966c" alt="Fonds de Développement de la Formation Professionnelle" width="447" height="212"> <span data-i18n="top_fdfp">Agrément officiel</span></span></li>
               <li>
                 <button type="button" class="lang-switch-btn active" data-lang="fr" onclick="setLanguage('fr')">FR</button>
                 <button type="button" class="lang-switch-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
               </li>
             </ul>
-          </div>
         </div>
+
       </div>
     </div>
   </div>
 
-  
   <header id="header-sticky" class="menu-area">
     <div class="container">
       <div class="row align-items-center">
         <div class="col-xl-3 col-lg-3 col-8">
           <div class="logo py-2">
-            <a href="index.html"><img src="assets/img/logo/cefat-logo-tight.png?v=6cc4050b" alt="CEFAT" class="img-fluid"></a>
+            <a href="index.html"><img src="assets/img/logo/cefat-logo-2026.webp?v=74b8e9fc" alt="Les Universités CEFAT" class="img-fluid"></a>
           </div>
         </div>
         <div class="col-xl-9 col-lg-9 col-4 text-end">
@@ -77,10 +60,11 @@
 
                   <li class="has-sub has-mega">
                     <a aria-expanded="false" href="entites.html"><span data-i18n="nav_about">À Propos</span> <i class="fa-solid fa-chevron-down"></i></a>
-                    <div class="megamenu megamenu--cards">
+                    <div class="megamenu megamenu--about">
                       <div class="megamenu__inner">
                         <p class="megamenu__lede" data-i18n="mm_apropos_lede">Un groupe fondé en 2006, structuré en quatre établissements complémentaires.</p>
-                        <div class="mm-links">
+                        <div class="mm-about">
+                          <div class="mm-links">
                           <a class="mm-link" href="index.html#about">
                             <span class="mm-link__name" data-i18n="mm_histoire">Notre histoire</span>
                             <span class="mm-link__desc" data-i18n="mm_histoire_d">De 2006 à aujourd'hui, entité par entité.</span>
@@ -93,28 +77,41 @@
                             <span class="mm-link__name" data-i18n="mm_reseau">Le réseau : les 4 entités</span>
                             <span class="mm-link__desc" data-i18n="mm_reseau_d">Vue d'ensemble des quatre établissements.</span>
                           </a>
-                        </div>
-                        <div class="mm-grid mm-grid--compact">
+                          </div>
+                          <div class="mm-grid mm-grid--compact">
                           <a class="mm-card" href="entite-universite.html">
-                            <span class="mm-card__img"><img src="assets/img/entities/entity-international.jpg?v=f1bd2b62" alt="" loading="lazy"></span>
+                            <span class="mm-card__img">
+                              <img src="assets/img/entities/entity-international.jpg?v=f1bd2b62" alt="" loading="lazy">
+                              <span class="mm-card__brand" aria-hidden="true"><img src="assets/img/logo/universite-cefat-international.webp?v=da73d752" alt="" width="5583" height="3986" loading="lazy" decoding="async"></span>
+                            </span>
                             <span class="mm-card__name" data-i18n="sub_international">Université CEFAT International</span>
                             <span class="mm-card__lvl" data-i18n="mm_lvl_int">Licence · Master</span>
                           </a>
                           <a class="mm-card" href="entite-ifci.html">
-                            <span class="mm-card__img"><img src="assets/img/entities/entity-ifci.jpg?v=cb2b2399" alt="" loading="lazy"></span>
+                            <span class="mm-card__img">
+                              <img src="assets/img/entities/entity-ifci.jpg?v=cb2b2399" alt="" loading="lazy">
+                              <span class="mm-card__brand" aria-hidden="true"><img src="assets/img/logo/institut-formation-cefat-inter.webp?v=2cd951d8" alt="" width="4647" height="3576" loading="lazy" decoding="async"></span>
+                            </span>
                             <span class="mm-card__name" data-i18n="sub_ifci">Institut IFCI (BTS &amp; Métiers)</span>
                             <span class="mm-card__lvl" data-i18n="mm_lvl_ifci">BTS d'État</span>
                           </a>
                           <a class="mm-card" href="entite-business-school.html">
-                            <span class="mm-card__img"><img src="assets/img/entities/entity-business-school.jpg?v=d16a9f87" alt="" loading="lazy"></span>
+                            <span class="mm-card__img">
+                              <img src="assets/img/entities/entity-business-school.jpg?v=d16a9f87" alt="" loading="lazy">
+                              <span class="mm-card__brand" aria-hidden="true"><img src="assets/img/logo/cefat-business-school.webp?v=a71b4f57" alt="" width="4647" height="3576" loading="lazy" decoding="async"></span>
+                            </span>
                             <span class="mm-card__name" data-i18n="sub_business_school">CEFAT Business School</span>
                             <span class="mm-card__lvl" data-i18n="mm_lvl_bs">Bachelor · MBA</span>
                           </a>
                           <a class="mm-card" href="entite-accra.html">
-                            <span class="mm-card__img"><img src="assets/img/entities/entity-langues-accra.jpg?v=2254be2d" alt="" loading="lazy"></span>
+                            <span class="mm-card__img">
+                              <img src="assets/img/entities/entity-langues-accra.jpg?v=2254be2d" alt="" loading="lazy">
+                              <span class="mm-card__brand" aria-hidden="true"><img src="assets/img/logo/centre-immersion-linguistique.webp?v=77a67664" alt="" width="4584" height="3353" loading="lazy" decoding="async"></span>
+                            </span>
                             <span class="mm-card__name" data-i18n="sub_accra">Immersion Linguistique Accra</span>
                             <span class="mm-card__lvl" data-i18n="mm_lvl_accra">100% anglais</span>
                           </a>
+                        </div>
                         </div>
                       </div>
                     </div>
@@ -122,30 +119,43 @@
 
                   <li class="has-sub has-mega">
                     <a aria-expanded="false" href="formations.html"><span data-i18n="nav_formations">Formations</span> <i class="fa-solid fa-chevron-down"></i></a>
-                    <div class="megamenu megamenu--ladder">
+                    <div class="megamenu megamenu--formations">
                       <div class="megamenu__inner">
-                        <p class="megamenu__lede" data-i18n="mm_for_lede2">Du diplôme d'État au MBA — 33 programmes au catalogue.</p>
-                        <div class="mm-ladder mm-ladder--4">
-                          <a class="mm-step" href="formations.html#bts">
-                            <span class="mm-step__lvl" data-i18n="mm_bac2">Bac+2</span>
-                            <span class="mm-step__name" data-i18n="sub_bts">Cycle BTS (Diplôme d'État)</span>
-                            <span class="mm-step__desc" data-i18n="mm_for_bts2">6 spécialités, deux ans, entrée directe sur le marché.</span>
-                          </a>
-                          <a class="mm-step" href="formations.html#licence">
-                            <span class="mm-step__lvl" data-i18n="mm_bac35">Bac+3 à Bac+5</span>
-                            <span class="mm-step__name" data-i18n="mm_lmd">Licences &amp; Masters</span>
-                            <span class="mm-step__desc" data-i18n="mm_lmd_d">27 programmes LMD — 14 Licences, 13 Masters.</span>
-                          </a>
-                          <a class="mm-step" href="formations.html#mba">
-                            <span class="mm-step__lvl" data-i18n="mm_bac5">Bac+5</span>
-                            <span class="mm-step__name" data-i18n="sub_mba">Executive MBA</span>
-                            <span class="mm-step__desc" data-i18n="mm_for_mba">Format aménagé pour cadres en poste.</span>
-                          </a>
-                          <a class="mm-step" href="formations.html#regimes">
-                            <span class="mm-step__lvl" data-i18n="mm_organisation">Organisation</span>
-                            <span class="mm-step__name" data-i18n="mm_regimes">Régimes d'études</span>
-                            <span class="mm-step__desc" data-i18n="mm_regimes_d">Formation initiale ou continue, en ligne et en alternance.</span>
-                          </a>
+                        <p class="megamenu__lede" data-i18n="mm_for_lede3">33 programmes, du diplôme d'État à l'Executive MBA.</p>
+                        <div class="mm-two">
+                          <section class="mm-col">
+                            <h3 class="mm-col__title" data-i18n="mm_par_diplome">Par diplôme</h3>
+                            <a class="mm-link" href="formations.html#bts">
+                              <span class="mm-link__name" data-i18n="sub_bts">Cycle BTS (Diplôme d'État)</span>
+                              <span class="mm-link__desc" data-i18n="mm_d_bts">6 spécialités · 2 ans · Bac+2</span>
+                            </a>
+                            <a class="mm-link" href="formations.html#licence">
+                              <span class="mm-link__name" data-i18n="mm_lmd">Licences &amp; Masters</span>
+                              <span class="mm-link__desc" data-i18n="mm_d_lmd">27 programmes LMD · Bac+3 à Bac+5</span>
+                            </a>
+                            <a class="mm-link" href="formations.html#mba">
+                              <span class="mm-link__name" data-i18n="sub_mba">Executive MBA</span>
+                              <span class="mm-link__desc" data-i18n="mm_d_mba">Format aménagé pour cadres en poste</span>
+                            </a>
+                            <a class="mm-link" href="formations.html#regimes">
+                              <span class="mm-link__name" data-i18n="mm_regimes">Régimes d'études</span>
+                              <span class="mm-link__desc" data-i18n="mm_d_regimes">Formation initiale ou continue</span>
+                            </a>
+                          </section>
+
+                          <section class="mm-col mm-col--wide">
+                            <h3 class="mm-col__title" data-i18n="mm_par_domaine">Par domaine</h3>
+                            <ul class="mm-domaines">
+                              <li><a href="formations.html?domaine=gestion"><span data-i18n="fam_gestion">Gestion &amp; Administration</span> <em>5</em></a></li>
+                              <li><a href="formations.html?domaine=finance"><span data-i18n="fam_finance">Finance, Comptabilité &amp; Audit</span> <em>8</em></a></li>
+                              <li><a href="formations.html?domaine=droit"><span data-i18n="fam_droit">Droit &amp; Sciences Politiques</span> <em>6</em></a></li>
+                              <li><a href="formations.html?domaine=numerique"><span data-i18n="fam_numerique">Informatique &amp; Numérique</span> <em>4</em></a></li>
+                              <li><a href="formations.html?domaine=marketing"><span data-i18n="fam_marketing">Marketing &amp; Communication</span> <em>4</em></a></li>
+                              <li><a href="formations.html?domaine=humanites"><span data-i18n="fam_humanites">Lettres &amp; Sciences Humaines</span> <em>4</em></a></li>
+                              <li><a href="formations.html?domaine=btp"><span data-i18n="fam_btp">Génie Civil &amp; BTP</span> <em>2</em></a></li>
+                              <li class="mm-domaines__tout"><a href="formations.html"><span data-i18n="mm_tout_catalogue">Tout le catalogue</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></li>
+                            </ul>
+                          </section>
                         </div>
                       </div>
                     </div>
@@ -179,7 +189,6 @@
                               <span class="mm-stop__name" data-i18n="cor_bondoukou">Bondoukou</span>
                               <span class="mm-stop__meta" data-i18n="cor_bondoukou_meta">Gontougo</span>
                             </a>
-                            <span class="mm-border"><span data-i18n="corridor_border">Frontière CI · GH</span></span>
                             <a class="mm-stop mm-stop--gh" href="campus.html#accra">
                               <span class="mm-stop__img"><img src="assets/img/campus/campus-accra.jpg?v=b84d32ed" alt="" loading="lazy"></span>
                               <span class="mm-stop__name" data-i18n="cor_accra">Accra</span>
@@ -207,8 +216,8 @@
 
   <div class="mobile-drawer-overlay"></div>
   <aside class="mobile-drawer">
-    <div class="d-flex justify-content-between align-items-center mb-3">
-      <img src="assets/img/logo/cefat-logo-tight.png?v=6cc4050b" alt="CEFAT" style="max-height: 45px;">
+    <div class="mobile-drawer__header d-flex justify-content-between align-items-center mb-3">
+      <img src="assets/img/logo/cefat-logo-2026.webp?v=74b8e9fc" alt="Les Universités CEFAT" style="max-height: 45px;">
       <button class="close-drawer" aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button>
     </div>
     
@@ -279,132 +288,129 @@
     </div>
   </section>
 
-  <section class="pt-120 pb-120">
+  <!-- ==================== DOSSIER DE CANDIDATURE ==================== -->
+  <!-- Même formulaire que celui de la page d'accueil : panneau blanc sur la
+       bande ivoire, étapes nommées, champs à angles vifs. Les <span
+       data-i18n> nichés dans les <option> ont été remontés sur l'option
+       elle-même — un <option> ne peut pas contenir d'élément, et le
+       traducteur n'atteignait donc pas ces libellés de façon fiable. -->
+  <section class="cand-page">
     <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-xl-9 col-lg-10">
 
-          <div class="admission-card">
-            <div id="app-form-feedback"></div>
+      <div class="cand-panneau">
+        <p class="cand-panneau__titre" data-i18n="form_preinscr_title">Formulaire de Pré-Inscription</p>
+        <p class="cand-panneau__note" data-i18n="form_preinscr_note">Tous les champs marqués d'une astérisque (*) sont obligatoires pour valider votre dossier.</p>
 
-            <form id="cefat-application-form">
-              
-              <!-- Étape 1 : Identité & Contact -->
-              <h5 class="text-primary fw-bold border-bottom pb-2 mb-3">
-                <i class="fa-solid fa-user text-danger me-2"></i> <span data-i18n="cand_step1_header">1. Informations Personnelles</span>
-              </h5>
-              <div class="row g-3 mb-4">
-                <div class="col-md-6">
-                  <label for="app-nom" class="form-label small fw-bold"><span data-i18n="t_nom_de_famille">Nom de famille *</span></label>
-                  <input type="text" id="app-nom" class="form-control" placeholder="Ex: KOUASSI" data-i18n-placeholder="ph_lastname" required>
-                </div>
-                <div class="col-md-6">
-                  <label for="app-prenoms" class="form-label small fw-bold"><span data-i18n="t_pr_noms">Prénoms *</span></label>
-                  <input type="text" id="app-prenoms" class="form-control" placeholder="Ex: Jean-Marc" data-i18n-placeholder="ph_firstname" required>
-                </div>
-                <div class="col-md-6">
-                  <label for="app-telephone" class="form-label small fw-bold"><span data-i18n="t_num_ro_t_l_phone_whatsapp">Numéro Téléphone / WhatsApp *</span></label>
-                  <input type="tel" id="app-telephone" class="form-control" placeholder="Ex: 07 12 65 17 19" data-i18n-placeholder="ph_phone" required>
-                </div>
-                <div class="col-md-6">
-                  <label for="app-email" class="form-label small fw-bold"><span data-i18n="t_adresse_email">Adresse Email</span></label>
-                  <input type="email" id="app-email" class="form-control" placeholder="exemple@gmail.com" data-i18n-placeholder="ph_email">
-                </div>
-                <div class="col-md-6">
-                  <label for="app-ville" class="form-label small fw-bold"><span data-i18n="t_ville_de_r_sidence_actuelle">Ville de résidence actuelle</span></label>
-                  <input type="text" id="app-ville" class="form-control" placeholder="Ex: Abidjan, Bouaké, San-Pedro, Accra..." data-i18n-placeholder="ph_city">
-                </div>
-                <div class="col-md-6">
-                  <label for="app-nationalite" class="form-label small fw-bold"><span data-i18n="t_nationalit">Nationalité</span></label>
-                  <input type="text" id="app-nationalite" class="form-control" placeholder="Ivoirienne, Ghanéenne, Autre...">
-                </div>
-              </div>
+        <div id="app-form-feedback"></div>
 
-              <!-- Étape 2 : Choix Académique -->
-              <h5 class="text-primary fw-bold border-bottom pb-2 mb-3">
-                <i class="fa-solid fa-graduation-cap text-danger me-2"></i> <span data-i18n="cand_step2_header">2. Choix de la Formation & du Campus</span>
-              </h5>
-              <div class="row g-3 mb-4">
-                <div class="col-md-6">
-                  <label for="app-entity" class="form-label small fw-bold"><span data-i18n="t_entit_cefat">Entité CEFAT *</span></label>
-                  <select id="app-entity" class="form-select" required>
-                    <option value="Université CEFAT International">Université CEFAT International</option>
-                    <option value="Institut de Formation CEFAT-Inter (IFCI)" selected data-i18n="sub_ifci">Institut de Formation CEFAT-Inter (IFCI)</option>
-                    <option value="CEFAT Business School">CEFAT Business School</option>
-                    <option value="Centre d'Immersion Linguistique Accra">Centre d'Immersion Linguistique — Accra</option>
-                  </select>
-                </div>
-                <div class="col-md-6">
-                  <label for="app-campus" class="form-label small fw-bold"><span data-i18n="t_campus_souhait">Campus souhaité *</span></label>
-                  <select id="app-campus" class="form-select" required>
-                    <option value="Abidjan" selected>Campus Abidjan (Cocody Angré 8ème Tranche)</option>
-                    <option value="Abengourou">Campus Abengourou</option>
-                    <option value="Bondoukou">Campus Bondoukou</option>
-                    <option value="Bonoua">Campus Bonoua</option>
-                    <option value="Accra">Campus Accra (Ghana)</option>
-                  </select>
-                </div>
-                <div class="col-md-6">
-                  <label for="app-degree" class="form-label small fw-bold"><span data-i18n="t_dipl_me_vis">Diplôme visé *</span></label>
-                  <select id="app-degree" class="form-select" required>
-                    <option value="BTS" selected><span data-i18n="t_bts_brevet_de_technicien_sup">BTS (Brevet de Technicien Supérieur - Diplôme d'État)</span></option>
-                    <option value="Licence"><span data-i18n="t_licence_professionnelle_bac_3">Licence Professionnelle (Bac+3)</span></option>
-                    <option value="Bachelor"><span data-i18n="t_bachelor_international_bac_3">Bachelor International (Bac+3)</span></option>
-                    <option value="Master"><span data-i18n="t_master_professionnel_bac_5">Master Professionnel (Bac+5)</span></option>
-                    <option value="MBA"><span data-i18n="t_executive_mba">Executive MBA</span></option>
-                    <option value="Immersion"><span data-i18n="t_immersion_anglais_bilingue_ac">Immersion Anglais Bilingue (Accra)</span></option>
-                  </select>
-                </div>
-                <div class="col-md-6">
-                  <label for="app-domain" class="form-label small fw-bold"><span data-i18n="t_fili_re_domaine_d_tudes">Filière / Domaine d'études *</span></label>
-                  <select id="app-domain" class="form-select" required>
-                    <option value="Finance" selected><span data-i18n="t_finance_comptabilit_audit">Finance, Comptabilité & Audit (FCGE)</span></option>
-                    <option value="Informatique"><span data-i18n="t_informatique_d_veloppeur_d_ap">Informatique, Développeur d'Application & Réseaux (IDA/RIT)</span></option>
-                    <option value="Gestion"><span data-i18n="t_gestion_ressources_humaines">Gestion & Ressources Humaines (RHCOM / PME)</span></option>
-                    <option value="Marketing"><span data-i18n="t_marketing_commerce_communic">Marketing, Commerce & Communication (GEC)</span></option>
-                    <option value="Génie Civil"><span data-i18n="t_g_nie_civil_b_timent_travau">Génie Civil, Bâtiment & Travaux Publics</span></option>
-                    <option value="Droit"><span data-i18n="t_sciences_juridiques_droit_de">Sciences Juridiques & Droit des Affaires</span></option>
-                    <option value="Lettres"><span data-i18n="t_lettres_modernes_communicati">Lettres Modernes & Communication</span></option>
-                    <option value="Anglais"><span data-i18n="t_anglais_intensif_bilinguisme">Anglais Intensif / Bilinguisme</span></option>
-                  </select>
-                </div>
-                <div class="col-md-6">
-                  <label for="app-mode" class="form-label small fw-bold"><span data-i18n="t_mode_de_cours_pr_f_r">Mode de cours préféré</span></label>
-                  <select id="app-mode" class="form-select">
-                    <option value="Présentiel (Jour)" selected><span data-i18n="t_cours_en_pr_sentiel_jour">Cours en Présentiel (Jour)</span></option>
-                    <option value="Présentiel (Soir)"><span data-i18n="t_cours_du_soir_professionnels">Cours du Soir / Professionnels</span></option>
-                    <option value="En Ligne (E-learning)"><span data-i18n="t_formation_en_ligne_e_learning">Formation En Ligne (E-learning)</span></option>
-                  </select>
-                </div>
-                <div class="col-md-6">
-                  <label for="app-bac" class="form-label small fw-bold"><span data-i18n="t_dernier_dipl_me_obtenu">Dernier diplôme obtenu</span></label>
-                  <input type="text" id="app-bac" class="form-control" placeholder="Ex: BAC A/C/D/G2 (Année 2025), BTS, Licence...">
-                </div>
-              </div>
+        <form id="cefat-application-form" class="cand-form">
 
-              <!-- Étape 3 : Validation & Soumission -->
-              <div class="p-3 bg-light rounded-3 mb-4 small text-secondary">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="accept-cgu" required checked>
-                  <label class="form-check-label" for="accept-cgu"><span data-i18n="t_je_certifie_l_exactitude_des_i">Je certifie l'exactitude des informations fournies et j'autorise le service des admissions CEFAT à me contacter pour le suivi de mon dossier.</span></label>
-                </div>
-              </div>
+          <div class="cand-etape" role="group" aria-labelledby="cand-etape-1">
+            <p class="cand-etape__titre" id="cand-etape-1"><span class="cand-etape__n">1</span> <span data-i18n="cand_step1_header">Informations personnelles</span></p>
 
-              <div class="text-center">
-                <button type="submit" class="btn-cefat-primary px-5 py-3 fs-16">
-                  <i class="fa-solid fa-paper-plane me-2"></i> Envoyer ma Candidature Définitive
-                </button>
-              </div>
-
-            </form>
+            <p class="cand-groupe">
+              <label for="app-nom" class="cand-etiquette" data-i18n="t_nom_de_famille">Nom de famille *</label>
+              <input type="text" id="app-nom" class="cand-champ" placeholder="Ex: KOUASSI" data-i18n-placeholder="ph_lastname" required>
+            </p>
+            <p class="cand-groupe">
+              <label for="app-prenoms" class="cand-etiquette" data-i18n="t_pr_noms">Prénoms *</label>
+              <input type="text" id="app-prenoms" class="cand-champ" placeholder="Ex: Jean-Marc" data-i18n-placeholder="ph_firstname" required>
+            </p>
+            <p class="cand-groupe">
+              <label for="app-telephone" class="cand-etiquette" data-i18n="t_num_ro_t_l_phone_whatsapp">Numéro Téléphone / WhatsApp *</label>
+              <input type="tel" id="app-telephone" class="cand-champ" placeholder="Ex: 07 12 65 17 19" data-i18n-placeholder="ph_phone" required>
+            </p>
+            <p class="cand-groupe">
+              <label for="app-email" class="cand-etiquette" data-i18n="t_adresse_email">Adresse Email</label>
+              <input type="email" id="app-email" class="cand-champ" placeholder="exemple@gmail.com" data-i18n-placeholder="ph_email">
+            </p>
+            <p class="cand-groupe">
+              <label for="app-ville" class="cand-etiquette" data-i18n="t_ville_de_r_sidence_actuelle">Ville de résidence actuelle</label>
+              <input type="text" id="app-ville" class="cand-champ" placeholder="Ex: Abidjan, Bouaké, San-Pedro, Accra..." data-i18n-placeholder="ph_city">
+            </p>
+            <p class="cand-groupe">
+              <label for="app-nationalite" class="cand-etiquette" data-i18n="t_nationalit">Nationalité</label>
+              <input type="text" id="app-nationalite" class="cand-champ" placeholder="Ivoirienne, Ghanéenne, Autre...">
+            </p>
           </div>
 
-          <div class="text-center mt-4 text-muted small">
-            <i class="fa-solid fa-shield-halved text-success me-1"></i> Vos données sont protégées et traitées dans le strict respect de la confidentialité académique CEFAT.
+          <div class="cand-etape" role="group" aria-labelledby="cand-etape-2">
+            <p class="cand-etape__titre" id="cand-etape-2"><span class="cand-etape__n">2</span> <span data-i18n="cand_step2_header">Choix de la formation &amp; du campus</span></p>
+
+            <p class="cand-groupe">
+              <label for="app-entity" class="cand-etiquette" data-i18n="t_entit_cefat">Entité CEFAT *</label>
+              <select id="app-entity" class="cand-champ" required>
+                <option value="Université CEFAT International">Université CEFAT International</option>
+                <option value="Institut de Formation CEFAT-Inter (IFCI)" selected data-i18n="sub_ifci">Institut de Formation CEFAT-Inter (IFCI)</option>
+                <option value="CEFAT Business School">CEFAT Business School</option>
+                <option value="Centre d'Immersion Linguistique Accra">Centre d'Immersion Linguistique — Accra</option>
+              </select>
+            </p>
+            <p class="cand-groupe">
+              <label for="app-campus" class="cand-etiquette" data-i18n="t_campus_souhait">Campus souhaité *</label>
+              <select id="app-campus" class="cand-champ" required>
+                <option value="Abidjan" selected>Campus Abidjan (Cocody Angré 8ème Tranche)</option>
+                <option value="Abengourou">Campus Abengourou</option>
+                <option value="Bondoukou">Campus Bondoukou</option>
+                <option value="Bonoua">Campus Bonoua</option>
+                <option value="Accra">Campus Accra (Ghana)</option>
+              </select>
+            </p>
+            <p class="cand-groupe">
+              <label for="app-degree" class="cand-etiquette" data-i18n="t_dipl_me_vis">Diplôme visé *</label>
+              <select id="app-degree" class="cand-champ" required>
+                <option value="BTS" selected data-i18n="t_bts_brevet_de_technicien_sup">BTS (Brevet de Technicien Supérieur - Diplôme d'État)</option>
+                <option value="Licence" data-i18n="t_licence_professionnelle_bac_3">Licence Professionnelle (Bac+3)</option>
+                <option value="Bachelor" data-i18n="t_bachelor_international_bac_3">Bachelor International (Bac+3)</option>
+                <option value="Master" data-i18n="t_master_professionnel_bac_5">Master Professionnel (Bac+5)</option>
+                <option value="MBA" data-i18n="t_executive_mba">Executive MBA</option>
+                <option value="Immersion" data-i18n="t_immersion_anglais_bilingue_ac">Immersion Anglais Bilingue (Accra)</option>
+              </select>
+            </p>
+            <p class="cand-groupe">
+              <label for="app-domain" class="cand-etiquette" data-i18n="t_fili_re_domaine_d_tudes">Filière / Domaine d'études *</label>
+              <select id="app-domain" class="cand-champ" required>
+                <option value="Finance" selected data-i18n="t_finance_comptabilit_audit">Finance, Comptabilité &amp; Audit (FCGE)</option>
+                <option value="Informatique" data-i18n="t_informatique_d_veloppeur_d_ap">Informatique, Développeur d'Application &amp; Réseaux (IDA/RIT)</option>
+                <option value="Gestion" data-i18n="t_gestion_ressources_humaines">Gestion &amp; Ressources Humaines (RHCOM / PME)</option>
+                <option value="Marketing" data-i18n="t_marketing_commerce_communic">Marketing, Commerce &amp; Communication (GEC)</option>
+                <option value="Génie Civil" data-i18n="t_g_nie_civil_b_timent_travau">Génie Civil, Bâtiment &amp; Travaux Publics</option>
+                <option value="Droit" data-i18n="t_sciences_juridiques_droit_de">Sciences Juridiques &amp; Droit des Affaires</option>
+                <option value="Lettres" data-i18n="t_lettres_modernes_communicati">Lettres Modernes &amp; Communication</option>
+                <option value="Anglais" data-i18n="t_anglais_intensif_bilinguisme">Anglais Intensif / Bilinguisme</option>
+              </select>
+            </p>
+            <p class="cand-groupe">
+              <label for="app-mode" class="cand-etiquette" data-i18n="t_mode_de_cours_pr_f_r">Mode de cours préféré</label>
+              <select id="app-mode" class="cand-champ">
+                <option value="Présentiel (Jour)" selected data-i18n="t_cours_en_pr_sentiel_jour">Cours en Présentiel (Jour)</option>
+                <option value="Présentiel (Soir)" data-i18n="t_cours_du_soir_professionnels">Cours du Soir / Professionnels</option>
+                <option value="En Ligne (E-learning)" data-i18n="t_formation_en_ligne_e_learning">Formation En Ligne (E-learning)</option>
+              </select>
+            </p>
+            <p class="cand-groupe">
+              <label for="app-bac" class="cand-etiquette" data-i18n="t_dernier_dipl_me_obtenu">Dernier diplôme obtenu</label>
+              <input type="text" id="app-bac" class="cand-champ" placeholder="Ex: BAC A/C/D/G2 (Année 2025), BTS, Licence...">
+            </p>
           </div>
 
-        </div>
+          <div class="cand-etape cand-etape--plein" role="group" aria-labelledby="cand-etape-3">
+            <p class="cand-etape__titre" id="cand-etape-3"><span class="cand-etape__n">3</span> <span data-i18n="cand_step3_valid">Validation &amp; envoi</span></p>
+
+            <p class="cand-accord">
+              <input class="cand-case" type="checkbox" id="accept-cgu" required checked>
+              <label for="accept-cgu" data-i18n="t_je_certifie_l_exactitude_des_i">Je certifie l'exactitude des informations fournies et j'autorise le service des admissions CEFAT à me contacter pour le suivi de mon dossier.</label>
+            </p>
+          </div>
+
+          <button type="submit" class="cand-envoi">
+            <span data-i18n="cand_submit_full">Envoyer ma candidature définitive</span> <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </form>
+
+        <p class="cand-panneau__pied" data-i18n="cand_privacy_note">Vos données sont protégées et traitées dans le strict respect de la confidentialité académique CEFAT.</p>
       </div>
+
     </div>
   </section>
 
@@ -416,7 +422,7 @@
         <div class="col-xl-3 col-lg-3 col-md-6">
           <div class="footer-widget mb-30">
             <div class="mb-4">
-              <img src="assets/img/logo/cefat-logo-transparent.png?v=b9e22ffe" alt="Les Universités CEFAT" style="max-height: 62px;">
+              <img src="assets/img/logo/cefat-logo-2026.webp?v=74b8e9fc" alt="Les Universités CEFAT">
             </div>
             <div class="f-contact">
               <p class="small text-white-50" data-i18n="footer_about_text">
@@ -497,7 +503,7 @@
     </div>
   </footer>
 <script src="assets/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/cefat-i18n.js?v=66dba25e"></script>
-  <script src="assets/js/cefat-app.js?v=6411b341"></script>
+  <script src="assets/js/cefat-i18n.js?v=3c199d52"></script>
+  <script src="assets/js/cefat-app.js?v=3d318859"></script>
 </body>
 </html>

@@ -26,6 +26,9 @@
   --red-on-dark: #F97362;
 
   --forest:      #1F5D3A;  /* Accra / Ghana */
+  /* Vert de marque WhatsApp. Leur vert vif (#25D366) ne donne que 1.79:1 sur
+     l'ivoire ; c'est leur déclinaison foncée qui est lisible, à 6.91:1. */
+  --whatsapp:    #075E54;
 
   --paper:       #FFFFFF;
   --paper-warm:  #F4F3F0;
@@ -34,6 +37,11 @@
   --rule-strong: #C4C1B9;
 
   --ink:         #121417;
+  /* Voile posé sur les photos (hero, légendes). Retour au bleu nuit de marque
+     — c'est --navy-deep (#0A1830), donné en composantes RVB pour pouvoir en
+     moduler l'alpha. Les opacités restent celles allégées avec le graphite :
+     la photo respire davantage qu'à l'origine. */
+  --veil:        10, 24, 48;
   --ink-2:       #4A4F57;
   --ink-3:       #696F79;  /* 5.06:1 sur blanc, 4.56:1 sur la bande chaude — AA */
 
@@ -167,9 +175,11 @@ strong, b { font-weight: 600; color: var(--ink); }
 
 /* Exception : les pastilles vraiment circulaires restent circulaires */
 .rounded-circle.p-2, .rounded-circle.p-3,
-.footer-social a, .campus-pin-icon, .play-video-btn, .whatsapp-float {
+.campus-pin-icon, .play-video-btn, .whatsapp-float {
   border-radius: 50% !important;
 }
+/* Les icônes sociales suivent la géométrie du site : angles vifs. */
+.footer-social a { border-radius: 0 !important; }
 
 .shadow, .shadow-sm, .shadow-lg, .card, .form-control, .form-select, .btn {
   box-shadow: none !important;
@@ -285,16 +295,30 @@ section { position: relative; }
    ========================================================================== */
 
 .header-top {
-  background: var(--navy-deep);
-  color: rgba(255, 255, 255, 0.7);
+  /* Reste pleine et dans le flux : seule la barre de menu passe sur la photo.
+     Sa hauteur est relevée en JS (--topbar-h) pour caler la barre de menu
+     juste dessous — elle disparaît sous 992px. */
+  position: relative;
+  z-index: 201;
+  /* Même bleu que la bande des chiffres sous le slider et que la barre de
+     menu une fois collante (--navy, #142C55). */
+  background: var(--navy);
+  color: #fff;
   font-size: 0.8125rem;
-  padding: 0.6rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.35rem 0;
+  /* Le thème pose `.header-top{border-bottom:1px solid #e6e6e6}` à
+     spécificité égale : retirer notre déclaration lui rendait la main, il
+     faut donc annuler explicitement. */
+  border-bottom: none;
 }
 
-.header-top a { color: rgba(255, 255, 255, 0.7); }
-.header-top a:hover { color: #fff; }
-.header-top i { color: var(--red-bright); }
+.header-top a { color: #fff; }
+/* Le texte étant déjà blanc plein, le survol se signale par un soulignement
+   plutôt que par un changement de couleur, qui n'aurait plus de marge. */
+.header-top a:hover { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+/* La seule icône du bandeau est celle de l'e-mail : elle suit son libellé
+   en blanc plutôt que de faire une tache de couleur isolée. */
+.header-top i { color: #fff; }
 
 .header-cta ul {
   list-style: none;
@@ -308,34 +332,37 @@ section { position: relative; }
 .header-cta.justify-content-end ul { justify-content: flex-end; }
 .header-cta li { display: flex; align-items: center; gap: 0.5rem; }
 
+/* L'agrément porte désormais le vrai logo du FDFP. Plus d'aplat carmin :
+   c'est une marque tierce, elle garde ses couleurs et se pose sur une plaque
+   blanche — son encre bleue serait illisible sur le navy du bandeau. */
 .fdfp-top-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  background: var(--carmine);
+  gap: 0.55rem;
+  background: none;
   color: #fff;
-  padding: 0.25rem 0.7rem;
+  padding: 0;
   font-size: 0.6875rem;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
-.fdfp-top-badge i { color: #fff; }
-
-.top-phone-stack { display: flex; align-items: center; gap: 0.5rem; }
-.top-phone-numbers {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  white-space: nowrap;
+.fdfp-top-badge__logo {
+  display: block;
+  height: 22px;
+  width: auto;
+  background: #fff;
+  padding: 3px 7px;
+  border-radius: 2px;
 }
-.top-phone-numbers a { font-size: 0.8125rem; }
-.top-phone-sep { color: rgba(255, 255, 255, 0.35); }
 
-/* Chaque colonne colle à son bord : la gauche au bord gauche du conteneur,
-   la droite au bord droit. Les listes du thème sont centrées par défaut. */
-.header-top .col-lg-7 .header-cta ul { justify-content: flex-start; }
-.header-top .col-lg-5 .header-cta ul { justify-content: flex-end; }
+/* Le bandeau ne porte plus que l'agrément et le sélecteur de langue, tous
+   deux calés à droite. Les listes du thème sont centrées par défaut. */
+.header-top .header-cta ul { justify-content: flex-end; }
+/* Les <li> du thème sont en display:block : le badge, en inline-flex, reposait
+   sur une ligne de base et entraînait sous lui l'espace réservé aux jambages.
+   Il se retrouvait 3px au-dessus de l'axe du bandeau. */
+.header-top .header-cta ul li { display: flex; align-items: center; }
 .header-top .header-cta ul {
   display: flex;
   align-items: center;
@@ -361,6 +388,34 @@ section { position: relative; }
 /* Aucune des deux colonnes ne se casse en deux lignes. */
 .header-top .header-cta ul { flex-wrap: nowrap; }
 
+/* Bandeau supérieur : contacts à gauche, agrément et langue à droite. */
+.header-top__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(1rem, 2vw, 2rem);
+}
+.header-top__contact {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 1.8vw, 1.75rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.header-top__contact a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.2s var(--ease);
+}
+.header-top__contact a:hover { color: #fff; }
+.header-top__contact i { font-size: 0.6875rem; }
+
 .lang-switch-btn {
   background: none;
   border: 1px solid rgba(255, 255, 255, 0.28);
@@ -374,11 +429,33 @@ section { position: relative; }
   transition: all 0.2s var(--ease);
 }
 .lang-switch-btn + .lang-switch-btn { margin-left: -1px; }
+
+/* Drapeaux posés en image de fond plutôt qu'en balisage : le sélecteur est
+   dupliqué quatre fois par page sur onze pages, un ::before évite d'y
+   injecter 44 SVG. Le drapeau est décoratif — l'intitulé FR / EN reste le
+   porteur de sens pour les lecteurs d'écran. */
+.lang-switch-btn::before {
+  content: "";
+  display: inline-block;
+  vertical-align: -1px;
+  width: 1.125rem;
+  height: 0.75rem;
+  margin-right: 0.4rem;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.14);
+}
+.lang-switch-btn[data-lang="fr"]::before { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2060%2040%22%3E%3Crect%20width%3D%2220%22%20height%3D%2240%22%20fill%3D%22%23002395%22%2F%3E%3Crect%20x%3D%2220%22%20width%3D%2220%22%20height%3D%2240%22%20fill%3D%22%23fff%22%2F%3E%3Crect%20x%3D%2240%22%20width%3D%2220%22%20height%3D%2240%22%20fill%3D%22%23ED2939%22%2F%3E%3C%2Fsvg%3E"); }
+.lang-switch-btn[data-lang="en"]::before { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2060%2040%22%3E%3Crect%20width%3D%2260%22%20height%3D%2240%22%20fill%3D%22%23012169%22%2F%3E%3Cpath%20d%3D%22M0%200%2060%2040M60%200%200%2040%22%20stroke%3D%22%23fff%22%20stroke-width%3D%229%22%2F%3E%3Cpath%20d%3D%22M0%200%2060%2040M60%200%200%2040%22%20stroke%3D%22%23C8102E%22%20stroke-width%3D%224%22%2F%3E%3Cpath%20d%3D%22M30%200V40M0%2020H60%22%20stroke%3D%22%23fff%22%20stroke-width%3D%2213%22%2F%3E%3Cpath%20d%3D%22M30%200V40M0%2020H60%22%20stroke%3D%22%23C8102E%22%20stroke-width%3D%227%22%2F%3E%3C%2Fsvg%3E"); }
 .lang-switch-btn:hover { color: #fff; border-color: rgba(255, 255, 255, 0.6); }
+/* La langue active prend l'ivoire de la bande « Un Réseau de 4 Pôles
+   d'Excellence » : sur le navy du bandeau supérieur, l'aplat clair marque la
+   sélection plus nettement que le carmin, qui se confondait avec le bouton
+   « Candidater » juste au-dessous. */
 .lang-switch-btn.active {
-  background: var(--carmine);
-  border-color: var(--carmine);
-  color: #fff;
+  background: var(--paper-warm);
+  border-color: var(--paper-warm);
+  color: var(--navy);
 }
 
 /* Le sélecteur de langue du tiroir mobile est sur fond clair */
@@ -388,33 +465,66 @@ section { position: relative; }
   padding: 0.6rem;
   font-size: 0.75rem;
 }
-.mobile-drawer .lang-switch-btn.active { color: #fff; }
+/* Le tiroir mobile est déjà sur fond clair : l'ivoire ne s'y détacherait
+   pas, la sélection y reste marquée par le navy plein. */
+.mobile-drawer .lang-switch-btn.active {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #fff;
+}
 
 /* ==========================================================================
    6. EN-TÊTE ET NAVIGATION
    ========================================================================== */
 
+/* En-tête sombre. La barre utilitaire et la barre de menu ne forment plus
+   qu'un seul bloc : la page enchaîne chrome sombre → photo → contenu clair,
+   au lieu d'intercaler une bande blanche entre deux zones foncées. */
 .menu-area {
-  background: var(--paper);
-  border-bottom: 1px solid var(--rule);
-  position: relative;
+  /* Transparente au repos, posée sur la photo du hero. Elle reprend le bleu
+     de marque dès que la page défile : passé le hero, les liens blancs se
+     retrouveraient sinon sur du contenu clair. */
+  background: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  position: absolute;
+  top: var(--topbar-h, 44px);
+  left: 0;
+  right: 0;
   z-index: 200;
   transition: box-shadow 0.25s var(--ease);
 }
 
-.menu-area.sticky {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  box-shadow: 0 1px 0 var(--rule), 0 8px 24px rgba(10, 24, 48, 0.06) !important;
-  animation: slide-down 0.35s var(--ease);
+/* Variante blanche du logo fournie pour les surfaces sombres. Le fichier
+   conserve son canal alpha : aucun fond ni filtre n'est ajouté au logo. */
+.menu-area .logo img {
+  display: block;
+  height: 54px;
+  max-height: none;
+  width: auto;
+  filter: none;
 }
 
-@keyframes slide-down {
-  from { transform: translateY(-100%); }
-  to { transform: translateY(0); }
+/* Restreint aux entrées de premier niveau. En visant `ul li a`, la règle
+   descendait aussi dans les méga-menus et y peignait les 24 liens en blanc
+   sur fond blanc : seuls survivaient les libellés qui portent leur propre
+   couleur. Les noms de domaines, eux, disparaissaient. */
+.menu-area .main-menu > nav > ul > li > a { color: rgba(255, 255, 255, 0.85); }
+.menu-area .main-menu > nav > ul > li > a:hover,
+.menu-area .main-menu > nav > ul > li.active > a,
+.menu-area .main-menu > nav > ul > li:hover > a { color: #fff; }
+
+/* Et le thème, lui, peint tous les liens de sous-menu en #4f4f4f avec une
+   spécificité (0,2,3) que `.megamenu .mm-*  a` (0,2,1) ne battait pas. On
+   ramène les liens des méga-menus sur les jetons du site ; les règles plus
+   spécifiques qui suivent (carmin du catalogue, etc.) restent prioritaires. */
+.main-menu .megamenu a,
+.main-menu .megamenu ul li a { color: var(--ink); }
+.menu-area .mobile-nav-toggle {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.28);
 }
+
+/* Plus de menu collant : la barre défile avec la page. */
 
 .logo img { max-height: 54px; width: auto; }
 
@@ -502,7 +612,6 @@ section { position: relative; }
    -------------------------------------------------------------------------- */
 
 /* Le panneau se cale sur l'en-tête, pas sur l'onglet : bord à bord. */
-.menu-area { position: relative; }
 .main-menu ul li.has-mega { position: static; }
 
 /* Le thème pose `.main-menu ul li a { padding:20px 0 }` — spécificité (0,1,3),
@@ -512,18 +621,18 @@ section { position: relative; }
    `content:"+"` du thème. */
 .megamenu a { color: inherit; text-decoration: none; }
 
-/* Le panneau reprend la boîte du conteneur d'en-tête (1340px) plutôt que
-   toute la largeur de l'écran : ses bords tombent exactement sous ceux de
-   la barre de navigation. */
+/* Le panneau s'aligne sur le CONTENU de l'en-tête, pas sur la boîte du
+   conteneur : celle-ci fait 1340px marges intérieures comprises (48px de
+   chaque côté), ses bords tombaient donc en dehors du logo et du bouton.
+   1340 - 96 = 1244, la largeur utile. */
 .megamenu {
   position: absolute;
   top: 100%;
   left: 50%;
   right: auto;
-  width: min(1340px, 100%);
+  width: min(1244px, calc(100% - 6rem));
   background: var(--paper);
   border: 1px solid var(--rule);
-  border-top: 2px solid var(--carmine);
   box-shadow: 0 24px 44px rgba(10, 24, 48, 0.13);
   opacity: 0;
   visibility: hidden;
@@ -543,7 +652,7 @@ section { position: relative; }
 /* Le panneau porte déjà la largeur : l'intérieur ne fait que reproduire
    la gouttière, pour que son contenu s'aligne sur le logo. */
 .megamenu__inner {
-  padding: clamp(2.25rem, 3vw, 3rem) var(--gutter) 0;
+  padding: clamp(2rem, 2.6vw, 2.5rem) var(--gutter) clamp(2rem, 2.6vw, 2.5rem);
 }
 
 .megamenu__lede {
@@ -552,7 +661,7 @@ section { position: relative; }
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--ink-3);
-  margin: 0 0 2.5rem;
+  margin: 0.75rem 0 1.375rem;
 }
 
 /* Pied commun : chaque panneau se termine sur une sortie explicite */
@@ -578,6 +687,165 @@ section { position: relative; }
 
 /* --- Variante 1 : les 4 entités, en vignettes --- */
 
+/* Panneau « Formations » : deux entrées de lecture -----------------------
+   L'échelle horizontale suggérait une progression BTS → MBA, mais son
+   quatrième cran, « Régimes d'études », n'est pas un niveau : la ligne
+   menait à un cul-de-sac logique. On sépare les deux vraies façons de
+   chercher un programme — par diplôme, ou par domaine. */
+.mm-two {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(2rem, 3.5vw, 3.5rem);
+  align-items: start;
+}
+.mm-col__title {
+  margin: 0 0 0.35rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--ink-3);
+  font-family: var(--font-alt);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+/* Les domaines sur deux colonnes : sept lignes en une seule colonne
+   déséquilibraient le panneau face aux quatre diplômes. */
+.megamenu .mm-domaines {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 clamp(1.5rem, 2.5vw, 2.5rem);
+}
+.megamenu .mm-domaines li { margin: 0 !important; }
+.megamenu .mm-domaines a {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--font-alt);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--ink);
+  text-decoration: none;
+  transition: color 0.2s var(--ease);
+}
+.main-menu .megamenu .mm-domaines a:hover { color: var(--carmine); }
+/* Sept domaines dans une grille de deux colonnes laissaient la case en bas
+   à droite vide. Le huitième pavé est le renvoi au catalogue complet : il
+   comble le trou et rend un service que le menu n'offrait pas. */
+.main-menu .megamenu .mm-domaines__tout a {
+  font-weight: 600;
+  color: var(--carmine);
+}
+.megamenu .mm-domaines__tout i {
+  flex: none;
+  font-size: 0.75rem;
+  transition: transform 0.25s var(--ease);
+}
+.megamenu .mm-domaines__tout a:hover i { transform: translateX(4px); }
+
+/* Le nombre de programmes : ce qui décide d'un clic. */
+.megamenu .mm-domaines em {
+  flex: none;
+  font-family: var(--font-display);
+  font-style: normal;
+  font-size: 1rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--carmine);
+}
+
+/* Bandeau de filtre actif sur la page formations */
+.filtre-actif {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.75rem 1.25rem;
+  margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--ink-3);
+}
+.filtre-actif__label {
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--carmine);
+}
+.filtre-actif__nom {
+  font-family: var(--font-alt);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.filtre-actif__n { font-size: 0.8125rem; color: var(--ink-3); }
+.filtre-actif__reset {
+  margin-left: auto;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--navy);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+}
+.filtre-actif__reset:hover { color: var(--carmine); border-bottom-color: var(--carmine); }
+
+@media (max-width: 991.98px) {
+  .mm-two { grid-template-columns: minmax(0, 1fr); }
+  .megamenu .mm-domaines { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* Panneau « À Propos » : les rubriques de la section à gauche, les quatre
+   établissements à droite. Sans cette grille, les liens s'empilaient en
+   pleine largeur et leur intitulé se confondait avec leur description. */
+.mm-about {
+  display: grid;
+  /* Trois leviers pour élargir les écoles sans casser la colonne de gauche :
+     le rapport passe à 0.36 (à 0.32, deux descriptions passaient sur deux
+     lignes et allongeaient tout le menu de 36px), la gouttière se resserre
+     et le rembourrage des cartes se réduit plus bas. */
+  grid-template-columns: minmax(0, 0.36fr) minmax(0, 1fr);
+  gap: clamp(1.5rem, 2.4vw, 2.25rem);
+  align-items: start;
+}
+
+.mm-links { display: flex; flex-direction: column; }
+
+.megamenu .mm-link {
+  display: block;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--rule);
+  text-decoration: none;
+}
+.megamenu .mm-link:first-child { border-top: 1px solid var(--ink-3); }
+.mm-link__name {
+  display: block;
+  font-family: var(--font-alt);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+  color: var(--ink);
+  transition: color 0.2s var(--ease);
+}
+.mm-link__desc {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: var(--ink-3);
+}
+.megamenu .mm-link:hover .mm-link__name { color: var(--carmine); }
+
 .mm-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -589,35 +857,95 @@ section { position: relative; }
 .megamenu .mm-card {
   display: flex;
   flex-direction: column;
-  padding: 0 clamp(1.25rem, 1.8vw, 2rem);
+  /* 32px de chaque côté mangeaient un tiers de la carte : la vignette n'en
+     gardait que 129px. */
+  padding: 0 clamp(0.875rem, 1.3vw, 1.25rem);
   border-left: 1px solid var(--rule);
-  transition: opacity 0.22s var(--ease);
 }
+/* La carte reste fixe au survol : déplacer tout le bloc faisait remonter le
+   cartouche du logo jusqu'au bord supérieur et donnait l'impression qu'il
+   sortait de la vignette. L'animation reste portée par la photo et le filet. */
 .megamenu .mm-card:first-child { border-left: none; }
 
 /* Au survol d'une carte, les autres s'estompent : le choix se détache */
-.mm-grid:hover .mm-card { opacity: 0.38; }
-.mm-grid:hover .mm-card:hover { opacity: 1; }
+/* Rien ne s'éteint : seule la carte survolée bouge. */
+
+.mm-grid--compact .mm-card__img { height: 96px; }
+.mm-grid--compact .mm-card { padding-bottom: 0.25rem; }
 
 .mm-card__img {
   display: block;
+  position: relative;
   height: 128px;
   overflow: hidden;
   margin-bottom: 1.2rem;
 }
-.mm-card__img img {
+/* Même traitement que sur les cartes de la page : un voile marine léger
+   harmonise les photos, tandis que le logo exact de l'établissement reste
+   net au premier plan. */
+.mm-card__img::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: rgba(var(--veil), 0.12);
+  transition: background-color 0.3s var(--ease);
+}
+.megamenu .mm-card:hover .mm-card__img::before {
+  background: rgba(var(--veil), 0.05);
+}
+/* Le filet se déroule de gauche à droite au survol. */
+.mm-card__img::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  z-index: 3;
+  background: var(--carmine);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.32s var(--ease);
+}
+.megamenu .mm-card:hover .mm-card__img::after { transform: scaleX(1); }
+.mm-card__img > img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.5s var(--ease);
 }
-.megamenu .mm-card:hover .mm-card__img img { transform: scale(1.06); }
+.megamenu .mm-card:hover .mm-card__img > img { transform: scale(1.05); }
+
+.mm-card__brand {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: clamp(3.75rem, 44%, 4.75rem);
+  aspect-ratio: 4 / 3;
+  padding: 0.4rem;
+  background: rgba(255, 255, 255, 0.96);
+  border-right: 1px solid rgba(10, 24, 48, 0.15);
+  border-bottom: 2px solid var(--carmine);
+}
+.mm-card__brand img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
 
 .mm-card__name {
   display: block;
-  font-family: var(--font-display);
-  font-size: 1.0625rem;
-  line-height: 1.25;
+  font-family: var(--font-alt);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  letter-spacing: -0.018em;
+  line-height: 1.3;
   color: var(--ink);
   margin-bottom: 0.45rem;
 }
@@ -659,13 +987,13 @@ section { position: relative; }
   margin-top: 0.5rem;
 }
 .mm-ladder { grid-template-columns: repeat(5, 1fr); }
-.mm-corridor { grid-template-columns: repeat(4, 1fr) auto 1fr; }
+.mm-ladder--4 { grid-template-columns: repeat(4, 1fr); }
+.mm-corridor { grid-template-columns: repeat(5, 1fr); }
 
 /* Une seule ligne traverse toute la rangée — plus de segments flottants.
    Sur les formations elle se teinte vers le carmin : la progression se lit
    sans décaler les colonnes. */
-.mm-ladder::before,
-.mm-corridor::before {
+.mm-ladder::before {
   content: "";
   position: absolute;
   top: 0;
@@ -685,7 +1013,16 @@ section { position: relative; }
   padding-top: 1.5rem;
 }
 .megamenu .mm-step { padding-right: 1.5rem; }
-.megamenu .mm-stop { padding-inline: 0.75rem; text-align: center; }
+.megamenu .mm-stop {
+  padding-top: 0;
+  padding-inline: clamp(0.875rem, 1.3vw, 1.25rem);
+  text-align: left;
+  border-left: 1px solid var(--rule);
+}
+.megamenu .mm-stop:first-child { border-left: none; padding-left: 0; }
+/* Le passage de frontière : un filet carmin au lieu d'une colonne vide
+   portant un intitulé suspendu dans le blanc. */
+.megamenu .mm-stop--gh { border-left-color: var(--carmine); }
 
 /* Vignette de campus : le rail ne disait que des noms de villes, difficile
    de se projeter. Format paysage court — la vignette doit informer sans
@@ -706,13 +1043,8 @@ section { position: relative; }
 }
 .megamenu .mm-stop:hover .mm-stop__img img { transform: scale(1.06); }
 
-/* La colonne « Frontière » n'a pas de vignette : on la décale pour que son
-   intitulé reste à la hauteur des noms de villes. */
-.megamenu .mm-border { padding-top: calc(84px + 0.85rem); }
-
 /* Pastille posée sur le rail */
-.megamenu .mm-step::before,
-.megamenu .mm-stop::before {
+.megamenu .mm-step::before {
   content: "";
   position: absolute;
   top: -4px;
@@ -723,14 +1055,10 @@ section { position: relative; }
   transition: background-color 0.22s var(--ease), border-color 0.22s var(--ease);
 }
 .megamenu .mm-step::before { left: 0; }
-.megamenu .mm-stop::before { left: 50%; transform: translateX(-50%); }
-
-.megamenu .mm-step:hover::before,
-.megamenu .mm-stop:hover::before {
+.megamenu .mm-step:hover::before {
   background: var(--carmine);
   border-color: var(--carmine);
 }
-.megamenu .mm-stop--gh::before { border-color: var(--carmine); }
 
 .mm-step__lvl {
   display: block;
@@ -838,6 +1166,19 @@ section { position: relative; }
   z-index: 1200;
 }
 .mobile-drawer.open { transform: translateX(0); }
+
+/* Le nouveau mot-symbole est blanc et transparent. L'en-tête du tiroir
+   reprend donc naturellement le bleu de navigation ; le fond appartient au
+   tiroir, pas au fichier du logo. */
+.mobile-drawer__header {
+  margin: -1.5rem -1.5rem 1rem !important;
+  padding: 1rem 1.5rem;
+  background: var(--navy);
+}
+.mobile-drawer__header .close-drawer {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.35);
+}
 
 .mobile-drawer-overlay {
   position: fixed;
@@ -950,7 +1291,6 @@ section { position: relative; }
 .campus-band .btn-cefat-secondary,
 .band-navy .btn-cefat-secondary,
 .newslater-area2 .btn-cefat-secondary,
-.video-area2 .btn-cefat-secondary,
 .page-head .btn-cefat-secondary {
   background: transparent;
   border-color: rgba(255, 255, 255, 0.45);
@@ -959,7 +1299,6 @@ section { position: relative; }
 .campus-band .btn-cefat-secondary:hover,
 .band-navy .btn-cefat-secondary:hover,
 .newslater-area2 .btn-cefat-secondary:hover,
-.video-area2 .btn-cefat-secondary:hover,
 .page-head .btn-cefat-secondary:hover {
   background: #fff;
   border-color: #fff;
@@ -1002,7 +1341,9 @@ section { position: relative; }
   text-transform: uppercase;
   text-decoration: none;   /* le thème soulignait cet intitulé */
   color: var(--carmine);
-  margin-bottom: 1.1rem;
+  /* 17.6px de marge plus l'interlignage des deux lignes creusaient 23px
+     optiques entre le surtitre et le titre qu'il annonce. */
+  margin-bottom: 0.35rem;
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -1049,7 +1390,6 @@ section { position: relative; }
 .band-navy .section-title2 h5,
 .campus-band .section-title2 h5,
 .newslater-area2 .section-title2 h5,
-.video-area2 .section-title2 h5 { color: var(--red-bright); }
 .band-navy .section-title2 p,
 .campus-band .section-title2 p,
 .newslater-area2 .section-title2 p { color: rgba(255, 255, 255, 0.68); }
@@ -1062,22 +1402,16 @@ section { position: relative; }
 .band-navy .section-title2 h5,
 .campus-band .section-title2 h5,
 .newslater-area2 .section-title2 h5,
-.video-area2 .section-title2 h5,
-.video-area2 h5,
 .page-head__eyebrow,
-.campus-band .section-title2 h2 span,
 .newslater-area2 .section-title2 h2 span,
-.video-area2 h2 span,
 .corridor__border span,
 .corridor__stop--gh .corridor__meta,
 .band-navy .text-danger,
 .campus-band .text-danger,
 .newslater-area2 .text-danger,
-.video-area2 .text-danger,
 .page-head .text-danger,
 .footer-top .text-danger,
 .header-top .text-danger,
-.header-top i,
 .hero-slider-area .text-danger,
 .trust-icon,
 .footer-link ul li a i,
@@ -1087,7 +1421,6 @@ section { position: relative; }
 .band-navy .section-title2 h5::before,
 .campus-band .section-title2 h5::before,
 .newslater-area2 .section-title2 h5::before,
-.video-area2 .section-title2 h5::before { background: var(--red-on-dark); }
 
 .corridor__border::before,
 .corridor__stop--gh::after,
@@ -1110,11 +1443,185 @@ section { position: relative; }
   inset: 0;
   z-index: -2;
 }
-.hero__media img {
+/* Pile de diapositives : elles se superposent et se croisent en fondu.
+   Un léger zoom lent pendant l'affichage donne du mouvement à une photo
+   fixe, sans la faire dériver hors cadre. */
+.hero__slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.9s var(--ease);
+  overflow: hidden;
+}
+.hero__slide.is-active { opacity: 1; }
+
+/* Le sujet de la photo des diplômés est au centre du cliché : il tombait
+   sous la moitié gauche du voile, qui est presque opaque. On rétrécit le
+   cadre par la gauche — le groupe passe dans la moitié droite, là où le
+   voile s'éclaircit, et il est rendu plus petit puisque `cover` s'ajuste
+   alors sur une boîte moins large. La bande libérée à gauche prend la
+   couleur du voile et s'y confond. */
+.hero__media { background: rgb(var(--veil)); }
+.hero__slide--droite { left: 26%; }
+@media (max-width: 991.98px) {
+  /* Sur téléphone le texte occupe toute la largeur : la photo reprend le
+     plein cadre, sinon elle se réduirait à une bande. */
+  .hero__slide--droite { left: 0; }
+}
+
+.hero__media img,
+.hero__slide-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center 35%;
+}
+/* Le mouvement part serré et s'ouvre : la photo entre agrandie puis se
+   repose à sa taille réelle. Durée calée sur les 6s de la diapositive —
+   à 9s le mouvement était coupé aux deux tiers et n'arrivait jamais à son
+   terme, ce qui donnait une dérive sans fin plutôt qu'un plan qui se pose. */
+.hero__slide.is-active .hero__slide-img {
+  animation: hero-derive 6.4s var(--ease) forwards;
+}
+@keyframes hero-derive {
+  from { transform: scale(1.09); }
+  to   { transform: scale(1); }
+}
+
+/* Les trois messages se relaient au même endroit : le bloc réserve la
+   hauteur du plus haut pour que les boutons ne sautent pas d'une
+   diapositive à l'autre. */
+/* Depuis que .hero__say n'enveloppe plus que le texte, le paragraphe y est
+   p:last-child : la règle générique l.133 remet sa marge basse à zéro et il
+   venait coller aux boutons. L'espace avant l'action appartient donc au bloc. */
+.hero__say { animation: hero-monte 0.6s var(--ease); margin-bottom: var(--stack-md); }
+.hero__say[hidden] { display: none; }
+@keyframes hero-monte {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Vignettes de navigation, reprises de la référence : elles montrent où
+   l'on va au lieu d'aligner trois points anonymes. */
+/* Vignettes en colonne, à droite : elles prennent la place du rail des
+   cycles, que le méga-menu Formations couvre désormais. La colonne défile
+   si la hauteur du hero ne suffit pas. */
+.hero__side {
+  /* Les vignettes restent à droite du texte, mais en rangée d'affiches plutôt
+     qu'en pile de bandeaux : format portrait, légende sous l'image, flèches
+     au-dessus de la rangée. */
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.9rem;
+}
+
+.hero__nav {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  min-width: 0;
+  gap: clamp(0.6rem, 1vw, 0.875rem);
+}
+
+.hero__thumb {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+  opacity: 0.55;
+  transition: opacity 0.28s var(--ease);
+}
+/* Descente progressive de la hauteur : 2/3 (237px) dominait le titre, puis
+   4/5 (197px), 9/10 (175px). Le carré la pose à 158px — le cadrage reste
+   celui d'une vignette et non d'un bandeau paysage. */
+.hero__thumb img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+/* Légende : on sait ce qu'on va afficher avant de cliquer. */
+/* La légende passe sous l'image : plus de dégradé posé sur la photo, et le
+   titre se lit sur le voile du bandeau. */
+.hero__thumb-lgd {
+  position: relative;
+  width: 100%;
+  padding-top: 0.6rem;
+  font-family: var(--font-alt);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.72);
+  text-align: left;
+  transition: color 0.28s var(--ease);
+}
+.hero__thumb.is-active .hero__thumb-lgd { color: #fff; }
+.hero__thumb:hover { opacity: 0.85; }
+.hero__thumb.is-active { opacity: 1; }
+.hero__thumb:focus-visible { outline: 2px solid var(--red-on-dark); outline-offset: 3px; }
+
+/* Jauge de progression : la barre carmin se remplit le temps de la
+   diapositive, on sait quand la suivante arrive. */
+/* Portée par la légende plutôt que par le bouton : posée en bas du bouton,
+   elle se serait retrouvée sous le texte au lieu de fermer l'image. */
+.hero__thumb-lgd::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--red-on-dark);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+.hero__thumb.is-active .hero__thumb-lgd::before { animation: hero-jauge 6s linear forwards; }
+/* En pause (survol, focus, onglet caché), la jauge se fige où elle en est.
+   Sans cela elle finissait sa course et restait pleine : le trait semblait
+   bloqué alors que c'est la rotation qui était suspendue. */
+.hero-slider-area.est-en-pause .hero__thumb.is-active .hero__thumb-lgd::before { animation-play-state: paused; }
+@keyframes hero-jauge { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+
+
+.hero__arrows {
+  display: flex;
+  flex: none;
+  /* Au-dessus de la rangée alors qu'elles la suivent dans le balisage :
+     l'ordre du DOM garde les flèches après les vignettes qu'elles pilotent. */
+  order: -1;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+.hero__arrow {
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.8125rem;
+  cursor: pointer;
+  transition: background-color 0.22s var(--ease), border-color 0.22s var(--ease), color 0.22s var(--ease);
+}
+.hero__arrow:hover {
+  background: var(--carmine);
+  border-color: var(--carmine);
+  color: #fff;
+}
+.hero__arrow:focus-visible { outline: 2px solid var(--red-on-dark); outline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__slide { transition: none; }
+  .hero__slide.is-active .hero__slide-img { animation: none; }
+  .hero__say { animation: none; }
+  .hero__thumb.is-active .hero__thumb-lgd::before { animation: none; transform: scaleX(1); }
 }
 
 /* Voile dégradé : le texte reste lisible quelle que soit la photo déposée.
@@ -1124,48 +1631,81 @@ section { position: relative; }
   inset: 0;
   z-index: -1;
   background:
-    linear-gradient(180deg, rgba(10, 24, 48, 0.55) 0%, rgba(10, 24, 48, 0.25) 45%, rgba(10, 24, 48, 0.75) 100%),
-    linear-gradient(100deg, rgba(10, 24, 48, 0.95) 0%, rgba(10, 24, 48, 0.88) 42%, rgba(10, 24, 48, 0.62) 100%);
+    linear-gradient(180deg, rgba(var(--veil), 0.50) 0%, rgba(var(--veil), 0.18) 45%, rgba(var(--veil), 0.72) 100%),
+    /* Le voile horizontal est repris pour appuyer franchement sur la moitié
+       gauche, celle qui porte les titres : plus opaque au départ, et la
+       descente vers la droite est repoussée pour que la photo ne réapparaisse
+       qu'au-delà de la colonne de texte. */
+    linear-gradient(100deg,
+      rgba(var(--veil), 1) 0%,
+      rgba(var(--veil), 0.985) 40%,
+      rgba(var(--veil), 0.86) 68%,
+      rgba(var(--veil), 0.50) 100%);
 }
 
 .hero__grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.65fr);
-  gap: clamp(2rem, 5vw, 5rem);
-  align-items: center;
-  min-height: clamp(560px, 78vh, 780px);
-  padding-top: var(--stack-lg);
-  padding-bottom: var(--stack-lg);
+  /* La colonne des affiches a besoin de plus que 0.6fr : à 354px, les trois
+     tombaient à 109px de large et leur légende partait sur trois lignes. */
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: clamp(2rem, 4vw, 4rem);
+  /* Les deux colonnes se terminent sur la même ligne — le bas de la rangée
+     d'affiches tombe sur celle des trois gages. `align-items: end` cale les
+     colonnes sur le bas de la rangée, `align-content: center` recentre la
+     rangée dans la hauteur du bandeau : l'alignement reste exact quelle que
+     soit la largeur, là où un décalage fixe ne valait que pour une seule. */
+  align-items: end;
+  align-content: center;
+  /* 78vh laissait 95px de blanc au-delà de ce que la colonne la plus haute
+     réclame : le bandeau se resserre sans jamais comprimer son contenu. */
+  min-height: clamp(520px, 73vh, 730px);
+  /* Le texte et la bande s'empilent désormais : le rembourrage se resserre
+     pour que le bandeau ne regagne pas la hauteur qu'on vient de lui ôter. */
+  padding-top: clamp(2rem, 3.5vw, 3rem);
+  padding-bottom: clamp(2rem, 3.5vw, 3rem);
 }
 
 .hero-content { max-width: 46rem; }
 
+/* Le hero était le seul endroit à poser ce niveau d'information dans un aplat
+   plein : un rectangle de plus dans une zone qui en compte déjà beaucoup
+   (bandeau d'agrément, deux boutons, trois vignettes, deux flèches). Il reprend
+   l'idiome des surtitres de section — filet de 28px + capitales espacées.
+   Le carmin tombant à 2.05:1 sur fond sombre, c'est --red-on-dark qui sert. */
 .hero-badge {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.75rem;
   font-family: var(--font-sans);
   font-size: var(--fs-eyebrow);
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #fff;
-  background: var(--carmine);
-  padding: 0.5rem 1rem;
-  margin-bottom: 1.75rem;
+  color: var(--red-on-dark);
+  margin-bottom: 1.5rem;
+}
+.hero-badge::before {
+  content: "";
+  flex: none;
+  width: 28px;
+  height: 1px;
+  background: currentColor;
 }
 
 .hero-title {
   font-size: var(--fs-display);
-  line-height: var(--lh-tight);
+  /* Resserré sous --lh-tight (1.08), mais pas au-delà : mesure par colonne
+     d'encre, le pire couple est « Un cursus qui » / « franchit la frontière »
+     — le jambage du q passe à 81px du h. En dessous de 0.97 ils se touchent. */
+  line-height: 1.02;
   letter-spacing: 0.008em;
   color: #fff;
   margin-bottom: 1.5rem;
 }
-.hero-title span {
-  color: #fff;
-  display: block;
-}
+.hero-title span { color: #fff; }
+/* Le span forçait chaque titre sur deux lignes. Il reste comme charnière de
+   traduction ; la coupure, quand elle arrive en petit écran, est répartie. */
+.hero-title { text-wrap: balance; }
 
 .hero-subtitle {
   color: rgba(255, 255, 255, 0.76);
@@ -1185,18 +1725,38 @@ section { position: relative; }
   color: var(--navy-deep);
 }
 
+/* Trois repères, chacun coiffé de son propre filet — le même procédé que les
+   repères des fiches d'entité et de la frise. Les pictogrammes sont retirés :
+   trois symboles hétéroclites (toque, globe, ordinateur portable) ne formaient
+   pas une famille, et aucun n'ajoutait d'information au libellé. */
 .hero-trust-badges {
-  border-top: 1px solid rgba(255, 255, 255, 0.18) !important;
-  padding-top: 1.5rem !important;
-  gap: 1.75rem !important;
+  list-style: none;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0 clamp(1.25rem, 2.4vw, 2.25rem);
+  border-top: 0 !important;
+  max-width: 40rem;
 }
-.hero-trust-item { gap: 0.6rem !important; }
-.trust-icon { color: var(--red-bright); font-size: 0.9375rem; }
+.hero-trust-item {
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.32);
+  text-align: center;
+}
 .trust-text {
+  display: block;
+  font-family: var(--font-alt);
   font-size: 0.8125rem;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.82);
+  font-weight: 600;
+  line-height: 1.35;
   letter-spacing: 0.01em;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+@media (max-width: 575.98px) {
+  .hero-trust-badges { grid-template-columns: 1fr; gap: 0; }
+  .hero-trust-item:first-child { padding-top: 0.85rem; }
 }
 
 /* --- Rail d'entrée : quatre cycles, séparés par des filets --- */
@@ -1273,36 +1833,10 @@ section { position: relative; }
    10. BARRE DE CHIFFRES
    ========================================================================== */
 
-.factbar { background: var(--navy); }
 
-.factbar__grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-}
 
-.factbar__item {
-  padding: clamp(2rem, 4vw, 3rem) clamp(1rem, 2.5vw, 2rem);
-  border-left: 1px solid var(--navy-line);
-  text-align: center;
-}
-.factbar__item:first-child { border-left: none; }
 
-.factbar__num {
-  font-family: var(--font-display);
-  font-size: clamp(2.25rem, 4.5vw, 3.5rem);
-  line-height: 1;
-  color: #fff;
-  letter-spacing: 0.008em;
-  margin-bottom: 0.6rem;
-}
 
-.factbar__label {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.6);
-}
 
 /* ==========================================================================
    11. MOT DU FONDATEUR
@@ -1314,12 +1848,21 @@ section { position: relative; }
 .about-area { background: var(--paper); }
 
 #about {
-  padding-top: clamp(3.5rem, 6vw, 6rem) !important;
-  padding-bottom: clamp(1.75rem, 2.6vw, 2.75rem) !important;
+  padding-top: clamp(1.75rem, 2.8vw, 2.75rem) !important;
+  /* La frise fermait la section à 44px du bord : trop serré pour un bloc qui
+     porte cinq jalons et qui précède une bande de couleur. */
+  padding-bottom: clamp(3rem, 5vw, 4.5rem) !important;
 }
 
 /* ---- Bandeau de titre ---- */
-.founder-head { margin-bottom: clamp(1rem, 1.7vw, 1.5rem); }
+/* Le titre est passé dans la colonne de droite, au même niveau que la photo.
+   Il ne fait donc plus la largeur du site : l'échelle de titre de section y
+   serait démesurée, elle descend d'un cran. */
+.founder-head {
+  margin-bottom: clamp(1.5rem, 2.4vw, 2rem);
+  padding-bottom: clamp(1rem, 1.6vw, 1.25rem);
+  border-bottom: 1px solid var(--rule);
+}
 
 .founder-head__eyebrow {
   display: flex;
@@ -1333,13 +1876,7 @@ section { position: relative; }
   text-transform: uppercase;
   color: var(--carmine);
 }
-.founder-head__eyebrow::before {
-  content: "";
-  flex: none;
-  width: 28px;
-  height: 1px;
-  background: currentColor;
-}
+/* Pas de filet d'amorce ici, contrairement aux autres surtitres du site. */
 
 /* Le titre porte la section : plus grand qu'un h2 courant, tenu sur deux
    lignes par la mesure, et l'interligne resserré — à cette taille, 1.18
@@ -1347,28 +1884,33 @@ section { position: relative; }
 .founder-head h2 {
   margin: 0;
   max-width: none;
-  font-size: var(--fs-h2);
-  line-height: 0.95;
-  text-wrap: balance;
+  font-size: clamp(1.875rem, 2.6vw, 2.625rem);
+  line-height: 1.04;
+  /* Pas d'équilibrage des lignes : il raccourcissait la première pour égaliser
+     les deux, et le titre n'atteignait plus le bord de la colonne alors que la
+     citation en dessous, elle, le touche. */
+  text-wrap: pretty;
 }
-.founder-head h2 span { color: var(--carmine); }
+/* Titre tout en bleu : plus d'accent carmin sur « entité par entité », qui
+   passe à la ligne — le span sert désormais de coupure, plus d'accent. */
+.founder-head h2, .founder-head h2 span { color: var(--navy); }
+.founder-head h2 span { display: block; }
 
 /* ---- Photo + parole, côte à côte ---- */
 .founder-lead {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
   gap: clamp(2rem, 3.5vw, 3.5rem);
   align-items: stretch;
-  padding-top: clamp(1.5rem, 2.4vw, 2rem);
-  /* Filet fin gris clair, comme les autres séparateurs du site (légende de
-     photo, contexte, repères) : le trait carmin de 2px pesait plus lourd que
-     le titre qu'il devait souligner. */
-  border-top: 1px solid var(--rule);
-  --legende: 2.65rem;               /* hauteur de la légende, hors flux */
-  margin-bottom: calc(clamp(2rem, 3.5vw, 3rem) + var(--legende));
+  /* Aucun filet ici : le ruban des domaines, juste au-dessus, sépare déjà la
+     section. Deux traits à 170px d'écart se répétaient sans rien dire de plus.
+     La légende étant repassée dans l'image, la compensation de sa hauteur
+     hors flux (--legende) n'a plus lieu d'être. */
+  padding-top: clamp(0.75rem, 1.4vw, 1.25rem);
+  margin-bottom: clamp(2.5rem, 4.5vw, 4rem);
 }
 
-.founder-media { margin: 0; position: relative; display: flex; flex-direction: column; }
+.founder-media { margin: 0; position: relative; display: flex; flex-direction: column; overflow: hidden; }
 
 /* La photo se règle sur la colonne de parole au lieu d'imposer sa hauteur :
    un cadrage 4/5 donnait 720px, plus qu'un écran d'ordinateur portable pour
@@ -1378,29 +1920,43 @@ section { position: relative; }
   display: block;
   width: 100%;
   flex: 1 1 0;
-  min-height: 220px;
-  max-height: 520px;                /* la photo va jusqu'au bas du contexte */
+  min-height: 320px;
+  /* Plus de plafond : la photo se règle sur la colonne de droite, qui porte
+     maintenant le titre en plus du témoignage et du récit. */
   object-fit: cover;
   border-radius: 0 !important;
   box-shadow: none !important;
+  /* Reprise de contraste : les vues de drone sortent voilées par la brume
+     d'altitude, le blanc du bâtiment vire au gris et le toit se ternit.
+     Valeurs basses — au-delà, le toit rouge sature et bave sur le ciel. */
+  filter: saturate(1.1) contrast(1.06);
 }
 
 /* Légende de presse : elle dit ce que la photo montre — des étudiants, pas
    le fondateur — et évite que l'image passe pour un portrait signé. */
 .founder-media figcaption {
   position: absolute;
-  top: 100%;
+  bottom: 0;
   left: 0;
   right: 0;
-  margin-top: 0.8rem;
-  padding-top: 0.8rem;
-  border-top: 1px solid var(--rule);
+  padding: 6.5rem 1.25rem 1.25rem;
+  /* Le pied de la photo se ferme sur un aplat : le dégradé part de rien en
+     haut et arrive au voile plein sous la légende. Il est étalé sur une
+     grande hauteur — c'est cette longueur qui l'empêche de se lire comme
+     une barre posée sur l'image. */
+  background: linear-gradient(180deg,
+    rgba(var(--veil), 0) 0%,
+    rgba(var(--veil), 0.30) 34%,
+    rgba(var(--veil), 0.72) 64%,
+    rgba(var(--veil), 0.97) 100%);
   font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   line-height: 1.4;
-  color: var(--ink-3);
+  /* Deux `color` se suivaient : le blanc était écrasé par `--ink-3`, et la
+     légende sortait en gris sur un fond sombre. */
+  color: #fff;
 }
 
 /* Citation, signature et contexte forment un seul bloc face à la photo.
@@ -1427,49 +1983,68 @@ section { position: relative; }
 /* Guillemets courbes en français aussi : le chevron double partait dans une
    autre direction graphique. Un seul jeu de glyphes, un seul calage. */
 
+/* Citation en Raleway, adossée à un filet carmin : un encadrement sans boîte,
+   dans la langue du reste du site. Le récit qui suit est en Instrument Sans à
+   15px — la fonte et le corps suffisent à séparer les deux blocs, qui se
+   lisaient auparavant comme un seul pavé. */
 .founder-quote blockquote {
   margin: 0;
-  padding: 0;
+  padding: 0.15rem 0 0.25rem clamp(1.25rem, 2.2vw, 1.75rem);
   border: 0;
+  border-left: 2px solid var(--carmine);
   background: none !important;
   font-family: var(--font-alt);
-  font-size: clamp(1.0625rem, 1.85vw, 1.45rem);
+  font-size: clamp(1.125rem, 1.75vw, 1.5rem);
   font-weight: 500;
-  line-height: 1.22;
-  letter-spacing: -0.012em;
+  line-height: 1.2;
+  letter-spacing: -0.014em;
   font-style: normal !important;
   color: var(--ink);
   text-indent: 0;
 }
 
+/* L'attribution s'aligne sur le texte de la citation, pas sur son filet. */
+.founder-sign { padding-left: clamp(1.25rem, 2.2vw, 1.75rem); }
+
+/* Attribution de citation. Le nom et la fonction sur une même ligne de base
+   faisaient se heurter deux registres — un serif de 20px contre des capitales
+   de 11px. Ils reprennent deux lignes, mais serrées, précédées du filet carmin
+   qui sert déjà de marque d'amorce aux surtitres du site. */
+/* Plus de filet d'amorce : la citation en porte déjà un, sur toute sa
+   hauteur. Le nom et la fonction s'alignent donc au fer du texte cité. */
 .founder-sign {
-  margin-top: 1.15rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.1rem;
+  margin-top: 1rem;
+  display: block;
 }
 .founder-sign__name {
-  font-family: var(--font-display);
-  font-size: 1.25rem;
-  line-height: 1.15;
+  display: block;
+  font-family: var(--font-alt);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: -0.012em;
+  line-height: 1.35;
   color: var(--ink);
 }
+/* La fonction n'est pas un surtitre : les capitales carmin criaient plus fort
+   que le nom qu'elles accompagnent. Gris, bas de casse, sans interlettrage. */
 .founder-sign__role {
-  font-size: 0.7rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  font-weight: 600;
+  display: block;
+  font-size: 0.8125rem;
+  letter-spacing: 0;
+  text-transform: none;
+  font-weight: 400;
   line-height: 1.45;
-  color: var(--carmine);
+  color: var(--ink-3);
 }
 
 /* ---- Le contexte, au second plan, ferme la colonne ----
    Il tient sous la signature au lieu d'occuper sa propre bande : la colonne
    de droite atteint la hauteur de la photo, les deux se terminent ensemble. */
 .founder-note {
-  margin: 1.5rem 0 0;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--rule);
+  /* Le corps et la couleur distinguent déjà le récit du témoignage :
+     l'écart suffit à les séparer, un filet de plus les aurait empilés. */
+  margin: clamp(1rem, 1.7vw, 1.5rem) 0 0;
+  /* Même mesure que la citation : le récit occupe toute la colonne. */
   font-size: 0.9375rem;
   line-height: 1.5;
   color: var(--ink-3);
@@ -1612,7 +2187,11 @@ section { position: relative; }
    Frise horizontale : cinq dates sur une ligne se lisent d'un coup d'œil,
    là où une frise verticale aurait ajouté cinq écrans de défilement. */
 
-.group-story { background: var(--paper); }
+/* Bande ivoire : les fiches d'entité au-dessus sont sur blanc, l'historique
+   se détache donc sans qu'on ait besoin d'un filet de plus. Le cran le plus
+   clair (--paper-warm, #F4F3F0) ne s'écartait du blanc que de 11 valeurs —
+   à peine perceptible. --paper-warm-2 double l'écart en restant clair. */
+.group-story { background: var(--paper-warm-2); }
 
 .group-story__head { margin-bottom: clamp(2.25rem, 4vw, 3.25rem); }
 .group-story__eyebrow {
@@ -1710,12 +2289,35 @@ section { position: relative; }
    11 quater. RÉGIMES D'ÉTUDES
    ========================================================================== */
 
+/* Un régime par rangée, et non deux côte à côte. Chaque rangée se partage en
+   deux volets — l'intitulé et le public à gauche, ce que le régime recouvre à
+   droite — comme les rangées de domaines de cette même page. Empilés sans ce
+   partage, les blocs se seraient étirés sur toute la largeur du conteneur. */
 .study-modes {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(1.75rem, 3.5vw, 3rem);
+  grid-template-columns: 1fr;
+  gap: 0;
 }
-.study-mode { padding-top: 1.25rem; border-top: 1px solid var(--ink-3); }
+.study-mode {
+  display: grid;
+  grid-template-columns: minmax(0, 0.42fr) minmax(0, 1fr);
+  /* La seconde rangée prend toute la hauteur restante (celle de la liste) :
+     sans align-self, le public se retrouvait à mi-hauteur, détaché de son
+     intitulé. */
+  grid-template-rows: auto 1fr;
+  column-gap: clamp(1.5rem, 3vw, 3rem);
+  align-items: start;
+  padding: clamp(1.5rem, 2.6vw, 2rem) 0;
+  border-top: 1px solid var(--ink-3);
+}
+.study-mode__title { grid-column: 1; grid-row: 1; }
+.study-mode__who   { grid-column: 1; grid-row: 2; align-self: start; margin-top: 0.4rem; }
+.study-mode__list  { grid-column: 2; grid-row: 1 / span 2; }
+
+@media (max-width: 767.98px) {
+  .study-mode { grid-template-columns: 1fr; }
+  .study-mode__title, .study-mode__who, .study-mode__list { grid-column: 1; grid-row: auto; }
+}
 .study-mode__title {
   margin: 0 0 0.25rem;
   font-family: var(--font-alt);
@@ -1723,7 +2325,7 @@ section { position: relative; }
   letter-spacing: -0.01em; color: var(--ink);
 }
 .study-mode__who {
-  margin: 0 0 1.1rem;
+  margin: 0;
   font-size: 0.6875rem; font-weight: 600;
   letter-spacing: 0.1em; text-transform: uppercase;
   color: var(--carmine);
@@ -1888,47 +2490,42 @@ section { position: relative; }
    sur une ligne : la section faisait 756px de haut pour 90px de contenu
    utile. Scopé, le rythme des autres sections est intact. */
 #chiffres,
-.counter-area2 {
-  padding-top: clamp(3.25rem, 5.5vw, 5rem) !important;
-  padding-bottom: clamp(3.25rem, 5.5vw, 5rem) !important;
-}
 .counter-area2 .section-title2 {
   margin-bottom: clamp(1.75rem, 3vw, 2.5rem) !important;
 }
-/* Le titre tient sur une ligne : la mesure de 22ch le cassait en trois. */
+/* « Un Réseau Fort, des Diplômes Reconnus et un Avenir Garanti » : titre tout
+   en bleu, coupé en deux par le span. La mesure de 22ch le cassait en trois,
+   d'où le max-width levé — c'est le span qui décide de la coupure. */
 .counter-area2 .section-title2 h2 { max-width: none; }
+.counter-area2 .section-title2 h2,
+.counter-area2 .section-title2 h2 span { color: var(--navy); }
+.counter-area2 .section-title2 h2 span { display: block; }
 
-/* Candidature en ligne : cadence resserrée -----------------------------
-   136px de marge haut et bas, et la colonne de gauche flottait 61px plus
-   haut que le formulaire alors qu'elle se termine 61px plus tôt. Les deux
-   colonnes partent maintenant du même bord haut. */
+/* « Expertise Académique & Formations d'Avenir » : titre tout en bleu, et le
+   span sert de coupure — plus d'accent carmin sur sa seconde moitié.
+   Scopé : les trois autres bandeaux gardent le leur. */
+#formations .section-title2 h2,
+#formations .section-title2 h2 span { color: var(--navy); }
+#formations .section-title2 h2 span { display: block; }
+
+/* « Un Réseau de 4 Pôles d'Excellence » : titre tout en bleu, sans accent
+   carmin sur sa seconde moitié. */
+#entites .section-title2 h2,
+#entites .section-title2 h2 span { color: var(--navy); }
+
+/* « 5 Campus Modernes en Côte d'Ivoire & Ghana » : sur le navy de la bande,
+   le titre passe tout en blanc et le span sert de coupure. */
+.campus-band .section-title2 h2,
+.campus-band .section-title2 h2 span { color: #fff; }
+.campus-band .section-title2 h2 span { display: block; }
+
+/* Candidature en ligne. Le rembourrage est scopé à l'identifiant parce que
+   le thème impose le sien ; sans !important il ne passerait pas. Le filet de
+   clôture se place juste au-dessus du pied de page, d'où un bas resserré. */
 #candidature-section {
-  padding-top: clamp(3.25rem, 5.5vw, 5rem) !important;
-  padding-bottom: clamp(3.25rem, 5.5vw, 5rem) !important;
-}
-#candidature-section > .container > .row { align-items: flex-start !important; }
-
-/* Le pavé « Parcours Express » : un encadré dans une section déjà encadrée
-   faisait boîte dans la boîte. Filet simple à gauche, comme les repères. */
-#candidature-section .express-track {
-  border: none !important;
-  border-left: 2px solid var(--carmine) !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  padding: 0.15rem 0 0.15rem 1.25rem !important;
-}
-
-/* Pastilles numérotées : le badge Bootstrap arrondi n'a rien à faire ici,
-   le reste du site numérote en chiffres nus. */
-#candidature-section .express-track .badge {
-  background: transparent !important;
-  color: var(--red-on-dark) !important;
-  border-radius: 0 !important;
-  padding: 0 !important;
-  min-width: 1.4rem;
-  font-family: var(--font-display);
-  font-size: 1.0625rem;
-  font-variant-numeric: tabular-nums;
+  /* Le bandeau descend : la bande ivoire commençait trop près du surtitre. */
+  padding-top: clamp(4.5rem, 8vw, 7rem) !important;
+  padding-bottom: clamp(1.25rem, 2.2vw, 1.75rem) !important;
 }
 
 /* ==========================================================================
@@ -1939,38 +2536,93 @@ section { position: relative; }
    Trois groupes nommés, en listes filetées : on voit ce qui relève de
    l'agrément, du réseau professionnel, et des personnes. */
 
-.partners { background: var(--paper); }
+/* Ivoire : les chiffres qui précèdent sont sur blanc, la candidature qui suit
+   sur navy — la section se détache des deux. */
+.partners {
+  background: var(--paper-warm);
+  /* Le filet de séparation vient de la section du dessus, qui pose déjà
+     28 px sous lui : le rembourrage haut est réduit d'autant pour que le
+     titre remonte au lieu de flotter à 100 px du trait. */
+  padding: clamp(1.5rem, 2.6vw, 2.25rem) 0 clamp(2.75rem, 5vw, 4.5rem);
+}
 
+/* Un filet en tête, pour détacher la section des chiffres qui la précède.
+   Il est porté par l'en-tête et non par la section : celle-ci est pleine
+   largeur, il aurait traversé l'écran au lieu de s'arrêter au contenu.
+   Rien en dessous du chapeau — la barre d'onglets porte déjà son propre
+   filet, deux traits s'y seraient suivis à 40px d'écart. */
 .partners__head { margin-bottom: clamp(1.75rem, 3vw, 2.5rem); }
-.partners__eyebrow {
-  display: flex; align-items: center; gap: 0.75rem;
-  margin: 0 0 0.9rem;
-  font-family: var(--font-sans);
-  font-size: var(--fs-eyebrow);
-  font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--carmine);
-}
-.partners__eyebrow::before {
-  content: ""; flex: none; width: 28px; height: 1px; background: currentColor;
-}
 .partners h2 {
   margin: 0;
   font-size: var(--fs-h2);
   line-height: 0.95;
   max-width: none;
 }
-.partners h2 span { color: var(--carmine); }
+/* Titre tout en bleu : plus d'accent carmin sur la seconde moitié. */
+.partners h2, .partners h2 span { color: var(--navy); }
 
-.partners__grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(1.75rem, 3.5vw, 3.25rem);
+/* Trois onglets ; le panneau ouvert pose son contenu à gauche et sa photo à
+   droite. Les colonnes de texte nu étaient plates, et trois listes empilées
+   côte à côte laissaient des bas de colonne en escalier. */
+.partners__onglets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(1.25rem, 2.6vw, 2.5rem);
+  /* 36px de marge s'ajoutaient aux 14px de rembourrage de la première entrée :
+     51px séparaient l'onglet de son contenu. */
+  margin-bottom: clamp(0.5rem, 1vw, 0.875rem);
+  border-bottom: 1px solid var(--rule-strong);
 }
+.partners__onglet {
+  position: relative;
+  padding: 0 0 0.9rem;
+  background: none;
+  border: 0;
+  font-family: var(--font-alt);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  cursor: pointer;
+  transition: color 0.2s var(--ease);
+}
+.partners__onglet:hover { color: var(--ink); }
+.partners__onglet.est-actif { color: var(--carmine); }
+.partners__onglet::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -1px;
+  height: 2px;
+  background: var(--carmine);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s var(--ease);
+}
+.partners__onglet.est-actif::after { transform: scaleX(1); }
+.partners__onglet:focus-visible { outline: 2px solid var(--carmine); outline-offset: 3px; }
+
+/* Sans script, les trois panneaux restent lisibles à la suite. */
+.partners__panneaux.est-pilote .partners__panneau:not(.est-actif) { display: none; }
+
+/* Sans photo, le panneau n'est plus qu'une liste. Elle se répartit en autant
+   de colonnes que la place en autorise : trois entrées tiennent sur une
+   rangée, deux sur deux colonnes. Le plancher stabilise la hauteur d'un
+   onglet à l'autre — les panneaux n'ont pas le même nombre d'entrées. */
+.partners__panneau { min-height: 9rem; }
+.partners__panneau .partners__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  column-gap: clamp(1.75rem, 3.5vw, 3.25rem);
+}
+
+
 
 .partners__group-title {
   margin: 0 0 0.25rem;
   padding-bottom: 0.9rem;
-  border-bottom: 2px solid var(--carmine);
+  border-bottom: 1px solid var(--rule-strong);
+  color: var(--carmine);
   font-family: var(--font-alt);
   font-size: 0.75rem;
   font-weight: 700;
@@ -1989,7 +2641,7 @@ section { position: relative; }
 }
 .partners__name {
   font-family: var(--font-alt);
-  font-size: 0.9375rem;
+  font-size: 1rem;
   font-weight: 600;
   line-height: 1.35;
   color: var(--ink);
@@ -2009,10 +2661,8 @@ section { position: relative; }
 }
 
 @media (max-width: 991.98px) {
-  .partners__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 575.98px) {
-  .partners__grid { grid-template-columns: minmax(0, 1fr); }
 }
 
 /* ==========================================================================
@@ -2059,9 +2709,13 @@ section { position: relative; }
   align-items: center;
   justify-content: space-between;
   gap: clamp(1.25rem, 3vw, 2.5rem);
-  margin-top: clamp(2rem, 4vw, 3rem);
-  padding: clamp(1.5rem, 3vw, 2.25rem) 0 0;
-  border-top: 1px solid var(--ink-3);
+  margin-top: clamp(2.5rem, 4.5vw, 3.5rem);
+  /* Bande ivoire : l'Executive MBA ferme le catalogue et doit se distinguer
+     des groupes de programmes, sans passer au sombre. --paper-warm-2 est le
+     même ton que la bande historique de la page des entités. */
+  background: var(--paper-warm-2);
+  padding: clamp(1.75rem, 3.2vw, 2.5rem) clamp(1.5rem, 3vw, 2.5rem);
+  border-top: 0;
 }
 .mba-highlight__body { flex: 1 1 22rem; min-width: 0; }
 .mba-highlight__eyebrow {
@@ -2083,7 +2737,7 @@ section { position: relative; }
   max-width: 60ch;
   font-size: 0.9375rem;
   line-height: 1.5;
-  color: var(--ink-3);
+  color: var(--ink-2);
 }
 
 /* Intitulés de section de la page : le h3 du thème est en serif ; ici ce
@@ -2191,19 +2845,13 @@ section { position: relative; }
 }
 .entity-fields__link:hover { color: var(--carmine); border-bottom-color: var(--carmine); }
 
-/* Le formulaire est repris de l'accueil, où il vit sur fond navy : ici le
-   fond est clair, il faut donc repasser les libellés en encre. */
-.entity-apply .admission-card {
+/* Le panneau moderne, quand la fiche l'utilise : fond ivoire pour se
+   détacher du blanc de la page, comme la carte qu'il remplace. */
+.entity-apply .cand-panneau {
   background: var(--paper-warm);
-  padding: clamp(1.5rem, 3vw, 2.25rem);
+  border-color: var(--rule-strong);
 }
-.entity-apply .admission-card h3 { display: none; }
-.entity-apply .admission-card > p {
-  margin-bottom: 1.5rem;
-  font-size: 0.875rem;
-  color: var(--ink-3);
-}
-.entity-apply .form-label { color: var(--ink-2) !important; }
+.entity-apply .cand-champ { background: var(--paper); }
 
 @media (max-width: 1199.98px) {
   .entity-facts { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -2239,13 +2887,56 @@ section { position: relative; }
   overflow: hidden;
   aspect-ratio: 3 / 2;
 }
-.entity-card-img img {
+.entity-card-img > img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.6s var(--ease);
 }
-.entity-card:hover .entity-card-img img { transform: scale(1.05); }
+.entity-card:hover .entity-card-img > img { transform: scale(1.05); }
+
+/* Une teinte marine très légère harmonise les quatre photos, dont les
+   températures de couleur sont différentes. Elle reste sous le cartouche :
+   chaque logo associé demeure parfaitement net et dans ses vraies couleurs. */
+.entity-card-img::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: rgba(var(--veil), 0.12);
+  transition: background-color 0.35s var(--ease);
+}
+.entity-card:hover .entity-card-img::after,
+.entity-card:focus-visible .entity-card-img::after {
+  background: rgba(var(--veil), 0.05);
+}
+
+/* La photo présente l'école ; le cartouche signe l'établissement. Placé
+   dans l'angle supérieur gauche, sur la zone vide de la salle, il laisse les
+   étudiants et l'enseignant visibles et ne
+   participe pas au zoom de la photo au survol. Le logo reste transparent :
+   c'est le cartouche de la carte, pas l'image, qui assure le contraste. */
+.entity-card-brand {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: clamp(6.75rem, 36%, 8.25rem);
+  aspect-ratio: 4 / 3;
+  padding: clamp(0.55rem, 1vw, 0.75rem);
+  background: rgba(255, 255, 255, 0.96);
+  border-right: 1px solid rgba(10, 24, 48, 0.15);
+  border-bottom: 3px solid var(--carmine);
+}
+.entity-card-brand img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
 
 /* Le badge de type d'établissement rejoint la pastille de cycle sur une
    même ligne, en pied de carte : aplat navy face au contour carmin. */
@@ -2262,6 +2953,22 @@ section { position: relative; }
   white-space: nowrap;
 }
 .entity-card--focus .entity-badge { background: var(--navy-deep); }
+
+/* Le cycle d'études : gris foncé, sans aplat. Les quatre libellés portaient
+   quatre couleurs différentes — carmin, navy, navy foncé et un vert hors
+   palette — pour une information de même nature sur les quatre fiches. */
+.entity-cycle {
+  display: inline-block;
+  background: none;
+  padding: 0;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  line-height: 1.45;
+  white-space: nowrap;
+  color: var(--ink-2);
+}
 
 .entity-card-tags {
   display: flex;
@@ -2373,10 +3080,11 @@ section { position: relative; }
   margin-bottom: 0.75rem;
 }
 
-/* Le bloc titre porte .mb-60 (72px) : trop, dès lors qu'une barre de
-   commandes de 48px s'intercale ensuite. Resserré pour cette section. */
+/* Le bloc titre porte .mb-60 (72px) : trop pour cette section. Resserré,
+   mais pas au point de coller le titre aux fiches — le chapeau qui les
+   séparait a été retiré, l'écart devait reprendre un peu d'air. */
 #entites .section-title2.mb-60 {
-  margin-bottom: clamp(0.75rem, 1.5vw, 1.25rem) !important;
+  margin-bottom: clamp(1.5rem, 2.6vw, 2.25rem) !important;
 }
 
 .ec-arrow {
@@ -2397,6 +3105,8 @@ section { position: relative; }
 
 @media (prefers-reduced-motion: reduce) {
   .entity-carousel__viewport { scroll-behavior: auto; }
+  .megamenu .mm-card:hover .mm-card__img > img { transform: none; }
+  .mm-card__img::after { transition: none; }
 }
 
 /* Les quatre cartes tiennent de front au-delà de 1200px : la barre de
@@ -2451,7 +3161,9 @@ section { position: relative; }
   grid-template-columns: minmax(0, 1.6fr) minmax(0, 0.85fr) auto;
   gap: clamp(1.25rem, 3vw, 3rem);
   align-items: center;
-  padding: clamp(1.15rem, 1.8vw, 1.5rem) clamp(0rem, 2vw, 1.75rem);
+  /* 24px en haut comme en bas laissaient 48px de blanc entre la description
+     d'une ligne et l'intitulé de la suivante, filet compris. */
+  padding: clamp(0.65rem, 1vw, 0.875rem) clamp(0rem, 2vw, 1.75rem);
   transition: background-color 0.25s var(--ease);
 }
 .dept-row:hover { background: var(--paper-warm); }
@@ -2681,12 +3393,13 @@ section { position: relative; }
 .corridor__stop.is-active .corridor__name { color: var(--red-on-dark); }
 .corridor__stop:focus-visible { outline: 2px solid var(--red-on-dark); outline-offset: 4px; }
 
-/* La photo occupe tout le panneau et le texte se pose dessus, au lieu de se
-   partager la largeur en deux. Le voile dégradé assombrit la moitié droite
-   pour que le texte reste lisible quelle que soit la photo. */
+/* Photo et texte se partagent la largeur au lieu de se superposer : plus de
+   voile dégradé, c'est le bord franc entre la photo et un aplat uni qui
+   sépare les deux moitiés. L'aplat est --navy-deep, un cran plus sombre que
+   la bande, pour que le panneau se détache aussi de son fond. */
 .campus-panel {
-  position: relative;
-  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   overflow: hidden;
   min-height: clamp(320px, 33vw, 440px);
   margin-top: clamp(2rem, 3.5vw, 3rem);
@@ -2700,40 +3413,24 @@ section { position: relative; }
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* La photo est posée en absolu dans sa cellule : sans hauteur définie sur le
+   parent, un `height: 100%` sur l'image ne se résoudrait pas. */
 .campus-panel__media {
-  position: absolute;
-  inset: 0;
-  z-index: -2;
+  position: relative;
   overflow: hidden;
 }
 .campus-panel__media img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
 
-/* Voile : transparent à gauche pour laisser voir le bâtiment, opaque à
-   droite pour porter le texte. Navy plutôt que noir, comme la bande. */
-.campus-panel::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: linear-gradient(90deg,
-    rgba(10, 24, 48, 0.20) 0%,
-    rgba(10, 24, 48, 0.42) 32%,
-    rgba(10, 24, 48, 0.93) 56%,
-    rgba(10, 24, 48, 0.96) 100%);
-}
-
 .campus-panel__body {
-  position: relative;
-  background: transparent;
+  background: var(--navy-deep);
   padding: clamp(1.75rem, 3vw, 3rem);
-  margin-left: auto;
-  width: min(52%, 34rem);
-  min-height: inherit;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -2780,16 +3477,13 @@ section { position: relative; }
 .campus-panel__prog { margin-bottom: var(--stack-md); }
 
 @media (max-width: 767.98px) {
-  /* Sur mobile, la colonne fait toute la largeur : le dégradé horizontal
-     ne protégerait plus le texte, on le bascule à la verticale. */
-  .campus-panel__body { width: 100%; }
-  .campus-panel::before {
-    background: linear-gradient(180deg,
-      rgba(10, 24, 48, 0.35) 0%,
-      rgba(10, 24, 48, 0.88) 45%,
-      rgba(10, 24, 48, 0.94) 100%);
+  /* Les deux moitiés s'empilent : la photo prend un rapport fixe puisqu'elle
+     n'a plus de colonne voisine pour lui donner sa hauteur. */
+  .campus-panel {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
   }
-}
+  .campus-panel__media { aspect-ratio: 16 / 10; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2917,10 +3611,6 @@ section { position: relative; }
    le dégradé n'assombrit que la zone de texte.
    -------------------------------------------------------------------------- */
 
-.video-area2 {
-  background: var(--navy-deep);
-  padding: var(--section-y) 0;
-}
 
 /* --------------------------------------------------------------------------
    AFFICHE VIDÉO
@@ -2930,95 +3620,18 @@ section { position: relative; }
    de texte — la photo reste visible, contrairement au voile à 82% d'avant.
    -------------------------------------------------------------------------- */
 
-.video-area2 {
-  background: var(--navy-deep);
-  padding: var(--section-y) 0;
-}
 
-.video-card {
-  position: relative;
-  width: 100%;
-  height: clamp(440px, 46vw, 620px);
-  overflow: hidden;
-  border: 1px solid var(--navy-line);
-  isolation: isolate;
-}
 
-.video-card__still {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.7s var(--ease);
-}
-.video-card:hover .video-card__still { transform: scale(1.03); }
 
-.video-card__scrim {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(to left, rgba(10, 24, 48, 0.86) 0%, rgba(10, 24, 48, 0.30) 42%, rgba(10, 24, 48, 0) 62%),
-    linear-gradient(to top, rgba(10, 24, 48, 0.92) 0%, rgba(10, 24, 48, 0.55) 34%, rgba(10, 24, 48, 0.10) 66%, rgba(10, 24, 48, 0.30) 100%);
-}
 
-.video-card__inner {
-  position: relative;
-  height: 100%;
-  display: grid;
-  /* Largeur fixe pour la galerie : mêler minmax() et fr rendait la
-     répartition imprévisible (la colonne s'élargissait au lieu de réduire). */
-  grid-template-columns: minmax(0, 1fr) clamp(240px, 21vw, 290px);
-  gap: 0;
-  /* Le padding passe sur chaque volet : la galerie doit toucher les bords
-     haut, bas et droit du cadre, pas flotter à l'intérieur d'une marge. */
-  padding: 0;
-}
 
 /* --- Volet gauche : lecture de la vidéo principale --- */
 
-.video-card__main {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  min-width: 0;
-  padding: clamp(1.25rem, 2.4vw, 2.25rem);
-}
-.video-card__main:focus-visible { outline: 2px solid var(--red-on-dark); outline-offset: 4px; }
 
 /* Cercle au trait et centré, avec une onde qui signale qu'il est actif.
    Un disque plein masquait la photo au milieu du cadre. */
-.video-card__play {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: clamp(64px, 5.5vw, 80px);
-  height: clamp(64px, 5.5vw, 80px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.08);
-  border: 2px solid rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(2px);
-  color: #fff;
-  font-size: 1rem;
-  padding-left: 4px;              /* le triangle penche à droite */
-  border-radius: 50%;             /* seule rondeur admise : elle dit « lecture » */
-  transition: transform 0.3s var(--ease), background-color 0.25s var(--ease);
-}
 
 /* Onde concentrique : une seule, lente, elle attire sans clignoter */
-.video-card__play::after {
-  content: "";
-  position: absolute;
-  inset: -2px;
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  border-radius: 50%;
-  animation: play-pulse 2.6s cubic-bezier(0.22, 0.61, 0.36, 1) infinite;
-  pointer-events: none;
-}
 
 @keyframes play-pulse {
   0%   { transform: scale(1);    opacity: 0.75; }
@@ -3026,157 +3639,35 @@ section { position: relative; }
   100% { transform: scale(1.45); opacity: 0; }
 }
 
-.video-card__main:hover .video-card__play {
-  background: rgba(255, 255, 255, 0.2);
-  transform: translate(-50%, -50%) scale(1.06);
-}
 
 @media (prefers-reduced-motion: reduce) {
-  .video-card__play::after { animation: none; opacity: 0; }
 }
 
-.video-card__caption { display: block; max-width: 34rem; }
 
-.video-card__title {
-  display: block;
-  font-family: var(--font-display);
-  font-size: clamp(1.375rem, 2.3vw, 2.125rem);
-  line-height: 1.14;
-  letter-spacing: 0.01em;
-  color: #fff;
-  margin-bottom: 0.6rem;
-}
-.video-card__title span { color: var(--red-on-dark); }
 
-.video-card__desc {
-  display: block;
-  font-size: 0.9375rem;
-  line-height: 1.5;
-  color: rgba(255, 255, 255, 0.78);
-}
 
 /* --- Volet droit : la galerie, dans le même cadre --- */
 
 /* Panneau pleine hauteur, collé au bord droit du cadre. */
-.video-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-  height: 100%;
-  padding: clamp(1.1rem, 1.8vw, 1.6rem);
-  background: rgba(10, 24, 48, 0.5);
-  border-left: 1px solid var(--navy-line);
-  scrollbar-width: none;
-}
-.video-list::-webkit-scrollbar { display: none; }
 
 /* flex: 1 → les quatre vignettes se répartissent sur toute la hauteur.
    Un filet sépare chaque vidéo, plutôt qu'un contour complet par carte. */
-.video-thumb {
-  display: grid;
-  grid-template-columns: 72px minmax(0, 1fr);
-  gap: 0.8rem;
-  align-items: center;
-  padding: 0.65rem 0.5rem;
-  flex: 1 1 0;
-  min-height: 0;
-  transition: background-color 0.22s var(--ease);
-}
-.video-thumb + .video-thumb { border-top: 1px solid rgba(255, 255, 255, 0.16); }
-.video-thumb:hover { background: rgba(255, 255, 255, 0.09); }
 
 /* Neutralise l'apparence native du bouton : la vignette reste une vignette */
-.video-thumb {
-  background: none;
-  border-left: none;
-  border-right: none;
-  border-bottom: none;
-  font: inherit;
-  color: inherit;
-  text-align: left;
-  cursor: pointer;
-  width: 100%;
-}
 
 /* Vidéo actuellement chargée dans le lecteur */
-.video-thumb.is-active { background: rgba(255, 255, 255, 0.13); }
-.video-thumb.is-active .video-thumb__title { color: var(--red-on-dark); }
-.video-thumb.is-active .video-thumb__play i { border-color: #fff; background: rgba(255, 255, 255, 0.2); }
-.video-thumb:focus-visible { outline: 2px solid var(--red-on-dark); outline-offset: 2px; }
 
-.video-thumb__still {
-  position: relative;
-  display: block;
-  width: 72px;
-  aspect-ratio: 1 / 1;   /* carré */
-  overflow: hidden;
-}
-.video-thumb__still img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-.video-thumb__play {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(10, 24, 48, 0.35);
-  color: #fff;
-  transition: background-color 0.22s var(--ease);
-}
 
 /* Cercle au trait, pas un disque plein : l'aperçu reste visible dessous. */
-.video-thumb__play i {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 26px;
-  height: 26px;
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  border-radius: 50%;
-  font-size: 0.5rem;
-  padding-left: 2px;              /* le triangle penche à droite */
-  transition: border-color 0.22s var(--ease), background-color 0.22s var(--ease);
-}
-.video-thumb:hover .video-thumb__play i { border-color: #fff; background: rgba(255, 255, 255, 0.16); }
 /* Voile neutre : le rouge sur la photo salissait l'image. */
-.video-thumb:hover .video-thumb__play { background: rgba(10, 24, 48, 0.62); }
 
-.video-thumb__body {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-width: 0;
-}
 
-.video-thumb__title {
-  display: block;
-  font-family: var(--font-alt);
-  font-weight: 600;
-  font-size: 0.8125rem;
-  line-height: 1.3;
-  letter-spacing: -0.01em;
-  color: #fff;
-  margin-bottom: 0.2rem;
-}
-.video-thumb:hover .video-thumb__title { color: var(--red-on-dark); }
 
-.video-thumb__meta {
-  display: block;
-  font-size: 0.625rem;
-  letter-spacing: 0.08em;
-  color: rgba(255, 255, 255, 0.6);
-  font-variant-numeric: tabular-nums;
-}
 
 @media (max-width: 991.98px) {
-  .video-card { height: auto; }
-  .video-card__inner { grid-template-columns: 1fr; }
-  .video-card__main { min-height: 300px; }
-  .video-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
 }
 @media (max-width: 575.98px) {
-  .video-list { grid-template-columns: 1fr; }
-  .video-card__desc { display: none; }
 }
 
 /* ==========================================================================
@@ -3187,7 +3678,13 @@ section { position: relative; }
    et les trois dénombrements l'accompagnent en liste.
    ========================================================================== */
 
-.counter-area2 { background: var(--paper-warm); }
+.counter-area2 {
+  /* Même blanc que la section des actualités. */
+  background: var(--paper);
+  padding-top: clamp(2.5rem, 4.5vw, 3.5rem) !important;
+  /* Respiration sous la bande de chiffres, avant la coupure de couleur. */
+  padding-bottom: clamp(4.5rem, 8vw, 7rem) !important;
+}
 
 /* Le thème impose trois choses sur `.count` : un remplissage transparent
    avec contour, `color:#fff` et `font-size:48px`. Sur fond clair et à cette
@@ -3202,25 +3699,31 @@ section { position: relative; }
   display: inline;
 }
 
-.stats {
-  display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
-  gap: clamp(2rem, 5vw, 5rem);
-  align-items: center;
-  border-top: 1px solid var(--rule-strong);
-  padding-top: clamp(2rem, 4vw, 3.5rem);
-}
-
+/* Les trois rangs — chiffre, intitulé, précision — sont partagés par les
+   quatre colonnes via `subgrid` : ils s'alignent quel que soit le nombre de
+   lignes de l'intitulé. Sans cela, « Taux d'Insertion Professionnelle » sur
+   deux lignes décalait sa colonne de 13px par rapport aux trois autres. */
 .stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto auto auto;
+  align-items: start;
   border-top: 1px solid var(--rule-strong);
 }
 
 .stat-cell {
-  padding: clamp(2rem, 4vw, 3.25rem) clamp(1rem, 2vw, 2rem);
+  display: grid;
+  grid-row: span 3;
+  grid-template-rows: subgrid;
+  row-gap: 0.5rem;
+  padding: clamp(1.5rem, 2.6vw, 2rem) clamp(1rem, 2vw, 2rem);
   text-align: center;
   border-left: 1px solid var(--rule);
+}
+
+/* Navigateurs sans subgrid : au moins les hauts de cellule s'alignent. */
+@supports not (grid-template-rows: subgrid) {
+  .stat-cell { display: block; }
 }
 .stat-cell:first-child { border-left: none; }
 
@@ -3232,13 +3735,15 @@ section { position: relative; }
   font-size: clamp(3rem, 5.5vw, 4.75rem);
   line-height: 1;
   letter-spacing: -0.015em;
-  color: var(--ink);
+  color: var(--navy);
   margin: 0 0 1rem;
   font-variant-numeric: tabular-nums;   /* la largeur ne saute pas pendant le décompte */
 }
+/* Le « % » suit le chiffre auquel il appartient : il ferait une tache
+   carmin isolée sur une bande où plus rien n'est rouge. */
 .stat-cell__unit {
   font-size: 0.36em;
-  color: var(--carmine);
+  color: var(--navy);
   margin-left: 0.08em;
 }
 
@@ -3248,17 +3753,23 @@ section { position: relative; }
   font-size: 1rem;
   letter-spacing: -0.015em;
   color: var(--ink);
-  margin: 0 0 0.3rem;
+  /* Marge basse retirée : les rangées du subgrid posent déjà 8 px, la marge
+     s'y ajoutait et détachait la légende de son intitulé. */
+  margin: 0;
 }
 
 .stat-cell__sub {
   font-size: 0.8125rem;
-  line-height: 1.5;
+  /* Une seule ligne : 1.5 réservait du blanc au-dessus des lettres. */
+  line-height: 1.3;
   color: var(--ink-2);
   margin: 0;
 }
 
-@media (max-width: 767.98px) {
+/* Le passage à deux colonnes se fait à 992px et non à 768px : sur une
+   tablette, quatre colonnes de 173px cassaient « Taux d'Insertion
+   Professionnelle » sur trois lignes. */
+@media (max-width: 991.98px) {
   .stats { grid-template-columns: repeat(2, 1fr); }
   .stat-cell:nth-child(odd) { border-left: none; }
   .stat-cell:nth-child(n+3) { border-top: 1px solid var(--rule); }
@@ -3291,33 +3802,6 @@ section { position: relative; }
 .newslater-area2 .section-title2 h2 { color: #fff; }
 .newslater-area2 .section-title2 h2 span { color: var(--red-bright); }
 
-.express-track {
-  border: 1px solid var(--navy-line);
-  background: rgba(255, 255, 255, 0.04) !important;
-  padding: 1.75rem !important;
-  border-radius: 0 !important;
-}
-.express-track h6 {
-  font-family: var(--font-sans);
-  font-size: 0.6875rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.6);
-  margin-bottom: 1.25rem;
-}
-.express-track .badge {
-  background: var(--carmine) !important;
-  width: 26px;
-  height: 26px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-display);
-  font-size: 0.8125rem;
-  padding: 0;
-  flex: none;
-}
 
 .admission-card {
   background: var(--paper);
@@ -3371,14 +3855,24 @@ section { position: relative; }
    19. PIED DE PAGE
    ========================================================================== */
 
+/* Même bleu que le bandeau utilitaire en haut de page (--navy, #142C55).
+   Il reste distinct de la section de candidature qui le précède, en
+   --navy-deep : la page s'ouvre et se ferme sur la même valeur. */
 .footer-top {
-  background: var(--navy-deep);
+  background: var(--navy);
   color: rgba(255, 255, 255, 0.6);
-  padding: var(--section-y) 0 0;
+  padding: clamp(3rem, 5.5vw, 4.5rem) 0 0;
   font-size: 0.875rem;
 }
 
-.footer-top img { max-height: 62px; }
+/* Même fichier transparent, sans fond ajouté, dans le pied de page sombre. */
+.footer-top .footer-widget img {
+  display: block;
+  height: 54px;
+  max-height: none;
+  width: auto;
+  filter: none;
+}
 
 .f-widget-title h2 {
   font-family: var(--font-sans);
@@ -3432,12 +3926,32 @@ section { position: relative; }
 }
 .footer-social a:hover { background: var(--carmine); border-color: var(--carmine); color: #fff; }
 
+/* Bande de mentions dans le navy du pied de page qui la contient : le bloc
+   sombre redevient d'un seul tenant. C'est un filet clair, et non plus un
+   changement de fond, qui détache les mentions des colonnes. Il est porté
+   par le conteneur pour s'arrêter à la largeur du contenu. */
 .copyright-wrap {
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-  padding: 1.5rem 0;
-  margin-top: var(--stack-lg) !important;
+  background: var(--navy);
+  border-top: 0;
+  padding: 0 0 1.5rem;
+  /* 112px séparaient la dernière colonne des mentions : la marge de 72px
+     s'ajoutait aux 40px que chaque colonne porte déjà en bas. */
+  margin-top: clamp(1.25rem, 2.2vw, 1.75rem) !important;
   font-size: 0.8125rem;
 }
+/* Le filet est porté par le paragraphe et non par le conteneur : celui-ci a
+   48px de rembourrage latéral, le trait débordait donc de la colonne du logo
+   et de celle du contact. Sur le paragraphe, il tombe exactement sur les
+   mêmes bords que les filets des colonnes au-dessus. */
+.copyright-wrap > .container > p {
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  padding-top: 1.5rem;
+}
+.copyright-wrap .container,
+.copyright-wrap p,
+.copyright-wrap .text-white-50 { color: rgba(255, 255, 255, 0.72) !important; }
+.copyright-wrap a { color: rgba(255, 255, 255, 0.85); }
+.copyright-wrap a:hover { color: #fff; }
 
 /* ==========================================================================
    20. FLOTTANTS ET MODALE
@@ -3474,30 +3988,6 @@ section { position: relative; }
 }
 .whatsapp-float:hover .whatsapp-tooltip { opacity: 1; }
 
-.video-modal-backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(10, 24, 48, 0.92);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 1500;
-  padding: var(--gutter);
-}
-.video-modal-backdrop.open { display: flex; }
-.video-modal-content { width: min(960px, 100%); aspect-ratio: 16 / 9; position: relative; }
-.video-modal-content iframe { width: 100%; height: 100%; border: 0; }
-.video-modal-close {
-  position: absolute;
-  top: -46px;
-  right: 0;
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 2rem;
-  line-height: 1;
-  cursor: pointer;
-}
 
 /* ==========================================================================
    21. EN-TÊTE DE PAGE INTÉRIEURE
@@ -3506,7 +3996,9 @@ section { position: relative; }
 .page-head {
   background: var(--navy);
   color: rgba(255, 255, 255, 0.7);
-  padding: clamp(3.5rem, 8vw, 6.5rem) 0;
+  /* Le bandeau montait à 647px, dont 104 de vide sous le fil d'Ariane.
+     Rembourrage haut et bas resserrés séparément : le bas n'a rien à porter. */
+  padding: clamp(2.5rem, 5vw, 4.5rem) 0 clamp(1.5rem, 2.8vw, 2.75rem);
   position: relative;
   isolation: isolate;
   overflow: hidden;
@@ -3564,14 +4056,25 @@ section { position: relative; }
   color: #fff;
   font-size: var(--fs-h1);
   margin-bottom: 0.75rem;
-  max-width: 18ch;
+  /* 18ch valait 497px : les titres longs passaient sur trois lignes, la
+     dernière ne portant qu'un mot. Mesure élargie, et lignes égalisées. */
+  max-width: 26ch;
+  text-wrap: balance;
 }
 
 .page-head p {
   color: rgba(255, 255, 255, 0.68);
-  max-width: 62ch;
+  /* 62ch valait 661px et les chapeaux courts débordaient de 22px sur une
+     seconde ligne. Élargi juste assez pour qu'ils tiennent d'un tenant. */
+  max-width: 48rem;
   margin: 0;
 }
+
+/* Bouton posé sous le chapeau du bandeau, au-dessus du fil d'Ariane.
+   Sélecteur à deux classes : `.page-head p { margin: 0 }` (0,1,1) écrasait
+   une règle de classe seule (0,1,0) et le bouton restait collé au texte. */
+.page-head .page-head__actions { margin: var(--stack-md) 0 0; }
+.page-head__actions .btn-cefat-secondary i { font-size: 0.75rem; }
 
 .page-head__crumbs {
   margin-top: var(--stack-md);
@@ -3601,14 +4104,12 @@ section { position: relative; }
      le badge FDFP tomber seul sous les autres entrées. */
   .header-cta ul { gap: 1.1rem; flex-wrap: nowrap; }
   .header-top { font-size: 0.75rem; }
-  .top-phone-numbers a { font-size: 0.75rem; }
 }
 
 /* Mesuré : logo + 7 entrées + bouton réclament ~1000px une fois les marges
    parasites du thème neutralisées. Sous 1200px on bascule sur le tiroir
    plutôt que de tasser jusqu'à la casse. */
 @media (max-width: 1199.98px) {
-  .hero__grid { grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); }
   .main-menu { display: none !important; }
   .header-btn { display: none !important; }
   .mobile-nav-toggle { display: inline-flex !important; align-items: center; justify-content: center; }
@@ -3632,9 +4133,6 @@ section { position: relative; }
   }
   .dept-row__cta { justify-self: start; }
 
-  .factbar__grid { grid-template-columns: repeat(2, 1fr); }
-  .factbar__item:nth-child(3) { border-left: none; }
-  .factbar__item:nth-child(n+3) { border-top: 1px solid var(--navy-line); }
 
   .corridor__track {
     grid-template-columns: repeat(2, 1fr);
@@ -3648,9 +4146,6 @@ section { position: relative; }
 }
 
 @media (max-width: 575.98px) {
-  .factbar__grid { grid-template-columns: 1fr; }
-  .factbar__item { border-left: none; border-top: 1px solid var(--navy-line); }
-  .factbar__item:first-child { border-top: none; }
 
   .corridor__track { grid-template-columns: 1fr; }
 
@@ -3680,6 +4175,1372 @@ section { position: relative; }
 
 @media print {
   .header-top, .menu-area, .mobile-drawer, .whatsapp-float,
-  .video-modal-backdrop, .footer-social { display: none !important; }
+  .footer-social { display: none !important; }
   body { color: #000; }
+}
+
+
+/* L'en-tête étant hors flux, la première section démarre à y=0 : on lui rend
+   la hauteur du bandeau pour que le contenu ne passe pas dessous. */
+/* La hauteur de la barre s'AJOUTE au rembourrage propre de chaque section :
+   la remplacer collait le surtitre des pages internes sous le menu. */
+.hero-slider-area { padding-top: var(--menu-h, 84px); }
+.page-head { padding-top: calc(clamp(2.5rem, 5vw, 4.5rem) + var(--menu-h, 84px)); }
+@media (max-width: 991.98px) {
+  .menu-area { top: 0; }
+}
+
+
+/* ==========================================================================
+   RUBAN DÉFILANT DES DOMAINES
+   ==========================================================================
+   Deux files identiques se suivent dans une piste en surcharge cachée. Chacune
+   se translate de sa propre largeur : quand la première a fini sa course, la
+   seconde occupe exactement sa place de départ et la boucle ne se voit pas.
+   Un masque en dégradé estompe les deux bords, pour que les mots entrent et
+   sortent au lieu d'être tranchés net. */
+/* Le ruban occupe sa propre bande, entre le slider et « Notre Histoire ».
+   Le bord sombre du hero le délimite en haut ; un filet le sépare en bas. */
+.ruban-area {
+  background: var(--paper);
+  padding: clamp(1.5rem, 2.6vw, 2.25rem) 0 clamp(0.75rem, 1.2vw, 1rem);
+}
+.ruban {
+  display: grid;
+  grid-template-columns: minmax(0, 0.34fr) minmax(0, 1fr);
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: center;
+  padding-bottom: clamp(1.25rem, 2.2vw, 1.875rem);
+  border-bottom: 1px solid var(--rule);
+}
+
+.ruban__lede {
+  /* 12px de marge plus l'interlignage des deux blocs creusaient 23px
+     optiques entre la phrase et le lien qui la prolonge. */
+  margin: 0 0 0.3rem;
+  font-family: var(--font-alt);
+  font-size: clamp(0.9375rem, 1.05vw, 1.0625rem);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: -0.012em;
+  color: var(--ink);
+}
+.ruban__lien {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  /* Une ligne unique n'a pas besoin de 1.6 d'interlignage : le blanc qu'il
+     réserve au-dessus des lettres s'ajoutait à l'écart. */
+  line-height: 1.25;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--carmine);
+  text-decoration: none;
+}
+.ruban__lien i { font-size: 0.75rem; transition: transform 0.25s var(--ease); }
+.ruban__lien:hover i { transform: translateX(4px); }
+
+.ruban__piste {
+  display: flex;
+  overflow: hidden;
+  min-width: 0;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%);
+          mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%);
+}
+.ruban__file {
+  display: flex;
+  align-items: center;
+  flex: none;
+  gap: clamp(2.5rem, 5vw, 5rem);
+  margin: 0;
+  padding: 0 clamp(2.5rem, 5vw, 5rem) 0 0;
+  list-style: none;
+  animation: ruban-defile 34s linear infinite;
+}
+@keyframes ruban-defile { to { transform: translateX(-100%); } }
+
+/* Le survol suspend la course : sans cela, viser un mot serait un jeu. */
+.ruban__piste:hover .ruban__file,
+.ruban__piste:focus-within .ruban__file { animation-play-state: paused; }
+
+.ruban__mot a {
+  display: block;
+  white-space: nowrap;
+  font-family: var(--font-alt);
+  font-size: clamp(1.0625rem, 1.35vw, 1.375rem);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  color: var(--ink-3);
+  text-decoration: none;
+  transition: color 0.22s var(--ease);
+}
+.ruban__mot a:hover { color: var(--carmine); }
+.ruban__mot a:focus-visible { outline: 2px solid var(--carmine); outline-offset: 4px; }
+
+@media (max-width: 767.98px) {
+  .ruban { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+
+/* Mouvement réduit : la file s'arrête et devient un rail qu'on fait glisser
+   soi-même. La copie n'a alors plus d'objet. */
+@media (prefers-reduced-motion: reduce) {
+  .ruban__file { animation: none; }
+  .ruban__piste { overflow-x: auto; }
+  .ruban__file[aria-hidden="true"] { display: none; }
+}
+
+
+/* ==========================================================================
+   PAGE DES ENTITÉS — FICHES
+   ==========================================================================
+   La page était restée en Bootstrap brut : cartes à ombre et angles arrondis,
+   pastilles jaune et vert hors palette, coches rouges, deux gros boutons par
+   bloc. Elle reprend ici la langue du reste du site — filets fins, ordinal en
+   gris, capitales carmin pour la qualification, liens texte plutôt que pavés. */
+.entites-area {
+  background: var(--paper);
+  padding: clamp(2.5rem, 5vw, 4.5rem) 0 clamp(3rem, 6vw, 5.5rem);
+}
+
+.ent-fiche {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1fr);
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: stretch;
+  padding: clamp(2.25rem, 4vw, 3.5rem) 0;
+  border-top: 1px solid var(--rule);
+}
+.ent-fiche:first-child { border-top: 0; padding-top: 0; }
+
+.ent-fiche__media {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  min-height: 100%;
+}
+.ent-fiche__media > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease);
+}
+.ent-fiche:hover .ent-fiche__media > img { transform: scale(1.035); }
+
+/* Même signature photo + logo que sur l'accueil et le méga-menu. Le voile
+   harmonise les quatre prises de vue ; le logo reste fixe au premier plan. */
+.ent-fiche__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: rgba(var(--veil), 0.12);
+  transition: background-color 0.35s var(--ease);
+}
+.ent-fiche:hover .ent-fiche__media::after {
+  background: rgba(var(--veil), 0.05);
+}
+.ent-fiche__brand {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: clamp(8rem, 34%, 10.5rem);
+  aspect-ratio: 4 / 3;
+  padding: clamp(0.65rem, 1.2vw, 0.9rem);
+  background: rgba(255, 255, 255, 0.96);
+  border-right: 1px solid rgba(10, 24, 48, 0.15);
+  border-bottom: 3px solid var(--carmine);
+}
+.ent-fiche__brand img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* L'ordinal remplace le « 1. » qui était collé au nom : même procédé que la
+   liste des domaines en page d'accueil. */
+.ent-fiche__rang {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2vw, 2rem);
+  line-height: 1;
+  color: var(--rule-strong);
+}
+
+/* Les deux pastilles colorées deviennent une ligne de qualification. */
+.ent-fiche__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.7rem;
+  margin: 0 0 0.6rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--carmine);
+}
+.ent-fiche__meta span + span::before {
+  content: "·";
+  margin-right: 0.7rem;
+  color: var(--rule-strong);
+}
+
+.ent-fiche__nom {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.5rem, 2.1vw, 2.125rem);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+
+.ent-fiche__desc {
+  margin: 0 0 clamp(1.25rem, 2vw, 1.75rem);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+
+.ent-fiche__label {
+  margin: 0 0 0.6rem;
+  font-family: var(--font-alt);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+/* Liste filetée plutôt que cochée : la coche rouge répétée douze fois sur la
+   page était un tic de gabarit, et elle n'apportait aucune information. */
+.ent-fiche__liste {
+  margin: 0 0 clamp(1.25rem, 2vw, 1.75rem);
+  padding: 0;
+  list-style: none;
+}
+.ent-fiche__liste li {
+  padding: 0.55rem 0;
+  border-top: 1px solid var(--rule);
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: var(--ink-2);
+}
+
+.ent-fiche__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 0;
+}
+.ent-fiche__lien {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-height: 44px;
+  padding: 0.7rem 0.95rem;
+  background: var(--navy);
+  border: 1px solid var(--navy);
+  font-family: var(--font-alt);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.035em;
+  color: #fff;
+  text-decoration: none;
+  transition: background-color 0.22s var(--ease), border-color 0.22s var(--ease), color 0.22s var(--ease);
+}
+.ent-fiche__lien--2 {
+  background: transparent;
+  border-color: var(--rule-strong);
+  color: var(--navy);
+}
+.ent-fiche__lien i { font-size: 0.75rem; transition: transform 0.25s var(--ease); }
+.ent-fiche__lien:hover i { transform: translateX(4px); }
+.ent-fiche__lien--2:hover i { transform: translate(2px, -2px); }
+.ent-fiche__lien:hover {
+  background: var(--carmine);
+  border-color: var(--carmine);
+  color: #fff;
+}
+.ent-fiche__lien--2:hover {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #fff;
+}
+
+@media (max-width: 991.98px) {
+  .ent-fiche { grid-template-columns: 1fr; gap: 1.5rem; }
+  .ent-fiche__media {
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ent-fiche__media > img,
+  .ent-fiche__media::after { transition: none; }
+  .ent-fiche:hover .ent-fiche__media > img { transform: none; }
+}
+
+
+/* ==========================================================================
+   BANDE DES CHIFFRES — page des entités
+   ==========================================================================
+   Les quatre chiffres fermaient l'historique en bas de page ; ils ouvrent
+   désormais la page, juste sous le bandeau. Le filet carmin de 2px qui les
+   coiffait était une marque de clôture — en tête de page il ferait barrage
+   entre la photo et le contenu. Un filet gris fin les sépare des fiches. */
+.faits-area {
+  background: var(--paper);
+  padding: clamp(1.75rem, 3vw, 2.5rem) 0 0;
+}
+.faits-area .group-facts {
+  border-top: 0;
+  padding-top: 0;
+  padding-bottom: clamp(1.75rem, 3vw, 2.5rem);
+  border-bottom: 1px solid var(--rule);
+}
+
+@media (max-width: 767.98px) {
+  .faits-area .group-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 1.5rem; }
+}
+
+
+/* ==========================================================================
+   CATALOGUE DES FORMATIONS — en-têtes de cycle
+   ==========================================================================
+   Les trois cycles étaient annoncés par un h3 Bootstrap en bleu gras, étranger
+   à la page comme au reste du site. Ils reprennent l'idiome des en-têtes de
+   section : filet carmin, surtitre en capitales, titre en serif d'affichage. */
+.catalogue-area {
+  background: var(--paper);
+  padding: clamp(2.5rem, 5vw, 4rem) 0 clamp(3rem, 6vw, 5rem);
+}
+.cat-bloc { margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+.cat-bloc:last-of-type { margin-bottom: 0; }
+
+.cat-head {
+  margin-bottom: clamp(1.5rem, 2.6vw, 2.25rem);
+  padding-bottom: clamp(1rem, 1.6vw, 1.25rem);
+  border-bottom: 1px solid var(--rule);
+}
+.cat-head__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0 0 0.75rem;
+  font-family: var(--font-sans);
+  font-size: var(--fs-eyebrow);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--carmine);
+}
+.cat-head__eyebrow::before {
+  content: "";
+  flex: none;
+  width: 28px;
+  height: 1px;
+  background: currentColor;
+}
+.cat-head__title {
+  margin: 0 0 0.6rem;
+  font-size: clamp(1.625rem, 2.4vw, 2.375rem);
+  line-height: 1.06;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+.cat-head__lede {
+  margin: 0;
+  max-width: 62ch;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--ink-3);
+}
+
+
+/* ==========================================================================
+   ACTUALITÉS — page d'accueil
+   ==========================================================================
+   Trois brèves en colonnes filetées, sans carte ni ombre : le même vocabulaire
+   que le reste de la page. Le contenu et les traductions viennent des clés de
+   actualites.html, il n'y a donc qu'une source à tenir à jour. */
+.actus-area {
+  background: var(--paper);
+  padding: clamp(3rem, 6vw, 5rem) 0;
+}
+
+.actus-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  margin-bottom: clamp(1.75rem, 3vw, 2.5rem);
+  padding-bottom: clamp(1rem, 1.6vw, 1.25rem);
+  border-bottom: 1px solid var(--rule);
+}
+.actus-head__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0 0 0.6rem;
+  font-family: var(--font-sans);
+  font-size: var(--fs-eyebrow);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--carmine);
+}
+.actus-head__eyebrow::before {
+  content: "";
+  flex: none;
+  width: 28px;
+  height: 1px;
+  background: currentColor;
+}
+.actus-head__title {
+  margin: 0;
+  font-size: clamp(1.625rem, 2.4vw, 2.375rem);
+  line-height: 1.06;
+  letter-spacing: -0.015em;
+  color: var(--navy);
+}
+.actus-head__lien {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-alt);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--carmine);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.actus-head__lien i { font-size: 0.75rem; transition: transform 0.25s var(--ease); }
+.actus-head__lien:hover i { transform: translateX(4px); }
+
+.actus {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.75rem, 3.5vw, 3rem);
+}
+
+.actu__media {
+  display: block;
+  margin-bottom: 1.1rem;
+  overflow: hidden;
+}
+.actu__media img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  transition: transform 0.5s var(--ease);
+}
+.actu:hover .actu__media img { transform: scale(1.04); }
+
+.actu__meta {
+  margin: 0 0 0.5rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--carmine);
+}
+.actu__titre {
+  margin: 0 0 0.6rem;
+  font-family: var(--font-alt);
+  font-size: clamp(1rem, 1.25vw, 1.1875rem);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+}
+.actu__titre a { color: var(--navy); text-decoration: none; }
+.actu:hover .actu__titre a { color: var(--carmine); }
+.actu__desc {
+  margin: 0 0 0.9rem;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--ink-3);
+}
+.actu__lien {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-alt);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  /* Le carmin est passé sur le survol : la surmention reste lisible sans
+     poser trois rouges par carte (badge, titre survolé, lien). */
+  color: var(--ink);
+  text-decoration: none;
+  transition: color 0.25s var(--ease);
+}
+.actu__lien:hover, .actu__lien:focus-visible { color: var(--carmine); }
+.actu__lien i { font-size: 0.7rem; transition: transform 0.25s var(--ease); }
+.actu__lien:hover i { transform: translateX(4px); }
+
+@media (max-width: 991.98px) {
+  .actus { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .actus .actu:last-child { grid-column: 1 / -1; }
+}
+@media (max-width: 575.98px) {
+  .actus { grid-template-columns: 1fr; }
+  .actus .actu:last-child { grid-column: auto; }
+}
+
+
+/* Panneaux du catalogue. Masqués seulement une fois la barre prise en main par
+   le script : sans JavaScript, les quatre cycles restent lisibles à la suite. */
+.cycle-tabs.est-pilote ~ .cat-bloc[data-panneau]:not(.est-actif) { display: none; }
+
+
+/* ==========================================================================
+   CANDIDATURE EN LIGNE
+   ==========================================================================
+   Refonte : la section était restée en utilitaires Bootstrap — pastilles
+   rouges rondes numérotées, icône WhatsApp verte hors palette, carte à angles
+   arrondis et ombre. Elle reprend la langue du site : surtitre fileté, titre
+   en serif, ordinaux gris, panneau à angles vifs. */
+/* Filet de clôture : la section des partenariats qui suit porte le même
+   ivoire, il faut un trait pour marquer la limite. Porté par un pseudo-élément du
+   conteneur, dont la boîte de contenu fait la largeur utile — posé sur la
+   section, pleine largeur, il aurait traversé l'écran. */
+.cand-area > .container::after {
+  content: "";
+  display: block;
+  height: 1px;
+  background: var(--rule-strong);
+  /* Le filet se rapproche du pied de page : il annonce la bascule plutôt que
+     de clore le formulaire. L'écart au-dessus grandit d'autant. */
+  margin-top: clamp(3.5rem, 6.5vw, 5.5rem);
+}
+
+.cand-area {
+  /* Même ivoire que la section des partenariats juste au-dessus. Le passage
+     au fond clair impose de reprendre toutes les couleurs de la section,
+     réglées jusqu'ici pour du navy. */
+  background: var(--paper-warm);
+  padding: clamp(3rem, 6vw, 5rem) 0 clamp(1.25rem, 2.2vw, 1.75rem);
+}
+.cand-grille {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
+  gap: clamp(2.5rem, 5vw, 5rem);
+  align-items: start;
+}
+
+/* ---- Colonne de gauche ---- */
+.cand-intro__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  /* 14px de marge plus l'interlignage des deux lignes creusaient 19px
+     optiques entre le surtitre et le titre qu'il annonce. */
+  margin: 0 0 0.35rem;
+  line-height: 1.3;
+  font-family: var(--font-sans);
+  font-size: var(--fs-eyebrow);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--carmine);
+}
+.cand-intro__eyebrow::before {
+  content: "";
+  flex: none;
+  width: 28px;
+  height: 1px;
+  background: currentColor;
+}
+.cand-intro__titre {
+  margin: 0 0 1rem;
+  font-size: clamp(1.75rem, 2.6vw, 2.625rem);
+  line-height: 1.06;
+  letter-spacing: -0.015em;
+  /* Titre tout en bleu : plus d'accent carmin sur « Candidature en Ligne ». */
+  color: var(--navy);
+}
+.cand-intro__titre span { color: var(--navy); }
+.cand-intro__lede {
+  margin: 0 0 clamp(1.75rem, 3vw, 2.5rem);
+  max-width: 46ch;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--ink-3);
+}
+
+/* Les trois étapes : ordinaux gris et filets, au lieu des pastilles rondes. */
+.cand-parcours {
+  list-style: none;
+  margin: 0 0 clamp(1.75rem, 3vw, 2.5rem);
+  padding: 0;
+}
+.cand-parcours li {
+  display: grid;
+  grid-template-columns: 2.25rem minmax(0, 1fr);
+  align-items: baseline;
+  gap: 0.9rem;
+  padding: 0.85rem 0;
+  border-top: 1px solid var(--rule);
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: var(--ink-2);
+}
+.cand-parcours__n {
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  /* --rule-strong tombait à 1.62:1 sur l'ivoire : lisible en gros corps sur
+     les fiches d'entité, illisible à 17px ici. */
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.cand-aide {
+  margin: 0;
+  padding-top: clamp(1.25rem, 2.2vw, 1.75rem);
+  border-top: 1px solid var(--rule);
+}
+.cand-aide__quoi {
+  display: block;
+  /* L'écart de boîte ne faisait que 5px, mais l'interlignage des deux lignes
+     — 7px pour l'une, 10px pour l'autre — creusait optiquement le double. */
+  margin-bottom: 0.1rem;
+  line-height: 1.3;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.cand-aide__lien {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-alt);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--whatsapp);
+  text-decoration: none;
+}
+.cand-aide__lien i { color: var(--whatsapp); }
+.cand-aide__lien:hover { color: var(--whatsapp); text-decoration: underline; text-underline-offset: 3px; }
+
+/* ---- Le panneau du formulaire ---- */
+.cand-panneau {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  padding: clamp(1.75rem, 3vw, 2.5rem);
+}
+.cand-panneau__titre {
+  margin: 0 0 0.4rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 1.7vw, 1.5rem);
+  line-height: 1.2;
+  color: var(--ink);
+}
+.cand-panneau__note {
+  margin: 0 0 clamp(1.5rem, 2.4vw, 2rem);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--ink-3);
+}
+
+/* Les huit champs se répartissent en deux étapes nommées : on sait ce qu'on
+   remplit et où l'on en est, au lieu d'affronter huit cases d'un bloc. */
+/* Groupe et titre plutôt que fieldset et legend : la légende d'un fieldset
+   n'est pas un enfant de grille ordinaire, elle occupait une cellule au lieu
+   de couvrir la rangée et décalait tous les champs. */
+.cand-etape { border: 0; margin: 0 0 clamp(1.5rem, 2.4vw, 2rem); padding: 0; }
+.cand-etape:last-of-type { margin-bottom: clamp(1.75rem, 2.8vw, 2.25rem); }
+.cand-etape__titre {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0 0 0.35rem;
+  padding: 0 0 0.65rem;
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--font-alt);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.cand-etape__n {
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  color: var(--carmine);
+}
+
+.cand-etape { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.9rem 1rem; }
+.cand-groupe { margin: 0; min-width: 0; }
+.cand-etiquette {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.cand-champ {
+  display: block;
+  width: 100%;
+  padding: 0.7rem 0.85rem;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--rule-strong);
+  border-radius: 0;
+  transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
+}
+.cand-champ:focus {
+  outline: none;
+  border-color: var(--carmine);
+  box-shadow: 0 0 0 3px rgba(178, 31, 42, 0.12);
+}
+.cand-champ::placeholder { color: var(--rule-strong); }
+select.cand-champ { appearance: none; background-image: none; padding-right: 2rem; cursor: pointer; }
+
+.cand-envoi {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 100%;
+  padding: 0.95rem 1.25rem;
+  background: var(--carmine);
+  border: 0;
+  color: #fff;
+  font-family: var(--font-alt);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.22s var(--ease);
+}
+.cand-envoi:hover { background: var(--carmine-dark); }
+.cand-envoi i { font-size: 0.8125rem; transition: transform 0.25s var(--ease); }
+.cand-envoi:hover i { transform: translateX(4px); }
+
+@media (max-width: 991.98px) {
+  .cand-grille { grid-template-columns: 1fr; }
+}
+@media (max-width: 575.98px) {
+  .cand-etape { grid-template-columns: 1fr; }
+}
+
+/* ---- Page dédiée : le même panneau, seul au centre ---------------------- */
+/* Le formulaire de cette page était resté au gabarit Bootstrap — en-têtes
+   `h5 text-primary` avec icône, `form-control` arrondis, encart `bg-light`,
+   bouton pilule. Il reprend maintenant le panneau de la page d'accueil, dont
+   les titres d'étape sont en Raleway. */
+.cand-page {
+  background: var(--paper-warm);
+  padding: clamp(2.5rem, 5vw, 4rem) 0 clamp(3rem, 6vw, 5rem);
+}
+.cand-page .cand-panneau {
+  max-width: 54rem;
+  margin: 0 auto;
+}
+.cand-page .cand-etape__titre {
+  /* Le titre d'étape porte la structure sur une page qui n'a que ça :
+     un cran au-dessus du panneau de la page d'accueil. */
+  font-size: 0.8125rem;
+  margin-bottom: 0.9rem;
+  padding-bottom: 0.75rem;
+}
+.cand-page .cand-etape__n { font-size: 1.0625rem; }
+
+/* L'étape de validation n'a qu'un seul contrôle : il occupe la rangée. */
+.cand-etape--plein { grid-template-columns: minmax(0, 1fr); }
+
+.cand-accord {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: 0.7rem;
+  margin: 0;
+}
+.cand-accord label {
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+.cand-case {
+  width: 1rem;
+  height: 1rem;
+  margin: 0.2rem 0 0;
+  accent-color: var(--carmine);
+  flex: none;
+}
+
+.cand-panneau__pied {
+  margin: clamp(1.25rem, 2vw, 1.5rem) 0 0;
+  padding-top: clamp(1rem, 1.8vw, 1.25rem);
+  border-top: 1px solid var(--rule);
+  font-size: 0.75rem;
+  line-height: 1.55;
+  color: var(--ink-3);
+}
+
+/* ==========================================================================
+   PAGE DES CAMPUS — SOMMAIRE ET FICHES
+   ==========================================================================
+   Les deux sections qui suivaient le bandeau venaient du gabarit d'origine :
+   une carte SVG faite de deux quadrilatères qui ne ressemblaient à aucune
+   frontière, puis cinq cartes arrondies à ombre portée, pastilles rouges,
+   vertes et bleues, et boutons pilules. Rien de tout cela n'existe ailleurs
+   sur le site depuis la refonte. On reprend ici la langue des fiches
+   d'entité : filets fins, ordinal gris, qualification en capitales carmin,
+   liens texte.
+   ========================================================================== */
+
+.camp-index {
+  padding: clamp(2.75rem, 5vw, 4.5rem) 0;
+}
+.camp-index__grille {
+  display: grid;
+  grid-template-columns: minmax(0, 0.78fr) minmax(0, 1fr);
+  gap: clamp(2rem, 4vw, 4.5rem);
+  align-items: start;
+}
+
+.camp-index__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0 0 0.35rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--red-on-dark);
+}
+.camp-index__eyebrow::before {
+  content: "";
+  width: 28px;
+  height: 1px;
+  background: currentColor;
+  flex: none;
+}
+.camp-index__titre {
+  margin: 0 0 0.9rem;
+  font-size: clamp(1.625rem, 2.6vw, 2.375rem);
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  color: #fff;
+}
+.camp-index__texte {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.camp-index__liste {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+/* Le filet du haut ferme la première ligne : sans lui, la colonne commençait
+   dans le vide alors que la colonne de gauche commence sur un surtitre. */
+.camp-index__liste > li:first-child .camp-index__ligne { border-top: 1px solid var(--navy-line); }
+
+.camp-index__ligne {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  align-items: baseline;
+  gap: 0 clamp(0.85rem, 1.6vw, 1.5rem);
+  padding: clamp(0.85rem, 1.5vw, 1.1rem) 0;
+  border-bottom: 1px solid var(--navy-line);
+  text-decoration: none;
+  transition: background 0.2s var(--ease);
+}
+.camp-index__ligne:hover,
+.camp-index__ligne:focus-visible {
+  background: rgba(255, 255, 255, 0.06);
+}
+.camp-index__n {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  /* 0.42 donnait 3.68:1 à 16px — sous le seuil AA. Même erreur que les
+     ordinaux des entités : un gris calibré pour du grand corps. */
+  color: rgba(255, 255, 255, 0.55);
+}
+.camp-index__ville {
+  font-family: var(--font-alt);
+  font-size: clamp(1rem, 1.3vw, 1.1875rem);
+  font-weight: 600;
+  letter-spacing: -0.012em;
+  color: #fff;
+}
+.camp-index__meta {
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.66);
+  text-align: right;
+}
+.camp-index__ligne i {
+  font-size: 0.7rem;
+  color: var(--red-on-dark);
+  transition: transform 0.25s var(--ease);
+}
+.camp-index__ligne:hover i { transform: translateX(4px); }
+
+@media (max-width: 991.98px) {
+  .camp-index__grille { grid-template-columns: 1fr; gap: 1.75rem; }
+}
+@media (max-width: 575.98px) {
+  /* La qualification passe sous la ville plutôt que d'être écrasée à droite. */
+  .camp-index__ligne { grid-template-columns: auto minmax(0, 1fr) auto; }
+  .camp-index__meta {
+    grid-column: 2 / -1;
+    text-align: left;
+    margin-top: 0.2rem;
+  }
+}
+
+/* --- Les cinq fiches ---------------------------------------------------- */
+
+.camp-area {
+  background: var(--paper);
+  padding: clamp(2.5rem, 5vw, 4.5rem) 0 clamp(3rem, 6vw, 5.5rem);
+}
+
+.camp-fiche {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1fr);
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: start;
+  padding: clamp(2.25rem, 4vw, 3.5rem) 0;
+  border-top: 1px solid var(--rule);
+  scroll-margin-top: calc(var(--header-h, 128px) + 1rem);
+}
+.camp-fiche:first-child { border-top: 0; padding-top: 0; }
+
+.camp-fiche__media { margin: 0; overflow: hidden; }
+.camp-fiche__media img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.camp-fiche__rang {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2vw, 2rem);
+  line-height: 1;
+  color: var(--rule-strong);
+}
+.camp-fiche__meta {
+  margin: 0 0 0.6rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--carmine);
+}
+.camp-fiche__nom {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.5rem, 2.1vw, 2.125rem);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  color: var(--navy);
+}
+.camp-fiche__desc {
+  margin: 0 0 clamp(1.25rem, 2vw, 1.75rem);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+.camp-fiche__liste {
+  margin: 0 0 clamp(1.25rem, 2vw, 1.75rem);
+  padding: 0;
+  list-style: none;
+}
+.camp-fiche__liste li {
+  padding: 0.55rem 0;
+  border-top: 1px solid var(--rule);
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: var(--ink-2);
+}
+.camp-fiche__actions { margin: 0; }
+.camp-fiche__lien,
+.camp-tuile__lien {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-alt);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--carmine);
+  text-decoration: none;
+}
+.camp-fiche__lien i,
+.camp-tuile__lien i { font-size: 0.75rem; transition: transform 0.25s var(--ease); }
+.camp-fiche__lien:hover i,
+.camp-tuile__lien:hover i { transform: translateX(4px); }
+
+/* --- Les trois campus régionaux ---------------------------------------- */
+
+.camp-grille {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.75rem, 3.5vw, 3rem);
+  padding-top: clamp(2.25rem, 4vw, 3.5rem);
+  border-top: 1px solid var(--rule);
+}
+.camp-tuile { scroll-margin-top: calc(var(--header-h, 128px) + 1rem); }
+.camp-tuile__media { margin: 0 0 1.1rem; overflow: hidden; }
+.camp-tuile__media img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+.camp-tuile__meta {
+  margin: 0 0 0.5rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--carmine);
+}
+.camp-tuile__nom {
+  margin: 0 0 0.6rem;
+  font-family: var(--font-alt);
+  font-size: clamp(1rem, 1.25vw, 1.1875rem);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  color: var(--navy);
+}
+.camp-tuile__desc {
+  margin: 0 0 0.9rem;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--ink-3);
+}
+.camp-tuile__liste {
+  margin: 0 0 1rem;
+  padding: 0;
+  list-style: none;
+}
+.camp-tuile__liste li {
+  padding: 0.5rem 0;
+  border-top: 1px solid var(--rule);
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--ink-2);
+}
+
+@media (max-width: 991.98px) {
+  .camp-fiche { grid-template-columns: 1fr; gap: 1.5rem; }
+  .camp-grille { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 575.98px) {
+  .camp-grille { grid-template-columns: 1fr; }
+}
+
+/* ==========================================================================
+   PAGE DE CONTACT
+   ==========================================================================
+   Les coordonnées étaient cinq pastilles rondes rouges empilées dans une
+   carte arrondie à ombre portée, et le formulaire une seconde carte du même
+   genre. Ici : liste filetée à gauche, panneau de formulaire identique à
+   celui des candidatures à droite.
+   ========================================================================== */
+
+.ct-area {
+  background: var(--paper-warm);
+  padding: clamp(2.5rem, 5vw, 4rem) 0 clamp(3rem, 6vw, 5rem);
+}
+.ct-grille {
+  display: grid;
+  grid-template-columns: minmax(0, 0.72fr) minmax(0, 1fr);
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: start;
+}
+
+.ct-coord__titre {
+  margin: 0 0 clamp(1.25rem, 2vw, 1.75rem);
+  font-size: clamp(1.375rem, 1.9vw, 1.75rem);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: var(--navy);
+}
+
+.ct-liste { margin: 0; }
+.ct-ligne {
+  display: grid;
+  gap: 0.3rem;
+  padding: clamp(0.85rem, 1.5vw, 1.1rem) 0;
+  border-top: 1px solid var(--rule);
+}
+.ct-ligne:first-child { border-top: 1px solid var(--rule-strong); }
+.ct-ligne dt {
+  font-family: var(--font-alt);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.ct-ligne dd {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+.ct-ligne dd a { color: var(--ink); text-decoration: none; }
+.ct-ligne dd a:hover { color: var(--carmine); }
+
+.ct-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-alt);
+  font-weight: 600;
+  color: var(--whatsapp) !important;
+}
+.ct-whatsapp:hover { color: var(--whatsapp) !important; text-decoration: underline; text-underline-offset: 3px; }
+.ct-note {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.75rem;
+  color: var(--ink-3);
+}
+
+.ct-fondateur {
+  margin: clamp(1.25rem, 2vw, 1.75rem) 0 0;
+  padding-top: clamp(1rem, 1.6vw, 1.25rem);
+  border-top: 1px solid var(--rule-strong);
+  font-size: 0.8125rem;
+  color: var(--ink-3);
+}
+.ct-fondateur strong { color: var(--ink); }
+
+/* Le panneau reprend celui des candidatures ; seule la grille du bloc de
+   champs change, le message occupant toute la largeur. */
+.ct-panneau .cand-etape { margin-bottom: clamp(1.5rem, 2.4vw, 2rem); }
+.cand-groupe--plein { grid-column: 1 / -1; }
+textarea.cand-champ { resize: vertical; min-height: 8rem; line-height: 1.55; }
+
+/* Réponse du formulaire dans la page, à la place de la modale bloquante. */
+.ct-retour {
+  margin: 0 0 1.25rem;
+  padding: 0.85rem 1rem;
+  border-left: 3px solid;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+.ct-retour--succes { border-color: var(--whatsapp); background: rgba(7, 94, 84, 0.06); color: var(--ink); }
+.ct-retour--erreur { border-color: var(--carmine); background: rgba(178, 31, 42, 0.06); color: var(--ink); }
+
+@media (max-width: 991.98px) {
+  .ct-grille { grid-template-columns: 1fr; }
+}
+
+/* ==========================================================================
+   PAGE DES ACTUALITÉS
+   ==========================================================================
+   La page reprenait à l'identique les trois cartes de l'accueil : elle
+   n'apportait rien de plus. Le premier sujet passe en tête d'affiche, les
+   deux autres suivent dans les tuiles déjà définies pour l'accueil.
+   ========================================================================== */
+
+.actus-page {
+  background: var(--paper);
+  padding: clamp(2.5rem, 5vw, 4rem) 0 clamp(3rem, 6vw, 5.5rem);
+}
+
+.actu-une {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr);
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: center;
+  padding-bottom: clamp(2.25rem, 4vw, 3.5rem);
+  margin-bottom: clamp(2.25rem, 4vw, 3.5rem);
+  border-bottom: 1px solid var(--rule-strong);
+}
+.actu-une__media { margin: 0; overflow: hidden; }
+.actu-une__media img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  transition: transform 0.5s var(--ease);
+}
+.actu-une:hover .actu-une__media img { transform: scale(1.03); }
+
+.actu-une__meta {
+  margin: 0 0 0.6rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--carmine);
+}
+.actu-une__titre {
+  margin: 0 0 0.9rem;
+  font-size: clamp(1.5rem, 2.4vw, 2.25rem);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+}
+.actu-une__titre a { color: var(--navy); text-decoration: none; }
+.actu-une:hover .actu-une__titre a { color: var(--carmine); }
+.actu-une__desc {
+  margin: 0 0 clamp(1.1rem, 1.8vw, 1.5rem);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+
+/* Deux sujets seulement sous la tête d'affiche : la grille de trois de
+   l'accueil laisserait une colonne vide. */
+.actus--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+@media (max-width: 991.98px) {
+  .actu-une { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+@media (max-width: 767.98px) {
+  .actus--2 { grid-template-columns: 1fr; }
+}
+
+/* ==========================================================================
+   MISE AU POINT MOBILE
+   ==========================================================================
+   Relevé fait sur les 11 pages à 390px : aucun débordement horizontal, mais
+   deux familles de défauts revenaient partout.
+
+   1. Les micro-libellés en capitales tombaient entre 10 et 11px. Calibrés
+      pour un écran de bureau où la ligne est longue, ils deviennent pénibles
+      à lire sur téléphone.
+   2. Les liens d'action isolés ne faisaient que 16 à 22px de haut. Le seuil
+      confortable au doigt est de 44px : on ajoute la hauteur en rembourrage
+      vertical, sans changer la typographie ni l'aspect au repos.
+   ========================================================================== */
+
+@media (max-width: 767.98px) {
+
+  /* --- 1. Les micro-libellés remontent à 12px --------------------------- */
+  .entity-badge,
+  .entity-cycle,
+  .entity-nav__label,
+  .dept-level,
+  .corridor__meta,
+  .campus-panel__eyebrow,
+  .actu__meta,
+  .actu-une__meta,
+  .camp-index__eyebrow,
+  .camp-tuile__meta,
+  .camp-fiche__meta,
+  .ent-fiche__meta,
+  .entity-facts__k,
+  .prog-group__count,
+  .prog-code,
+  .prog-meta,
+  .cand-etiquette,
+  .ct-ligne dt,
+  .copyright-wrap p,
+  .header-top__contact a {
+    font-size: 0.75rem;
+  }
+  /* Le crénage des capitales se resserre quand le corps monte, sinon les
+     libellés longs passent sur deux lignes là où ils tenaient sur une. */
+  .entity-badge,
+  .entity-cycle,
+  .actu__meta,
+  .actu-une__meta,
+  .camp-tuile__meta,
+  .camp-fiche__meta,
+  .ent-fiche__meta,
+  .camp-index__eyebrow { letter-spacing: 0.1em; }
+
+  /* --- 2. Les liens d'action atteignent 44px de haut -------------------- */
+  .ruban__lien,
+  .dept-row__cta,
+  .actus-head__lien,
+  .actu__lien,
+  .cand-aide__lien,
+  .ent-fiche__lien,
+  .camp-fiche__lien,
+  .camp-tuile__lien,
+  .entity-fields__link,
+  .ct-whatsapp,
+  .partners__onglet,
+  .footer-link ul li a,
+  .f-contact a,
+  .copyright-wrap a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+  /* Le remboursement de hauteur ne doit pas rouvrir les écarts qu'on a
+     resserrés : la marge basse des blocs concernés se réduit d'autant. */
+  .ruban__lede { margin-bottom: 0; }
+  .actu__desc, .actu-une__desc { margin-bottom: 0.35rem; }
+  .ent-fiche__liste, .camp-fiche__liste { margin-bottom: 0.5rem; }
+
+  /* La case à cocher de consentement : 16px est sous le seuil, et c'est le
+     seul contrôle de son étape. */
+  .cand-case { width: 1.25rem; height: 1.25rem; margin-top: 0.1rem; }
+  .cand-accord label { min-height: 44px; display: flex; align-items: center; }
+
+  /* Les onglets des partenariats servent de navigation : ils doivent se
+     toucher aussi facilement qu'un bouton. */
+  .partners__onglet { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+
+  /* Second passage : les libellés que le premier relevé n'avait pas
+     rattrapés, faute de classe propre ou parce qu'ils vivent dans le
+     gabarit d'origine. */
+  .corridor__border span,
+  .founder-media figcaption,
+  .f-widget-title h2,
+  .page-head__crumbs { font-size: 0.75rem; }
+
+  /* Le fil d'Ariane reste une navigation secondaire : on lui donne de quoi
+     être touché sans en faire une barre de boutons. */
+  .page-head__crumbs a { display: inline-block; padding: 0.4rem 0; }
+
+  /* Le lien du logo était en flux inline : sa boîte cliquable faisait la
+     hauteur d'une ligne, pas celle de l'image qu'il entoure. */
+  .logo a { display: inline-block; }
+
+  /* Réseaux sociaux et arrêts du corridor : 37 et 38px, juste sous le seuil. */
+  .footer-social a { width: 44px; height: 44px; }
+  .corridor__stop { min-height: 44px; }
+}
+
+/* --- 3. Le bandeau principal reste pilotable au doigt --------------------
+   Sous 992px, `d-none d-lg-flex` masquait toute la colonne de droite : les
+   trois diapositives défilaient sans qu'on puisse les parcourir ni même
+   savoir qu'il y en avait plusieurs. On rend les flèches, pas les vignettes,
+   qui coûteraient trop de hauteur sur un écran de téléphone. */
+@media (max-width: 991.98px) {
+  .hero__side.d-none { display: flex !important; }
+  .hero__nav { display: none; }
+  .hero__arrows {
+    order: 0;
+    justify-content: flex-start;
+    margin-top: 0.25rem;
+  }
+  .hero__arrow { width: 48px; height: 48px; }
 }

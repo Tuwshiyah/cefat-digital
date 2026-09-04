@@ -6,7 +6,7 @@
   <title>Les 4 Entités du Réseau | Les Universités CEFAT</title>
   <meta name="description" content="Découvrez les 4 établissements complémentaires du réseau Les Universités CEFAT : Université Internationale, IFCI, Business School et Centre d'Immersion Linguistique à Accra.">
   
-  <link rel="icon" type="image/png" href="assets/img/logo/cefat-logo-tight.png?v=6cc4050b">
+  <link rel="icon" type="image/jpeg" href="assets/img/logo/cefat-favicon.jpeg?v=cfe467fc">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/css/animate.min.css">
   <link rel="stylesheet" href="assets/css/cefat-theme.css">
-  <link rel="stylesheet" href="assets/css/cefat-custom.css?v=64e1acaa">
+  <link rel="stylesheet" href="assets/css/cefat-custom.css?v=3f3eee40">
 </head>
 <body>
 
@@ -23,49 +23,32 @@
     <!-- ==================== TOP BAR ==================== -->
   <div class="header-top d-none d-lg-block">
     <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-7 col-md-6">
-          <div class="header-cta">
+      <div class="header-top__inner">
+
+        <ul class="header-top__contact">
+          <li><a href="mailto:contact@universitecefat.ci"><i class="fa-solid fa-envelope" aria-hidden="true"></i> contact@universitecefat.ci</a></li>
+        </ul>
+
+        <div class="header-cta justify-content-end">
             <ul>
-              <li><span class="fdfp-top-badge"><i class="fa-solid fa-award"></i> <span data-i18n="top_fdfp">Agrément Officiel FDFP</span></span></li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-lg-5 col-md-6 text-end">
-          <div class="header-cta justify-content-end">
-            <ul>
-              <li>
-                <div class="top-phone-stack">
-                  <i class="fa-solid fa-phone text-danger"></i>
-                  <span class="top-phone-numbers">
-                    <a href="tel:+2250712651719">07 12 65 17 19</a>
-                    <span class="top-phone-sep" aria-hidden="true">·</span>
-                    <a href="tel:+2250100959518">01 00 95 95 18</a>
-                  </span>
-                </div>
-              </li>
-              <li>
-                <i class="fa-solid fa-envelope text-danger"></i>
-                <a href="mailto:contact@universitecefat.ci">contact@universitecefat.ci</a>
-              </li>
+              <li><span class="fdfp-top-badge"><img class="fdfp-top-badge__logo" src="assets/img/logo/fdfp.webp?v=ffc0966c" alt="Fonds de Développement de la Formation Professionnelle" width="447" height="212"> <span data-i18n="top_fdfp">Agrément officiel</span></span></li>
               <li>
                 <button type="button" class="lang-switch-btn active" data-lang="fr" onclick="setLanguage('fr')">FR</button>
                 <button type="button" class="lang-switch-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
               </li>
             </ul>
-          </div>
         </div>
+
       </div>
     </div>
   </div>
 
-  
   <header id="header-sticky" class="menu-area">
     <div class="container">
       <div class="row align-items-center">
         <div class="col-xl-3 col-lg-3 col-8">
           <div class="logo py-2">
-            <a href="index.html"><img src="assets/img/logo/cefat-logo-tight.png?v=6cc4050b" alt="CEFAT" class="img-fluid"></a>
+            <a href="index.html"><img src="assets/img/logo/cefat-logo-2026.webp?v=74b8e9fc" alt="Les Universités CEFAT" class="img-fluid"></a>
           </div>
         </div>
         <div class="col-xl-9 col-lg-9 col-4 text-end">
@@ -77,10 +60,11 @@
 
                   <li class="has-sub has-mega">
                     <a aria-expanded="false" href="entites.html"><span data-i18n="nav_about">À Propos</span> <i class="fa-solid fa-chevron-down"></i></a>
-                    <div class="megamenu megamenu--cards">
+                    <div class="megamenu megamenu--about">
                       <div class="megamenu__inner">
                         <p class="megamenu__lede" data-i18n="mm_apropos_lede">Un groupe fondé en 2006, structuré en quatre établissements complémentaires.</p>
-                        <div class="mm-links">
+                        <div class="mm-about">
+                          <div class="mm-links">
                           <a class="mm-link" href="index.html#about">
                             <span class="mm-link__name" data-i18n="mm_histoire">Notre histoire</span>
                             <span class="mm-link__desc" data-i18n="mm_histoire_d">De 2006 à aujourd'hui, entité par entité.</span>
@@ -93,28 +77,41 @@
                             <span class="mm-link__name" data-i18n="mm_reseau">Le réseau : les 4 entités</span>
                             <span class="mm-link__desc" data-i18n="mm_reseau_d">Vue d'ensemble des quatre établissements.</span>
                           </a>
-                        </div>
-                        <div class="mm-grid mm-grid--compact">
+                          </div>
+                          <div class="mm-grid mm-grid--compact">
                           <a class="mm-card" href="entite-universite.html">
-                            <span class="mm-card__img"><img src="assets/img/entities/entity-international.jpg?v=f1bd2b62" alt="" loading="lazy"></span>
+                            <span class="mm-card__img">
+                              <img src="assets/img/entities/entity-international.jpg?v=f1bd2b62" alt="" loading="lazy">
+                              <span class="mm-card__brand" aria-hidden="true"><img src="assets/img/logo/universite-cefat-international.webp?v=da73d752" alt="" width="5583" height="3986" loading="lazy" decoding="async"></span>
+                            </span>
                             <span class="mm-card__name" data-i18n="sub_international">Université CEFAT International</span>
                             <span class="mm-card__lvl" data-i18n="mm_lvl_int">Licence · Master</span>
                           </a>
                           <a class="mm-card" href="entite-ifci.html">
-                            <span class="mm-card__img"><img src="assets/img/entities/entity-ifci.jpg?v=cb2b2399" alt="" loading="lazy"></span>
+                            <span class="mm-card__img">
+                              <img src="assets/img/entities/entity-ifci.jpg?v=cb2b2399" alt="" loading="lazy">
+                              <span class="mm-card__brand" aria-hidden="true"><img src="assets/img/logo/institut-formation-cefat-inter.webp?v=2cd951d8" alt="" width="4647" height="3576" loading="lazy" decoding="async"></span>
+                            </span>
                             <span class="mm-card__name" data-i18n="sub_ifci">Institut IFCI (BTS &amp; Métiers)</span>
                             <span class="mm-card__lvl" data-i18n="mm_lvl_ifci">BTS d'État</span>
                           </a>
                           <a class="mm-card" href="entite-business-school.html">
-                            <span class="mm-card__img"><img src="assets/img/entities/entity-business-school.jpg?v=d16a9f87" alt="" loading="lazy"></span>
+                            <span class="mm-card__img">
+                              <img src="assets/img/entities/entity-business-school.jpg?v=d16a9f87" alt="" loading="lazy">
+                              <span class="mm-card__brand" aria-hidden="true"><img src="assets/img/logo/cefat-business-school.webp?v=a71b4f57" alt="" width="4647" height="3576" loading="lazy" decoding="async"></span>
+                            </span>
                             <span class="mm-card__name" data-i18n="sub_business_school">CEFAT Business School</span>
                             <span class="mm-card__lvl" data-i18n="mm_lvl_bs">Bachelor · MBA</span>
                           </a>
                           <a class="mm-card" href="entite-accra.html">
-                            <span class="mm-card__img"><img src="assets/img/entities/entity-langues-accra.jpg?v=2254be2d" alt="" loading="lazy"></span>
+                            <span class="mm-card__img">
+                              <img src="assets/img/entities/entity-langues-accra.jpg?v=2254be2d" alt="" loading="lazy">
+                              <span class="mm-card__brand" aria-hidden="true"><img src="assets/img/logo/centre-immersion-linguistique.webp?v=77a67664" alt="" width="4584" height="3353" loading="lazy" decoding="async"></span>
+                            </span>
                             <span class="mm-card__name" data-i18n="sub_accra">Immersion Linguistique Accra</span>
                             <span class="mm-card__lvl" data-i18n="mm_lvl_accra">100% anglais</span>
                           </a>
+                        </div>
                         </div>
                       </div>
                     </div>
@@ -122,30 +119,43 @@
 
                   <li class="has-sub has-mega">
                     <a aria-expanded="false" href="formations.html"><span data-i18n="nav_formations">Formations</span> <i class="fa-solid fa-chevron-down"></i></a>
-                    <div class="megamenu megamenu--ladder">
+                    <div class="megamenu megamenu--formations">
                       <div class="megamenu__inner">
-                        <p class="megamenu__lede" data-i18n="mm_for_lede2">Du diplôme d'État au MBA — 33 programmes au catalogue.</p>
-                        <div class="mm-ladder mm-ladder--4">
-                          <a class="mm-step" href="formations.html#bts">
-                            <span class="mm-step__lvl" data-i18n="mm_bac2">Bac+2</span>
-                            <span class="mm-step__name" data-i18n="sub_bts">Cycle BTS (Diplôme d'État)</span>
-                            <span class="mm-step__desc" data-i18n="mm_for_bts2">6 spécialités, deux ans, entrée directe sur le marché.</span>
-                          </a>
-                          <a class="mm-step" href="formations.html#licence">
-                            <span class="mm-step__lvl" data-i18n="mm_bac35">Bac+3 à Bac+5</span>
-                            <span class="mm-step__name" data-i18n="mm_lmd">Licences &amp; Masters</span>
-                            <span class="mm-step__desc" data-i18n="mm_lmd_d">27 programmes LMD — 14 Licences, 13 Masters.</span>
-                          </a>
-                          <a class="mm-step" href="formations.html#mba">
-                            <span class="mm-step__lvl" data-i18n="mm_bac5">Bac+5</span>
-                            <span class="mm-step__name" data-i18n="sub_mba">Executive MBA</span>
-                            <span class="mm-step__desc" data-i18n="mm_for_mba">Format aménagé pour cadres en poste.</span>
-                          </a>
-                          <a class="mm-step" href="formations.html#regimes">
-                            <span class="mm-step__lvl" data-i18n="mm_organisation">Organisation</span>
-                            <span class="mm-step__name" data-i18n="mm_regimes">Régimes d'études</span>
-                            <span class="mm-step__desc" data-i18n="mm_regimes_d">Formation initiale ou continue, en ligne et en alternance.</span>
-                          </a>
+                        <p class="megamenu__lede" data-i18n="mm_for_lede3">33 programmes, du diplôme d'État à l'Executive MBA.</p>
+                        <div class="mm-two">
+                          <section class="mm-col">
+                            <h3 class="mm-col__title" data-i18n="mm_par_diplome">Par diplôme</h3>
+                            <a class="mm-link" href="formations.html#bts">
+                              <span class="mm-link__name" data-i18n="sub_bts">Cycle BTS (Diplôme d'État)</span>
+                              <span class="mm-link__desc" data-i18n="mm_d_bts">6 spécialités · 2 ans · Bac+2</span>
+                            </a>
+                            <a class="mm-link" href="formations.html#licence">
+                              <span class="mm-link__name" data-i18n="mm_lmd">Licences &amp; Masters</span>
+                              <span class="mm-link__desc" data-i18n="mm_d_lmd">27 programmes LMD · Bac+3 à Bac+5</span>
+                            </a>
+                            <a class="mm-link" href="formations.html#mba">
+                              <span class="mm-link__name" data-i18n="sub_mba">Executive MBA</span>
+                              <span class="mm-link__desc" data-i18n="mm_d_mba">Format aménagé pour cadres en poste</span>
+                            </a>
+                            <a class="mm-link" href="formations.html#regimes">
+                              <span class="mm-link__name" data-i18n="mm_regimes">Régimes d'études</span>
+                              <span class="mm-link__desc" data-i18n="mm_d_regimes">Formation initiale ou continue</span>
+                            </a>
+                          </section>
+
+                          <section class="mm-col mm-col--wide">
+                            <h3 class="mm-col__title" data-i18n="mm_par_domaine">Par domaine</h3>
+                            <ul class="mm-domaines">
+                              <li><a href="formations.html?domaine=gestion"><span data-i18n="fam_gestion">Gestion &amp; Administration</span> <em>5</em></a></li>
+                              <li><a href="formations.html?domaine=finance"><span data-i18n="fam_finance">Finance, Comptabilité &amp; Audit</span> <em>8</em></a></li>
+                              <li><a href="formations.html?domaine=droit"><span data-i18n="fam_droit">Droit &amp; Sciences Politiques</span> <em>6</em></a></li>
+                              <li><a href="formations.html?domaine=numerique"><span data-i18n="fam_numerique">Informatique &amp; Numérique</span> <em>4</em></a></li>
+                              <li><a href="formations.html?domaine=marketing"><span data-i18n="fam_marketing">Marketing &amp; Communication</span> <em>4</em></a></li>
+                              <li><a href="formations.html?domaine=humanites"><span data-i18n="fam_humanites">Lettres &amp; Sciences Humaines</span> <em>4</em></a></li>
+                              <li><a href="formations.html?domaine=btp"><span data-i18n="fam_btp">Génie Civil &amp; BTP</span> <em>2</em></a></li>
+                              <li class="mm-domaines__tout"><a href="formations.html"><span data-i18n="mm_tout_catalogue">Tout le catalogue</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></li>
+                            </ul>
+                          </section>
                         </div>
                       </div>
                     </div>
@@ -179,7 +189,6 @@
                               <span class="mm-stop__name" data-i18n="cor_bondoukou">Bondoukou</span>
                               <span class="mm-stop__meta" data-i18n="cor_bondoukou_meta">Gontougo</span>
                             </a>
-                            <span class="mm-border"><span data-i18n="corridor_border">Frontière CI · GH</span></span>
                             <a class="mm-stop mm-stop--gh" href="campus.html#accra">
                               <span class="mm-stop__img"><img src="assets/img/campus/campus-accra.jpg?v=b84d32ed" alt="" loading="lazy"></span>
                               <span class="mm-stop__name" data-i18n="cor_accra">Accra</span>
@@ -207,8 +216,8 @@
 
   <div class="mobile-drawer-overlay"></div>
   <aside class="mobile-drawer">
-    <div class="d-flex justify-content-between align-items-center mb-3">
-      <img src="assets/img/logo/cefat-logo-tight.png?v=6cc4050b" alt="CEFAT" style="max-height: 45px;">
+    <div class="mobile-drawer__header d-flex justify-content-between align-items-center mb-3">
+      <img src="assets/img/logo/cefat-logo-2026.webp?v=74b8e9fc" alt="Les Universités CEFAT" style="max-height: 45px;">
       <button class="close-drawer" aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button>
     </div>
     
@@ -280,113 +289,160 @@
   </section>
 
   <!-- Entities Deep Dive Section -->
-  <section class="py-5 bg-light">
+  <!-- ==================== CHIFFRES DU RÉSEAU ==================== -->
+  <section class="faits-area">
     <div class="container">
-      
-      <!-- 1. Université CEFAT International -->
-      <div id="international" class="card shadow-sm border-0 rounded-4 overflow-hidden mb-5">
-        <div class="row g-0 align-items-center">
-          <div class="col-lg-5">
-            <img src="assets/img/entities/entity-international.jpg?v=f1bd2b62" alt="Université CEFAT International" class="img-fluid w-100 h-100" style="object-fit:cover; min-height:300px;">
-          </div>
-          <div class="col-lg-7 p-4 p-lg-5">
-            <div class="d-flex align-items-center gap-2 mb-2">
-              <span class="badge bg-danger"><span data-i18n="t_p_le_universitaire_recherche">Pôle Universitaire & Recherche</span></span>
-              <span class="badge bg-secondary">Licence • Master</span>
-            </div>
-            <h3 class="fw-bold text-primary"><span data-i18n="t_1_universit_cefat_internatio">1. Université CEFAT International</span></h3>
-            <p class="text-muted"><span data-i18n="t_l_universit_cefat_internation">L'Université CEFAT International est l'institution dédiée aux études supérieures académiques et à la recherche appliquée. Elle prépare les étudiants aux grades de Licence et Master selon les normes LMD internationales, avec un corps professoral de rang magistral.</span></p>
-            <h6 class="fw-bold text-dark mb-2"><span data-i18n="t_fili_res_phares">Filières Phares :</span></h6>
-            <ul class="list-unstyled small text-muted mb-4">
-              <li><i class="fa-solid fa-check text-danger me-2"></i> <span data-i18n="ent_1_f1">Sciences Juridiques, Politiques et de l'Administration</span></li>
-              <li><i class="fa-solid fa-check text-danger me-2"></i> <span data-i18n="ent_1_f2">Sciences Économiques et de Gestion</span></li>
-              <li><i class="fa-solid fa-check text-danger me-2"></i> <span data-i18n="ent_1_f3">Informatique, Mathématiques Appliquées et IA</span></li>
-            </ul>
-            <a href="candidatures.html?entity=Université+CEFAT+International" class="btn-cefat-primary btn-sm"><span data-i18n="t_candidater_l_universit_cefa">Candidater à l'Université CEFAT International</span></a>
-            <a href="entite-universite.html" class="btn-cefat-secondary btn-sm ms-2"><span data-i18n="btn_entity_detail">Voir la fiche complète</span> <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-        </div>
-      </div>
+      <ul class="group-facts">
+        <li><strong>19</strong><span data-i18n="story_fact_years">années d'expérience</span></li>
+        <li><strong>5</strong><span data-i18n="story_fact_campus">campus en Afrique de l'Ouest</span></li>
+        <li><strong>27</strong><span data-i18n="story_fact_prog">programmes Licence &amp; Master</span></li>
+        <li><strong>4</strong><span data-i18n="story_fact_countries">pays partenaires</span></li>
+      </ul>
+    </div>
+  </section>
 
-      <!-- 2. IFCI -->
-      <div id="ifci" class="card shadow-sm border-0 rounded-4 overflow-hidden mb-5">
-        <div class="row g-0 align-items-center">
-          <div class="col-lg-5 order-lg-2">
-            <img src="assets/img/entities/entity-ifci.jpg?v=cb2b2399" alt="Institut IFCI" class="img-fluid w-100 h-100" style="object-fit:cover; min-height:300px;">
-          </div>
-          <div class="col-lg-7 p-4 p-lg-5 order-lg-1">
-            <div class="d-flex align-items-center gap-2 mb-2">
-              <span class="badge bg-primary"><span data-i18n="t_enseignement_technique_sup_rie">Enseignement Technique Supérieur</span></span>
-              <span class="badge bg-warning text-dark"><span data-i18n="t_bts_d_tat_certifications">BTS d'État & Certifications</span></span>
-            </div>
-            <h3 class="fw-bold text-primary"><span data-i18n="t_2_institut_de_formation_cefat">2. Institut de Formation CEFAT-Inter (IFCI)</span></h3>
-            <p class="text-muted"><span data-i18n="t_l_institut_ifci_est_le_p_le_hi">L'Institut IFCI est le pôle historique de référence pour les diplômes d'État (BTS) en Côte d'Ivoire. Doté de taux de réussite remarquables aux examens nationaux, l'IFCI combine cours théoriques rigoureux et stages pratiques en entreprise garantis.</span></p>
-            <h6 class="fw-bold text-dark mb-2"><span data-i18n="t_cycles_sp_cialit_s">Cycles & Spécialités :</span></h6>
-            <ul class="list-unstyled small text-muted mb-4">
-              <li><i class="fa-solid fa-check text-danger me-2"></i> <span data-i18n="ent_2_f1">BTS Tertiaires : FCGE, GEC, RHCOM, Logistique</span></li>
-              <li><i class="fa-solid fa-check text-danger me-2"></i> <span data-i18n="ent_2_f2">BTS Industriels : IDA, RIT, Bâtiment & Génie Civil</span></li>
-              <li><i class="fa-solid fa-check text-danger me-2"></i> <span data-i18n="ent_2_f3">Formations Professionnelles Continues d'Excellence</span></li>
-            </ul>
-            <a href="candidatures.html?entity=Institut+IFCI" class="btn-cefat-primary btn-sm"><span data-i18n="t_candidater_l_institut_ifci">Candidater à l'Institut IFCI</span></a>
-            <a href="entite-ifci.html" class="btn-cefat-secondary btn-sm ms-2"><span data-i18n="btn_entity_detail">Voir la fiche complète</span> <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-        </div>
-      </div>
+  <section class="entites-area">
+    <div class="container">
 
-      <!-- 3. CEFAT Business School -->
-      <div id="business-school" class="card shadow-sm border-0 rounded-4 overflow-hidden mb-5">
-        <div class="row g-0 align-items-center">
-          <div class="col-lg-5">
-            <img src="assets/img/entities/entity-business-school.jpg?v=d16a9f87" alt="CEFAT Business School" class="img-fluid w-100 h-100" style="object-fit:cover; min-height:300px;">
-          </div>
-          <div class="col-lg-7 p-4 p-lg-5">
-            <div class="d-flex align-items-center gap-2 mb-2">
-              <span class="badge bg-dark"><span data-i18n="t_management_leadership">Management & Leadership</span></span>
-              <span class="badge bg-danger">Bachelor • MBA</span>
-            </div>
-            <h3 class="fw-bold text-primary"><span data-i18n="t_3_cefat_business_school">3. CEFAT Business School</span></h3>
-            <p class="text-muted"><span data-i18n="t_la_business_school_du_r_seau_c">La Business School du réseau CEFAT forme les futurs dirigeants, managers et entrepreneurs africains. Axée sur la stratégie d'entreprise, la finance internationale et la transformation digitale, elle accueille étudiants et professionnels en reconversion ou perfectionnement.</span></p>
-            <h6 class="fw-bold text-dark mb-2"><span data-i18n="t_programmes_lite">Programmes Élite :</span></h6>
-            <ul class="list-unstyled small text-muted mb-4">
-              <li><i class="fa-solid fa-check text-danger me-2"></i> <span data-i18n="ent_3_f1">Bachelor in Business Administration (BBA)</span></li>
-              <li><i class="fa-solid fa-check text-danger me-2"></i> <span data-i18n="ent_3_f2">Master en Audit, Contrôle de Gestion & Finance</span></li>
-              <li><i class="fa-solid fa-check text-danger me-2"></i> <span data-i18n="ent_3_f3">Executive MBA pour Directeurs & Cadres Dirigeants</span></li>
-            </ul>
-            <a href="candidatures.html?entity=CEFAT+Business+School" class="btn-cefat-primary btn-sm"><span data-i18n="t_candidater_la_business_schoo">Candidater à la Business School</span></a>
-            <a href="entite-business-school.html" class="btn-cefat-secondary btn-sm ms-2"><span data-i18n="btn_entity_detail">Voir la fiche complète</span> <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-        </div>
-      </div>
+      <article class="ent-fiche" id="international">
+        <figure class="ent-fiche__media">
+          <img src="assets/img/entities/entity-international.jpg?v=f1bd2b62" alt="" loading="lazy">
+          <span class="ent-fiche__brand" aria-hidden="true">
+            <img src="assets/img/logo/universite-cefat-international.webp?v=da73d752" alt="" width="5583" height="3986" loading="lazy" decoding="async">
+          </span>
+        </figure>
 
-      <!-- 4. Centre d'Immersion Linguistique Accra -->
-      <div id="accra" class="card shadow-sm border-0 rounded-4 overflow-hidden mb-5 border-start border-4 border-success">
-        <div class="row g-0 align-items-center">
-          <div class="col-lg-5 order-lg-2">
-            <img src="assets/img/entities/entity-langues-accra.jpg?v=2254be2d" alt="Centre Linguistique Accra" class="img-fluid w-100 h-100" style="object-fit:cover; min-height:300px;">
-          </div>
-          <div class="col-lg-7 p-4 p-lg-5 order-lg-1">
-            <div class="d-flex align-items-center gap-2 mb-2">
-              <span class="badge bg-success"><span data-i18n="t_campus_accra_ghana">Campus Accra — Ghana</span></span>
-              <span class="badge bg-dark"><span data-i18n="t_immersion_100_anglais">Immersion 100% Anglais</span></span>
-            </div>
-            <h3 class="fw-bold text-success"><span data-i18n="t_4_centre_d_immersion_linguist">4. Centre d'Immersion Linguistique (Accra - Ghana)</span></h3>
-            <p class="text-muted"><span data-i18n="t_implant_au_ghana_le_centre_d">Implanté au Ghana, le Centre d'Immersion Linguistique offre une opportunité rare aux étudiants ivoiriens et francophones : maîtriser l'anglais courant et professionnel en immersion complète au sein de la capitale anglophone d'Afrique de l'Ouest.</span></p>
-            <h6 class="fw-bold text-dark mb-2"><span data-i18n="t_atouts_majeurs">Atouts Majeurs :</span></h6>
-            <ul class="list-unstyled small text-muted mb-4">
-              <li><i class="fa-solid fa-check text-success me-2"></i> <span data-i18n="ent_4_f1">Formateurs anglophones expérimentés et natifs</span></li>
-              <li><i class="fa-solid fa-check text-success me-2"></i> <span data-i18n="ent_4_f2">Préparation aux certifications internationales (TOEFL, IELTS, TOEIC)</span></li>
-              <li><i class="fa-solid fa-check text-success me-2"></i> <span data-i18n="ent_4_f3">Résidences universitaires surveillées et encadrées</span></li>
-            </ul>
-            <a href="candidatures.html?entity=Centre+Linguistique+Accra" class="btn btn-success rounded-pill px-4 fw-bold"><span data-i18n="t_postuler_pour_le_centre_d_accr">Postuler pour le Centre d'Accra</span></a>
-            <a href="entite-accra.html" class="btn-cefat-secondary btn-sm ms-2"><span data-i18n="btn_entity_detail">Voir la fiche complète</span> <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
+        <div class="ent-fiche__corps">
+          <p class="ent-fiche__rang" aria-hidden="true">01</p>
+
+          <p class="ent-fiche__meta">
+            <span data-i18n="t_p_le_universitaire_recherche">Pôle Universitaire &amp; Recherche</span>
+            <span>Licence &amp; Master</span>
+          </p>
+
+          <h2 class="ent-fiche__nom" data-i18n="t_1_universit_cefat_internatio">Université CEFAT International</h2>
+
+          <p class="ent-fiche__desc" data-i18n="t_l_universit_cefat_internation">L'Université CEFAT International est l'institution dédiée aux études supérieures académiques et à la recherche appliquée. Elle prépare les étudiants aux grades de Licence et Master selon les normes LMD internationales, avec un corps professoral de rang magistral.</p>
+
+          <p class="ent-fiche__label" data-i18n="t_fili_res_phares">Filières phares</p>
+          <ul class="ent-fiche__liste">
+              <li data-i18n="ent_1_f1">Sciences Juridiques, Politiques et de l'Administration</li>
+              <li data-i18n="ent_1_f2">Sciences Économiques et de Gestion</li>
+              <li data-i18n="ent_1_f3">Informatique, Mathématiques Appliquées et IA</li>
+          </ul>
+
+          <p class="ent-fiche__actions">
+            <a class="ent-fiche__lien" href="entite-universite.html"><span data-i18n="btn_entity_detail">Voir la fiche complète</span> <i class="fa-solid fa-arrow-right"></i></a>
+            <a class="ent-fiche__lien ent-fiche__lien--2" href="https://www.universitecefat.ci" target="_blank" rel="noopener"><span data-i18n="btn_site_web">Accéder au site web</span> <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+          </p>
         </div>
-      </div>
+      </article>
+
+      <article class="ent-fiche" id="ifci">
+        <figure class="ent-fiche__media">
+          <img src="assets/img/entities/entity-ifci.jpg?v=cb2b2399" alt="" loading="lazy">
+          <span class="ent-fiche__brand" aria-hidden="true">
+            <img src="assets/img/logo/institut-formation-cefat-inter.webp?v=2cd951d8" alt="" width="4647" height="3576" loading="lazy" decoding="async">
+          </span>
+        </figure>
+
+        <div class="ent-fiche__corps">
+          <p class="ent-fiche__rang" aria-hidden="true">02</p>
+
+          <p class="ent-fiche__meta">
+            <span data-i18n="t_enseignement_technique_sup_rie">Enseignement Technique Supérieur</span>
+            <span data-i18n="t_bts_d_tat_certifications">BTS d'État &amp; Certifications</span>
+          </p>
+
+          <h2 class="ent-fiche__nom" data-i18n="t_2_institut_de_formation_cefat">Institut de Formation CEFAT-Inter (IFCI)</h2>
+
+          <p class="ent-fiche__desc" data-i18n="t_l_institut_ifci_est_le_p_le_hi">L'Institut IFCI est le pôle historique de référence pour les diplômes d'État (BTS) en Côte d'Ivoire. Doté de taux de réussite remarquables aux examens nationaux, l'IFCI combine cours théoriques rigoureux et stages pratiques en entreprise garantis.</p>
+
+          <p class="ent-fiche__label" data-i18n="t_cycles_sp_cialit_s">Cycles &amp; spécialités</p>
+          <ul class="ent-fiche__liste">
+              <li data-i18n="ent_2_f1">BTS Tertiaires : FCGE, GEC, RHCOM, Logistique</li>
+              <li data-i18n="ent_2_f2">BTS Industriels : IDA, RIT, Bâtiment & Génie Civil</li>
+              <li data-i18n="ent_2_f3">Formations Professionnelles Continues d'Excellence</li>
+          </ul>
+
+          <p class="ent-fiche__actions">
+            <a class="ent-fiche__lien" href="entite-ifci.html"><span data-i18n="btn_entity_detail">Voir la fiche complète</span> <i class="fa-solid fa-arrow-right"></i></a>
+            <a class="ent-fiche__lien ent-fiche__lien--2" href="https://www.ifciinternational.ci/" target="_blank" rel="noopener"><span data-i18n="btn_site_web">Accéder au site web</span> <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+          </p>
+        </div>
+      </article>
+
+      <article class="ent-fiche" id="business-school">
+        <figure class="ent-fiche__media">
+          <img src="assets/img/entities/entity-business-school.jpg?v=d16a9f87" alt="" loading="lazy">
+          <span class="ent-fiche__brand" aria-hidden="true">
+            <img src="assets/img/logo/cefat-business-school.webp?v=a71b4f57" alt="" width="4647" height="3576" loading="lazy" decoding="async">
+          </span>
+        </figure>
+
+        <div class="ent-fiche__corps">
+          <p class="ent-fiche__rang" aria-hidden="true">03</p>
+
+          <p class="ent-fiche__meta">
+            <span data-i18n="t_management_leadership">Management &amp; Leadership</span>
+            <span>Bachelor &amp; MBA</span>
+          </p>
+
+          <h2 class="ent-fiche__nom" data-i18n="t_3_cefat_business_school">CEFAT Business School</h2>
+
+          <p class="ent-fiche__desc" data-i18n="t_la_business_school_du_r_seau_c">La Business School du réseau CEFAT forme les futurs dirigeants, managers et entrepreneurs africains. Axée sur la stratégie d'entreprise, la finance internationale et la transformation digitale, elle accueille étudiants et professionnels en reconversion ou perfectionnement.</p>
+
+          <p class="ent-fiche__label" data-i18n="t_programmes_lite">Programmes élite</p>
+          <ul class="ent-fiche__liste">
+              <li data-i18n="ent_3_f1">Bachelor in Business Administration (BBA)</li>
+              <li data-i18n="ent_3_f2">Master en Audit, Contrôle de Gestion & Finance</li>
+              <li data-i18n="ent_3_f3">Executive MBA pour Directeurs & Cadres Dirigeants</li>
+          </ul>
+
+          <p class="ent-fiche__actions">
+            <a class="ent-fiche__lien" href="entite-business-school.html"><span data-i18n="btn_entity_detail">Voir la fiche complète</span> <i class="fa-solid fa-arrow-right"></i></a>
+            <a class="ent-fiche__lien ent-fiche__lien--2" href="https://www.universitecefat.ci/qui-sommes-nous" target="_blank" rel="noopener"><span data-i18n="btn_site_web">Accéder au site web</span> <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+          </p>
+        </div>
+      </article>
+
+      <article class="ent-fiche" id="accra">
+        <figure class="ent-fiche__media">
+          <img src="assets/img/entities/entity-langues-accra.jpg?v=2254be2d" alt="" loading="lazy">
+          <span class="ent-fiche__brand" aria-hidden="true">
+            <img src="assets/img/logo/centre-immersion-linguistique.webp?v=77a67664" alt="" width="4584" height="3353" loading="lazy" decoding="async">
+          </span>
+        </figure>
+
+        <div class="ent-fiche__corps">
+          <p class="ent-fiche__rang" aria-hidden="true">04</p>
+
+          <p class="ent-fiche__meta">
+            <span data-i18n="t_campus_accra_ghana">Campus Accra — Ghana</span>
+            <span data-i18n="t_immersion_100_anglais">Immersion 100% Anglais</span>
+          </p>
+
+          <h2 class="ent-fiche__nom" data-i18n="t_4_centre_d_immersion_linguist">Centre d'Immersion Linguistique (Accra — Ghana)</h2>
+
+          <p class="ent-fiche__desc" data-i18n="t_implant_au_ghana_le_centre_d">Implanté au Ghana, le Centre d'Immersion Linguistique offre une opportunité rare aux étudiants ivoiriens et francophones : maîtriser l'anglais courant et professionnel en immersion complète au sein de la capitale anglophone d'Afrique de l'Ouest.</p>
+
+          <p class="ent-fiche__label" data-i18n="t_atouts_majeurs">Atouts majeurs</p>
+          <ul class="ent-fiche__liste">
+              <li data-i18n="ent_4_f1">Formateurs anglophones expérimentés et natifs</li>
+              <li data-i18n="ent_4_f2">Préparation aux certifications internationales (TOEFL, IELTS, TOEIC)</li>
+              <li data-i18n="ent_4_f3">Résidences universitaires surveillées et encadrées</li>
+          </ul>
+
+          <p class="ent-fiche__actions">
+            <a class="ent-fiche__lien" href="entite-accra.html"><span data-i18n="btn_entity_detail">Voir la fiche complète</span> <i class="fa-solid fa-arrow-right"></i></a>
+            <a class="ent-fiche__lien ent-fiche__lien--2" href="https://www.universitecefat.ci/qui-sommes-nous" target="_blank" rel="noopener"><span data-i18n="btn_site_web">Accéder au site web</span> <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+          </p>
+        </div>
+      </article>
 
     </div>
   </section>
 
-  <!-- Footer -->
   <!-- ==================== HISTORIQUE DU GROUPE ==================== -->
   <!-- Dates relevées sur universitecefat.ci : elles situent chaque entité
        dans le temps et donnent au réseau son ancienneté. -->
@@ -425,13 +481,6 @@
           <span class="timeline__label" data-i18n="story_2025">Ouverture de CEFAT Business School (CBS)</span>
         </li>
       </ol>
-
-      <ul class="group-facts">
-        <li><strong>19</strong><span data-i18n="story_fact_years">années d'expérience</span></li>
-        <li><strong>5</strong><span data-i18n="story_fact_campus">campus en Afrique de l'Ouest</span></li>
-        <li><strong>27</strong><span data-i18n="story_fact_prog">programmes Licence &amp; Master</span></li>
-        <li><strong>4</strong><span data-i18n="story_fact_countries">pays partenaires</span></li>
-      </ul>
     </div>
   </section>
 
@@ -442,7 +491,7 @@
         <div class="col-xl-3 col-lg-3 col-md-6">
           <div class="footer-widget mb-30">
             <div class="mb-4">
-              <img src="assets/img/logo/cefat-logo-transparent.png?v=b9e22ffe" alt="Les Universités CEFAT" style="max-height: 62px;">
+              <img src="assets/img/logo/cefat-logo-2026.webp?v=74b8e9fc" alt="Les Universités CEFAT">
             </div>
             <div class="f-contact">
               <p class="small text-white-50" data-i18n="footer_about_text">
@@ -523,7 +572,7 @@
     </div>
   </footer>
 <script src="assets/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/cefat-i18n.js?v=66dba25e"></script>
-  <script src="assets/js/cefat-app.js?v=6411b341"></script>
+  <script src="assets/js/cefat-i18n.js?v=3c199d52"></script>
+  <script src="assets/js/cefat-app.js?v=3d318859"></script>
 </body>
 </html>

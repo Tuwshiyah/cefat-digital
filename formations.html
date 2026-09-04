@@ -6,7 +6,7 @@
   <title>Formations & Diplômes (BTS, Licence, Master, MBA) | Les Universités CEFAT</title>
   <meta name="description" content="Découvrez l'offre de formation complète des Universités CEFAT : BTS d'État, Licences Professionnelles, Bachelors, Masters et MBA dans 7 domaines d'excellence.">
   
-  <link rel="icon" type="image/png" href="assets/img/logo/cefat-logo-tight.png?v=6cc4050b">
+  <link rel="icon" type="image/jpeg" href="assets/img/logo/cefat-favicon.jpeg?v=cfe467fc">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/css/animate.min.css">
   <link rel="stylesheet" href="assets/css/cefat-theme.css">
-  <link rel="stylesheet" href="assets/css/cefat-custom.css?v=64e1acaa">
+  <link rel="stylesheet" href="assets/css/cefat-custom.css?v=3f3eee40">
 </head>
 <body>
 
@@ -23,49 +23,32 @@
     <!-- ==================== TOP BAR ==================== -->
   <div class="header-top d-none d-lg-block">
     <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-7 col-md-6">
-          <div class="header-cta">
+      <div class="header-top__inner">
+
+        <ul class="header-top__contact">
+          <li><a href="mailto:contact@universitecefat.ci"><i class="fa-solid fa-envelope" aria-hidden="true"></i> contact@universitecefat.ci</a></li>
+        </ul>
+
+        <div class="header-cta justify-content-end">
             <ul>
-              <li><span class="fdfp-top-badge"><i class="fa-solid fa-award"></i> <span data-i18n="top_fdfp">Agrément Officiel FDFP</span></span></li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-lg-5 col-md-6 text-end">
-          <div class="header-cta justify-content-end">
-            <ul>
-              <li>
-                <div class="top-phone-stack">
-                  <i class="fa-solid fa-phone text-danger"></i>
-                  <span class="top-phone-numbers">
-                    <a href="tel:+2250712651719">07 12 65 17 19</a>
-                    <span class="top-phone-sep" aria-hidden="true">·</span>
-                    <a href="tel:+2250100959518">01 00 95 95 18</a>
-                  </span>
-                </div>
-              </li>
-              <li>
-                <i class="fa-solid fa-envelope text-danger"></i>
-                <a href="mailto:contact@universitecefat.ci">contact@universitecefat.ci</a>
-              </li>
+              <li><span class="fdfp-top-badge"><img class="fdfp-top-badge__logo" src="assets/img/logo/fdfp.webp?v=ffc0966c" alt="Fonds de Développement de la Formation Professionnelle" width="447" height="212"> <span data-i18n="top_fdfp">Agrément officiel</span></span></li>
               <li>
                 <button type="button" class="lang-switch-btn active" data-lang="fr" onclick="setLanguage('fr')">FR</button>
                 <button type="button" class="lang-switch-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
               </li>
             </ul>
-          </div>
         </div>
+
       </div>
     </div>
   </div>
 
-  
   <header id="header-sticky" class="menu-area">
     <div class="container">
       <div class="row align-items-center">
         <div class="col-xl-3 col-lg-3 col-8">
           <div class="logo py-2">
-            <a href="index.html"><img src="assets/img/logo/cefat-logo-tight.png?v=6cc4050b" alt="CEFAT" class="img-fluid"></a>
+            <a href="index.html"><img src="assets/img/logo/cefat-logo-2026.webp?v=74b8e9fc" alt="Les Universités CEFAT" class="img-fluid"></a>
           </div>
         </div>
         <div class="col-xl-9 col-lg-9 col-4 text-end">
@@ -77,10 +60,11 @@
 
                   <li class="has-sub has-mega">
                     <a aria-expanded="false" href="entites.html"><span data-i18n="nav_about">À Propos</span> <i class="fa-solid fa-chevron-down"></i></a>
-                    <div class="megamenu megamenu--cards">
+                    <div class="megamenu megamenu--about">
                       <div class="megamenu__inner">
                         <p class="megamenu__lede" data-i18n="mm_apropos_lede">Un groupe fondé en 2006, structuré en quatre établissements complémentaires.</p>
-                        <div class="mm-links">
+                        <div class="mm-about">
+                          <div class="mm-links">
                           <a class="mm-link" href="index.html#about">
                             <span class="mm-link__name" data-i18n="mm_histoire">Notre histoire</span>
                             <span class="mm-link__desc" data-i18n="mm_histoire_d">De 2006 à aujourd'hui, entité par entité.</span>
@@ -93,28 +77,41 @@
                             <span class="mm-link__name" data-i18n="mm_reseau">Le réseau : les 4 entités</span>
                             <span class="mm-link__desc" data-i18n="mm_reseau_d">Vue d'ensemble des quatre établissements.</span>
                           </a>
-                        </div>
-                        <div class="mm-grid mm-grid--compact">
+                          </div>
+                          <div class="mm-grid mm-grid--compact">
                           <a class="mm-card" href="entite-universite.html">
-                            <span class="mm-card__img"><img src="assets/img/entities/entity-international.jpg?v=f1bd2b62" alt="" loading="lazy"></span>
+                            <span class="mm-card__img">
+                              <img src="assets/img/entities/entity-international.jpg?v=f1bd2b62" alt="" loading="lazy">
+                              <span class="mm-card__brand" aria-hidden="true"><img src="assets/img/logo/universite-cefat-international.webp?v=da73d752" alt="" width="5583" height="3986" loading="lazy" decoding="async"></span>
+                            </span>
                             <span class="mm-card__name" data-i18n="sub_international">Université CEFAT International</span>
                             <span class="mm-card__lvl" data-i18n="mm_lvl_int">Licence · Master</span>
                           </a>
                           <a class="mm-card" href="entite-ifci.html">
-                            <span class="mm-card__img"><img src="assets/img/entities/entity-ifci.jpg?v=cb2b2399" alt="" loading="lazy"></span>
+                            <span class="mm-card__img">
+                              <img src="assets/img/entities/entity-ifci.jpg?v=cb2b2399" alt="" loading="lazy">
+                              <span class="mm-card__brand" aria-hidden="true"><img src="assets/img/logo/institut-formation-cefat-inter.webp?v=2cd951d8" alt="" width="4647" height="3576" loading="lazy" decoding="async"></span>
+                            </span>
                             <span class="mm-card__name" data-i18n="sub_ifci">Institut IFCI (BTS &amp; Métiers)</span>
                             <span class="mm-card__lvl" data-i18n="mm_lvl_ifci">BTS d'État</span>
                           </a>
                           <a class="mm-card" href="entite-business-school.html">
-                            <span class="mm-card__img"><img src="assets/img/entities/entity-business-school.jpg?v=d16a9f87" alt="" loading="lazy"></span>
+                            <span class="mm-card__img">
+                              <img src="assets/img/entities/entity-business-school.jpg?v=d16a9f87" alt="" loading="lazy">
+                              <span class="mm-card__brand" aria-hidden="true"><img src="assets/img/logo/cefat-business-school.webp?v=a71b4f57" alt="" width="4647" height="3576" loading="lazy" decoding="async"></span>
+                            </span>
                             <span class="mm-card__name" data-i18n="sub_business_school">CEFAT Business School</span>
                             <span class="mm-card__lvl" data-i18n="mm_lvl_bs">Bachelor · MBA</span>
                           </a>
                           <a class="mm-card" href="entite-accra.html">
-                            <span class="mm-card__img"><img src="assets/img/entities/entity-langues-accra.jpg?v=2254be2d" alt="" loading="lazy"></span>
+                            <span class="mm-card__img">
+                              <img src="assets/img/entities/entity-langues-accra.jpg?v=2254be2d" alt="" loading="lazy">
+                              <span class="mm-card__brand" aria-hidden="true"><img src="assets/img/logo/centre-immersion-linguistique.webp?v=77a67664" alt="" width="4584" height="3353" loading="lazy" decoding="async"></span>
+                            </span>
                             <span class="mm-card__name" data-i18n="sub_accra">Immersion Linguistique Accra</span>
                             <span class="mm-card__lvl" data-i18n="mm_lvl_accra">100% anglais</span>
                           </a>
+                        </div>
                         </div>
                       </div>
                     </div>
@@ -122,30 +119,43 @@
 
                   <li class="has-sub has-mega">
                     <a aria-expanded="false" href="formations.html"><span data-i18n="nav_formations">Formations</span> <i class="fa-solid fa-chevron-down"></i></a>
-                    <div class="megamenu megamenu--ladder">
+                    <div class="megamenu megamenu--formations">
                       <div class="megamenu__inner">
-                        <p class="megamenu__lede" data-i18n="mm_for_lede2">Du diplôme d'État au MBA — 33 programmes au catalogue.</p>
-                        <div class="mm-ladder mm-ladder--4">
-                          <a class="mm-step" href="formations.html#bts">
-                            <span class="mm-step__lvl" data-i18n="mm_bac2">Bac+2</span>
-                            <span class="mm-step__name" data-i18n="sub_bts">Cycle BTS (Diplôme d'État)</span>
-                            <span class="mm-step__desc" data-i18n="mm_for_bts2">6 spécialités, deux ans, entrée directe sur le marché.</span>
-                          </a>
-                          <a class="mm-step" href="formations.html#licence">
-                            <span class="mm-step__lvl" data-i18n="mm_bac35">Bac+3 à Bac+5</span>
-                            <span class="mm-step__name" data-i18n="mm_lmd">Licences &amp; Masters</span>
-                            <span class="mm-step__desc" data-i18n="mm_lmd_d">27 programmes LMD — 14 Licences, 13 Masters.</span>
-                          </a>
-                          <a class="mm-step" href="formations.html#mba">
-                            <span class="mm-step__lvl" data-i18n="mm_bac5">Bac+5</span>
-                            <span class="mm-step__name" data-i18n="sub_mba">Executive MBA</span>
-                            <span class="mm-step__desc" data-i18n="mm_for_mba">Format aménagé pour cadres en poste.</span>
-                          </a>
-                          <a class="mm-step" href="formations.html#regimes">
-                            <span class="mm-step__lvl" data-i18n="mm_organisation">Organisation</span>
-                            <span class="mm-step__name" data-i18n="mm_regimes">Régimes d'études</span>
-                            <span class="mm-step__desc" data-i18n="mm_regimes_d">Formation initiale ou continue, en ligne et en alternance.</span>
-                          </a>
+                        <p class="megamenu__lede" data-i18n="mm_for_lede3">33 programmes, du diplôme d'État à l'Executive MBA.</p>
+                        <div class="mm-two">
+                          <section class="mm-col">
+                            <h3 class="mm-col__title" data-i18n="mm_par_diplome">Par diplôme</h3>
+                            <a class="mm-link" href="formations.html#bts">
+                              <span class="mm-link__name" data-i18n="sub_bts">Cycle BTS (Diplôme d'État)</span>
+                              <span class="mm-link__desc" data-i18n="mm_d_bts">6 spécialités · 2 ans · Bac+2</span>
+                            </a>
+                            <a class="mm-link" href="formations.html#licence">
+                              <span class="mm-link__name" data-i18n="mm_lmd">Licences &amp; Masters</span>
+                              <span class="mm-link__desc" data-i18n="mm_d_lmd">27 programmes LMD · Bac+3 à Bac+5</span>
+                            </a>
+                            <a class="mm-link" href="formations.html#mba">
+                              <span class="mm-link__name" data-i18n="sub_mba">Executive MBA</span>
+                              <span class="mm-link__desc" data-i18n="mm_d_mba">Format aménagé pour cadres en poste</span>
+                            </a>
+                            <a class="mm-link" href="formations.html#regimes">
+                              <span class="mm-link__name" data-i18n="mm_regimes">Régimes d'études</span>
+                              <span class="mm-link__desc" data-i18n="mm_d_regimes">Formation initiale ou continue</span>
+                            </a>
+                          </section>
+
+                          <section class="mm-col mm-col--wide">
+                            <h3 class="mm-col__title" data-i18n="mm_par_domaine">Par domaine</h3>
+                            <ul class="mm-domaines">
+                              <li><a href="formations.html?domaine=gestion"><span data-i18n="fam_gestion">Gestion &amp; Administration</span> <em>5</em></a></li>
+                              <li><a href="formations.html?domaine=finance"><span data-i18n="fam_finance">Finance, Comptabilité &amp; Audit</span> <em>8</em></a></li>
+                              <li><a href="formations.html?domaine=droit"><span data-i18n="fam_droit">Droit &amp; Sciences Politiques</span> <em>6</em></a></li>
+                              <li><a href="formations.html?domaine=numerique"><span data-i18n="fam_numerique">Informatique &amp; Numérique</span> <em>4</em></a></li>
+                              <li><a href="formations.html?domaine=marketing"><span data-i18n="fam_marketing">Marketing &amp; Communication</span> <em>4</em></a></li>
+                              <li><a href="formations.html?domaine=humanites"><span data-i18n="fam_humanites">Lettres &amp; Sciences Humaines</span> <em>4</em></a></li>
+                              <li><a href="formations.html?domaine=btp"><span data-i18n="fam_btp">Génie Civil &amp; BTP</span> <em>2</em></a></li>
+                              <li class="mm-domaines__tout"><a href="formations.html"><span data-i18n="mm_tout_catalogue">Tout le catalogue</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></li>
+                            </ul>
+                          </section>
                         </div>
                       </div>
                     </div>
@@ -179,7 +189,6 @@
                               <span class="mm-stop__name" data-i18n="cor_bondoukou">Bondoukou</span>
                               <span class="mm-stop__meta" data-i18n="cor_bondoukou_meta">Gontougo</span>
                             </a>
-                            <span class="mm-border"><span data-i18n="corridor_border">Frontière CI · GH</span></span>
                             <a class="mm-stop mm-stop--gh" href="campus.html#accra">
                               <span class="mm-stop__img"><img src="assets/img/campus/campus-accra.jpg?v=b84d32ed" alt="" loading="lazy"></span>
                               <span class="mm-stop__name" data-i18n="cor_accra">Accra</span>
@@ -207,8 +216,8 @@
 
   <div class="mobile-drawer-overlay"></div>
   <aside class="mobile-drawer">
-    <div class="d-flex justify-content-between align-items-center mb-3">
-      <img src="assets/img/logo/cefat-logo-tight.png?v=6cc4050b" alt="CEFAT" style="max-height: 45px;">
+    <div class="mobile-drawer__header d-flex justify-content-between align-items-center mb-3">
+      <img src="assets/img/logo/cefat-logo-2026.webp?v=74b8e9fc" alt="Les Universités CEFAT" style="max-height: 45px;">
       <button class="close-drawer" aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button>
     </div>
     
@@ -280,24 +289,23 @@
   </section>
 
   <!-- Filter & Catalog Section -->
-  <section class="py-5 bg-light">
+  <section class="catalogue-area">
     <div class="container">
       <!-- Cycle Tabs -->
-      <nav class="cycle-tabs" aria-label="Cycles d'études">
-        <a href="#bts" class="cycle-tab is-active"><i class="fa-solid fa-graduation-cap"></i> <span data-i18n="tab_bts">BTS — Diplôme d'État</span></a>
-        <a href="#regimes" class="cycle-tab"><i class="fa-solid fa-calendar-check"></i> <span data-i18n="tab_regimes">Régimes d'études</span></a>
-        <a href="#licence" class="cycle-tab"><i class="fa-solid fa-user-graduate"></i> <span data-i18n="tab_lmd">Licences &amp; Masters</span></a>
-        <a href="#mba" class="cycle-tab"><i class="fa-solid fa-crown"></i> <span data-i18n="tab_mba">Executive MBA</span></a>
+      <nav class="cycle-tabs" role="tablist" aria-label="Cycles d'études">
+        <a href="#bts" class="cycle-tab is-active" role="tab" aria-selected="true" aria-controls="bts"><i class="fa-solid fa-graduation-cap"></i> <span data-i18n="tab_bts">BTS — Diplôme d'État</span></a>
+        <a href="#regimes" class="cycle-tab" role="tab" aria-selected="false" aria-controls="regimes"><i class="fa-solid fa-calendar-check"></i> <span data-i18n="tab_regimes">Régimes d'études</span></a>
+        <a href="#licence" class="cycle-tab" role="tab" aria-selected="false" aria-controls="licence"><i class="fa-solid fa-user-graduate"></i> <span data-i18n="tab_lmd">Licences &amp; Masters</span></a>
+        <a href="#mba" class="cycle-tab" role="tab" aria-selected="false" aria-controls="mba"><i class="fa-solid fa-crown"></i> <span data-i18n="tab_mba">Executive MBA</span></a>
       </nav>
 
       <!-- BTS Section -->
-      <div id="bts" class="mb-5 pt-4">
-        <div class="d-flex align-items-center gap-3 mb-4">
-          <div>
-            <h3 class="mb-0 text-primary fw-bold" data-i18n="bts_section_title">Cycle BTS (Brevet de Technicien Supérieur) — Diplôme d'État</h3>
-            <p class="text-muted mb-0" data-i18n="bts_section_subtitle">Dispensé au sein de l'Institut IFCI sur nos campus d'Abidjan, Abengourou, Bondoukou et Bonoua.</p>
-          </div>
-        </div>
+      <div id="bts" class="cat-bloc" role="tabpanel" data-panneau>
+        <header class="cat-head">
+          <p class="cat-head__eyebrow" data-i18n="cat_eyebrow_bts">Cycle Bac +2</p>
+          <h2 class="cat-head__title" data-i18n="bts_section_title">Brevet de Technicien Supérieur — Diplôme d'État</h2>
+          <p class="cat-head__lede" data-i18n="bts_section_subtitle">Dispensé au sein de l'Institut IFCI sur nos campus d'Abidjan, Abengourou, Bondoukou et Bonoua.</p>
+        </header>
 
         <div class="prog-catalogue prog-catalogue--large">
           <section class="prog-group">
@@ -306,42 +314,42 @@
               <span class="prog-group__count" data-i18n="bts_grp_meta">6 spécialités · 2 ans · Bac +2</span>
             </h4>
             <ul class="prog-list">
-            <li class="prog-item">
+            <li class="prog-item" data-domain="Finance" data-famille="finance">
               <a href="candidatures.html?degree=BTS&domain=Finance">
                 <span class="prog-code">FCGE</span>
                 <span class="prog-name" data-i18n="bts_fcge_title">BTS Finance Comptabilité &amp; Gestion des Entreprises (FCGE)</span>
                 <span class="prog-meta">2 ans</span>
               </a>
             </li>
-            <li class="prog-item">
+            <li class="prog-item" data-domain="Informatique" data-famille="numerique">
               <a href="candidatures.html?degree=BTS&domain=Informatique">
                 <span class="prog-code">IDA</span>
                 <span class="prog-name" data-i18n="bts_ida_title">BTS Informatique Développeur d'Application (IDA)</span>
                 <span class="prog-meta">2 ans</span>
               </a>
             </li>
-            <li class="prog-item">
+            <li class="prog-item" data-domain="Informatique" data-famille="numerique">
               <a href="candidatures.html?degree=BTS&domain=Informatique">
                 <span class="prog-code">RIT</span>
                 <span class="prog-name" data-i18n="bts_rit_title">BTS Réseaux Informatiques &amp; Télécommunications (RIT)</span>
                 <span class="prog-meta">2 ans</span>
               </a>
             </li>
-            <li class="prog-item">
+            <li class="prog-item" data-domain="Génie+Civil" data-famille="btp">
               <a href="candidatures.html?degree=BTS&domain=Génie+Civil">
                 <span class="prog-code">GC</span>
                 <span class="prog-name" data-i18n="bts_gc_title">BTS Bâtiment &amp; Génie Civil</span>
                 <span class="prog-meta">2 ans</span>
               </a>
             </li>
-            <li class="prog-item">
+            <li class="prog-item" data-domain="Marketing" data-famille="marketing">
               <a href="candidatures.html?degree=BTS&domain=Marketing">
                 <span class="prog-code">GEC</span>
                 <span class="prog-name" data-i18n="bts_gec_title">BTS Gestion Commerciale (GEC)</span>
                 <span class="prog-meta">2 ans</span>
               </a>
             </li>
-            <li class="prog-item">
+            <li class="prog-item" data-domain="Gestion" data-famille="gestion">
               <a href="candidatures.html?degree=BTS&domain=Gestion">
                 <span class="prog-code">RHC</span>
                 <span class="prog-name" data-i18n="bts_rhcom_title">BTS Ressources Humaines &amp; Communication (RHCOM)</span>
@@ -357,13 +365,12 @@
       <!-- Deux régimes distincts, publiés sur universitecefat.ci et absents
            du site : un actif ne pouvait pas savoir que la formation continue
            existait, ni à quelles conditions. -->
-      <div class="mb-5 pt-2" id="regimes">
-        <div class="d-flex align-items-center gap-3 mb-4">
-          <div>
-            <h3 class="mb-0 text-primary fw-bold" data-i18n="modes_title">Deux Régimes d'Études</h3>
-            <p class="text-muted mb-0" data-i18n="modes_sub">Le même diplôme, deux organisations : à vous de choisir celle qui s'accorde à votre situation.</p>
-          </div>
-        </div>
+      <div class="cat-bloc" id="regimes" role="tabpanel" data-panneau>
+        <header class="cat-head">
+          <p class="cat-head__eyebrow" data-i18n="cat_eyebrow_regimes">Organisation des études</p>
+          <h2 class="cat-head__title" data-i18n="modes_title">Deux régimes d'études</h2>
+          <p class="cat-head__lede" data-i18n="modes_sub">Le même diplôme, deux organisations : à vous de choisir celle qui s'accorde à votre situation.</p>
+        </header>
 
         <div class="study-modes">
           <section class="study-mode">
@@ -399,13 +406,12 @@
       <!-- Licences & Masters Section -->
       <!-- Catalogue complet relevé sur universitecefat.ci : 14 Licences et
            13 Masters. Le site n'en affichait que trois. -->
-      <div id="licence" class="mb-5 pt-4">
-        <div class="d-flex align-items-center gap-3 mb-4">
-          <div>
-            <h3 class="mb-0 text-primary fw-bold"><span data-i18n="t_licences_masters_professionn">Licences &amp; Masters Professionnels (LMD)</span></h3>
-            <p class="text-muted mb-0"><span data-i18n="prog_lmd_sub">27 programmes dispensés à l'Université CEFAT International et à CEFAT Business School. Diplômes homologués, reconnus par l'État et certifiés CAMES.</span></p>
-          </div>
-        </div>
+      <div id="licence" class="cat-bloc" role="tabpanel" data-panneau>
+        <header class="cat-head">
+          <p class="cat-head__eyebrow" data-i18n="cat_eyebrow_lmd">Cycle LMD · Bac +3 à Bac +5</p>
+          <h2 class="cat-head__title" data-i18n="t_licences_masters_professionn">Licences &amp; Masters professionnels</h2>
+          <p class="cat-head__lede" data-i18n="prog_lmd_sub">27 programmes dispensés à l'Université CEFAT International et à CEFAT Business School. Diplômes homologués, reconnus par l'État et certifiés CAMES.</p>
+        </header>
 
         <div class="prog-catalogue">
           <section class="prog-group">
@@ -414,98 +420,98 @@
               <span class="prog-group__count" data-i18n="prog_grp_licence_meta">14 programmes · 3 ans · Bac +3</span>
             </h4>
             <ul class="prog-list">
-            <li class="prog-item">
+            <li class="prog-item" data-domain="Droit" data-famille="droit">
               <a href="candidatures.html?degree=Licence&domain=Droit">
                 <span class="prog-code">DRT</span>
                 <span class="prog-name" data-i18n="prog_licence_drt">Droit</span>
                 <span class="prog-meta">3 ans</span>
               </a>
             </li>
-            <li class="prog-item">
+            <li class="prog-item" data-domain="Communication" data-famille="marketing">
               <a href="candidatures.html?degree=Licence&domain=Communication">
                 <span class="prog-code">COM</span>
                 <span class="prog-name" data-i18n="prog_licence_com">Communication</span>
                 <span class="prog-meta">3 ans</span>
               </a>
             </li>
-            <li class="prog-item">
+            <li class="prog-item" data-domain="Informatique" data-famille="numerique">
               <a href="candidatures.html?degree=Licence&domain=Informatique">
                 <span class="prog-code">INF</span>
                 <span class="prog-name" data-i18n="prog_licence_inf">Sciences et Techniques Informatiques</span>
                 <span class="prog-meta">3 ans</span>
               </a>
             </li>
-            <li class="prog-item">
+            <li class="prog-item" data-domain="Histoire" data-famille="humanites">
               <a href="candidatures.html?degree=Licence&domain=Histoire">
                 <span class="prog-code">HIS</span>
                 <span class="prog-name" data-i18n="prog_licence_his">Histoire</span>
                 <span class="prog-meta">3 ans</span>
               </a>
             </li>
-            <li class="prog-item">
+            <li class="prog-item" data-domain="Lettres" data-famille="humanites">
               <a href="candidatures.html?degree=Licence&domain=Lettres">
                 <span class="prog-code">LET</span>
                 <span class="prog-name" data-i18n="prog_licence_let">Lettres Modernes</span>
                 <span class="prog-meta">3 ans</span>
               </a>
             </li>
-            <li class="prog-item">
+            <li class="prog-item" data-domain="Mathématiques" data-famille="numerique">
               <a href="candidatures.html?degree=Licence&domain=Mathématiques">
                 <span class="prog-code">MAT</span>
                 <span class="prog-name" data-i18n="prog_licence_mat">Mathématiques option Actuariat</span>
                 <span class="prog-meta">3 ans</span>
               </a>
             </li>
-            <li class="prog-item">
+            <li class="prog-item" data-domain="Logistique" data-famille="gestion">
               <a href="candidatures.html?degree=Licence&domain=Logistique">
                 <span class="prog-code">LOG</span>
                 <span class="prog-name" data-i18n="prog_licence_log">Logistique</span>
                 <span class="prog-meta">3 ans</span>
               </a>
             </li>
-            <li class="prog-item">
+            <li class="prog-item" data-domain="Marketing" data-famille="marketing">
               <a href="candidatures.html?degree=Licence&domain=Marketing">
                 <span class="prog-code">MKT</span>
                 <span class="prog-name" data-i18n="prog_licence_mkt">Management Marketing</span>
                 <span class="prog-meta">3 ans</span>
               </a>
             </li>
-            <li class="prog-item">
+            <li class="prog-item" data-domain="Science+Politique" data-famille="droit">
               <a href="candidatures.html?degree=Licence&domain=Science+Politique">
                 <span class="prog-code">POL</span>
                 <span class="prog-name" data-i18n="prog_licence_pol">Science Politique</span>
                 <span class="prog-meta">3 ans</span>
               </a>
             </li>
-            <li class="prog-item">
+            <li class="prog-item" data-domain="Comptabilité" data-famille="finance">
               <a href="candidatures.html?degree=Licence&domain=Comptabilité">
                 <span class="prog-code">CPT</span>
                 <span class="prog-name" data-i18n="prog_licence_cpt">Sciences Comptables et Financières</span>
                 <span class="prog-meta">3 ans</span>
               </a>
             </li>
-            <li class="prog-item">
+            <li class="prog-item" data-domain="Économie" data-famille="finance">
               <a href="candidatures.html?degree=Licence&domain=Économie">
                 <span class="prog-code">ECO</span>
                 <span class="prog-name" data-i18n="prog_licence_eco">Sciences Économiques</span>
                 <span class="prog-meta">3 ans</span>
               </a>
             </li>
-            <li class="prog-item">
+            <li class="prog-item" data-domain="Géographie" data-famille="humanites">
               <a href="candidatures.html?degree=Licence&domain=Géographie">
                 <span class="prog-code">GEO</span>
                 <span class="prog-name" data-i18n="prog_licence_geo">Géographie et Environnement</span>
                 <span class="prog-meta">3 ans</span>
               </a>
             </li>
-            <li class="prog-item">
+            <li class="prog-item" data-domain="Sciences+Physiques" data-famille="btp">
               <a href="candidatures.html?degree=Licence&domain=Sciences+Physiques">
                 <span class="prog-code">PHY</span>
                 <span class="prog-name" data-i18n="prog_licence_phy">Sciences Physiques</span>
                 <span class="prog-meta">3 ans</span>
               </a>
             </li>
-            <li class="prog-item">
+            <li class="prog-item" data-domain="Ressources+Humaines" data-famille="gestion">
               <a href="candidatures.html?degree=Licence&domain=Ressources+Humaines">
                 <span class="prog-code">GRH</span>
                 <span class="prog-name" data-i18n="prog_licence_grh">Gestion des Ressources Humaines</span>
@@ -521,91 +527,91 @@
               <span class="prog-group__count" data-i18n="prog_grp_master_meta">13 programmes · 2 ans · Bac +5</span>
             </h4>
             <ul class="prog-list">
-            <li class="prog-item">
+            <li class="prog-item" data-domain="Droit" data-famille="droit">
               <a href="candidatures.html?degree=Master&domain=Droit">
                 <span class="prog-code">DAF</span>
                 <span class="prog-name" data-i18n="prog_master_daf">Droit des Affaires et Fiscalité des Entreprises</span>
                 <span class="prog-meta">2 ans</span>
               </a>
             </li>
-            <li class="prog-item">
+            <li class="prog-item" data-domain="Droit" data-famille="droit">
               <a href="candidatures.html?degree=Master&domain=Droit">
                 <span class="prog-code">DIH</span>
                 <span class="prog-name" data-i18n="prog_master_dih">Droit International et Humanitaire</span>
                 <span class="prog-meta">2 ans</span>
               </a>
             </li>
-            <li class="prog-item">
+            <li class="prog-item" data-domain="Droit" data-famille="droit">
               <a href="candidatures.html?degree=Master&domain=Droit">
                 <span class="prog-code">DMP</span>
                 <span class="prog-name" data-i18n="prog_master_dmp">Droit Maritime et Activités Portuaires</span>
                 <span class="prog-meta">2 ans</span>
               </a>
             </li>
-            <li class="prog-item">
+            <li class="prog-item" data-domain="Finance" data-famille="finance">
               <a href="candidatures.html?degree=Master&domain=Finance">
                 <span class="prog-code">FIN</span>
                 <span class="prog-name" data-i18n="prog_master_fin">Finance</span>
                 <span class="prog-meta">2 ans</span>
               </a>
             </li>
-            <li class="prog-item">
+            <li class="prog-item" data-domain="Logistique" data-famille="gestion">
               <a href="candidatures.html?degree=Master&domain=Logistique">
                 <span class="prog-code">LOG</span>
                 <span class="prog-name" data-i18n="prog_master_log">Logistique</span>
                 <span class="prog-meta">2 ans</span>
               </a>
             </li>
-            <li class="prog-item">
+            <li class="prog-item" data-domain="Économie" data-famille="finance">
               <a href="candidatures.html?degree=Master&domain=Économie">
                 <span class="prog-code">MBF</span>
                 <span class="prog-name" data-i18n="prog_master_mbf">Sciences Économiques option Monnaie, Banque et Finance</span>
                 <span class="prog-meta">2 ans</span>
               </a>
             </li>
-            <li class="prog-item">
+            <li class="prog-item" data-domain="Comptabilité" data-famille="finance">
               <a href="candidatures.html?degree=Master&domain=Comptabilité">
                 <span class="prog-code">SCO</span>
                 <span class="prog-name" data-i18n="prog_master_sco">Sciences Comptables</span>
                 <span class="prog-meta">2 ans</span>
               </a>
             </li>
-            <li class="prog-item">
+            <li class="prog-item" data-domain="Science+Politique" data-famille="droit">
               <a href="candidatures.html?degree=Master&domain=Science+Politique">
                 <span class="prog-code">POL</span>
                 <span class="prog-name" data-i18n="prog_master_pol">Science Politique</span>
                 <span class="prog-meta">2 ans</span>
               </a>
             </li>
-            <li class="prog-item">
+            <li class="prog-item" data-domain="Finance" data-famille="finance">
               <a href="candidatures.html?degree=Master&domain=Finance">
                 <span class="prog-code">GRA</span>
                 <span class="prog-name" data-i18n="prog_master_gra">Gestion des Risques en Assurance et Finance</span>
                 <span class="prog-meta">2 ans</span>
               </a>
             </li>
-            <li class="prog-item">
+            <li class="prog-item" data-domain="Marketing" data-famille="marketing">
               <a href="candidatures.html?degree=Master&domain=Marketing">
                 <span class="prog-code">MKT</span>
                 <span class="prog-name" data-i18n="prog_master_mkt">Marketing</span>
                 <span class="prog-meta">2 ans</span>
               </a>
             </li>
-            <li class="prog-item">
+            <li class="prog-item" data-domain="Ressources+Humaines" data-famille="gestion">
               <a href="candidatures.html?degree=Master&domain=Ressources+Humaines">
                 <span class="prog-code">GRH</span>
                 <span class="prog-name" data-i18n="prog_master_grh">Gestion des Ressources Humaines</span>
                 <span class="prog-meta">2 ans</span>
               </a>
             </li>
-            <li class="prog-item">
+            <li class="prog-item" data-domain="Économie" data-famille="finance">
               <a href="candidatures.html?degree=Master&domain=Économie">
                 <span class="prog-code">EDD</span>
                 <span class="prog-name" data-i18n="prog_master_edd">Économie du Développement</span>
                 <span class="prog-meta">2 ans</span>
               </a>
             </li>
-            <li class="prog-item">
+            <li class="prog-item" data-domain="Géographie" data-famille="humanites">
               <a href="candidatures.html?degree=Master&domain=Géographie">
                 <span class="prog-code">GEO</span>
                 <span class="prog-name" data-i18n="prog_master_geo">Géomatique</span>
@@ -615,16 +621,25 @@
             </ul>
           </section>
         </div>
+      </div>
 
-        <!-- Executive MBA : programme phare, conservé en mise en avant -->
-        <aside class="mba-highlight" id="mba">
+      <div id="mba" class="cat-bloc" role="tabpanel" data-panneau>
+        <header class="cat-head">
+          <p class="cat-head__eyebrow" data-i18n="cat_eyebrow_mba">Cycle Bac +5 · cadres</p>
+          <h2 class="cat-head__title" data-i18n="t_executive_mba_management_str">Executive MBA Management &amp; Stratégie</h2>
+          <p class="cat-head__lede" data-i18n="t_programme_d_excellence_cefat_b">Programme d'excellence CEFAT Business School pour managers, directeurs et entrepreneurs.</p>
+        </header>
+
+        <aside class="mba-highlight">
           <div class="mba-highlight__body">
             <p class="mba-highlight__eyebrow" data-i18n="opt_deg_mba">Cadres &amp; Dirigeants</p>
-            <h4 class="mba-highlight__title" data-i18n="t_executive_mba_management_str">Executive MBA Management &amp; Stratégie</h4>
-            <p class="mba-highlight__desc" data-i18n="t_programme_d_excellence_cefat_b">Programme d'excellence CEFAT Business School pour managers, directeurs et entrepreneurs.</p>
+            <h4 class="mba-highlight__title" data-i18n="mba_promesse">Un cursus conçu pour se mener de front avec un poste de direction</h4>
+            <p class="mba-highlight__desc" data-i18n="mba_detail">Séminaires intensifs, mémoire professionnel adossé à votre entreprise et accompagnement individuel jusqu'à la soutenance.</p>
           </div>
-          <a href="candidatures.html?degree=MBA&domain=Gestion" class="btn-cefat-primary"><span data-i18n="t_candidater_l_executive_mba">Candidater à l'Executive MBA</span> <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="candidatures.html?degree=MBA&domaine=gestion" class="btn-cefat-primary"><span data-i18n="t_candidater_l_executive_mba">Candidater à l'Executive MBA</span> <i class="fa-solid fa-arrow-right"></i></a>
         </aside>
+      </div>
+
     </div>
   </section>
 
@@ -636,7 +651,7 @@
         <div class="col-xl-3 col-lg-3 col-md-6">
           <div class="footer-widget mb-30">
             <div class="mb-4">
-              <img src="assets/img/logo/cefat-logo-transparent.png?v=b9e22ffe" alt="Les Universités CEFAT" style="max-height: 62px;">
+              <img src="assets/img/logo/cefat-logo-2026.webp?v=74b8e9fc" alt="Les Universités CEFAT">
             </div>
             <div class="f-contact">
               <p class="small text-white-50" data-i18n="footer_about_text">
@@ -719,7 +734,7 @@
 
   <!-- WhatsApp Float -->
 <script src="assets/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/cefat-i18n.js?v=66dba25e"></script>
-  <script src="assets/js/cefat-app.js?v=6411b341"></script>
+  <script src="assets/js/cefat-i18n.js?v=3c199d52"></script>
+  <script src="assets/js/cefat-app.js?v=3d318859"></script>
 </body>
 </html>

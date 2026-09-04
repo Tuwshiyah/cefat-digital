@@ -6,7 +6,7 @@
   <title>Contact & Coordonnées des Campus | Les Universités CEFAT</title>
   <meta name="description" content="Contactez Les Universités CEFAT : Adresses, téléphones et emails de nos 5 campus à Abidjan, Abengourou, Bondoukou, Bonoua et Accra (Ghana).">
   
-  <link rel="icon" type="image/png" href="assets/img/logo/cefat-logo-tight.png?v=6cc4050b">
+  <link rel="icon" type="image/jpeg" href="assets/img/logo/cefat-favicon.jpeg?v=cfe467fc">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/css/animate.min.css">
   <link rel="stylesheet" href="assets/css/cefat-theme.css">
-  <link rel="stylesheet" href="assets/css/cefat-custom.css?v=64e1acaa">
+  <link rel="stylesheet" href="assets/css/cefat-custom.css?v=3f3eee40">
 </head>
 <body>
 
@@ -23,49 +23,32 @@
     <!-- ==================== TOP BAR ==================== -->
   <div class="header-top d-none d-lg-block">
     <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-7 col-md-6">
-          <div class="header-cta">
+      <div class="header-top__inner">
+
+        <ul class="header-top__contact">
+          <li><a href="mailto:contact@universitecefat.ci"><i class="fa-solid fa-envelope" aria-hidden="true"></i> contact@universitecefat.ci</a></li>
+        </ul>
+
+        <div class="header-cta justify-content-end">
             <ul>
-              <li><span class="fdfp-top-badge"><i class="fa-solid fa-award"></i> <span data-i18n="top_fdfp">Agrément Officiel FDFP</span></span></li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-lg-5 col-md-6 text-end">
-          <div class="header-cta justify-content-end">
-            <ul>
-              <li>
-                <div class="top-phone-stack">
-                  <i class="fa-solid fa-phone text-danger"></i>
-                  <span class="top-phone-numbers">
-                    <a href="tel:+2250712651719">07 12 65 17 19</a>
-                    <span class="top-phone-sep" aria-hidden="true">·</span>
-                    <a href="tel:+2250100959518">01 00 95 95 18</a>
-                  </span>
-                </div>
-              </li>
-              <li>
-                <i class="fa-solid fa-envelope text-danger"></i>
-                <a href="mailto:contact@universitecefat.ci">contact@universitecefat.ci</a>
-              </li>
+              <li><span class="fdfp-top-badge"><img class="fdfp-top-badge__logo" src="assets/img/logo/fdfp.webp?v=ffc0966c" alt="Fonds de Développement de la Formation Professionnelle" width="447" height="212"> <span data-i18n="top_fdfp">Agrément officiel</span></span></li>
               <li>
                 <button type="button" class="lang-switch-btn active" data-lang="fr" onclick="setLanguage('fr')">FR</button>
                 <button type="button" class="lang-switch-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
               </li>
             </ul>
-          </div>
         </div>
+
       </div>
     </div>
   </div>
 
-  
   <header id="header-sticky" class="menu-area">
     <div class="container">
       <div class="row align-items-center">
         <div class="col-xl-3 col-lg-3 col-8">
           <div class="logo py-2">
-            <a href="index.html"><img src="assets/img/logo/cefat-logo-tight.png?v=6cc4050b" alt="CEFAT" class="img-fluid"></a>
+            <a href="index.html"><img src="assets/img/logo/cefat-logo-2026.webp?v=74b8e9fc" alt="Les Universités CEFAT" class="img-fluid"></a>
           </div>
         </div>
         <div class="col-xl-9 col-lg-9 col-4 text-end">
@@ -77,10 +60,11 @@
 
                   <li class="has-sub has-mega">
                     <a aria-expanded="false" href="entites.html"><span data-i18n="nav_about">À Propos</span> <i class="fa-solid fa-chevron-down"></i></a>
-                    <div class="megamenu megamenu--cards">
+                    <div class="megamenu megamenu--about">
                       <div class="megamenu__inner">
                         <p class="megamenu__lede" data-i18n="mm_apropos_lede">Un groupe fondé en 2006, structuré en quatre établissements complémentaires.</p>
-                        <div class="mm-links">
+                        <div class="mm-about">
+                          <div class="mm-links">
                           <a class="mm-link" href="index.html#about">
                             <span class="mm-link__name" data-i18n="mm_histoire">Notre histoire</span>
                             <span class="mm-link__desc" data-i18n="mm_histoire_d">De 2006 à aujourd'hui, entité par entité.</span>
@@ -93,28 +77,41 @@
                             <span class="mm-link__name" data-i18n="mm_reseau">Le réseau : les 4 entités</span>
                             <span class="mm-link__desc" data-i18n="mm_reseau_d">Vue d'ensemble des quatre établissements.</span>
                           </a>
-                        </div>
-                        <div class="mm-grid mm-grid--compact">
+                          </div>
+                          <div class="mm-grid mm-grid--compact">
                           <a class="mm-card" href="entite-universite.html">
-                            <span class="mm-card__img"><img src="assets/img/entities/entity-international.jpg?v=f1bd2b62" alt="" loading="lazy"></span>
+                            <span class="mm-card__img">
+                              <img src="assets/img/entities/entity-international.jpg?v=f1bd2b62" alt="" loading="lazy">
+                              <span class="mm-card__brand" aria-hidden="true"><img src="assets/img/logo/universite-cefat-international.webp?v=da73d752" alt="" width="5583" height="3986" loading="lazy" decoding="async"></span>
+                            </span>
                             <span class="mm-card__name" data-i18n="sub_international">Université CEFAT International</span>
                             <span class="mm-card__lvl" data-i18n="mm_lvl_int">Licence · Master</span>
                           </a>
                           <a class="mm-card" href="entite-ifci.html">
-                            <span class="mm-card__img"><img src="assets/img/entities/entity-ifci.jpg?v=cb2b2399" alt="" loading="lazy"></span>
+                            <span class="mm-card__img">
+                              <img src="assets/img/entities/entity-ifci.jpg?v=cb2b2399" alt="" loading="lazy">
+                              <span class="mm-card__brand" aria-hidden="true"><img src="assets/img/logo/institut-formation-cefat-inter.webp?v=2cd951d8" alt="" width="4647" height="3576" loading="lazy" decoding="async"></span>
+                            </span>
                             <span class="mm-card__name" data-i18n="sub_ifci">Institut IFCI (BTS &amp; Métiers)</span>
                             <span class="mm-card__lvl" data-i18n="mm_lvl_ifci">BTS d'État</span>
                           </a>
                           <a class="mm-card" href="entite-business-school.html">
-                            <span class="mm-card__img"><img src="assets/img/entities/entity-business-school.jpg?v=d16a9f87" alt="" loading="lazy"></span>
+                            <span class="mm-card__img">
+                              <img src="assets/img/entities/entity-business-school.jpg?v=d16a9f87" alt="" loading="lazy">
+                              <span class="mm-card__brand" aria-hidden="true"><img src="assets/img/logo/cefat-business-school.webp?v=a71b4f57" alt="" width="4647" height="3576" loading="lazy" decoding="async"></span>
+                            </span>
                             <span class="mm-card__name" data-i18n="sub_business_school">CEFAT Business School</span>
                             <span class="mm-card__lvl" data-i18n="mm_lvl_bs">Bachelor · MBA</span>
                           </a>
                           <a class="mm-card" href="entite-accra.html">
-                            <span class="mm-card__img"><img src="assets/img/entities/entity-langues-accra.jpg?v=2254be2d" alt="" loading="lazy"></span>
+                            <span class="mm-card__img">
+                              <img src="assets/img/entities/entity-langues-accra.jpg?v=2254be2d" alt="" loading="lazy">
+                              <span class="mm-card__brand" aria-hidden="true"><img src="assets/img/logo/centre-immersion-linguistique.webp?v=77a67664" alt="" width="4584" height="3353" loading="lazy" decoding="async"></span>
+                            </span>
                             <span class="mm-card__name" data-i18n="sub_accra">Immersion Linguistique Accra</span>
                             <span class="mm-card__lvl" data-i18n="mm_lvl_accra">100% anglais</span>
                           </a>
+                        </div>
                         </div>
                       </div>
                     </div>
@@ -122,30 +119,43 @@
 
                   <li class="has-sub has-mega">
                     <a aria-expanded="false" href="formations.html"><span data-i18n="nav_formations">Formations</span> <i class="fa-solid fa-chevron-down"></i></a>
-                    <div class="megamenu megamenu--ladder">
+                    <div class="megamenu megamenu--formations">
                       <div class="megamenu__inner">
-                        <p class="megamenu__lede" data-i18n="mm_for_lede2">Du diplôme d'État au MBA — 33 programmes au catalogue.</p>
-                        <div class="mm-ladder mm-ladder--4">
-                          <a class="mm-step" href="formations.html#bts">
-                            <span class="mm-step__lvl" data-i18n="mm_bac2">Bac+2</span>
-                            <span class="mm-step__name" data-i18n="sub_bts">Cycle BTS (Diplôme d'État)</span>
-                            <span class="mm-step__desc" data-i18n="mm_for_bts2">6 spécialités, deux ans, entrée directe sur le marché.</span>
-                          </a>
-                          <a class="mm-step" href="formations.html#licence">
-                            <span class="mm-step__lvl" data-i18n="mm_bac35">Bac+3 à Bac+5</span>
-                            <span class="mm-step__name" data-i18n="mm_lmd">Licences &amp; Masters</span>
-                            <span class="mm-step__desc" data-i18n="mm_lmd_d">27 programmes LMD — 14 Licences, 13 Masters.</span>
-                          </a>
-                          <a class="mm-step" href="formations.html#mba">
-                            <span class="mm-step__lvl" data-i18n="mm_bac5">Bac+5</span>
-                            <span class="mm-step__name" data-i18n="sub_mba">Executive MBA</span>
-                            <span class="mm-step__desc" data-i18n="mm_for_mba">Format aménagé pour cadres en poste.</span>
-                          </a>
-                          <a class="mm-step" href="formations.html#regimes">
-                            <span class="mm-step__lvl" data-i18n="mm_organisation">Organisation</span>
-                            <span class="mm-step__name" data-i18n="mm_regimes">Régimes d'études</span>
-                            <span class="mm-step__desc" data-i18n="mm_regimes_d">Formation initiale ou continue, en ligne et en alternance.</span>
-                          </a>
+                        <p class="megamenu__lede" data-i18n="mm_for_lede3">33 programmes, du diplôme d'État à l'Executive MBA.</p>
+                        <div class="mm-two">
+                          <section class="mm-col">
+                            <h3 class="mm-col__title" data-i18n="mm_par_diplome">Par diplôme</h3>
+                            <a class="mm-link" href="formations.html#bts">
+                              <span class="mm-link__name" data-i18n="sub_bts">Cycle BTS (Diplôme d'État)</span>
+                              <span class="mm-link__desc" data-i18n="mm_d_bts">6 spécialités · 2 ans · Bac+2</span>
+                            </a>
+                            <a class="mm-link" href="formations.html#licence">
+                              <span class="mm-link__name" data-i18n="mm_lmd">Licences &amp; Masters</span>
+                              <span class="mm-link__desc" data-i18n="mm_d_lmd">27 programmes LMD · Bac+3 à Bac+5</span>
+                            </a>
+                            <a class="mm-link" href="formations.html#mba">
+                              <span class="mm-link__name" data-i18n="sub_mba">Executive MBA</span>
+                              <span class="mm-link__desc" data-i18n="mm_d_mba">Format aménagé pour cadres en poste</span>
+                            </a>
+                            <a class="mm-link" href="formations.html#regimes">
+                              <span class="mm-link__name" data-i18n="mm_regimes">Régimes d'études</span>
+                              <span class="mm-link__desc" data-i18n="mm_d_regimes">Formation initiale ou continue</span>
+                            </a>
+                          </section>
+
+                          <section class="mm-col mm-col--wide">
+                            <h3 class="mm-col__title" data-i18n="mm_par_domaine">Par domaine</h3>
+                            <ul class="mm-domaines">
+                              <li><a href="formations.html?domaine=gestion"><span data-i18n="fam_gestion">Gestion &amp; Administration</span> <em>5</em></a></li>
+                              <li><a href="formations.html?domaine=finance"><span data-i18n="fam_finance">Finance, Comptabilité &amp; Audit</span> <em>8</em></a></li>
+                              <li><a href="formations.html?domaine=droit"><span data-i18n="fam_droit">Droit &amp; Sciences Politiques</span> <em>6</em></a></li>
+                              <li><a href="formations.html?domaine=numerique"><span data-i18n="fam_numerique">Informatique &amp; Numérique</span> <em>4</em></a></li>
+                              <li><a href="formations.html?domaine=marketing"><span data-i18n="fam_marketing">Marketing &amp; Communication</span> <em>4</em></a></li>
+                              <li><a href="formations.html?domaine=humanites"><span data-i18n="fam_humanites">Lettres &amp; Sciences Humaines</span> <em>4</em></a></li>
+                              <li><a href="formations.html?domaine=btp"><span data-i18n="fam_btp">Génie Civil &amp; BTP</span> <em>2</em></a></li>
+                              <li class="mm-domaines__tout"><a href="formations.html"><span data-i18n="mm_tout_catalogue">Tout le catalogue</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></li>
+                            </ul>
+                          </section>
                         </div>
                       </div>
                     </div>
@@ -179,7 +189,6 @@
                               <span class="mm-stop__name" data-i18n="cor_bondoukou">Bondoukou</span>
                               <span class="mm-stop__meta" data-i18n="cor_bondoukou_meta">Gontougo</span>
                             </a>
-                            <span class="mm-border"><span data-i18n="corridor_border">Frontière CI · GH</span></span>
                             <a class="mm-stop mm-stop--gh" href="campus.html#accra">
                               <span class="mm-stop__img"><img src="assets/img/campus/campus-accra.jpg?v=b84d32ed" alt="" loading="lazy"></span>
                               <span class="mm-stop__name" data-i18n="cor_accra">Accra</span>
@@ -207,8 +216,8 @@
 
   <div class="mobile-drawer-overlay"></div>
   <aside class="mobile-drawer">
-    <div class="d-flex justify-content-between align-items-center mb-3">
-      <img src="assets/img/logo/cefat-logo-tight.png?v=6cc4050b" alt="CEFAT" style="max-height: 45px;">
+    <div class="mobile-drawer__header d-flex justify-content-between align-items-center mb-3">
+      <img src="assets/img/logo/cefat-logo-2026.webp?v=74b8e9fc" alt="Les Universités CEFAT" style="max-height: 45px;">
       <button class="close-drawer" aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button>
     </div>
     
@@ -280,122 +289,96 @@
   </section>
 
   <!-- Contact Information & Form -->
-  <section class="py-5 bg-light">
+  <!-- ==================== COORDONNÉES ET MESSAGE ==================== -->
+  <!-- Cinq pastilles rondes rouges empilées, deux cartes arrondies à ombre
+       portée et un `alert()` au clic : rien de tout ça n'existe ailleurs sur
+       le site. Coordonnées en liste filetée à gauche, panneau de formulaire
+       identique à celui des candidatures à droite. -->
+  <section class="ct-area">
     <div class="container">
-      <div class="row g-4">
-        
-        <!-- Left: Coordinates -->
-        <div class="col-lg-5">
-          <div class="card shadow-sm border-0 rounded-4 p-4 h-100 bg-white">
-            <h4 class="text-primary fw-bold mb-4"><i class="fa-solid fa-building-columns text-danger me-2"></i> <span data-i18n="contact_hq_title">Siège & Coordonnées Centrales</span></h4>
-            
-            <div class="d-flex gap-3 mb-4">
-              <div class="bg-danger text-white rounded-circle p-3 d-flex align-items-center justify-content-center" style="width:45px; height:45px;">
-                <i class="fa-solid fa-location-dot"></i>
-              </div>
-              <div>
-                <h6 class="fw-bold mb-1" data-i18n="contact_addr_lbl">Adresse Officielle :</h6>
-                <p class="small text-muted mb-0" data-i18n="contact_addr_val">Cocody Angré, Carrefour Prière<br>Abidjan, Côte d'Ivoire</p>
-              </div>
+      <div class="ct-grille">
+
+        <aside class="ct-coord">
+          <h2 class="ct-coord__titre" data-i18n="contact_hq_title">Siège &amp; Coordonnées Centrales</h2>
+
+          <dl class="ct-liste">
+            <div class="ct-ligne">
+              <dt data-i18n="contact_addr_lbl">Adresse officielle</dt>
+              <dd data-i18n="contact_addr_val">Cocody Angré, Carrefour Prière<br>Abidjan, Côte d'Ivoire</dd>
+            </div>
+            <div class="ct-ligne">
+              <dt data-i18n="contact_phone_lbl">Lignes téléphoniques</dt>
+              <dd>
+                <a href="tel:+2250712651719">07 12 65 17 19</a><br>
+                <a href="tel:+2250100959518">01 00 95 95 18</a><br>
+                <a href="tel:+2252722285991">27 22 28 59 91</a>
+              </dd>
+            </div>
+            <div class="ct-ligne">
+              <dt data-i18n="contact_email_lbl">Email officiel</dt>
+              <dd><a href="mailto:contact@universitecefat.ci">contact@universitecefat.ci</a></dd>
+            </div>
+            <div class="ct-ligne">
+              <dt data-i18n="contact_hours_lbl">Heures d'ouverture</dt>
+              <dd>
+                <span data-i18n="contact_hours_week">Lundi au Vendredi : 08h00 – 17h00</span><br>
+                <span data-i18n="contact_hours_sat">Samedi : 09h00 – 14h00</span>
+              </dd>
+            </div>
+            <div class="ct-ligne">
+              <dt data-i18n="contact_whatsapp_lbl">Assistance WhatsApp directe</dt>
+              <dd>
+                <a class="ct-whatsapp" href="https://wa.me/2250712651719" target="_blank" rel="noopener">
+                  <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> +225 07 12 65 17 19
+                </a>
+                <span class="ct-note" data-i18n="contact_whatsapp_dispo">Disponible 7j/7</span>
+              </dd>
+            </div>
+          </dl>
+
+          <p class="ct-fondateur" data-i18n="contact_founder_lbl">Fondateur : <strong>M. AMAN HONORE</strong></p>
+        </aside>
+
+        <div class="cand-panneau ct-panneau">
+          <p class="cand-panneau__titre" data-i18n="contact_form_title">Envoyez-nous un Message</p>
+          <p class="cand-panneau__note" data-i18n="contact_form_subtitle">Une question sur nos filières, les modalités d'admission ou l'hébergement à Accra ? Remplissez ce formulaire.</p>
+
+          <div id="contact-form-feedback"></div>
+
+          <form id="contact-inquiry-form" class="cand-form">
+            <div class="cand-etape">
+              <p class="cand-groupe">
+                <label for="contact-nom" class="cand-etiquette" data-i18n="contact_lbl_name">Nom complet *</label>
+                <input type="text" id="contact-nom" class="cand-champ" placeholder="Votre nom" data-i18n-placeholder="ph_lastname" required>
+              </p>
+              <p class="cand-groupe">
+                <label for="contact-tel" class="cand-etiquette" data-i18n="contact_lbl_tel">Téléphone *</label>
+                <input type="tel" id="contact-tel" class="cand-champ" placeholder="07 12 65 17 19" data-i18n-placeholder="ph_phone" required>
+              </p>
+              <p class="cand-groupe">
+                <label for="contact-email" class="cand-etiquette" data-i18n="contact_lbl_email">Email</label>
+                <input type="email" id="contact-email" class="cand-champ" placeholder="exemple@gmail.com" data-i18n-placeholder="ph_email">
+              </p>
+              <p class="cand-groupe">
+                <label for="contact-campus-choice" class="cand-etiquette" data-i18n="contact_lbl_campus">Campus concerné</label>
+                <select id="contact-campus-choice" class="cand-champ">
+                  <option value="Abidjan">Campus Abidjan (Cocody Angré)</option>
+                  <option value="Abengourou">Campus Abengourou</option>
+                  <option value="Bondoukou">Campus Bondoukou</option>
+                  <option value="Bonoua">Campus Bonoua</option>
+                  <option value="Accra" data-i18n="sub_accra_campus">Campus Accra (Ghana - Immersion)</option>
+                </select>
+              </p>
+              <p class="cand-groupe cand-groupe--plein">
+                <label for="contact-msg" class="cand-etiquette" data-i18n="contact_lbl_msg">Votre message ou question *</label>
+                <textarea id="contact-msg" class="cand-champ" rows="5" placeholder="Écrivez votre message ici..." data-i18n-placeholder="ph_message" required></textarea>
+              </p>
             </div>
 
-            <div class="d-flex gap-3 mb-4">
-              <div class="bg-danger text-white rounded-circle p-3 d-flex align-items-center justify-content-center" style="width:45px; height:45px;">
-                <i class="fa-solid fa-phone"></i>
-              </div>
-              <div>
-                <h6 class="fw-bold mb-1" data-i18n="contact_phone_lbl">Lignes Téléphoniques :</h6>
-                <p class="small text-muted mb-0">
-                  <a href="tel:+2250712651719" class="text-dark text-decoration-none">07 12 65 17 19</a><br>
-                  <a href="tel:+2250100959518" class="text-dark text-decoration-none">01 00 95 95 18</a><br>
-                  <a href="tel:+2252722285991" class="text-dark text-decoration-none">27 22 28 59 91</a>
-                </p>
-              </div>
-            </div>
-
-            <div class="d-flex gap-3 mb-4">
-              <div class="bg-danger text-white rounded-circle p-3 d-flex align-items-center justify-content-center" style="width:45px; height:45px;">
-                <i class="fa-solid fa-envelope"></i>
-              </div>
-              <div>
-                <h6 class="fw-bold mb-1" data-i18n="contact_email_lbl">Email Officiel :</h6>
-                <p class="small text-muted mb-0">
-                  <a href="mailto:contact@universitecefat.ci" class="text-dark text-decoration-none">contact@universitecefat.ci</a>
-                </p>
-              </div>
-            </div>
-
-            <div class="d-flex gap-3 mb-4">
-              <div class="bg-danger text-white rounded-circle p-3 d-flex align-items-center justify-content-center" style="width:45px; height:45px;">
-                <i class="fa-solid fa-clock"></i>
-              </div>
-              <div>
-                <h6 class="fw-bold mb-1" data-i18n="contact_hours_lbl">Heures d'Ouverture :</h6>
-                <p class="small text-muted mb-0">
-                  <span data-i18n="contact_hours_week">Lundi au Vendredi : 08h00 – 17h00</span><br>
-                  <span data-i18n="contact_hours_sat">Samedi : 09h00 – 14h00</span>
-                </p>
-              </div>
-            </div>
-
-            <div class="d-flex gap-3 mb-4">
-              <div class="bg-success text-white rounded-circle p-3 d-flex align-items-center justify-content-center" style="width:45px; height:45px;">
-                <i class="fa-brands fa-whatsapp fs-5"></i>
-              </div>
-              <div>
-                <h6 class="fw-bold mb-1"><span data-i18n="t_assistance_whatsapp_directe">Assistance WhatsApp Directe :</span></h6>
-                <p class="small text-muted mb-0">
-                  <a href="https://wa.me/2250712651719" target="_blank" class="text-success fw-bold text-decoration-none">+225 07 12 65 17 19 (Disponible 7j/7)</a>
-                </p>
-              </div>
-            </div>
-
-            <div class="p-3 bg-light rounded-3 mt-auto">
-              <small class="text-muted"><i class="fa-solid fa-user-tie text-danger me-1"></i> Fondateur : <strong><span data-i18n="t_m_aman_honore">M. AMAN HONORE</span></strong></small>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right: Inquiry Form -->
-        <div class="col-lg-7">
-          <div class="card shadow-sm border-0 rounded-4 p-4 p-md-5 bg-white">
-            <h4 class="text-primary fw-bold mb-2" data-i18n="contact_form_title">Envoyez-nous un Message</h4>
-            <p class="small text-muted mb-4" data-i18n="contact_form_subtitle">Une question sur nos filières, les modalités d'admission ou l'hébergement à Accra ? Remplissez ce formulaire.</p>
-
-            <form id="contact-inquiry-form" onsubmit="event.preventDefault(); alert('Merci pour votre message ! Notre équipe vous répondra sous 24h.'); this.reset();">
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <label for="contact-nom" class="form-label small fw-bold" data-i18n="contact_lbl_name">Nom complet *</label>
-                  <input type="text" id="contact-nom" class="form-control" placeholder="Votre nom" data-i18n-placeholder="ph_lastname" required>
-                </div>
-                <div class="col-md-6">
-                  <label for="contact-tel" class="form-label small fw-bold" data-i18n="contact_lbl_tel">Téléphone *</label>
-                  <input type="tel" id="contact-tel" class="form-control" placeholder="07 12 65 17 19" data-i18n-placeholder="ph_phone" required>
-                </div>
-                <div class="col-md-6">
-                  <label for="contact-email" class="form-label small fw-bold" data-i18n="contact_lbl_email">Email</label>
-                  <input type="email" id="contact-email" class="form-control" placeholder="exemple@gmail.com" data-i18n-placeholder="ph_email">
-                </div>
-                <div class="col-md-6">
-                  <label for="contact-campus-choice" class="form-label small fw-bold" data-i18n="contact_lbl_campus">Campus concerné</label>
-                  <select id="contact-campus-choice" class="form-select">
-                    <option value="Abidjan">Campus Abidjan (Cocody Angré)</option>
-                    <option value="Abengourou">Campus Abengourou</option>
-                    <option value="Bondoukou">Campus Bondoukou</option>
-                    <option value="Bonoua">Campus Bonoua</option>
-                    <option value="Accra" data-i18n="sub_accra_campus">Campus Accra (Ghana - Immersion)</option>
-                  </select>
-                </div>
-                <div class="col-12">
-                  <label for="contact-msg" class="form-label small fw-bold" data-i18n="contact_lbl_msg">Votre message ou question *</label>
-                  <textarea id="contact-msg" class="form-control" rows="4" placeholder="Écrivez votre message ici..." data-i18n-placeholder="ph_message" required></textarea>
-                </div>
-                <div class="col-12 mt-4">
-                  <button type="submit" class="btn-cefat-primary px-5 py-3" data-i18n="contact_btn_send"><i class="fa-solid fa-paper-plane me-2"></i> Envoyer le Message</button>
-                </div>
-              </div>
-            </form>
-          </div>
+            <button type="submit" class="cand-envoi">
+              <span data-i18n="contact_btn_send">Envoyer le message</span> <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </form>
         </div>
 
       </div>
@@ -410,7 +393,7 @@
         <div class="col-xl-3 col-lg-3 col-md-6">
           <div class="footer-widget mb-30">
             <div class="mb-4">
-              <img src="assets/img/logo/cefat-logo-transparent.png?v=b9e22ffe" alt="Les Universités CEFAT" style="max-height: 62px;">
+              <img src="assets/img/logo/cefat-logo-2026.webp?v=74b8e9fc" alt="Les Universités CEFAT">
             </div>
             <div class="f-contact">
               <p class="small text-white-50" data-i18n="footer_about_text">
@@ -491,7 +474,7 @@
     </div>
   </footer>
 <script src="assets/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/cefat-i18n.js?v=66dba25e"></script>
-  <script src="assets/js/cefat-app.js?v=6411b341"></script>
+  <script src="assets/js/cefat-i18n.js?v=3c199d52"></script>
+  <script src="assets/js/cefat-app.js?v=3d318859"></script>
 </body>
 </html>
