@@ -1,0 +1,12 @@
+# Temporary Python scripts
+*.py
+__pycache__/
+
+# Raw reference HTML downloads
+*.html.bak
+Eduvolv*.html
+Collège Privé CEFAT-Inter*.html
+
+# Temporary screenshots & logs
+*.log
+screenshot_*.png
