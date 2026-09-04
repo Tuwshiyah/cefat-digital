@@ -55,15 +55,37 @@ CREATE FUNCTION current_app_user_id() RETURNS uuid
 LANGUAGE sql STABLE
 RETURN nullif(current_setting('app.user_id', true), '')::uuid;
 
+CREATE FUNCTION current_app_is_group_admin() RETURNS boolean
+LANGUAGE sql STABLE SECURITY DEFINER
+SET search_path = public
+RETURN EXISTS (
+  SELECT 1
+  FROM organization_memberships AS membership
+  JOIN organizations AS organization ON organization.id = membership.organization_id
+  WHERE membership.user_id = current_app_user_id()
+    AND membership.role = 'group_admin'
+    AND organization.kind = 'group'
+    AND organization.is_active
+);
+
 CREATE POLICY memberships_same_organization ON organization_memberships
   USING (
-    organization_id = current_app_organization_id()
-    AND user_id = current_app_user_id()
+    (
+      organization_id = current_app_organization_id()
+      AND user_id = current_app_user_id()
+    )
+    OR current_app_is_group_admin()
   );
 
 CREATE POLICY applications_same_organization ON applications
-  USING (organization_id = current_app_organization_id())
+  USING (
+    organization_id = current_app_organization_id()
+    OR current_app_is_group_admin()
+  )
   WITH CHECK (organization_id = current_app_organization_id());
 
 COMMENT ON FUNCTION current_app_organization_id IS
   'Organisation active issue d une session authentifiee et definie par l API dans la transaction.';
+
+COMMENT ON FUNCTION current_app_is_group_admin IS
+  'Autorise la lecture consolidee du groupe sans permettre l ecriture dans une autre organisation.';

@@ -1,0 +1,48 @@
+name: Vérifier le monorepo
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  sites:
+    name: Sites statiques et historique Git
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: ./scripts/check-monorepo.sh
+      - name: Vérifier l'historique College CEFAT
+        run: git merge-base --is-ancestor 40c4615d49c0f5ee023a120bb57af2d564cf0c12 HEAD
+
+  tenant-isolation:
+    name: Isolation PostgreSQL par organisation
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_PASSWORD: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      PGPASSWORD: postgres
+    steps:
+      - uses: actions/checkout@v4
+      - name: Créer le schéma
+        run: psql -h 127.0.0.1 -U postgres -d postgres -v ON_ERROR_STOP=1 -f packages/database/schema.sql
+      - name: Vérifier l'isolation et la vue groupe
+        run: psql -h 127.0.0.1 -U postgres -d postgres -v ON_ERROR_STOP=1 -f packages/database/verify_isolation.sql
