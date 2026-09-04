@@ -1,0 +1,101 @@
+openapi: 3.1.0
+info:
+  title: API CEFAT Digital
+  version: 0.1.0
+  description: Contrat initial de l'API multi-établissement du Groupe CEFAT.
+servers:
+  - url: https://api.cefat.example/v1
+    description: URL illustrative à remplacer avant le déploiement
+paths:
+  /health:
+    get:
+      operationId: getHealth
+      security: []
+      responses:
+        "200":
+          description: Service disponible
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [status]
+                properties:
+                  status:
+                    type: string
+                    const: ok
+  /session:
+    get:
+      operationId: getSession
+      security:
+        - sessionCookie: []
+      responses:
+        "200":
+          description: Identité et organisation active validées par le serveur
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Session"
+        "401":
+          $ref: "#/components/responses/Unauthenticated"
+  /applications:
+    get:
+      operationId: listApplications
+      description: Retourne uniquement les candidatures de l'organisation active.
+      security:
+        - sessionCookie: []
+      responses:
+        "200":
+          description: Candidatures limitées par l'organisation active et la RLS.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Application"
+        "401":
+          $ref: "#/components/responses/Unauthenticated"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+components:
+  securitySchemes:
+    sessionCookie:
+      type: apiKey
+      in: cookie
+      name: cefat_session
+  responses:
+    Unauthenticated:
+      description: Session absente ou invalide
+    Forbidden:
+      description: Accès interdit pour l'organisation ou le rôle actif
+  schemas:
+    Session:
+      type: object
+      additionalProperties: false
+      required: [userId, organizationId, role]
+      properties:
+        userId:
+          type: string
+          format: uuid
+        organizationId:
+          type: string
+          format: uuid
+        role:
+          type: string
+          enum: [group_admin, organization_admin, staff, student]
+    Application:
+      type: object
+      additionalProperties: false
+      required: [id, organizationId, status, createdAt]
+      properties:
+        id:
+          type: string
+          format: uuid
+        organizationId:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum: [draft, submitted, reviewing, accepted, rejected]
+        createdAt:
+          type: string
+          format: date-time

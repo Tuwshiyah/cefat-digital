@@ -1,0 +1,18 @@
+[scripts]
+run_mode = "concurrent"
+
+[[scripts.run]]
+name = "Portail du groupe"
+command = "python3 -m http.server \"$CONDUCTOR_PORT\" --directory apps/les-universites-cefat"
+default = true
+available_in = ["local"]
+
+[[scripts.run]]
+name = "College CEFAT"
+command = "port=$((CONDUCTOR_PORT + 1)); python3 -m http.server \"$port\" --directory apps/college-cefat"
+available_in = ["local"]
+
+[[scripts.run]]
+name = "Université CEFAT International"
+command = "port=$((CONDUCTOR_PORT + 2)); python3 -m http.server \"$port\" --directory apps/universite-cefat-international"
+available_in = ["local"]

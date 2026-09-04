@@ -104,11 +104,11 @@ Pour changer la charte, modifiez les variables du bloc `:root` en tête de fichi
 Vous pouvez lancer le site localement avec n'importe quel serveur web HTTP :
 
 ```bash
-# Exemple avec Python
-python -m http.server 8080
+# Depuis la racine du monorepo
+python3 -m http.server 8090 --directory apps/les-universites-cefat
 
 # Ou via XAMPP / Apache
-# Placer le dossier dans htdocs/ et ouvrir http://localhost/universitePro/
+# Placer ce dossier dans htdocs/
 ```
 
 ---
